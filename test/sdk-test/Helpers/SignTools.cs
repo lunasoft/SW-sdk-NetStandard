@@ -1,6 +1,4 @@
-﻿using Helpers.Extensions;
-using NETCore.Encrypt;
-using System;
+﻿using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -93,7 +91,7 @@ namespace Test_SW.Helpers
                  , X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
 
             rsa = new RSACryptoServiceProvider();
-            RSAKeyExtensions.FromXmlString(rsa, RSAKeyExtensions.ToXmlString((RSA)certX509.PrivateKey, true));
+            RSAKeyHelper.FromXmlString(rsa, RSAKeyHelper.ToXmlString((RSA)certX509.PrivateKey, true));
             byte[] data = Encoding.UTF8.GetBytes(strToSign);
 
             signatureBytes = rsa.SignData(data, CryptoConfig.MapNameToOID(algorithm));
@@ -111,7 +109,7 @@ namespace Test_SW.Helpers
             return sb.ToString();
         }
 
-        private static string RemoverCaracteresInvalidosXml(string xmlInvoice)
+        public static string RemoverCaracteresInvalidosXml(string xmlInvoice)
         {
             xmlInvoice = xmlInvoice.Replace("\r\n", "");
             xmlInvoice = xmlInvoice.Replace("\r", "");
@@ -120,20 +118,6 @@ namespace Test_SW.Helpers
             xmlInvoice = xmlInvoice.Replace(@"
 ", "");
             return xmlInvoice;
-        }
-
-        private static string PrivateKeyToXml(RSA rsa, bool includePrivateParameters)
-        {
-            RSAParameters parameters = rsa.ExportParameters(includePrivateParameters);
-            return string.Format("<RSAKeyValue><Modulus>{0}</Modulus><Exponent>{1}</Exponent><P>{2}</P><Q>{3}</Q><DP>{4}</DP><DQ>{5}</DQ><InverseQ>{6}</InverseQ><D>{7}</D></RSAKeyValue>",
-                  parameters.Modulus != null ? Convert.ToBase64String(parameters.Modulus) : null,
-                  parameters.Exponent != null ? Convert.ToBase64String(parameters.Exponent) : null,
-                  parameters.P != null ? Convert.ToBase64String(parameters.P) : null,
-                  parameters.Q != null ? Convert.ToBase64String(parameters.Q) : null,
-                  parameters.DP != null ? Convert.ToBase64String(parameters.DP) : null,
-                  parameters.DQ != null ? Convert.ToBase64String(parameters.DQ) : null,
-                  parameters.InverseQ != null ? Convert.ToBase64String(parameters.InverseQ) : null,
-                  parameters.D != null ? Convert.ToBase64String(parameters.D) : null);
         }
     }
 }
