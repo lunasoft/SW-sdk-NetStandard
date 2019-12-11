@@ -76,7 +76,7 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
             Assert.True(response.status == "error"
                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(response.data.cfdi.Contains("cfdi:Addenda"));
+            Assert.Contains("cfdi:Addenda", response.data.cfdi);
 
         }
         [Fact]
