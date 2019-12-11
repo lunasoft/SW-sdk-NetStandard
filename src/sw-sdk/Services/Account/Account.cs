@@ -49,7 +49,7 @@ namespace SW.Services.Account
             }
         }
 
-        public async Task<AccountResponse> ConsultarSaldo()
+        public async Task<AccountResponse> ConsultarSaldoAsync()
         {
             return (AccountResponse)await GetBalance();
         }

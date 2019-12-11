@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Test_SW
 {
     /// <summary>
-    /// Summary description for UT_Service_Validation_45
+    /// Summary description for UT_Service_Validation
     /// </summary>
-    public class UT_Service_Validation_45
+    public class UT_Service_Validation
     {
         BuildSettings Build = new BuildSettings();
         [Fact]
-        public async Task UT_Service_Validation_45_ErrorExceptionAsync()
+        public async Task UT_Service_Validation_ErrorExceptionAsync()
         {
             Stamp stamp = new Stamp("http://fake123999459493494949.com", Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
@@ -23,7 +23,7 @@ namespace Test_SW
             Assert.True(response.status == "error");
         }
         [Fact]
-        public async Task UT_Service_Validation_45_401Async()
+        public async Task UT_Service_Validation_401Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.Token + "FakeToken");
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
@@ -32,7 +32,7 @@ namespace Test_SW
         }
 
         [Fact]
-        public async Task UT_Service_Validation_45_404Async()
+        public async Task UT_Service_Validation_404Async()
         {
             Stamp stamp = new Stamp(Build.Url + "/fakeurl", Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
@@ -41,7 +41,7 @@ namespace Test_SW
         }
 
         [Fact]
-        public async Task UT_Service_Validation_45_STAMPV4_BIG_XMLAsync()
+        public async Task UT_Service_Validation_STAMPV4_BIG_XMLAsync()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI33_Validacion_Servicio/cfdi33_big.xml"));
@@ -63,7 +63,7 @@ namespace Test_SW
             }
         }
         [Fact]
-        public async Task UT_Service_Validation_45_STAMPV4_BIG_XML_2Async()
+        public async Task UT_Service_Validation_STAMPV4_BIG_XML_2Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI33_Validacion_Servicio/cfdi33_big_2.xml"));
@@ -85,7 +85,7 @@ namespace Test_SW
             }
         }
         [Fact]
-        public async Task UT_Service_Validation_45_STAMPV4_CCE11Async()
+        public async Task UT_Service_Validation_STAMPV4_CCE11Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI33_Validacion_Servicio/cfdi33_ComercioExterior.xml"));
@@ -107,7 +107,7 @@ namespace Test_SW
             }
         }
         [Fact]
-        public async Task UT_Service_Validation_45_STAMPV4_NOMINA12Async()
+        public async Task UT_Service_Validation_STAMPV4_NOMINA12Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI33_Validacion_Servicio/cfdi33_nomina.xml"));
@@ -129,7 +129,7 @@ namespace Test_SW
             }
         }
         [Fact]
-        public async Task UT_Service_Validation_45_STAMPV4_PAGOS10Async()
+        public async Task UT_Service_Validation_STAMPV4_PAGOS10Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI33_Validacion_Servicio/cfdi33_pago10.xml"));

@@ -39,7 +39,7 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
-        public virtual ConcurrentDictionary<string, StampResponseV1> TimbrarV1(string[] xmls, bool isb64 = false)
+        public virtual ConcurrentDictionary<string, StampResponseV1> TimbrarV1Async(string[] xmls, bool isb64 = false)
         {
             StampResponseHandlerV1 handler = new StampResponseHandlerV1();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
@@ -90,7 +90,7 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
-        public virtual ConcurrentDictionary<string, StampResponseV2> TimbrarV2(string[] xmls, bool isb64 = false)
+        public virtual ConcurrentDictionary<string, StampResponseV2> TimbrarV2Async(string[] xmls, bool isb64 = false)
         {
             StampResponseHandlerV2 handler = new StampResponseHandlerV2();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
@@ -141,7 +141,7 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
-        public virtual ConcurrentDictionary<string, StampResponseV3> TimbrarV3(string[] xmls, bool isb64 = false)
+        public virtual ConcurrentDictionary<string, StampResponseV3> TimbrarV3Async(string[] xmls, bool isb64 = false)
         {
             StampResponseHandlerV3 handler = new StampResponseHandlerV3();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
@@ -190,7 +190,7 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
-        public virtual ConcurrentDictionary<string, StampResponseV4> TimbrarV4(string[] xmls, bool isb64 = false)
+        public virtual ConcurrentDictionary<string, StampResponseV4> TimbrarV4Async(string[] xmls, bool isb64 = false)
         {
             StampResponseHandlerV4 handler = new StampResponseHandlerV4();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);

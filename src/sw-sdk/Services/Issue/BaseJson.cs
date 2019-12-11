@@ -38,7 +38,7 @@ namespace SW.Services.Issue
                 return handler.HandleException(ex);
             }
         }
-        public virtual async Task<StampResponseV2> TimbrarJsonV2(string json)
+        public virtual async Task<StampResponseV2> TimbrarJsonV2Async(string json)
         {
             StampResponseHandlerV2 handler = new StampResponseHandlerV2();
             try

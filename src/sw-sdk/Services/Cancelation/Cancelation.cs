@@ -99,19 +99,19 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        public Task<CancelationResponse> CancelarByCSD(string cer, string key, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByCSDAsync(string cer, string key, string rfc, string password, string uuid)
         {
             return Cancelar(cer, key, rfc, password, uuid);
         }
-        public Task<CancelationResponse> CancelarByXML(byte[] xmlCancelation)
+        public Task<CancelationResponse> CancelarByXMLAsync(byte[] xmlCancelation)
         {
             return Cancelar(xmlCancelation);
         }
-        public Task<CancelationResponse> CancelarByPFX(string pfx, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByPFXAsync(string pfx, string rfc, string password, string uuid)
         {
             return Cancelar(pfx, rfc, password, uuid);
         }
-        public Task<CancelationResponse> CancelarByRfcUuid(string rfc, string uuid)
+        public Task<CancelationResponse> CancelarByRfcUuidAsync(string rfc, string uuid)
         {
             return Cancelar(rfc, uuid);
         }

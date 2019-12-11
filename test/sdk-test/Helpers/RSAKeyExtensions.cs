@@ -2,10 +2,10 @@
 using System.Security.Cryptography;
 using System.Xml;
 
-namespace Helpers.Extensions
+namespace Test_SW.Helpers
 {
 
-    internal static class RSAKeyExtensions
+    internal static class RSAKeyHelper
     {
         #region XML
 
