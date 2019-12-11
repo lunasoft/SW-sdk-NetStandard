@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SW.Helpers;
-using SW.Services.Stamp;
+﻿using SW.Services.Stamp;
 
 namespace SW.Services.Issue
 {

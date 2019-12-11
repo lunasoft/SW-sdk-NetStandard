@@ -1,11 +1,6 @@
-﻿using SW.Entities;
-using SW.Helpers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace SW.Services.Stamp
 {
@@ -25,9 +20,9 @@ namespace SW.Services.Stamp
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };

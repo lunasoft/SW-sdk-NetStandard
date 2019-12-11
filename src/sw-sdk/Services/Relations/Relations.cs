@@ -1,9 +1,6 @@
 ﻿using SW.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SW.Services.Relations
@@ -19,16 +16,16 @@ namespace SW.Services.Relations
         {
             _handler = new RelationsResponseHandler();
         }
-        internal override RelationsResponse RelationsRequest(string cer, string key, string rfc, string password, string uuid)
+        internal override async Task<RelationsResponse> RelationsRequestAsync(string cer, string key, string rfc, string password, string uuid)
         {
             RelationsResponseHandler handler = new RelationsResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = this.RequestRelations(cer, key, rfc, password, uuid);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "relations/csd", headers, content, proxy);
             }
             catch (Exception e)
@@ -36,16 +33,16 @@ namespace SW.Services.Relations
                 return handler.HandleException(e);
             }
         }
-        internal override RelationsResponse RelationsRequest(byte[] xmlCancelation)
+        internal override async Task<RelationsResponse> RelationsRequestAsync(byte[] xmlCancelation)
         {
             RelationsResponseHandler handler = new RelationsResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = this.RequestRelations(xmlCancelation);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "relations/xml", headers, content, proxy);
             }
             catch (Exception e)
@@ -53,16 +50,16 @@ namespace SW.Services.Relations
                 return handler.HandleException(e);
             }
         }
-        internal override RelationsResponse RelationsRequest(string pfx, string rfc, string password, string uuid)
+        internal override async Task<RelationsResponse> RelationsRequestAsync(string pfx, string rfc, string password, string uuid)
         {
             RelationsResponseHandler handler = new RelationsResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = this.RequestRelations(pfx, rfc, password, uuid);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "relations/pfx", headers, content, proxy);
             }
             catch (Exception e)
@@ -70,19 +67,19 @@ namespace SW.Services.Relations
                 return handler.HandleException(e);
             }
         }
-        internal override RelationsResponse RelationsRequest(string rfc, string uuid)
+        internal override async Task<RelationsResponse> RelationsRequestAsync(string rfc, string uuid)
         {
             RelationsResponseHandler handler = new RelationsResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                HttpWebRequest request = this.RequestRelations(rfc, uuid);
+                HttpWebRequest request = await this.RequestRelationsAsync(rfc, uuid);
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Post;
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url, headers, $"relations/{rfc}/{uuid}", proxy);
+                return await handler.GetPostResponseAsync(this.Url, headers, $"relations/{rfc}/{uuid}", proxy);
             }
             catch (Exception e)
             {
@@ -91,21 +88,21 @@ namespace SW.Services.Relations
         }
 
 
-        public RelationsResponse RelationsByCSD(string cer, string key, string rfc, string password, string uuid)
+        public async Task<RelationsResponse> RelationsByCSDAsync(string cer, string key, string rfc, string password, string uuid)
         {
-            return RelationsRequest(cer, key, rfc, password, uuid);
+            return await RelationsRequestAsync(cer, key, rfc, password, uuid);
         }
-        public RelationsResponse RelationsByXML(byte[] xmlCancelation)
+        public async Task<RelationsResponse> RelationsByXMLAsync(byte[] xmlCancelation)
         {
-            return RelationsRequest(xmlCancelation);
+            return await RelationsRequestAsync(xmlCancelation);
         }
-        public RelationsResponse RelationsByPFX(string pfx, string rfc, string password, string uuid)
+        public async Task<RelationsResponse> RelationsByPFXAsync(string pfx, string rfc, string password, string uuid)
         {
-            return RelationsRequest(pfx, rfc, password, uuid);
+            return await RelationsRequestAsync(pfx, rfc, password, uuid);
         }
-        public RelationsResponse RelationsByRfcUuid(string rfc, string uuid)
+        public async Task<RelationsResponse> RelationsByRfcUuidAsync(string rfc, string uuid)
         {
-            return RelationsRequest(rfc, uuid);
+            return await RelationsRequestAsync(rfc, uuid);
         }
     }
 }

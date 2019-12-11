@@ -1,9 +1,6 @@
 ﻿using System;
-using SW.Helpers;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace SW.Services.Validate
 {
@@ -18,16 +15,16 @@ namespace SW.Services.Validate
         {
             _operation = operation;
         }
-        public virtual ValidateXmlResponse ValidateXml(string XML)
+        public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string XML)
         {
             ValidateXmlResponseHandler handler = new ValidateXmlResponseHandler();
             try
             {
                 var xmlBytes = Encoding.UTF8.GetBytes(XML);
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("validate/cfdi33/",
                                 _operation), headers, content, proxy);
             }
@@ -36,15 +33,15 @@ namespace SW.Services.Validate
                 return handler.HandleException(ex);
             }
         }
-        public virtual ValidateLcoResponse ValidateLco(string Lco)
+        public virtual async Task<ValidateLcoResponse> ValidateLcoAsync(string Lco)
         {
             ValidateLcoResponseHandler handler = new ValidateLcoResponseHandler();
             try
             {
-                var headers = GetHeaders();
-                var content = RequestValidarLco(Lco);
+                var headers = await GetHeadersAsync();
+                var content = RequestValidarLcoAsync(Lco);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetResponse(this.Url,
+                return await handler.GetResponseAsync(this.Url,
                                 headers,
                                 string.Format("lco/{0}", Lco),
                                 proxy);
@@ -55,15 +52,15 @@ namespace SW.Services.Validate
             }
         }
 
-        public virtual ValidateLrfcResponse ValidateLrfc(string Lrfc)
+        public virtual async Task<ValidateLrfcResponse> ValidateLrfcAsync(string Lrfc)
         {
             ValidateLrfcResponseHandler handler = new ValidateLrfcResponseHandler();
             try
             {
-                var headers = GetHeaders();
-                var content = RequestValidarLrfc(Lrfc);
+                var headers = await GetHeadersAsync();
+                var content = RequestValidarLrfcAsync(Lrfc);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetResponse(this.Url,
+                return await handler.GetResponseAsync(this.Url,
                                 headers,
                                 string.Format("lrfc/{0}", Lrfc),
                                 proxy

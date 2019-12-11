@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Http;
 
 namespace SW.Services.Authentication
 {
@@ -13,7 +10,7 @@ namespace SW.Services.Authentication
         {
             _handler = new AuthenticationResponseHandler();
         }
-        public override AuthResponse GetToken()
+        public override async System.Threading.Tasks.Task<AuthResponse> GetTokenAsync()
         {
             try
             {
@@ -24,7 +21,7 @@ namespace SW.Services.Authentication
                     { "password", this.Password }
                 };
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return _handler.GetPostResponse(this.Url, headers, "security/authenticate", proxy);
+                return await _handler.GetPostResponseAsync(this.Url, headers, "security/authenticate", proxy);
 
             }
             catch (Exception e)

@@ -1,9 +1,8 @@
-﻿using SW.Helpers;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SW.Services.Relations
 {
@@ -15,13 +14,13 @@ namespace SW.Services.Relations
         protected RelationsService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract RelationsResponse RelationsRequest(string cer, string key, string rfc, string password, string uuid);
-        internal abstract RelationsResponse RelationsRequest(byte[] xmlCancelation);
-        internal abstract RelationsResponse RelationsRequest(string pfx, string rfc, string password, string uuid);
-        internal abstract RelationsResponse RelationsRequest(string rfc, string uuid);
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal abstract Task<RelationsResponse> RelationsRequestAsync(string cer, string key, string rfc, string password, string uuid);
+        internal abstract Task<RelationsResponse> RelationsRequestAsync(byte[] xmlCancelation);
+        internal abstract Task<RelationsResponse> RelationsRequestAsync(string pfx, string rfc, string password, string uuid);
+        internal abstract Task<RelationsResponse> RelationsRequestAsync(string rfc, string uuid);
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
@@ -59,9 +58,9 @@ namespace SW.Services.Relations
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual HttpWebRequest RequestRelations(string rfc, string uuid)
+        internal virtual async Task<HttpWebRequest> RequestRelationsAsync(string rfc, string uuid)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             string path = $"relations/{rfc}/{uuid}";
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";

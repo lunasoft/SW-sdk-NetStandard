@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using SW.Helpers;
-
-namespace SW.Services.Pdf
+﻿namespace SW.Services.Pdf
 {
     public class Pdf : BasePdf
     {

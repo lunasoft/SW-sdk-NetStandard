@@ -1,5 +1,6 @@
 ﻿using SW.Entities;
 using SW.Helpers;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace SW.Services.Account
@@ -12,6 +13,6 @@ namespace SW.Services.Account
         protected BalanceAccountService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract Response GetBalance();
+        internal abstract Task<Response> GetBalance();
     }
 }

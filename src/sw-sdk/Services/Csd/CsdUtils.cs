@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using SW.Helpers;
-using System.Net;
 
 namespace SW.Services.Csd
 {
@@ -20,7 +16,7 @@ namespace SW.Services.Csd
             _handler = new CsdResponseHandler();
         }
 
-        internal override UploadCsdResponse UploadCsd(string cer, string key, string password, string certificateType, bool isActive)
+        internal override async Task<UploadCsdResponse> UploadCsdAsync(string cer, string key, string password, string certificateType, bool isActive)
         {
             CsdResponseHandler handler = new CsdResponseHandler();
             try
@@ -30,10 +26,10 @@ namespace SW.Services.Csd
                 {
                     throw new ServicesException("El certificado o llave privada vienen vacios");
                 }
-                var headers = GetHeaders();
-                var content = this.RequestCsd(cer, key, password, certificateType, isActive);
+                var headers = await GetHeadersAsync();
+                var content = await this.RequestCsdAsync(cer, key, password, certificateType, isActive);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "certificates/save", headers, content, proxy);
             }
             catch (Exception e)
@@ -42,9 +38,9 @@ namespace SW.Services.Csd
             }
         }
 
-        public UploadCsdResponse UploadMyCsd(string cer, string key, string password, string certificateType, bool isActive)
+        public async Task<UploadCsdResponse> UploadMyCsdAsync(string cer, string key, string password, string certificateType, bool isActive)
         {
-            return UploadCsd(cer, key, password, certificateType, isActive);
+            return await UploadCsdAsync(cer, key, password, certificateType, isActive);
         }
     }
 }

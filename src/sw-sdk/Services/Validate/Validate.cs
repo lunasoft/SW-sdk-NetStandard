@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using SW.Helpers;
-
-namespace SW.Services.Validate
+﻿namespace SW.Services.Validate
 {
     public class Validate : BaseValidate
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using SW.Helpers;
+using System.Threading.Tasks;
 
 namespace SW.Services.Pdf
 {
@@ -17,17 +16,17 @@ namespace SW.Services.Pdf
         {
             _operation = operation;
         }
-        public virtual PdfResponse GenerarPdf(string xml, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
             PdfResponseHandler handler = new PdfResponseHandler();
             try
             {
                 string format = isB64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = GetMultipartContent(xmlBytes, ObservacionesAdicionales);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("/pdf/v1/generate",
                                 _operation), headers, content, proxy);
             }

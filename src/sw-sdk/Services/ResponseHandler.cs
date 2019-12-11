@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SW.Services
 {
@@ -19,7 +20,7 @@ namespace SW.Services
         {
             _xmlOriginal = xmlOriginal;
         }
-        public virtual T GetPostResponse(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        public virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             try
             {
@@ -30,8 +31,8 @@ namespace SW.Services
                     {
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
-                    var result = client.PostAsync(path, content).Result;
-                    return TryGetResponse(result);
+                    var result = await client.PostAsync(path, content);
+                    return await TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
@@ -44,7 +45,7 @@ namespace SW.Services
                 };
             }
         }
-        public virtual T GetPostResponse(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        public virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
@@ -55,8 +56,8 @@ namespace SW.Services
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                     client.BaseAddress = new Uri(url);
-                    var result = client.PostAsync(path, null).Result;
-                    return TryGetResponse(result);
+                    var result = await client.PostAsync(path, null);
+                    return await TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
@@ -70,7 +71,7 @@ namespace SW.Services
             }
         }
 
-        public virtual T GetResponse(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        public virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
@@ -81,8 +82,8 @@ namespace SW.Services
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                     client.BaseAddress = new Uri(url);
-                    var result = client.GetAsync(path).Result;
-                    return TryGetResponse(result);
+                    var result = await client.GetAsync(path);
+                    return await TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
@@ -96,13 +97,13 @@ namespace SW.Services
             }
         }
         public abstract T HandleException(Exception ex);
-        internal virtual T TryGetResponse(HttpResponseMessage response)
+        internal virtual async Task<T> TryGetResponseAsync(HttpResponseMessage response)
         {
             try
             {
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.BadRequest)
                 {
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
                 }
                 else
                     return new T()

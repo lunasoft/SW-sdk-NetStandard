@@ -1,9 +1,8 @@
-﻿using SW.Helpers;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SW.Services.Cancelation
 {
@@ -15,21 +14,21 @@ namespace SW.Services.Cancelation
         protected CancelationService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract CancelationResponse Cancelar(string cer, string key, string rfc, string password, string uuid);
-        internal abstract CancelationResponse Cancelar(byte[] xmlCancelation);
-        internal abstract CancelationResponse Cancelar(string rfc, string uuid);
-        internal abstract CancelationResponse Cancelar(string pfx, string rfc, string password, string uuid);
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal abstract Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid);
+        internal abstract Task<CancelationResponse> Cancelar(byte[] xmlCancelation);
+        internal abstract Task<CancelationResponse> Cancelar(string rfc, string uuid);
+        internal abstract Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid);
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
             return headers;
         }
-        internal virtual HttpWebRequest RequestCancelar(string rfc, string uuid)
+        internal virtual async Task<HttpWebRequest> RequestCancelarAsync(string rfc, string uuid)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             string path = string.Format("cfdi33/cancel/{0}/{1}", rfc, uuid);
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";
@@ -64,9 +63,9 @@ namespace SW.Services.Cancelation
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual MultipartFormDataContent RequestCancelarFile(byte[] xmlCancelation)
+        internal virtual async Task<MultipartFormDataContent> RequestCancelarFileAsync(byte[] xmlCancelation)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xmlCancelation);
             content.Add(fileContent, "xml", "xml");

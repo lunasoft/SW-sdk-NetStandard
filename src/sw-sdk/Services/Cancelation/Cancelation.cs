@@ -1,13 +1,14 @@
 ﻿using System;
 using SW.Helpers;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SW.Services.Cancelation
 {
     public class Cancelation : CancelationService
     {
 
-        CanelationResponseHandler _handler;
+        CancelationResponseHandler _handler;
         /// <summary>
         /// This Service is Not Implemented
         /// </summary>
@@ -16,7 +17,7 @@ namespace SW.Services.Cancelation
         /// <param name="password"></param>
         public Cancelation(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
-            _handler = new CanelationResponseHandler();
+            _handler = new CancelationResponseHandler();
         }
         /// <summary>
         /// This Service is Not Implemented
@@ -25,19 +26,19 @@ namespace SW.Services.Cancelation
         /// <param name="token"></param>
         public Cancelation(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
-            _handler = new CanelationResponseHandler();
+            _handler = new CancelationResponseHandler();
         }
 
-        internal override CancelationResponse Cancelar(string cer, string key, string rfc, string password, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid)
         {
-            CanelationResponseHandler handler = new CanelationResponseHandler();
+            CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = this.RequestCancelar(cer, key, rfc, password, uuid);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "cfdi33/cancel/csd", headers, content, proxy);
             }
             catch (Exception e)
@@ -45,35 +46,35 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        internal override CancelationResponse Cancelar(string rfc, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string rfc, string uuid)
         {
-            CanelationResponseHandler handler = new CanelationResponseHandler();
+            CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                HttpWebRequest request = this.RequestCancelar(rfc, uuid);
+                HttpWebRequest request = await this.RequestCancelarAsync(rfc, uuid);
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Post;
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                var headers = GetHeaders();
-                return handler.GetPostResponse(this.Url, headers, $"cfdi33/cancel/{rfc}/{uuid}", proxy);
+                var headers = await GetHeadersAsync();
+                return await handler.GetPostResponseAsync(this.Url, headers, $"cfdi33/cancel/{rfc}/{uuid}", proxy);
             }
             catch (Exception e)
             {
                 return handler.HandleException(e);
             }
         }
-        internal override CancelationResponse Cancelar(byte[] xmlCancelation)
+        internal override async Task<CancelationResponse> Cancelar(byte[] xmlCancelation)
         {
-            CanelationResponseHandler handler = new CanelationResponseHandler();
+            CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
-                var content = this.RequestCancelarFile(xmlCancelation);
+                var headers = await GetHeadersAsync();
+                var content = await this.RequestCancelarFileAsync(xmlCancelation);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "cfdi33/cancel/xml", headers, content, proxy);
             }
             catch (Exception e)
@@ -81,16 +82,16 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        internal override CancelationResponse Cancelar(string pfx, string rfc, string password, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid)
         {
-            CanelationResponseHandler handler = new CanelationResponseHandler();
+            CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var content = this.RequestCancelar(pfx, rfc, password, uuid);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetPostResponse(this.Url,
+                return await handler.GetPostResponseAsync(this.Url,
                                 "cfdi33/cancel/pfx", headers, content, proxy);
             }
             catch (Exception e)
@@ -98,19 +99,19 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        public CancelationResponse CancelarByCSD(string cer, string key, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByCSD(string cer, string key, string rfc, string password, string uuid)
         {
             return Cancelar(cer, key, rfc, password, uuid);
         }
-        public CancelationResponse CancelarByXML(byte[] xmlCancelation)
+        public Task<CancelationResponse> CancelarByXML(byte[] xmlCancelation)
         {
             return Cancelar(xmlCancelation);
         }
-        public CancelationResponse CancelarByPFX(string pfx, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByPFX(string pfx, string rfc, string password, string uuid)
         {
             return Cancelar(pfx, rfc, password, uuid);
         }
-        public CancelationResponse CancelarByRfcUuid(string rfc, string uuid)
+        public Task<CancelationResponse> CancelarByRfcUuid(string rfc, string uuid)
         {
             return Cancelar(rfc, uuid);
         }

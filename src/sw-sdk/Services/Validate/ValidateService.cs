@@ -1,11 +1,8 @@
-﻿using SW.Entities;
-using SW.Helpers;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Text;
+using System.Threading.Tasks;
+
 namespace SW.Services.Validate
 {
     public abstract class ValidateService : Services
@@ -23,17 +20,17 @@ namespace SW.Services.Validate
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
             return headers;
         }
-        internal virtual HttpWebRequest RequestValidarLrfc(string lrfc)
+        internal virtual async Task<HttpWebRequest> RequestValidarLrfcAsync(string lrfc)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             string path = string.Format("lrfc/{0}", lrfc);
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";
@@ -43,9 +40,9 @@ namespace SW.Services.Validate
             Helpers.RequestHelper.SetupProxy(this.Proxy, this.ProxyPort, ref request);
             return request;
         }
-        internal virtual HttpWebRequest RequestValidarLco(string lco)
+        internal virtual async Task<HttpWebRequest> RequestValidarLcoAsync(string lco)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             string path = string.Format("lco/{0}", lco);
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";

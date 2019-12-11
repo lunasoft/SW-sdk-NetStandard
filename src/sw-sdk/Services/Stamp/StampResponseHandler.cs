@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Xml;
+using System.Threading.Tasks;
 using SW.Helpers;
 
 namespace SW.Services.Stamp
@@ -26,9 +24,9 @@ namespace SW.Services.Stamp
         {
         }
 
-        public override StampResponseV2 GetPostResponse(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        public override async Task<StampResponseV2> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
-            var response = base.GetPostResponse(url, path, headers, content, proxy);
+            var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;
@@ -49,9 +47,9 @@ namespace SW.Services.Stamp
         {
         }
 
-        public override StampResponseV3 GetPostResponse(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        public override async Task<StampResponseV3> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
-            var response = base.GetPostResponse(url, path, headers, content, proxy);
+            var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;
@@ -63,9 +61,9 @@ namespace SW.Services.Stamp
     }
     internal class StampResponseHandlerV4 : ResponseHandler<StampResponseV4>
     {
-        public override StampResponseV4 GetPostResponse(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        public override async Task<StampResponseV4> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
-            var response = base.GetPostResponse(url, path, headers, content, proxy);
+            var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;

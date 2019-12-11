@@ -1,9 +1,7 @@
-﻿using SW.Helpers;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SW.Services.Csd
 {
@@ -15,18 +13,18 @@ namespace SW.Services.Csd
         protected CsdService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract UploadCsdResponse UploadCsd(string cer, string key, string password, string certificateType, bool isActive);
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal abstract Task<UploadCsdResponse> UploadCsdAsync(string cer, string key, string password, string certificateType, bool isActive);
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
             return headers;
         }
-        internal virtual StringContent RequestCsd(string cer, string key, string password, string certificateType, bool isActive)
+        internal virtual async Task<StringContent> RequestCsdAsync(string cer, string key, string password, string certificateType, bool isActive)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new UploadCsdRequest()
             {
                 b64Cer = cer,

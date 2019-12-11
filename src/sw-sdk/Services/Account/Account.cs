@@ -1,7 +1,7 @@
 ﻿using System;
 using SW.Helpers;
 using SW.Entities;
-using System.Net;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace SW.Services.Account
@@ -30,18 +30,18 @@ namespace SW.Services.Account
             _handler = new BalanceAccountResponseHandler();
         }
 
-        internal override Response GetBalance()
+        internal async override Task<Response> GetBalance()
         {
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                this.SetupRequest();
+                await this.SetupRequestAsync();
 
                 Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return _handler.GetResponse(this.Url, headers, "account/balance", proxy);
+                return await _handler.GetResponseAsync(this.Url, headers, "account/balance", proxy);
             }
             catch (Exception e)
             {
@@ -49,9 +49,9 @@ namespace SW.Services.Account
             }
         }
 
-        public AccountResponse ConsultarSaldo()
+        public async Task<AccountResponse> ConsultarSaldo()
         {
-            return (AccountResponse)GetBalance();
+            return (AccountResponse)await GetBalance();
         }
     }
 }

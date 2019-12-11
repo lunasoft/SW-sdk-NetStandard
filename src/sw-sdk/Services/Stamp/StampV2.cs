@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using SW.Helpers;
-
-namespace SW.Services.Stamp
+﻿namespace SW.Services.Stamp
 {
     public class StampV2 : BaseStampV2
     {

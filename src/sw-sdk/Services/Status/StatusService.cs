@@ -1,14 +1,8 @@
 ﻿using ExternalServices;
 using ExternalServices.ConsultaCFDIService;
-using SW.Helpers;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using System.Text;
 
 namespace SW.Services.Status
 {

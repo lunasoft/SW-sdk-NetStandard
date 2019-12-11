@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SW.Services.Pendings
 {
@@ -11,18 +12,18 @@ namespace SW.Services.Pendings
         protected PendingsService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract PendingsResponse PendingsRequest(string rfc);
-        internal virtual Dictionary<string, string> GetHeaders()
+        internal abstract Task<PendingsResponse> PendingsRequestAsync(string rfc);
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
             return headers;
         }
-        internal virtual HttpWebRequest RequestPendings(string rfc)
+        internal virtual async Task<HttpWebRequest> RequestPendingsAsync(string rfc)
         {
-            this.SetupRequest();
+            await this.SetupRequestAsync();
             string path = $"pendings/{rfc}";
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";

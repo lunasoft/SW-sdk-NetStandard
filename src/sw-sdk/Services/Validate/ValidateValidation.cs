@@ -2,7 +2,6 @@
 using System.Text;
 using System.Xml;
 using System;
-using System.Text.RegularExpressions;
 using SW.Helpers;
 
 namespace SW.Services.Validate

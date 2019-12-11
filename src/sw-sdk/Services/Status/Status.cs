@@ -1,9 +1,4 @@
-﻿using System;
-using SW.Helpers;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using ExternalServices.ConsultaCFDIService;
+﻿using ExternalServices.ConsultaCFDIService;
 
 namespace SW.Services.Status
 {

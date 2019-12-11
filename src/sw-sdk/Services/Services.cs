@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SW.Helpers;
 
 namespace SW.Services
@@ -61,12 +62,12 @@ namespace SW.Services
             _proxy = proxy;
             _proxyPort = proxyPort;
         }
-        public Services SetupRequest()
+        public async Task<Services> SetupRequestAsync()
         {
             if (string.IsNullOrEmpty(Token) || DateTime.Now > ExpirationDate)
             {
                 Authentication.Authentication auth = new Authentication.Authentication(Url,User,Password, ProxyPort, Proxy);
-                var response = auth.GetToken();
+                var response = await auth.GetTokenAsync();
                 if (response.status == ResponseType.success.ToString())
                 {
                     _token = response.data.token;

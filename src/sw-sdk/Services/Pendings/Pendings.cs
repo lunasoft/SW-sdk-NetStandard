@@ -1,6 +1,7 @@
 ﻿using SW.Helpers;
 using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SW.Services.Pendings
 {
@@ -15,28 +16,28 @@ namespace SW.Services.Pendings
         {
             _handler = new PendingsResponseHandler();
         }
-        internal override PendingsResponse PendingsRequest(string rfc)
+        internal override async Task<PendingsResponse> PendingsRequestAsync(string rfc)
         {
             PendingsResponseHandler handler = new PendingsResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                HttpWebRequest request = this.RequestPendings(rfc);
+                HttpWebRequest request = await this.RequestPendingsAsync(rfc);
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Get;
-                var headers = GetHeaders();
+                var headers = await GetHeadersAsync();
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return handler.GetResponse(this.Url, headers, $"pendings/{rfc}", proxy);
+                return await handler.GetResponseAsync(this.Url, headers, $"pendings/{rfc}", proxy);
             }
             catch (Exception e)
             {
                 return handler.HandleException(e);
             }
         }
-        public PendingsResponse PendingsByRfc(string rfc)
+        public async Task<PendingsResponse> PendingsByRfcAsync(string rfc)
         {
-            return PendingsRequest(rfc);
+            return await PendingsRequestAsync(rfc);
         }
     }
 }

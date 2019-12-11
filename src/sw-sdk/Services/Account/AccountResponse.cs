@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using SW.Helpers;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace SW.Services.Account
 {

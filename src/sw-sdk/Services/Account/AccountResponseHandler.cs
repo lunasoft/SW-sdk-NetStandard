@@ -1,6 +1,5 @@
 ﻿using System;
 using SW.Helpers;
-using SW.Entities;
 
 namespace SW.Services.Account
 {
