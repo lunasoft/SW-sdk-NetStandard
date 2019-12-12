@@ -26,7 +26,7 @@ namespace SW.Services.Pdf
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
+                    { "Authorization", "Bearer " + this.Token }
                 };
             return headers;
         }
