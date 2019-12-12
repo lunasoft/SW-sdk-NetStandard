@@ -20,8 +20,8 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if(response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password, 8888, "127.0.0.1");
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.templateId);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
             else
@@ -39,8 +39,48 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token, 8888, "127.0.0.1");
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.templateId);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token);
+                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
+                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+            }
+            else
+            {
+                Assert.True(false);
+            }
+
+        }
+
+        [Fact]
+        public async Task PDf_Test_GenerateDeault()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
+            if (response.status == "success")
+            {
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                var responsePdf = await pdf.GenerarPdfDeaultAsync(response.data.cfdi, build.b64Logo);
+                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+            }
+            else
+            {
+                Assert.True(false);
+            }
+
+        }
+
+        [Fact]
+        public async Task PDf_Test_GenerateDefault_Token()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
+            var xml = GetXml(build);
+            var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
+            if (response.status == "success")
+            {
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token);
+                var responsePdf = await pdf.GenerarPdfDeaultAsync(response.data.cfdi, build.b64Logo);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
             else

@@ -14,12 +14,13 @@ namespace SW.Services.Pdf
         {
         }
 
-        internal virtual MultipartFormDataContent GetMultipartContent(byte[] xml, Dictionary<string, string> ObservacionesAdcionales)
+        internal virtual MultipartFormDataContent GetMultipartContent(byte[] xml, Dictionary<string, string> ObservacionesAdcionales, string b64Logo)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xml);
-            content.Add(fileContent, "xml", "xml");
-            content.Add(new StringContent(JsonConvert.SerializeObject(ObservacionesAdcionales, Formatting.Indented)), "extras");
+            content.Add(fileContent, "file", "xml");
+            content.Add(new StringContent(JsonConvert.SerializeObject(ObservacionesAdcionales, Formatting.None)), "extras");
+            content.Add(new StringContent(b64Logo != null ? b64Logo : ""), "logo", "logo");
             return content;
         }
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
