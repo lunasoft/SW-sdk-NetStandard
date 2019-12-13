@@ -29,10 +29,10 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'pack'
-    packagesToPack: 'src/sw-sdk/*.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'versionsuffix'
+    command: 'custom'
+    projects: 'src/sw-sdk/*.csproj'
+    custom: 'pack'
+    arguments: '--version-suffix rc'
 - task: NuGetAuthenticate@0
   inputs:
     nuGetServiceConnections: 'NugetORG'
