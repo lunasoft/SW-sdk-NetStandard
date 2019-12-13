@@ -20,6 +20,12 @@ steps:
   inputs:
     command: 'build'
     projects: 'SW-sdk-NetStandard.sln'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'test/sdk-test/Resources'
+    Contents: '**'
+    TargetFolder: 'test/sdk-test/bin/Release/netcoreapp2.2'
+    OverWrite: true
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
