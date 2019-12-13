@@ -10,12 +10,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: dotnet restore --configfile NuGet.config
-  displayName: 'Restore project'
-- script: dotnet build 
-  displayName: 'Build project'
-- script: dotnet test 
-  displayName: 'Running test'
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: 'SW-sdk-NetStandard.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: 'NuGet.config'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'SW-sdk-NetStandard.sln'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'SW-sdk-NetStandard.sln'
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
