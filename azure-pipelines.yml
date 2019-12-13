@@ -24,7 +24,7 @@ steps:
   inputs:
     SourceFolder: 'test/sdk-test/Resources'
     Contents: '**'
-    TargetFolder: 'test/sdk-test/bin/Release/netcoreapp2.2'
+    TargetFolder: 'test/sdk-test/bin/Debug/netcoreapp2.2'
     OverWrite: true
 - task: DotNetCoreCLI@2
   inputs:
