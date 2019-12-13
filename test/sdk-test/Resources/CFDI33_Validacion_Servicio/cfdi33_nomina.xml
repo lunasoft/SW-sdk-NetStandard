@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd" xmlns:nomina12="http://www.sat.gob.mx/nomina12" Version="3.3" Serie="-" Folio="636373658139038002248" Fecha="2017-08-03T14:03:33" Sello="Un4rVuhOr1Gg1M2edrBBqi9Y52ExY/3UW6di3bqv82iYoXWGSfR3chzZIGY3eGss40sy38aZO2KWrzilbzhdcKcXeTnFj1qyFBpcft4729vJDB9w0VXUHrBZFVbqXKMH7RCh3qE0zxXtZ7m58EmJUjYSxQI8Ghb7szClKpYjkbnuebZGGHSvPy2z2udug4b08X27/FR23oOsSbjMKWl754lusoTEBrzpUGp6KGLD+i/q/16v20dglbUmtl3PkUaG0abf+4Y77IoSV/rAaxdy7hSjRP3S8gRmPrR4rugUaQgD13QOYKwm90MXE2NQSVNEAqCg16Jk14vr6nqJK8I5CQ==" FormaPago="99" NoCertificado="30001000000300023708" Certificado="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" SubTotal="17.00" Descuento="10.00" Moneda="MXN" TipoCambio="1" Total="7.00" TipoDeComprobante="N" MetodoPago="PUE" LugarExpedicion="66000" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <cfdi:Emisor Rfc="LAN8507268IA" Nombre="SHINKO AUTOMOTRIZ SA DE CV" RegimenFiscal="601" />
-  <cfdi:Receptor Rfc="AAAA010101AAA" Nombre="Empresa Pruebas 2 S.A. de C.V." UsoCFDI="P01" />
-  <cfdi:Conceptos>
-    <cfdi:Concepto ClaveProdServ="84111505" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago de nómina" ValorUnitario="17.00" Importe="17.00" Descuento="10.00" />
-  </cfdi:Conceptos>
-  <cfdi:Complemento>
-    <nomina12:Nomina FechaFinalPago="2016-11-15" FechaPago="2016-11-15" NumDiasPagados="15" FechaInicialPago="2016-11-14" TotalPercepciones="15.00" TotalOtrosPagos="2.00" TipoNomina="O" Version="1.2" TotalDeducciones="10.00" xsi:schemaLocation="http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Documents/Complementoscfdi/nomina12.xsd" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <nomina12:Emisor RegistroPatronal="01" RfcPatronOrigen="AUAC4601138F9" >
-        <nomina12:EntidadSNCF OrigenRecurso="IP" />
-      </nomina12:Emisor>
-      <nomina12:Receptor Departamento="Flota" Sindicalizado="Sí" RiesgoPuesto="5" TipoJornada="08" SalarioDiarioIntegrado="0" NumSeguridadSocial="0" NumEmpleado="1478130" TipoContrato="01" PeriodicidadPago="04" SalarioBaseCotApor="0" ClaveEntFed="NLE" Antigüedad="P1M13D" Puesto="Transportista" TipoRegimen="02" Curp="AAAA001030HSPBBB00" CuentaBancaria="8154789562" Banco="072" FechaInicioRelLaboral="2016-10-03">
-        <nomina12:SubContratacion PorcentajeTiempo="100.000" RfcLabora="BAJS721028S88" />
-      </nomina12:Receptor>
-      <nomina12:Percepciones TotalExento="5.00" TotalSueldos="15.00" TotalGravado="10.00">
-        <nomina12:Percepcion Concepto="Ü" ImporteGravado="10.00" TipoPercepcion="024" ImporteExento="5.00" Clave="ÜÜÜ" />
-      </nomina12:Percepciones>
-      <nomina12:Deducciones TotalOtrasDeducciones="10.00">
-        <nomina12:Deduccion Importe="10.00" Concepto="Ü" TipoDeduccion="011" Clave="ÜÜÜ" />
-      </nomina12:Deducciones>
-      <nomina12:OtrosPagos>
-        <nomina12:OtroPago Importe="2.00" Concepto="Ü" Clave="ÜÜÜ" TipoOtroPago="001" />
-      </nomina12:OtrosPagos>
-    </nomina12:Nomina>
-  </cfdi:Complemento>
+<cfdi:Comprobante Certificado="MIIF0TCCA7mgAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTYwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMjUyMTU0MTlaFw0yMDEwMjUyMTU0MTlaMIG9MR4wHAYDVQQDExVNQiBJREVBUyBESUdJVEFMRVMgU0MxHjAcBgNVBCkTFU1CIElERUFTIERJR0lUQUxFUyBTQzEeMBwGA1UEChMVTUIgSURFQVMgRElHSVRBTEVTIFNDMSUwIwYDVQQtExxMQU44NTA3MjY4SUEgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjHr4KeoEx3BdkQP93AuN4fKo0rCZQsd9RJGBzQFvhmPJjGaVP81OUORM+lCRllxZxATZCAIFPOT3jl5wYgtolGYWWrt1HoAiuja1LKDGKrYgph0qWYKYeuew10fTyV+AeSbx1jTKz1PAAak06hx4M0rvmdiGO/Kg00/0wKz5/L3ZIMXEj+Hgr0IGh/yUIy8m5aKf+9jwuNttm/xDoeW3A8pxuidPU1Z1vliaZs75n89hC9LNwshhoaF3AvXIsgLDeuh9WoMGSm0HrilP9umFnm3nGUESiJa15Ep7LbG4CIhZrrknSm4fyrPk9KAigqLYMJhRsRwfp2qncAnAA+FuSQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAd7t48tgawC9aczrGYt+4GFRcjj1LVKV3NElG+VH2s51KPkKPLj2Sw6OiEOGd+49spxHj1VR5MFvJo/pEJLY3EuLTifC9YZZYC8pHNDiA/eSvKqW5JNzp5/rgs3qAG1GrfdNGuSD3FkqhDdB6tJYqzTc12IC7xEAhKXrWZYCqa+zb9ogtzrUVL3vRRLMpnGEHK2yx8dhvG35qjHEfXyuoBsWILrVmnPpDCFO/CCLQB1OuMti1mlir6voBN0L1EbFK30w2bEuVihAeVLX8vVfMq4ZPI7UTLnblGnN11CCqiZkWhhehYrMdCjb5thMkEA+CMlIaFJYp7pNkLxQd4Y5+r8pTrdxxyvpA51DIWdoxvwaOiz1bzZk6ElVY2rfxwyZaJ17cJ1jmS4Yb5P4h8+5zkmZnPmRqfmaVO3nsApLWP6A38ZBrwwss429PJMSpfeXKGysPsqwF0yP3blsM7Cw53393LSHGKNm2GgG0kcrHnbbku6z6fjBdXMQQ5vjPuMNyw/pe3PzQLVoNOrD5AOoZmSG2TI3DtY4edLdiGmNQjo3MmAMMq4s7lr4AELPWAZRbnOlD1nEWGLdRp1mViteDvXwBL9E98EB4K9xK21DvgJ6rzw/D9rX6epeANfoXazWC0iCYcBNXiPikApcW73a/Jl/WjkEwEdkL/jLj0KCep58=" Descuento="49.65" Fecha="2019-12-12T23:56:20" Folio="63711834980719627724" FormaPago="99" LugarExpedicion="45609" MetodoPago="PUE" Moneda="MXN" NoCertificado="20001000000300022816" Sello="EDQqUcvANOxUUwVoPd6agz/XjQoYZL7xCcDaWl+sPbDK6ZSA/icXf3tpZ8meAM8NDKTt3taSTthrmO77nEuUyf9H3k0o5iwD3wglkT9eYbSqAyH9qljtPEQRozc/bvj7or/B2ntjGKIspsMGRyV63qqMp2EKOz34MzARBlqz1ADJZ1oS859L5EFDTaV6xvBbOyz0z86m3JxBplnUSr3z9YXh5yXUw/gES7zKUwUbyrs+MgRqDEUvHLpgcE5AwkAws0/Mck1gL4eH82wvnVFS993K9/IhdAHkdOBagVbD9AiP3oJTLs78uBrcalQFJuAizgsiNMvP/5dXmJUmF3fC4w==" Serie="N" SubTotal="2086.94" TipoDeComprobante="N" Total="2037.29" Version="3.3" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd">
+	<cfdi:Emisor Nombre="EMISOR" RegimenFiscal="601" Rfc="LAN8507268IA"/>
+	<cfdi:Receptor Nombre="RECEPTOR" Rfc="AAAA010101AAA" UsoCFDI="P01"/>
+	<cfdi:Conceptos>
+		<cfdi:Concepto Cantidad="1" ClaveProdServ="84111505" ClaveUnidad="ACT" Descripcion="Pago de nómina" Descuento="49.65" Importe="2086.94" ValorUnitario="2086.94"/>
+	</cfdi:Conceptos>
+	<cfdi:Complemento>
+		<nomina12:Nomina FechaFinalPago="2019-08-31" FechaInicialPago="2019-08-16" FechaPago="2019-08-27" NumDiasPagados="16" TipoNomina="O" TotalDeducciones="49.65" TotalOtrosPagos="86.94" TotalPercepciones="2000.00" Version="1.2" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd">
+			<nomina12:Emisor RegistroPatronal="1234587656">
+				<nomina12:EntidadSNCF OrigenRecurso="IP"/>
+			</nomina12:Emisor>
+			<nomina12:Receptor Antigüedad="P28W" ClaveEntFed="JAL" Curp="XEXX010101HNEXXXA4" FechaInicioRelLaboral="2019-02-14" NumEmpleado="190909125959A74" NumSeguridadSocial="12345678901" PeriodicidadPago="04" RiesgoPuesto="1" SalarioBaseCotApor="125" SalarioDiarioIntegrado="130.65" Sindicalizado="No" TipoContrato="01" TipoJornada="01" TipoRegimen="02"/>
+			<nomina12:Percepciones TotalExento="0.00" TotalGravado="2000.00" TotalSueldos="2000.00">
+				<nomina12:Percepcion Clave="001" Concepto="Sueldos, Salarios  Rayas y Jornales" ImporteExento="0.00" ImporteGravado="2000.00" TipoPercepcion="001"/>
+			</nomina12:Percepciones>
+			<nomina12:Deducciones TotalOtrasDeducciones="49.65">
+				<nomina12:Deduccion Clave="001" Concepto="Seguridad social" Importe="49.65" TipoDeduccion="001"/>
+			</nomina12:Deducciones>
+			<nomina12:OtrosPagos>
+				<nomina12:OtroPago Clave="002" Concepto="Subsidio para el empleo (efectivamente entregado al trabajador)" Importe="86.94" TipoOtroPago="002">
+					<nomina12:SubsidioAlEmpleo SubsidioCausado="188.7"/>
+				</nomina12:OtroPago>
+			</nomina12:OtrosPagos>
+		</nomina12:Nomina>
+	</cfdi:Complemento>
 </cfdi:Comprobante>
