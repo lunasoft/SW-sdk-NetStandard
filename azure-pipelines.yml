@@ -19,11 +19,13 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
+    projects: 'SW-sdk-NetStandard.sln'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'test/**/*.csproj'
+    projects: 'test/sdk-test/sdk-test.csproj'
+    publishTestResults: false
+    workingDirectory: 'test/sdk-test'
 
 - task: DotNetCoreCLI@2
   inputs:
