@@ -37,6 +37,6 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/src/sw-sdk/bin/**/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NugetORG'
