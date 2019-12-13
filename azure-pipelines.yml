@@ -10,10 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
-    restoreSolution: 'SW-sdk-NetStandard.sln'
+    projects: 'SW-sdk-NetStandard.sln'
     feedsToUse: 'config'
     nugetConfigPath: 'NuGet.config'
 - task: DotNetCoreCLI@2
@@ -24,12 +24,13 @@ steps:
   inputs:
     command: 'test'
     projects: 'SW-sdk-NetStandard.sln'
-- task: NuGetCommand@2
+
+- task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'byBuildNumber'
-    buildProperties: '--version-suffix rc'
+    packagesToPack: 'src/sw-sdk/*.csproj'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'versionsuffix'
 - task: NuGetAuthenticate@0
   inputs:
     nuGetServiceConnections: 'NugetORG'
