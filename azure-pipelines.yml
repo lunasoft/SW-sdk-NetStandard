@@ -1,0 +1,40 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+    - develop
+        
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: 'SW-sdk-NetStandard.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'NuGet.config'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: 'SW-sdk-NetStandard.sln'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'test'
+        projects: 'SW-sdk-NetStandard.sln'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/*.csproj'
+        versioningScheme: 'byBuildNumber'
+        buildProperties: '--version-suffix rc'
+    - task: NuGetAuthenticate@0
+      inputs:
+        nuGetServiceConnections: 'NugetORG'
+    - task: NuGetCommand@2
+      inputs:
+        command: push
+        nuGetFeedType: external
+        publishFeedCredentials: 'NugetORG'
