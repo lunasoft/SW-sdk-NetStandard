@@ -124,14 +124,9 @@ namespace Test_SW.Services.Stamp_Test
             var build = new BuildSettings();
             SW.Services.Stamp.Stamp stamp = new SW.Services.Stamp.Stamp("http://services.test.sw.com.mx", build.Token); //[token] o [usuario, contraseña]
             //URL de pruebas ↑, para productivo usar "https://services.sw.com.mx"
-            //var xml = Encoding.UTF8.GetString(File.ReadAllBytes(@"C:\Out\pruebasXml\0 - 32500.xml"));
             var xml = GetXml(build);
             //--- para cada xml ejecutar lo siguiente ↓
-            var stopwatch = new System.Diagnostics.Stopwatch();
-            stopwatch.Start();
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            stopwatch.Stop();
-            Console.Write(stopwatch.ElapsedMilliseconds);
             if (response.status != "error")
             {//Si el comprobante se timbró tendrá un status: "success"
                 //Datos de la respuesta dependiendo de la versión utilizada para timbrar
