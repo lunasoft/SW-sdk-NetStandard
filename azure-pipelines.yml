@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: dotnet restore --configfile NuGet.config
+  displayName: 'Restore project'
+- script: dotnet build 
+  displayName: 'Build project'
+- script: dotnet test 
+  displayName: 'Running test'
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byBuildNumber'
+    buildProperties: '--version-suffix rc'
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'NugetORG'
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: 'NugetORG'
