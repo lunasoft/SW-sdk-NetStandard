@@ -210,7 +210,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "404";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url + "/ot", build.Token);
-            var xml = File.ReadAllText("Resources/File.xml");
+            var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.Equal(response.message, (string)resultExpect);
         }
