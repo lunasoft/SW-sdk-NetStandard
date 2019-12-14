@@ -38,4 +38,4 @@ steps:
   inputs:
     command: 'custom'
     custom: 'nuget'
-    arguments: 'push src/sw-sdk/bin/**/*.nupkg -k $(NGKEY) -s $(NGSOURCE) -n'
+    arguments: 'push src/sw-sdk/bin/**/*.nupkg -k $(NGKEY) -s $(NGSOURCE) -n true'
