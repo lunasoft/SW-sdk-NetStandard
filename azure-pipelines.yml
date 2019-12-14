@@ -34,9 +34,8 @@ steps:
     custom: 'pack'
     arguments: '--version-suffix rc'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
-    command: 'push'
-    packagesToPush: 'src/sw-sdk/bin/**/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'NugetORG'
+    command: 'custom'
+    custom: 'nuget'
+    arguments: 'push src/sw-sdk/bin/**/*.nupkg -k $(NGKEY) -s $(NGSOURCE) -n true'
