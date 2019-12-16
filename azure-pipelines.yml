@@ -34,8 +34,8 @@ steps:
     custom: 'pack'
     arguments: '--version-suffix rc'
 
-- task: DotNetCoreCLI@2
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'custom'
-    custom: 'nuget'
-    arguments: 'push src/sw-sdk/bin/**/*.nupkg -k $(NGKEY) -s $(NGSOURCE) -n true'
+    PathtoPublish: 'src/sw-sdk/bin'
+    ArtifactName: 'bin'
+    publishLocation: 'Container'
