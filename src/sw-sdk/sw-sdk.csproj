@@ -2,11 +2,24 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>sw_sdk</RootNamespace>
-    <VersionPrefix>0.0.0.1</VersionPrefix>
+    <VersionPrefix>0.0.0.4</VersionPrefix>
+    <AssemblyName>sw-sdk-netstandard</AssemblyName>
+    <Title>SDK SW sapien®</Title>
+    <Authors>SW sapien®</Authors>
+    <PackageDescription>Librería para el consumo de los servicios web de SW sapien®.</PackageDescription>
+    <Description>Librería para el consumo de los servicios web de SW sapien®.</Description>
+    <Copyright>Copyright SW sapien®</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PackageIconUrl>https://sw.com.mx/images/logo.png</PackageIconUrl>
+    <PackageTags>cfdi;factura;electronica;sat;sdk;version;cfdi 3.3;libreria;csharp;SW;sw-sdk;smarterweb;sw sapien;facturacion;net core;net standard;</PackageTags>
+    <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryBranch>Master</RepositoryBranch>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0"/>
-    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0"/>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
   </ItemGroup>
 </Project>
