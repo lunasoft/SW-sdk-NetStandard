@@ -27,8 +27,7 @@ namespace sdk_test.Services.Pdf
             else
             {
                 Assert.True(false);
-            }
-            
+            }          
         }
         [Fact]
         public async Task PDf_Test_Generate_Token()
@@ -88,6 +87,25 @@ namespace sdk_test.Services.Pdf
                 Assert.True(false);
             }
 
+        }
+
+        [Fact]
+        public async Task PDf_Test_Generate_Generic()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
+            if (response.status == "success")
+            {
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                var responsePdf = await pdf.GenerarPdfGenericAsync(response.data.cfdi, build.b64Logo, "default", null, false, "/generic/generate");
+                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+            }
+            else
+            {
+                Assert.True(false);
+            }
         }
 
         static Random randomNumber = new Random(1);

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace SW.Services.Pdf
 {
-    public abstract class BasePdf : PdfService
+    public abstract partial class BasePdf : PdfService
     {
         private string _operation;
         private string _apiUrl;
@@ -76,6 +76,34 @@ namespace SW.Services.Pdf
                 return handler.HandleException(ex);
             }
 
+        }
+
+        public virtual async Task<PdfResponse> GenerarPdfGenericAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false, string path = "/pdf/v1/generic/generate")
+        {
+            PdfResponseHandler handler = new PdfResponseHandler();
+            try
+            {
+                string format = isB64 ? "b64" : "";
+                var headers = await GetHeadersAsync();
+                headers.Add("templateId", templateId);
+                var request = new PdfRequest();
+                request.xmlContent = xml;
+                request.extras = ObservacionesAdicionales;
+                request.logo = b64Logo;
+                var content = new StringContent(JsonConvert.SerializeObject(
+                    request, new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    }),
+                Encoding.UTF8, "application/json");
+                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                return await handler.GetPostResponseAsync(_apiUrl,
+                                path, headers, content, proxy);
+            }
+            catch (Exception ex)
+            {
+                return handler.HandleException(ex);
+            }
         }
     }
 }
