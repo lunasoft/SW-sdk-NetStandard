@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <RepositoryBranch>Master</RepositoryBranch>
-    <Version>0.0.0.5</Version>
+    <Version>0.0.0.6</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
