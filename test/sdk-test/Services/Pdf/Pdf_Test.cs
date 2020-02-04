@@ -99,7 +99,7 @@ namespace sdk_test.Services.Pdf
             if (response.status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfGenericAsync(response.data.cfdi, build.b64Logo, "default", null, false, "/generic/generate");
+                var responsePdf = await pdf.GenerarPdfGenericAsync(response.data.cfdi, build.b64Logo, "default", null, false, "/pdf/v1/generic/generate");
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
             else
