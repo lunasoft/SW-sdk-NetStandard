@@ -20,7 +20,7 @@ namespace Test_SW.Services.Status_Test
         public void StatusCFDI_NoEncontrado()
         {
             var build = new BuildSettings();
-            Status status = new Status(urlSAT);
+            Status status = new Status(urlSAT,120);
             var response = status.GetStatusCFDI("GOM0809114P5", "LSO1306189R5", "206.85", "021ea2fb-2254-4232-983b-9808c2ed831");
             Assert.Contains("602", response.CodigoEstatus);
         }
