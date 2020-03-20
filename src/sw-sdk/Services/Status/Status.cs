@@ -4,7 +4,7 @@ namespace SW.Services.Status
 {
     public class Status : StatusService
     {
-        public Status(string url) : base(url)
+        public Status(string url, int receiveTimeout = 1) : base(url, receiveTimeout)
         {
         }
         internal override Acuse StatusRequest(string rfcEmisor, string rfcReceptor, string total, string uuid)

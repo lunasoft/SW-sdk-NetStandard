@@ -9,11 +9,11 @@ namespace SW.Services.Status
     public abstract class StatusService : SATServices
     {
         private static BasicHttpBinding _myBinding;
-        protected StatusService(string url) : base(url)
+        protected StatusService(string url, int receiveTimeout) : base(url)
         {
             System.Net.ServicePointManager.ServerCertificateValidationCallback =
               delegate (object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
-            _myBinding = GetBinding();
+            _myBinding = GetBinding(receiveTimeout);
         }
         internal abstract Acuse StatusRequest(string rfcEmisor, string rfcReceptor, string Total, string uuid);
         internal virtual Acuse RequestStatus(string rfcEmisor, string rfcReceptor, string total, string uuid)

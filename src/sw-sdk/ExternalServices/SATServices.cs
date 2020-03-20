@@ -19,14 +19,14 @@ namespace ExternalServices
             _url = url; ;
         }
 
-        public BasicHttpBinding GetBinding()
+        public BasicHttpBinding GetBinding(int receiveTimeout)
         {
             var myBinding = new BasicHttpBinding();
             myBinding.Security.Mode = Url.StartsWith("https") ? BasicHttpSecurityMode.Transport : BasicHttpSecurityMode.None;
-            myBinding.ReceiveTimeout = new TimeSpan(0, 1, 0);
-            myBinding.SendTimeout = new TimeSpan(0, 1, 0);
-            myBinding.OpenTimeout = new TimeSpan(0, 1, 0);
-            myBinding.CloseTimeout = new TimeSpan(0, 1, 0);
+            myBinding.ReceiveTimeout = new TimeSpan(0, receiveTimeout, 0);
+            myBinding.SendTimeout = new TimeSpan(0, receiveTimeout, 0);
+            myBinding.OpenTimeout = new TimeSpan(0, receiveTimeout, 0);
+            myBinding.CloseTimeout = new TimeSpan(0, receiveTimeout, 0);
             myBinding.MaxReceivedMessageSize = 2147483647;
             myBinding.BypassProxyOnLocal = true;
             myBinding.UseDefaultWebProxy = true;
