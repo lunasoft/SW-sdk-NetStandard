@@ -49,7 +49,7 @@ namespace Test_SW.Services.Issue
             var build = new BuildSettings();
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
             var json = GetJson(build);
-            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "alejandro.ramos@sw.com.mx");
+            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com");
             Assert.True(response.status == "success"
                 && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
         }
