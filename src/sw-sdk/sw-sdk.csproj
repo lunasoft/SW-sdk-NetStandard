@@ -16,7 +16,10 @@
     <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <RepositoryBranch>Master</RepositoryBranch>
-    <Version>0.0.0.7</Version>
+    <Version>0.0.0.8</Version>
+    <AssemblyVersion>0.0.0.8</AssemblyVersion>
+    <FileVersion>0.0.0.8</FileVersion>
+    <PackageReleaseNotes>Se agrega timbrado v4 emision json y timbrado</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
