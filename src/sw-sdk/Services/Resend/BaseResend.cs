@@ -23,7 +23,6 @@ namespace sw_sdk.Services.Resend
         }
         public virtual async Task<ResendResponse> ResendEmailAsync(string uuid, string to)
         {
-            //PdfResponseHandler handler = new PdfResponseHandler();
             ResendResponseHandler handler = new ResendResponseHandler();
             try
             {
