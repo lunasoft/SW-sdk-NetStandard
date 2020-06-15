@@ -8,6 +8,7 @@ using SW.Services.Pendings;
 using SW.Services.Relations;
 using SW.Services.Stamp;
 using SW.Services.Validate;
+using sw_sdk.Services.Resend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,6 +145,15 @@ namespace SW.Helpers
         internal static PdfResponse ToPdfResponse(this Exception ex)
         {
             return new PdfResponse()
+            {
+                message = ex.Message,
+                status = "error",
+                messageDetail = ex.GetErrorDetail()
+            };
+        }
+        internal static ResendResponse ToResendResponse(this Exception ex)
+        {
+            return new ResendResponse()
             {
                 message = ex.Message,
                 status = "error",
