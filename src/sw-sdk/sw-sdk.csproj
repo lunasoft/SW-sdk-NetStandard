@@ -16,10 +16,10 @@
     <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <RepositoryBranch>Master</RepositoryBranch>
-    <Version>0.0.0.9</Version>
-    <AssemblyVersion>0.0.0.9</AssemblyVersion>
-    <FileVersion>0.0.0.9</FileVersion>
-    <PackageReleaseNotes>Se agrega metodo de reenvio por uuid</PackageReleaseNotes>
+    <Version>0.0.0.10</Version>
+    <AssemblyVersion>0.0.0.10</AssemblyVersion>
+    <FileVersion>0.0.0.10</FileVersion>
+    <PackageReleaseNotes>Se agrega metodo de timbrado json con envio de email y customid para no duplicidad de timbrado</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />

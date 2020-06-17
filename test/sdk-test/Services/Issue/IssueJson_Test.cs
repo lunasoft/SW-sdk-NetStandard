@@ -44,7 +44,7 @@ namespace Test_SW.Services.Issue
                 && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
         }
         [Fact]
-        public async Task IssueV4JsonV1fAsync()
+        public async Task IssueV4JsonV4fAsync()
         {
             var build = new BuildSettings();
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
@@ -52,6 +52,19 @@ namespace Test_SW.Services.Issue
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com");
             Assert.True(response.status == "success"
                 && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+        }
+        [Fact]
+        public async Task IssueV4JsonV4CustomIdfAsync()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
+            var json = GetJson(build);
+            var customNumber = new Random().Next(1000,10000).ToString();
+            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com", customNumber);
+            Assert.True(response.status == "success"
+                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com", customNumber);
+            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
         }
         [Fact]
         public async Task StampJsonV4byTokenAsync()
