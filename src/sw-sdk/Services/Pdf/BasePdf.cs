@@ -21,18 +21,20 @@ namespace SW.Services.Pdf
             _apiUrl = urlApi;
             _operation = operation;
         }
-        public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string idUser, string idDealer, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
             PdfResponseHandler handler = new PdfResponseHandler();
             try
             {
                 string format = isB64 ? "b64" : "";
                 var headers = await GetHeadersAsync();
-                headers.Add("templateId", templateId);
                 var request = new PdfRequest();
                 request.xmlContent = xml;
                 request.extras = ObservacionesAdicionales;
                 request.logo = b64Logo;
+                request.idDealer = idDealer;
+                request.idUser = idUser;
+                request.templateId = templateId;
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings{
                     NullValueHandling = NullValueHandling.Ignore
@@ -40,7 +42,7 @@ namespace SW.Services.Pdf
                 Encoding.UTF8, "application/json");
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(_apiUrl,
-                                string.Format("/pdf/v1/generate",
+                                string.Format("/pdf/v1/api/GeneratePdf",
                                 _operation), headers, content, proxy);
             }
             catch (Exception ex)
@@ -49,7 +51,7 @@ namespace SW.Services.Pdf
             }               
         }
 
-        public virtual async Task<PdfResponse> GenerarPdfDeaultAsync(string xml, string b64Logo, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public virtual async Task<PdfResponse> GenerarPdfDeaultAsync(string xml, string b64Logo, string templateId,  Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
             PdfResponseHandler handler = new PdfResponseHandler();
             try
@@ -60,6 +62,7 @@ namespace SW.Services.Pdf
                 request.xmlContent = xml;
                 request.extras = ObservacionesAdicionales;
                 request.logo = b64Logo;
+                 request.templateId = templateId;
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings
                     {
@@ -68,7 +71,7 @@ namespace SW.Services.Pdf
                 Encoding.UTF8, "application/json");
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(_apiUrl,
-                                string.Format("/pdf/v1/generate/default",
+                                string.Format("/pdf/v1/api/GeneratePdf",
                                 _operation), headers, content, proxy);
             }
             catch (Exception ex)
@@ -76,34 +79,6 @@ namespace SW.Services.Pdf
                 return handler.HandleException(ex);
             }
 
-        }
-
-        public virtual async Task<PdfResponse> GenerarPdfGenericAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false, string path = "/pdf/v1/generic/generate")
-        {
-            PdfResponseHandler handler = new PdfResponseHandler();
-            try
-            {
-                string format = isB64 ? "b64" : "";
-                var headers = await GetHeadersAsync();
-                headers.Add("templateId", templateId);
-                var request = new PdfRequest();
-                request.xmlContent = xml;
-                request.extras = ObservacionesAdicionales;
-                request.logo = b64Logo;
-                var content = new StringContent(JsonConvert.SerializeObject(
-                    request, new JsonSerializerSettings
-                    {
-                        NullValueHandling = NullValueHandling.Ignore
-                    }),
-                Encoding.UTF8, "application/json");
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetPostResponseAsync(_apiUrl,
-                                path, headers, content, proxy);
-            }
-            catch (Exception ex)
-            {
-                return handler.HandleException(ex);
-            }
         }
     }
 }
