@@ -28,12 +28,12 @@ namespace SW.Services.Pdf
             {
                 string format = isB64 ? "b64" : "";
                 var headers = await GetHeadersAsync();
+                headers.Add("idDealer", idDealer);
+                headers.Add("idUser", idUser);
                 var request = new PdfRequest();
                 request.xmlContent = xml;
                 request.extras = ObservacionesAdicionales;
                 request.logo = b64Logo;
-                request.idDealer = idDealer;
-                request.idUser = idUser;
                 request.templateId = templateId;
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings{
