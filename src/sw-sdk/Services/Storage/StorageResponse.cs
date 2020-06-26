@@ -15,7 +15,7 @@ namespace SW.Services.Storage
         public string status { get; set; }
         [DataMember]
         public string urlPdf { get; set; }
-         [DataMember]
+        [DataMember]
         public string urlXml { get; set; }
         [DataMember]
         public bool hasAddenda { get; set; }
