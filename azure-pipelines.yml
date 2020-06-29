@@ -33,6 +33,7 @@ steps:
     projects: 'test/sdk-test/sdk-test.csproj'
     publishTestResults: false
     workingDirectory: 'test/sdk-test'
+    version: '$(dotnetSdkVersion)'
 
 - task: DotNetCoreCLI@2
   inputs:
