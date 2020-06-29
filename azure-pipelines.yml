@@ -10,26 +10,26 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: RestoreNuget@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     projects: 'SW-sdk-NetStandard.sln'
     feedsToUse: 'config'
     nugetConfigPath: 'NuGet.config'
     version: 2.1.x
-- task: Build@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: 'SW-sdk-NetStandard.sln'
     version: 2.1.x
-- task: Testing@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: 'test/sdk-test/sdk-test.csproj'
     publishTestResults: false
     workingDirectory: 'test/sdk-test'
 
-- task: CreateVersion@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
     projects: 'src/sw-sdk/*.csproj'
