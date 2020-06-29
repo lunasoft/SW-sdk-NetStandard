@@ -20,7 +20,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if(response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -38,7 +38,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -58,7 +58,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfDeaultAsync(response.data.cfdi, build.b64Logo);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -78,7 +78,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
                 var responsePdf = await pdf.GenerarPdfDeaultAsync(response.data.cfdi, build.b64Logo);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -98,7 +98,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlPdf, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfGenericAsync(response.data.cfdi, build.b64Logo, "cfdi33", null, false, "/pdf/v1/api/GeneratePdf");
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -128,7 +128,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlPdf, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, "63220604-96AB-48DC-B579-724B55DF44CA", "63220604-96AB-48DC-B579-724B55DF44CA", build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
