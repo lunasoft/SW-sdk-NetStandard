@@ -8,32 +8,24 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-variables:
-  dotnetSdkVersion: '2.1'
 
 steps:
 - task: DotNetCoreCLI@2
   inputs:
-    displayName: 'Restore Nuget'
     command: 'restore'
     projects: 'SW-sdk-NetStandard.sln'
     feedsToUse: 'config'
     nugetConfigPath: 'NuGet.config'
-    version: '$(dotnetSdkVersion)'
 - task: DotNetCoreCLI@2
   inputs:
-    displayName: 'Build'
     command: 'build'
     projects: 'SW-sdk-NetStandard.sln'
-    version: '$(dotnetSdkVersion)'
 - task: DotNetCoreCLI@2
   inputs:
-    displayName: 'Testing'
     command: 'test'
     projects: 'test/sdk-test/sdk-test.csproj'
     publishTestResults: false
     workingDirectory: 'test/sdk-test'
-    version: '$(dotnetSdkVersion)'
 
 - task: DotNetCoreCLI@2
   inputs:
