@@ -7,7 +7,9 @@ using SW.Services.Pdf;
 using SW.Services.Pendings;
 using SW.Services.Relations;
 using SW.Services.Stamp;
+using SW.Services.Storage;
 using SW.Services.Validate;
+using sw_sdk.Services.Resend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -150,9 +152,27 @@ namespace SW.Helpers
                 messageDetail = ex.GetErrorDetail()
             };
         }
+        internal static ResendResponse ToResendResponse(this Exception ex)
+        {
+            return new ResendResponse()
+            {
+                message = ex.Message,
+                status = "error",
+                messageDetail = ex.GetErrorDetail()
+            };
+        }
         internal static UploadCsdResponse ToCargaCsdResponse(this Exception ex)
         {
             return new UploadCsdResponse()
+            {
+                message = ex.Message,
+                status = "error",
+                messageDetail = ex.GetErrorDetail()
+            };
+        }
+        internal static StorageResponse ToStorageResponse(this Exception ex)
+        {
+            return new StorageResponse()
             {
                 message = ex.Message,
                 status = "error",

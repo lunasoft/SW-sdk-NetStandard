@@ -98,5 +98,27 @@ namespace SW.Services.Issue
                 return handler.HandleException(ex);
             }
         }
+        public virtual async Task<StampResponseV4> TimbrarJsonV4Async(string json, string email, string customId)
+        {
+
+            StampResponseHandlerV4 handler = new StampResponseHandlerV4();
+            try
+            {
+                var headers = await GetHeadersAsync();
+                headers.Add("email", email);
+                headers.Add("customId", customId);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/jsontoxml");
+                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                return await handler.GetPostResponseAsync(this.Url,
+                                string.Format("v4/cfdi33/{0}/{1}/{2}",
+                                _operation,
+                                StampTypes.v4.ToString(),
+                                ""), headers, content, proxy);
+            }
+            catch (Exception ex)
+            {
+                return handler.HandleException(ex);
+            }
+        }
     }
 }

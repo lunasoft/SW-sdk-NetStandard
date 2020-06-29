@@ -32,6 +32,7 @@ steps:
     command: 'custom'
     projects: 'src/sw-sdk/*.csproj'
     custom: 'pack'
+    arguments: '--version-suffix rc'
 
 - task: PublishBuildArtifacts@1
   inputs:
