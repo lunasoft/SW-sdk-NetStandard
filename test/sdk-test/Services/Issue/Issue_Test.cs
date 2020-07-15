@@ -63,6 +63,17 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
         }
 
+        [Fact]
+        public async Task Issue_Test_IssueV4XMLV3Async()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV3)await issue.TimbrarV3Async(xml, "email@domainxyz.abc.com");
+            Assert.True(response.status == "success"
+                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+        }
+
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build)
         {
