@@ -110,7 +110,7 @@ namespace Test_SW.Services.Issue
         }
 
         [Fact]
-        public async Task Issue_Test_StampV4XMLbyTokenEmailAsync()
+        public async Task Issue_Test_StampV4XMLEmailAsync()
         {
             var build = new BuildSettings();
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.Token);
@@ -129,12 +129,12 @@ namespace Test_SW.Services.Issue
         }
 
         [Fact]
-        public async Task Issue_Test_StampV4XMLbyUserEmailAsync()
+        public async Task Issue_Test_StampV4XMLPDFAsync()
         {
             var build = new BuildSettings();
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
-            var response = (StampResponseV4)await issue.TimbrarV4Async(xml, "email@domain.com");
+            var response = (StampResponseV4)await issue.TimbrarV4Async(xml, extras: new string []{"pdf"});
             Assert.True(response.data != null, "El resultado data viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
@@ -147,7 +147,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
         }
 
-        static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build)
         {
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileIssue.xml"));
