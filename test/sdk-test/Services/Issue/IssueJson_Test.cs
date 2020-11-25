@@ -84,13 +84,12 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
         }
-        static Random randomNumber = new Random(1);
         private string GetJson(BuildSettings build)
         {
             var file = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/cfdi.json"));
             var json = JObject.Parse(file);
             json["Fecha"] = DateTime.Now.AddHours(-12).ToString("s");
-            json["Folio"] = randomNumber.Next(100).ToString();
+            json["Folio"] = Guid.NewGuid().ToString();
             return json.ToString();
         }
 
