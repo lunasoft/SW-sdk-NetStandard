@@ -29,7 +29,7 @@ namespace SW.Services.Stamp
             return headers;
         }
 
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId)
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
@@ -39,13 +39,13 @@ namespace SW.Services.Stamp
             {
                 headers.Add("email", email);
             }
-            else
-            {
-                headers.Add("extra", "pdf");
-            }
             if (customId != null)
             {
                 headers.Add("customId", customId);
+            }
+            if (extras != null)
+            {
+                headers.Add("extra", string.Join(",", extras));
             }
             return headers;
         }
