@@ -11,12 +11,12 @@
     "HasComplemento": false,
     "CfdiRelacionados": null,
     "Emisor": {
-        "Rfc": "LAN8507268IA",
+        "Rfc": "EKU9003173C9",
         "Nombre": "MB IDEAS DIGITALES SC",
         "RegimenFiscal": "601"
     },
     "Receptor": {
-        "Rfc": "AAA010101AAA",
+        "Rfc": "IIA040805DZ4",
         "Nombre": "SW SMARTERWEB",
         "ResidenciaFiscalSpecified": false,
         "NumRegIdTrib": null,
