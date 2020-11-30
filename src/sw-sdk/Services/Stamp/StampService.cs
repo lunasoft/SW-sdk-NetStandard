@@ -29,6 +29,39 @@ namespace SW.Services.Stamp
             return headers;
         }
 
+        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
+        {
+            await this.SetupRequestAsync();
+            Dictionary<string, string> headers = new Dictionary<string, string>() {
+                    { "Authorization", "bearer " + this.Token }
+                };
+            if (email != null && ValidateEmail(email))
+            {
+                headers.Add("email", email);
+            }
+            if (customId != null)
+            {
+                headers.Add("customId", customId);
+            }
+            if (extras != null)
+            {
+                headers.Add("extra", string.Join(",", extras));
+            }
+            return headers;
+        }
+
+        internal virtual bool ValidateEmail(string email)
+        {
+            try 
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
 
     }
 }

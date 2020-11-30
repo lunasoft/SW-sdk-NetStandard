@@ -67,6 +67,16 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
         }
         [Fact]
+        public async Task IssueV4JsonV4PDFAsync()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
+            var json = GetJson(build);
+            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, extras: new string[]{"pdf"});
+            Assert.True(response.status == "success"
+                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+        }
+        [Fact]
         public async Task StampJsonV4byTokenAsync()
         {
             var build = new BuildSettings();
@@ -84,13 +94,12 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
         }
-        static Random randomNumber = new Random(1);
         private string GetJson(BuildSettings build)
         {
             var file = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/cfdi.json"));
             var json = JObject.Parse(file);
             json["Fecha"] = DateTime.Now.AddHours(-12).ToString("s");
-            json["Folio"] = randomNumber.Next(100).ToString();
+            json["Folio"] = Guid.NewGuid().ToString();
             return json.ToString();
         }
 

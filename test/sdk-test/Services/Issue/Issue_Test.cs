@@ -63,7 +63,16 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
         }
 
-        static Random randomNumber = new Random(1);
+        [Fact]
+        public async Task Issue_Test_IssueV4XMLV3Async()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV3)await issue.TimbrarV3Async(xml, "email@domainxyz.abc.com");
+            Assert.True(response.status == "success"
+                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+        }
         private string GetXml(BuildSettings build)
         {
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileIssue.xml"));
@@ -71,7 +80,7 @@ namespace Test_SW.Services.Issue
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
             doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-            doc.DocumentElement.SetAttribute("Folio", DateTime.Now.Ticks.ToString() + randomNumber.Next(100));
+            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
             xml = doc.OuterXml;
             return xml;
         }

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>sw_sdk</RootNamespace>
-    <VersionPrefix>0.0.0.4</VersionPrefix>
+    <VersionPrefix>0.0.0.14</VersionPrefix>
     <AssemblyName>sw-sdk-netstandard</AssemblyName>
     <Title>SDK SW sapien®</Title>
     <Authors>SW sapien®</Authors>
@@ -16,10 +16,7 @@
     <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <RepositoryBranch>Master</RepositoryBranch>
-    <Version>0.0.0.11</Version>
-    <AssemblyVersion>0.0.0.11</AssemblyVersion>
-    <FileVersion>0.0.0.11</FileVersion>
-    <PackageReleaseNotes>Se agrega metodo de recuperacion archivos mediante uuid</PackageReleaseNotes>
+    <PackageReleaseNotes>Se agrega metodo de timbrado V4 por issue XML</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
