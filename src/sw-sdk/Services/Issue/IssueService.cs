@@ -47,7 +47,7 @@ namespace SW.Services.Issue
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
-            if (email != null && ValidateEmail(email))
+            if (email != null)
             {
                 headers.Add("email", email);
             }
@@ -60,19 +60,6 @@ namespace SW.Services.Issue
                 headers.Add("extra", string.Join(",", extras));
             }
             return headers;
-        }
-
-        internal virtual bool ValidateEmail(string email)
-        {
-            try 
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch 
-            {
-                return false;
-            }
         }
     }
 }

@@ -4,8 +4,12 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
-
+  branches:
+    include:
+      - "master"
+      - "develop"
+      - "hotfix/*"
+      - "feature/*"
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -32,9 +36,22 @@ steps:
     command: 'custom'
     projects: 'src/sw-sdk/*.csproj'
     custom: 'pack'
+  # Run if the trigger was master.
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'custom'
+    projects: 'src/sw-sdk/*.csproj'
+    custom: 'pack'
+    arguments: '--version-suffix rc'
+  # Run if the trigger was anything but master.
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'src/sw-sdk/bin'
     ArtifactName: 'bin'
     publishLocation: 'Container'
+  # Run only if the trigger was master or develop
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
