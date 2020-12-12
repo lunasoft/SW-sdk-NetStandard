@@ -8,6 +8,8 @@ trigger:
     include:
       - "master"
       - "develop"
+      - "hotfix/*"
+      - "feature/*"
 pool:
   vmImage: 'ubuntu-latest'
 
