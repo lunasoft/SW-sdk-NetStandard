@@ -54,4 +54,4 @@ steps:
     ArtifactName: 'bin'
     publishLocation: 'Container'
   # Run only if the trigger was master or develop
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/develop')))
