@@ -18,7 +18,10 @@ namespace Test_SW.Services.Storage_Test
             var build = new BuildSettings();
             Storage storage = new Storage(build.UrlSWServices, build.Token);
             var response = (StorageResponse)await storage.GetByUUIDAsync(new Guid("05ed3287-a364-4d94-b9ae-33b2c4384059"));
-            Assert.True(response.data.records[0].urlXml != null, "El resultado data viene vacio.");
+            Assert.True(response.data != null, "El resultado data viene vacio.");
+            Assert.True(response.data.records != null, "El resultado records viene vacio.");
+            Assert.True(response.data.records.Count > 0, "El resultado records viene vacio.");
+            Assert.True(response.data.records[0].urlXml != null, "Url no encontrada.");
         }
     }
 }
