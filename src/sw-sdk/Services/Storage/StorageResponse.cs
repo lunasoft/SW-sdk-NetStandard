@@ -12,7 +12,15 @@ namespace SW.Services.Storage
     public partial class Data
     {
         [DataMember]
+        public MetaData metaData { get; set; }
+        [DataMember]
+        public List<Records> records { get; set; }
+    }
+    public partial class Records
+    {
+        [DataMember]
         public string status { get; set; }
+      
         [DataMember]
         public string urlPdf { get; set; }
         [DataMember]
@@ -99,6 +107,39 @@ namespace SW.Services.Storage
         public string rfcProvCertif { get; set; }
         [DataMember]
         public string selloCFD { get; set; }
-
+        [DataMember]
+        public string urlAckCfdi { get; set; }
+        [DataMember]
+        public string urlAckCancellation { get; set; }
+        [DataMember]
+        public string urlAddenda { get; set; }
+        [DataMember]
+        public DateTime fechaGeneracionPdf { get; set; }
+        [DataMember]
+        public string emisorRfc { get; set; }
+        [DataMember]
+        public string emisorNombre { get; set; }
+        [DataMember]
+        public string receptorRfc { get; set; }
+        [DataMember]
+        public string receptorNombre { get; set; }
+        
+    }
+    public partial class MetaData
+    {
+        [DataMember]
+        public string page { get; set; }
+        [DataMember]
+        public string perPage { get; set; }
+        [DataMember]
+        public string pageCount { get; set; }
+        [DataMember]
+        public string totalCount { get; set; }
+        [DataMember]
+        public Links links { get; set; }
+    }
+    public partial class Links
+    {
+        public string current { get; set; }
     }
 }
