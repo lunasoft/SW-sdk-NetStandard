@@ -11,7 +11,7 @@ namespace SW.Services.Stamp
     {
         public override StampResponseV1 HandleException(Exception ex)
         {
-            return ex.ToStampResponseV1();
+            return ex.Response<StampResponseV1>();
         }
     }
     internal class StampResponseHandlerV2 : ResponseHandler<StampResponseV2>
@@ -34,7 +34,7 @@ namespace SW.Services.Stamp
 
         public override StampResponseV2 HandleException(Exception ex)
         {
-            return ex.ToStampResponseV2();
+            return ex.Response<StampResponseV2>();
         }
     }
     internal class StampResponseHandlerV3 : ResponseHandler<StampResponseV3>
@@ -56,7 +56,7 @@ namespace SW.Services.Stamp
         }
         public override StampResponseV3 HandleException(Exception ex)
         {
-            return ex.ToStampResponseV3();
+            return ex.Response<StampResponseV3>();
         }
     }
     internal class StampResponseHandlerV4 : ResponseHandler<StampResponseV4>
@@ -78,7 +78,7 @@ namespace SW.Services.Stamp
 
         public override StampResponseV4 HandleException(Exception ex)
         {
-            return ex.ToStampResponseV4();
+            return ex.Response<StampResponseV4>();
         }
     }
 }

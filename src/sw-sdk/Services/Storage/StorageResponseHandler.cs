@@ -7,7 +7,7 @@ namespace SW.Services.Storage
     {
         public override StorageResponse HandleException(Exception ex)
         {
-            return ex.ToStorageResponse();
+            return ex.Response<StorageResponse>();
         }
     }
 }

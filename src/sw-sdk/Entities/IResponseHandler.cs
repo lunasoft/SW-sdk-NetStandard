@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SW.Entities;
+using System;
 using System.Net;
-using System.Text;
 
 namespace SW
 {
     internal interface IResponseHandler
     {
-        SW.Entities.Response GetResponse(WebRequest request);
-        SW.Entities.Response HandleException(Exception ex);
+        Response GetResponse(WebRequest request);
+        Response HandleException(Exception ex);
     }
 }

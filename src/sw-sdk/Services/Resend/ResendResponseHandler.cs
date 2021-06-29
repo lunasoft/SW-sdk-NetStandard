@@ -1,15 +1,16 @@
 ﻿using SW.Helpers;
+using SW.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace sw_sdk.Services.Resend
 {
-    internal class ResendResponseHandler : SW.Services.ResponseHandler<ResendResponse>
+    internal class ResendResponseHandler : ResponseHandler<ResendResponse>
     {
         public override ResendResponse HandleException(Exception ex)
         {
-            return ex.ToResendResponse();
+            return ex.Response<ResendResponse>();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace SW.Services.Relations
     {
         public override RelationsResponse HandleException(Exception ex)
         {
-            return ex.ToRelationsResponse();
+            return ex.Response<RelationsResponse>();
         }
     }
 }

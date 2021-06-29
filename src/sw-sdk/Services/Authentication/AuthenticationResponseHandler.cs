@@ -7,7 +7,7 @@ namespace SW.Services.Authentication
     {
         public override AuthResponse HandleException(Exception ex)
         {
-            return ex.ToAuthResponse();
+            return ex.Response<AuthResponse>();
         }
     }
 }

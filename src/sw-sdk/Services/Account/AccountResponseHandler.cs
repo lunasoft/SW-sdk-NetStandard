@@ -7,7 +7,7 @@ namespace SW.Services.Account
     {
         public override AccountResponse HandleException(Exception ex)
         {
-            return ex.ToAccountResponse();
+            return ex.Response<AccountResponse>();
         }
     }
 }
