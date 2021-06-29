@@ -6,12 +6,12 @@ namespace sdk_test.Services.Resend
 {
     public class Resend_Test
     {
-        [Fact]
+        [Fact(Skip = "bug SMARTER-2687")]
         public async Task Resend_email()
         {
             var build = new BuildSettings();
             sw_sdk.Services.Resend.Resend resend = new sw_sdk.Services.Resend.Resend(build.Url, build.UrlSWServices, build.User, build.Password);
-            var responseResend = await resend.ResendEmailAsync("3f946ad4-8a35-4067-8dc7-5227a80f6938", "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync("534a129c-2a8d-4868-8f51-1fd64040ee97", "someemail@some.com");
             Assert.True(responseResend != null && responseResend.data != null && responseResend.status == "success");
         }
     }

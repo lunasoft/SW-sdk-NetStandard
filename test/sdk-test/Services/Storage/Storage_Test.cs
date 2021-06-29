@@ -17,7 +17,7 @@ namespace Test_SW.Services.Storage_Test
         {
             var build = new BuildSettings();
             Storage storage = new Storage(build.UrlSWServices, build.Token);
-            var response = (StorageResponse)await storage.GetByUUIDAsync(new Guid("05ed3287-a364-4d94-b9ae-33b2c4384059"));
+            var response = (StorageResponse)await storage.GetByUUIDAsync(new Guid("534a129c-2a8d-4868-8f51-1fd64040ee97"));
             Assert.True(response.data != null, "El resultado data viene vacio.");
             Assert.True(response.data.records != null, "El resultado records viene vacio.");
             Assert.True(response.data.records.Count > 0, "El resultado records viene vacio.");
