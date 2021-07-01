@@ -37,6 +37,30 @@ namespace SW.Services.Stamp
             return ex.Response<StampResponseV2>();
         }
     }
+
+    internal class StampResponseHandlerV2XML : ResponseHandler<StampResponseV2>
+    {
+        public StampResponseHandlerV2XML()
+        {
+        }
+
+        public StampResponseHandlerV2XML(string xmlOriginal) : base(xmlOriginal)
+        {
+        }
+
+        public override async Task<StampResponseV2> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        {
+            var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
+            if (base.Has307AndAddenda(response, response.data))
+                response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
+            return response;
+        }
+
+        public override StampResponseV2 HandleException(Exception ex)
+        {
+            return ex.Response<StampResponseV2>();
+        }
+    }
     internal class StampResponseHandlerV3 : ResponseHandler<StampResponseV3>
     {
         public StampResponseHandlerV3()
