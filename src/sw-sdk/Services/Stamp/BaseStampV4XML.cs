@@ -42,15 +42,17 @@ namespace SW.Services.Stamp
             if(response.status == "error" && response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.")
             {
                 StorageResponseHandler storangeHandler = new StorageResponseHandler();
-                Thread.Sleep(5000);
-
+                await Task.Delay(5000);
                 string uuid = Helpers.XmlUtils.GetUUIDFromTFD(response.data.tfd);
                 var xmlFromStorange = await storangeHandler.GetResponseAsync(_apiUrl,
                                         headers, $"datawarehouse/v1/live/{uuid}",
                                         Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort));
 
+                if(string.IsNullOrEmpty(xmlFromStorange.data.records[0].urlAckCfdi))
+                    throw new ServicesException("No es posible obtener el url para decargar el XML");
+
                 var dataResult = await Helpers.DowloadFile.DowloadFileAsync(xmlFromStorange.data.records[0].urlXml,
-                        Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort));
+                                    Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort));
                 dataResult.data.tfd = response.data.tfd;
                 dataResult.message = response.message;
 

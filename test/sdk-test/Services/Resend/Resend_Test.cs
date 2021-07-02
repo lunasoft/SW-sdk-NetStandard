@@ -11,7 +11,7 @@ namespace sdk_test.Services.Resend
         {
             var build = new BuildSettings();
             sw_sdk.Services.Resend.Resend resend = new sw_sdk.Services.Resend.Resend(build.Url, build.UrlSWServices, build.User, build.Password);
-            var responseResend = await resend.ResendEmailAsync("534a129c-2a8d-4868-8f51-1fd64040ee97", "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync("1b1ab944-174a-4c1c-8319-da66d269dfb7", "someemail@some.com");
             Assert.True(responseResend != null && responseResend.data != null && responseResend.status == "success");
         }
     }

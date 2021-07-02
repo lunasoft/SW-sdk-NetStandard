@@ -15,7 +15,7 @@ namespace Test_SW.Services.Stamp_Test
         {
             string CustomId = Guid.NewGuid().ToString();
             var build = new BuildSettings();
-            BaseStampV4XML stamp = new StampV4XML(build.Url,"https://api.test.sw.com.mx" ,build.Token);
+            BaseStampV4XML stamp = new StampV4XML(build.Url, build.UrlSWServices, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await stamp.TimbrarV2XMLAsync(xml,null ,CustomId);
             Assert.True(response.data != null, "El resultado data viene vacio.");
