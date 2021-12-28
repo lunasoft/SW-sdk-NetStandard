@@ -14,10 +14,10 @@ namespace SW.Services.Cancelation
         protected CancelationService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal abstract Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid);
+        internal abstract Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion);
         internal abstract Task<CancelationResponse> Cancelar(byte[] xmlCancelation);
-        internal abstract Task<CancelationResponse> Cancelar(string rfc, string uuid);
-        internal abstract Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid);
+        internal abstract Task<CancelationResponse> Cancelar(string rfc, string uuid, string motivo, string folioSustitucion);
+        internal abstract Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion);
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
@@ -26,10 +26,10 @@ namespace SW.Services.Cancelation
                 };
             return headers;
         }
-        internal virtual async Task<HttpWebRequest> RequestCancelarAsync(string rfc, string uuid)
+        internal virtual async Task<HttpWebRequest> RequestCancelarAsync(string rfc, string uuid, string motivo, string folioSustitucion)
         {
             await this.SetupRequestAsync();
-            string path = string.Format("cfdi33/cancel/{0}/{1}", rfc, uuid);
+            string path = string.Format("cfdi33/cancel/{0}/{1}/{2}/{3}",rfc, uuid, motivo, folioSustitucion);
             var request = (HttpWebRequest)WebRequest.Create(this.Url + path);
             request.ContentType = "application/json";
             request.ContentLength = 0;
@@ -38,10 +38,12 @@ namespace SW.Services.Cancelation
             Helpers.RequestHelper.SetupProxy(this.Proxy, this.ProxyPort, ref request);
             return request;
         }
-        internal virtual StringContent RequestCancelar(string cer, string key, string rfc, string password, string uuid)
+        internal virtual StringContent RequestCancelar(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestCSD()
             {
+                folioSustitucion = folioSustitucion,
+                motivo = motivo,
                 b64Cer = cer,
                 b64Key = key,
                 password = password,
@@ -51,10 +53,12 @@ namespace SW.Services.Cancelation
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual StringContent RequestCancelar(string pfx, string rfc, string password, string uuid)
+        internal virtual StringContent RequestCancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestPFX()
             {
+                folioSustitucion = folioSustitucion,
+                motivo = motivo,
                 b64Pfx = pfx,
                 password = password,
                 rfc = rfc,
