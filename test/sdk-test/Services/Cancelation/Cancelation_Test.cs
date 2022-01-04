@@ -13,14 +13,10 @@ namespace Test_SW.Services.Cancelation_Test
         public async Task Cancelation_Test_CancelationByCSDAsync()
         {
             var build = new BuildSettings();
-            Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "demo", "123456789");
+            Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             //Al igual que el objeto de stamp, se indica url del ambiente al cual apuntara y credenciales de acceso o token.
-            string csdBase64 = build.Cer;//.Cer en Base64
-            string keyBase64 = build.Key;//.Key en Base64
-            string password = build.CerPassword;//password del CSD
-            string rfc = "LAN8507268IA";
             string uuid = "7028573d-5a18-4331-8285-cd97b156c901";
-            var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid);
+            var response = await cancelation.CancelarByCSDAsync(build.Cer, build.Key, build.Rfc, build.Password, uuid, "02");
             if (response.status != "error")
             {
                 //acuse de cancelación
@@ -38,7 +34,7 @@ namespace Test_SW.Services.Cancelation_Test
         {
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
-            var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid);
+            var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid, "02", uuid);
             Assert.True(response.data.acuse != null && response.status == "success");
         }
 
@@ -47,7 +43,7 @@ namespace Test_SW.Services.Cancelation_Test
         {
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
-            var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.CerPassword, uuid);
+            var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.CerPassword, uuid, "02");
             Assert.True(response != null && response.status == "success");
         }
         
@@ -65,7 +61,7 @@ namespace Test_SW.Services.Cancelation_Test
             var resultExpect = "Son necesarios el .Cer y el .Key en formato B64";
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
-            var response = await cancelation.CancelarByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, "");
+            var response = await cancelation.CancelarByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, uuid, "02");
             Assert.Contains((string)resultExpect, response.messageDetail);
         }
     }
