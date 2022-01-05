@@ -29,14 +29,14 @@ namespace SW.Services.Cancelation
             _handler = new CancelationResponseHandler();
         }
 
-        internal override async Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = await GetHeadersAsync();
-                var content = this.RequestCancelar(cer, key, rfc, password, uuid);
+                var content = this.RequestCancelar(cer, key, rfc, password, uuid, motivo, folioSustitucion);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 "cfdi33/cancel/csd", headers, content, proxy);
@@ -46,19 +46,19 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        internal override async Task<CancelationResponse> Cancelar(string rfc, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string rfc, string uuid, string motivo, string folioSustitucion)
         {
             CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                HttpWebRequest request = await this.RequestCancelarAsync(rfc, uuid);
+                HttpWebRequest request = await this.RequestCancelarAsync(rfc, uuid, motivo, folioSustitucion);
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Post;
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var headers = await GetHeadersAsync();
-                return await handler.GetPostResponseAsync(this.Url, headers, $"cfdi33/cancel/{rfc}/{uuid}", proxy);
+                return await handler.GetPostResponseAsync(this.Url, headers, $"cfdi33/cancel/{rfc}/{uuid}/{motivo}/{folioSustitucion}", proxy);
             }
             catch (Exception e)
             {
@@ -82,14 +82,14 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        internal override async Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid)
+        internal override async Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             CancelationResponseHandler handler = new CancelationResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = await GetHeadersAsync();
-                var content = this.RequestCancelar(pfx, rfc, password, uuid);
+                var content = this.RequestCancelar(pfx, rfc, password, uuid, motivo, folioSustitucion);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 "cfdi33/cancel/pfx", headers, content, proxy);
@@ -99,21 +99,21 @@ namespace SW.Services.Cancelation
                 return handler.HandleException(e);
             }
         }
-        public Task<CancelationResponse> CancelarByCSDAsync(string cer, string key, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByCSDAsync(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
-            return Cancelar(cer, key, rfc, password, uuid);
+            return Cancelar(cer, key, rfc, password, uuid, motivo, folioSustitucion);
         }
         public Task<CancelationResponse> CancelarByXMLAsync(byte[] xmlCancelation)
         {
             return Cancelar(xmlCancelation);
         }
-        public Task<CancelationResponse> CancelarByPFXAsync(string pfx, string rfc, string password, string uuid)
+        public Task<CancelationResponse> CancelarByPFXAsync(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
-            return Cancelar(pfx, rfc, password, uuid);
+            return Cancelar(pfx, rfc, password, uuid, motivo, folioSustitucion);
         }
-        public Task<CancelationResponse> CancelarByRfcUuidAsync(string rfc, string uuid)
+        public Task<CancelationResponse> CancelarByRfcUuidAsync(string rfc, string uuid, string motivo, string folioSustitucion = null)
         {
-            return Cancelar(rfc, uuid);
+            return Cancelar(rfc, uuid, motivo, folioSustitucion);
         }
 
     }
