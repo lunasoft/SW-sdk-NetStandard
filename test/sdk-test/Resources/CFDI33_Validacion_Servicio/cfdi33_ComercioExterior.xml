@@ -27,7 +27,7 @@
         <cce11:Domicilio Calle="CALLE DEL PAPEL" Colonia="0214" Localidad="01" Municipio="014" Estado="QUE" Pais="MEX" CodigoPostal="76199" />
       </cce11:Receptor>
       <cce11:Mercancias>
-        <cce11:Mercancia NoIdentificacion="131494-1055" FraccionArancelaria="01051199" CantidadAduana="117.64" UnidadAduana="07" ValorUnitarioAduana="12.78" ValorDolares="1504.00" />
+        <cce11:Mercancia NoIdentificacion="131494-1055" FraccionArancelaria="0101210100" CantidadAduana="117.64" UnidadAduana="07" ValorUnitarioAduana="12.78" ValorDolares="1504.00" />
       </cce11:Mercancias>
     </cce11:ComercioExterior>
   </cfdi:Complemento>
