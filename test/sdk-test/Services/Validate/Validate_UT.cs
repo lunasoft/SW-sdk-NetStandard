@@ -30,34 +30,11 @@ namespace Test_SW_sdk.Services.Validate_Test
             Assert.True(response.status == "error"
                 && !string.IsNullOrEmpty(response.status), "Error al leer el documento XML. La estructura del documento no es un Xml valido y/o la codificación del documento no es UTF8. Root element is missing.");
         }
-        [Fact]
-        public async Task Validate_Test_LrfcAsync()
-        {
-            var build = new BuildSettings();
-            var rfc = build.Rfc;
-            Validate validate = new Validate(build.Url, build.User, build.Password);
-            ValidateLrfcResponse response = await validate.ValidateLrfcAsync(rfc);
-            Assert.True(response.status == "success"
-                && response.data.contribuyenteRFC == build.Rfc);
-        }
-        [Fact]
-        public async Task Validate_Test_LcoAsync()
-        {
-            var build = new BuildSettings();
-            var noCertificado = build.noCertificado;
-            Validate validate = new Validate(build.Url, build.User, build.Password);
-            ValidateLcoResponse response = await validate.ValidateLcoAsync(noCertificado);
-            Assert.True(response.status == "success"
-                && response.data.noCertificado == build.noCertificado);
-        }
-
         private object GetXml(BuildSettings build)
         {
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             return xml;
         }
-
-
     }
 }
