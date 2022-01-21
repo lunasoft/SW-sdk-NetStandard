@@ -33,43 +33,5 @@ namespace SW.Services.Validate
                 return handler.HandleException(ex);
             }
         }
-        public virtual async Task<ValidateLcoResponse> ValidateLcoAsync(string Lco)
-        {
-            ValidateLcoResponseHandler handler = new ValidateLcoResponseHandler();
-            try
-            {
-                var headers = await GetHeadersAsync();
-                var content = RequestValidarLcoAsync(Lco);
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetResponseAsync(this.Url,
-                                headers,
-                                string.Format("lco/{0}", Lco),
-                                proxy);
-            }
-            catch (Exception ex)
-            {
-                return handler.HandleException(ex);
-            }
-        }
-
-        public virtual async Task<ValidateLrfcResponse> ValidateLrfcAsync(string Lrfc)
-        {
-            ValidateLrfcResponseHandler handler = new ValidateLrfcResponseHandler();
-            try
-            {
-                var headers = await GetHeadersAsync();
-                var content = RequestValidarLrfcAsync(Lrfc);
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetResponseAsync(this.Url,
-                                headers,
-                                string.Format("lrfc/{0}", Lrfc),
-                                proxy
-                                );
-            }
-            catch (Exception ex)
-            {
-                return handler.HandleException(ex);
-            }
-        }
     }
 }
