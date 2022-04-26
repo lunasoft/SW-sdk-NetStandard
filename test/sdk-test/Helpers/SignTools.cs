@@ -91,7 +91,7 @@ namespace Test_SW.Helpers
                  , X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
 
             rsa = new RSACryptoServiceProvider();
-            RSAKeyHelper.FromXmlString(rsa, RSAKeyHelper.ToXmlString((RSA)certX509.PrivateKey, true));
+            RSAKeyHelper.FromXmlString(rsa, RSAKeyHelper.ToXmlString(certX509.GetRSAPrivateKey(), true));
             byte[] data = Encoding.UTF8.GetBytes(strToSign);
 
             signatureBytes = rsa.SignData(data, CryptoConfig.MapNameToOID(algorithm));
