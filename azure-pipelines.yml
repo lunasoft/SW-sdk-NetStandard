@@ -53,7 +53,7 @@ steps:
     projects: 'test/sdk-test/sdk-test.csproj'
     publishTestResults: false
     workingDirectory: 'test/sdk-test'
-- task: DotNetCoreCLI@2 Test CFDI 4.0
+- task: DotNetTestCFDI40
   inputs:
     command: 'test'
     projects: 'test/sdk-test-CFDI40/sdk-test-CFDI40.csproj'
