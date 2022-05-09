@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante NoCertificado="" Certificado="" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd" xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-02-23T00:18:10" Sello="e" CondicionesDePago="CondicionesDePago" SubTotal="0" Descuento="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="20000"  xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
+<cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="26015" RegimenFiscalReceptor="601" UsoCFDI="S01" />
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="50211503" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="0.00" Importe="0.00"  ObjetoImp="01">
+      <cfdi:InformacionAduanera NumeroPedimento="21  47  3807  8003832" />
+      <cfdi:Parte ClaveProdServ="50211503" ValorUnitario="200.00" Importe="200.00" Cantidad="1" Unidad="Pieza" NoIdentificacion="123" Descripcion="cosas" />
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+<cfdi:Complemento>
+    <cartaporte20:CartaPorte TranspInternac="No" Version="2.0">
+      <cartaporte20:Ubicaciones>
+        <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Cap.P.A. José Covarrubias Pérez" NumEstacion="EA0689" RFCRemitenteDestinatario="URE180429TM6" TipoUbicacion="Destino" TipoEstacion="01">
+          <cartaporte20:Domicilio Calle="calle" CodigoPostal="99056" Estado="ZAC" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+        </cartaporte20:Ubicacion>
+        <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NombreEstacion="Campo Puerto Rico" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="EA0748" NumRegIdTrib="NumRegIdTrib" RFCRemitenteDestinatario="XAXX010101000" ResidenciaFiscal="USA" TipoEstacion="02" TipoUbicacion="Origen">
+          <cartaporte20:Domicilio Calle="calle" CodigoPostal="99056" Estado="ZAC" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+        </cartaporte20:Ubicacion>
+      </cartaporte20:Ubicaciones>
+      <cartaporte20:Mercancias CargoPorTasacion="1" NumTotalMercancias="1" PesoBrutoTotal="1" PesoNetoTotal="1" UnidadPeso="A44">
+        <cartaporte20:Mercancia BienesTransp="01010101" Cantidad="1" ClaveSTCC="123456" ClaveUnidad="A1" DescripEmbalaje="DescripEmbalaje" Descripcion="Descripcion" Dimensiones="18/62/31cm" MaterialPeligroso="No" Moneda="MXN" PesoEnKg="1" UUIDComercioExt="59AB274B-6CBC-4176-9BD7-BB67B28D3EA4" Unidad="Unidad" ValorMercancia="1">
+        </cartaporte20:Mercancia>
+        <cartaporte20:TransporteAereo CodigoTransportista="CA001" LugarContrato="LugarContrato" MatriculaAeronave="61E5-WZ" NombreAseg="NombreAseg" NombreEmbarcador="Embarcador" NumPermisoSCT="Demo" NumPolizaSeguro="NumPolizaSeguro" NumeroGuia="acUbYlBVTmlzx" PermSCT="TPAF01" RFCEmbarcador="MELR721216EA1"/>
+      </cartaporte20:Mercancias>
+      <cartaporte20:FiguraTransporte>
+        <cartaporte20:TiposFigura NombreFigura="NombreFigura" RFCFigura="MELR721216EA1" TipoFigura="01" NumLicencia="123456">
+          <cartaporte20:Domicilio Calle="Calle" CodigoPostal="45601" Estado="JAL" NumeroExterior="NumeroExterior" NumeroInterior="NumeroInterior" Pais="MEX" Referencia="Referencia"/>
+        </cartaporte20:TiposFigura>
+      </cartaporte20:FiguraTransporte>
+    </cartaporte20:CartaPorte>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

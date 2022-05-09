@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante Version="4.0"
+                  Serie="VDP4"
+                  Folio="1217819"
+                  Fecha="2022-03-28T17:08:29"
+                  SubTotal="0"
+                  Moneda="XXX"
+                  Total="0"
+                  TipoDeComprobante="P"
+                  LugarExpedicion="20200"
+                  Exportacion="01"
+                  xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:pago20="http://www.sat.gob.mx/Pagos20"
+                  xsi:schemaLocation="xsi:schemaLocation=http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/Pagos20 http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos20.xsd">
+	<cfdi:Emisor Rfc="EKU9003173C9"
+	             Nombre="ESCUELA KEMPER URGATE"
+	             RegimenFiscal="601"/>
+	<cfdi:Receptor Rfc="JUFA7608212V6"
+	               Nombre="ADRIANA JUAREZ FERNANDEZ"
+	               UsoCFDI="CP01"
+	               DomicilioFiscalReceptor="29133"
+	               RegimenFiscalReceptor="616"/>
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="84111506"
+		               Cantidad="1"
+		               ClaveUnidad="ACT"
+		               Descripcion="Pago"
+		               ValorUnitario="0"
+		               Importe="0"
+		               ObjetoImp="01"/>
+	</cfdi:Conceptos>
+	<cfdi:Complemento>
+		<pago20:Pagos Version="2.0">
+			<pago20:Totales TotalRetencionesIVA="1"
+							TotalRetencionesISR="1"
+							TotalTrasladosBaseIVA16="100"
+			                TotalTrasladosImpuestoIVA16="16"
+							TotalTrasladosBaseIVA8="100"
+			                TotalTrasladosImpuestoIVA8="8"
+			                MontoTotalPagos="1000"/>							
+			<pago20:Pago FechaPago="2022-01-12T12:00:00"
+			             FormaDePagoP="03"
+			             MonedaP="MXN"
+			             TipoCambioP="1"
+			             Monto="1000">
+				<pago20:DoctoRelacionado IdDocumento="3CACDB80-D1C0-4CB9-B312-FDC2193ECB32"
+				                         Serie="A"
+				                         Folio="88"
+				                         MonedaDR="MXN"
+				                         EquivalenciaDR="1"
+				                         NumParcialidad="1"
+				                         ImpSaldoAnt="500"
+				                         ImpPagado="500"
+				                         ImpSaldoInsoluto="0"
+				                         ObjetoImpDR="02">
+					<pago20:ImpuestosDR>
+						<pago20:RetencionesDR>
+							<pago20:RetencionDR BaseDR="10"
+							                   ImpuestoDR="001"
+							                   TipoFactorDR="Tasa"
+							                   TasaOCuotaDR="0.100000"
+							                   ImporteDR="1.00"/>
+							<pago20:RetencionDR BaseDR="10"
+							                   ImpuestoDR="002"
+							                   TipoFactorDR="Tasa"
+							                   TasaOCuotaDR="0.100000"
+							                   ImporteDR="1.00"/>
+						</pago20:RetencionesDR>
+						<pago20:TrasladosDR>
+							<pago20:TrasladoDR BaseDR="100"
+							                   ImpuestoDR="002"
+							                   TipoFactorDR="Tasa"
+							                   TasaOCuotaDR="0.160000"
+							                   ImporteDR="16"/>
+							<pago20:TrasladoDR BaseDR="100"
+							                   ImpuestoDR="002"
+							                   TipoFactorDR="Tasa"
+							                   TasaOCuotaDR="0.080000"
+							                   ImporteDR="8"/>
+						</pago20:TrasladosDR>
+					</pago20:ImpuestosDR>
+				</pago20:DoctoRelacionado>
+				<pago20:DoctoRelacionado IdDocumento="07e28c28-9328-43da-b17e-02a1edc684d9"
+				                         Serie="F"
+				                         Folio="99"
+				                         MonedaDR="MXN"
+				                         EquivalenciaDR="1"
+				                         NumParcialidad="1"
+				                         ImpSaldoAnt="500"
+				                         ImpPagado="500"
+				                         ImpSaldoInsoluto="0"
+				                         ObjetoImpDR="01"/>
+				<pago20:ImpuestosP>
+					<pago20:RetencionesP>
+						<pago20:RetencionP ImpuestoP="001"
+						                  ImporteP="1"/>
+						<pago20:RetencionP ImpuestoP="002"
+						                  ImporteP="1"/>										  
+					</pago20:RetencionesP>
+					<pago20:TrasladosP>
+						<pago20:TrasladoP BaseP="100"
+						                  ImpuestoP="002"
+						                  TipoFactorP="Tasa"
+						                  TasaOCuotaP="0.160000"
+						                  ImporteP="16.00"/>
+						<pago20:TrasladoP BaseP="100"
+						                  ImpuestoP="002"
+						                  TipoFactorP="Tasa"
+						                  TasaOCuotaP="0.080000"
+						                  ImporteP="8.00"/>
+					</pago20:TrasladosP>
+				</pago20:ImpuestosP>
+			</pago20:Pago>
+		</pago20:Pagos>
+	</cfdi:Complemento>
+</cfdi:Comprobante>

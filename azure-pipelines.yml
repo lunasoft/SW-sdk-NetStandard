@@ -14,6 +14,29 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 6.0'
+  inputs:
+    version: 6.0.x
+    includePreviewVersions: true    
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "##vso[task.setvariable variable=SDKTEST_USER;]$(SDKTEST_USER)"
+      Write-Output "##vso[task.setvariable variable=SDKTEST_USER;]$(SDKTEST_USER)"
+      Write-Host "env:SDKTEST_USER: $($env:SDKTEST_USER)"
+      Write-Output "env:SDKTEST_USER: $($env:SDKTEST_USER)"
+      
+      Write-Host "##vso[task.setvariable variable=SDKTEST_PASSWORD;]$(SDKTEST_PASSWORD)"
+      Write-Output "##vso[task.setvariable variable=SDKTEST_PASSWORD;]$(SDKTEST_PASSWORD)"
+      Write-Host "env:SDKTEST_PASSWORD: $($env:SDKTEST_PASSWORD)"
+      Write-Output "env:SDKTEST_PASSWORD: $($env:SDKTEST_PASSWORD)"
+      
+      Write-Host "##vso[task.setvariable variable=SDKTEST_TOKEN;]$(SDKTEST_TOKEN)"
+      Write-Output "##vso[task.setvariable variable=SDKTEST_TOKEN;]$(SDKTEST_TOKEN)"
+      Write-Host "env:SDKTEST_TOKEN: $($env:SDKTEST_TOKEN)"
+      Write-Output "env:SDKTEST_TOKEN: $($env:SDKTEST_TOKEN)"
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
@@ -30,7 +53,13 @@ steps:
     projects: 'test/sdk-test/sdk-test.csproj'
     publishTestResults: false
     workingDirectory: 'test/sdk-test'
-
+- task: DotNetCoreCLI@2
+  displayName: 'Test CFDI 4.0'
+  inputs:
+    command: 'test'
+    projects: 'test/sdk-test-CFDI40/sdk-test-CFDI40.csproj'
+    publishTestResults: false
+    workingDirectory: 'test/sdk-test-CFDI40'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'custom'
