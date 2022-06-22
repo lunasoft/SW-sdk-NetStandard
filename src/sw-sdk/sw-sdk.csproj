@@ -19,7 +19,7 @@
     <PackageReleaseNotes>Se agregan pruebas unitarias de diferentes escenarios de timbrado CFDI 4.0 de los diferentes métodos de timbrado disponibles en sw-sdk-netstandard</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
   </ItemGroup>
