@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>sw_sdk</RootNamespace>
-    <VersionPrefix>0.0.1.2</VersionPrefix>
+    <VersionPrefix>0.0.1.3</VersionPrefix>
     <AssemblyName>sw-sdk-netstandard</AssemblyName>
     <Title>SDK SW sapien®</Title>
     <Authors>SW sapien®</Authors>
@@ -19,8 +19,8 @@
     <PackageReleaseNotes>Se agregan pruebas unitarias de diferentes escenarios de timbrado CFDI 4.0 de los diferentes métodos de timbrado disponibles en sw-sdk-netstandard</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.9.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.9.0" />
   </ItemGroup>
 </Project>
