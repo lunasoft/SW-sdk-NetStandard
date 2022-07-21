@@ -7,13 +7,12 @@
   "TipoDeComprobante": "T",
   "LugarExpedicion": "85000",
   "Exportacion": "01",
-  "Descuento": 0,
   "SubTotal": "0",
   "Total": "0",
   "Emisor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",
-    "RegimenFiscal": 601,
+    "RegimenFiscal": 601
   },
   "Receptor": {
     "Rfc": "EKU9003173C9",
@@ -21,7 +20,7 @@
     "DomicilioFiscalReceptor": "26015",
     "RegimenFiscalReceptor": 601,
     "UsoCFDI": "S01"
-  },  
+  },
   "Complemento": {
     "Any": [
       {
