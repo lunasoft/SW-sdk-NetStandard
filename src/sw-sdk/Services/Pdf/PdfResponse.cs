@@ -36,5 +36,4 @@ namespace SW.Services.Pdf
         [DataMember]
         public string total { get; set; }
     }
-
 }
