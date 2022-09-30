@@ -34,7 +34,7 @@ namespace SW.Services.AcceptReject
                 return handler.HandleException(e);
             }
         }
-        internal async override Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation, EnumAcceptReject enumAcceptReject)
+        internal async override Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation)
         {
             AcceptRejectResponseHandler handler = new AcceptRejectResponseHandler();
             try
@@ -42,7 +42,7 @@ namespace SW.Services.AcceptReject
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = GetHeadersAsync();
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                var content = this.RequestAcceptReject(xmlCancelation, enumAcceptReject);
+                var content = this.RequestAcceptReject(xmlCancelation);
                 return await handler.GetPostResponseAsync(this.Url,
                                 "acceptreject/xml", await headers, content, proxy);
             }
@@ -88,19 +88,47 @@ namespace SW.Services.AcceptReject
             }
         }
 
-
+        /// <summary>
+        /// Servicio de aceptación o rechazo por CSD de comprobantes pendientes de cancelación.
+        /// </summary>
+        /// <param name="cer">Certificado CSD en B64.</param>
+        /// <param name="key">Certificado Key en B64.</param>
+        /// <param name="rfc">RFC del receptor.</param>
+        /// <param name="password">Contraseña del certificado.</param>
+        /// <param name="uuids">Folios a aceptar o rechazar.</param>
+        /// <returns></returns>
         public async Task<AcceptRejectResponse> AcceptByCSD(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuids)
         {
             return await AcceptRejectRequest(cer, key, rfc, password, uuids);
         }
-        public async Task<AcceptRejectResponse> AcceptByXML(byte[] xmlCancelation, EnumAcceptReject enumCancelation)
+        /// <summary>
+        /// Servicio de aceptación o rechazo por XML de comprobantes pendientes de cancelación.
+        /// </summary>
+        /// <param name="xmlCancelation">XML de aceptación o rechazo.</param>
+        /// <returns></returns>
+        public async Task<AcceptRejectResponse> AcceptByXML(byte[] xmlCancelation)
         {
-            return await AcceptRejectRequest(xmlCancelation, enumCancelation);
+            return await AcceptRejectRequest(xmlCancelation);
         }
+        /// <summary>
+        /// Servicio de aceptación o rechazo por PFX de comprobantes pendientes de cancelación.
+        /// </summary>
+        /// <param name="pfx">Certificado PFX en B64.</param>
+        /// <param name="rfc">RFC del receptor.</param>
+        /// <param name="password">Contraseña del certificado.</param>
+        /// <param name="uuid">Folios a aceptar o rechazar.</param>
+        /// <returns></returns>
         public async Task<AcceptRejectResponse> AcceptByPFX(string pfx, string rfc, string password, AceptacionRechazoItem[] uuid)
         {
             return await AcceptRejectRequest(pfx, rfc, password, uuid);
         }
+        /// <summary>
+        /// Servicio de aceptación o rechazo por UUID de comprobantes pendientes de cancelación.
+        /// </summary>
+        /// <param name="rfc">RFC del receptor.</param>
+        /// <param name="uuid">Folio a aceptar o rechazar.</param>
+        /// <param name="enumAcceptReject">Especifica aceptación o rechazo.</param>
+        /// <returns></returns>
         public async Task<AcceptRejectResponse> AcceptByRfcUuid(string rfc, string uuid, EnumAcceptReject enumAcceptReject)
         {
             return await AcceptRejectRequest(rfc, uuid, enumAcceptReject);
