@@ -137,7 +137,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_Generate_Token()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -159,7 +158,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_GenerateB64_Token()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
@@ -182,7 +180,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_GenerateDefault_User()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -204,7 +201,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_GenerateDefault_Token()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -227,7 +223,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_Generate_Payment20()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "payment20");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -248,8 +243,7 @@ namespace sdk_test.Services.Pdf
         /// <returns></returns>
         [Fact]
         public async Task PDf_Test_Generate_Payroll40()
-        {
-            
+        {    
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "payroll40");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -271,7 +265,6 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDf_Test_Generate_Billoflading40()
         {
-            
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "billoflading40");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
@@ -287,20 +280,20 @@ namespace sdk_test.Services.Pdf
             }
         }
         /// <summary>
-        /// Generar PDF especificando el IdUser y IdDealer
+        /// Generar PDF con plantilla personalizada.
         /// </summary>
         /// <returns></returns>
         [Fact]
-        public async Task PDf_Test_GenerateByUserAndDealer()
+        public async Task PDf_Test_Generate_CustomTemplateId()
         {
-            
-            SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
+
+            SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, "63220604-96AB-48DC-B579-724B55DF44CA", "63220604-96AB-48DC-B579-724B55DF44CA", build.templateId);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, "cfdi40");
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
             else
@@ -308,7 +301,6 @@ namespace sdk_test.Services.Pdf
                 Assert.True(false);
             }
         }
-
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build, string fileName = null)
         {
