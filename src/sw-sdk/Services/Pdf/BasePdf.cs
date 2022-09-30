@@ -22,22 +22,17 @@ namespace SW.Services.Pdf
             _apiUrl = urlApi;
             _operation = operation;
         }
-        internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, PdfTemplates templateId, string idUser, string idDealer, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
+        internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, PdfTemplates? templateId, string customTemplateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
         {
             PdfResponseHandler handler = new PdfResponseHandler();
             try
             {
                 var headers = await GetHeadersAsync();
                 var request = new PdfRequest();
-                if(!String.IsNullOrEmpty(idUser) || !String.IsNullOrEmpty(idDealer))
-                {
-                    headers.Add("idDealer", idDealer);
-                    headers.Add("idUser", idUser);
-                }
                 request.xmlContent = isB64 ? Encoding.UTF8.GetString(Convert.FromBase64String(xml)) : xml;
                 request.extras = ObservacionesAdicionales;
                 request.logo = b64Logo;
-                request.templateId = templateId.ToString();
+                request.templateId = customTemplateId ?? templateId.ToString();
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings
                     {
@@ -55,7 +50,7 @@ namespace SW.Services.Pdf
             }
         }
         /// <summary>
-        /// Servicio para generar PDF.
+        /// Servicio para generar PDF con plantillas genericas.
         /// </summary>
         /// <param name="xml">XML timbrado.</param>
         /// <param name="b64Logo">Logo en B64.</param>
@@ -65,22 +60,20 @@ namespace SW.Services.Pdf
         /// <returns></returns>
         public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, PdfTemplates templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
-            return await GeneratePdfAsync(xml, b64Logo, templateId, null, null, ObservacionesAdicionales, isB64);
+            return await GeneratePdfAsync(xml, b64Logo, templateId, null, ObservacionesAdicionales, isB64);
         }
         /// <summary>
-        /// Servicio para generar PDF con plantilla personalizada, recibe como parámetros los idDealer y idUser.
+        /// Servicio para generar PDF con plantillas personalizadas.
         /// </summary>
         /// <param name="xml">XML timbrado.</param>
         /// <param name="b64Logo">Logo en B64.</param>
-        /// <param name="idUser">Id del usuario.</param>
-        /// <param name="idDealer">Id del distribuidor.</param>
         /// <param name="templateId">Identificador de la plantilla.</param>
         /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
         /// <param name="isB64">Especifica si el XML está en B64.</param>
         /// <returns></returns>
-        public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string idUser, string idDealer, PdfTemplates templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
-        {   
-            return await GeneratePdfAsync(xml, b64Logo, templateId, idUser, idDealer, ObservacionesAdicionales, isB64);
+        public virtual async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        {
+            return await GeneratePdfAsync(xml, b64Logo, null, templateId, ObservacionesAdicionales, isB64);
         }
         /// <summary>
         /// Servicio para generar PDF con plantilla por defecto CFDI 4.0.
@@ -90,9 +83,9 @@ namespace SW.Services.Pdf
         /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
         /// <param name="isB64">Especifica si el XML está en B64.</param>
         /// <returns></returns>
-        public virtual async Task<PdfResponse> GenerarPdfDefaultAsync(string xml, string b64Logo,  Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public virtual async Task<PdfResponse> GenerarPdfDefaultAsync(string xml, string b64Logo, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
-            return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40, null, null, ObservacionesAdicionales, isB64);
+            return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40, null, ObservacionesAdicionales, isB64);
         }
     }
 }
