@@ -8,13 +8,14 @@
   "Certificado": "",
   "CondicionesDePago": "CondicionesDePago",
   "SubTotal": "200.00",
-  "Descuento": "0.00",
   "Moneda": "AMD",
   "TipoCambio": "1",
   "Total": "180.00",
   "TipoDeComprobante": "I",
   "Exportacion": "01",
   "LugarExpedicion": "45610",
+  "FormaPago": "01",
+  "MetodoPago": "PUE",
   "Emisor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",
@@ -25,7 +26,7 @@
     "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
     "DomicilioFiscalReceptor": "65000",
     "RegimenFiscalReceptor": "601",
-    "UsoCFDI": "P01"
+    "UsoCFDI": "S01"
   },
   "Conceptos": [
     {
@@ -37,7 +38,6 @@
       "Descripcion": "Cigarros",
       "ValorUnitario": "200.00",
       "Importe": "200.00",
-      "Descuento": "0.00",
       "ObjetoImp": "02",
       "Impuestos": {
         "Retenciones": [

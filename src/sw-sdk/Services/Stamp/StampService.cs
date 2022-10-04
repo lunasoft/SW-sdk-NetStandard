@@ -62,6 +62,5 @@ namespace SW.Services.Stamp
                 return false;
             }
         }
-
     }
 }
