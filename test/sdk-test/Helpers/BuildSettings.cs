@@ -8,7 +8,7 @@ namespace Test_SW.Helpers
     class BuildSettings
     {
         public string Url = "http://services.test.sw.com.mx";
-        public string UrlSWServices = "https://api.test.sw.com.mx";
+        public string UrlApi = "http://api.test.sw.com.mx";
         public string User = "pruebas_ut@sw.com.mx";
         public string Password = "swpass";
         public string CerPassword = "12345678a";
