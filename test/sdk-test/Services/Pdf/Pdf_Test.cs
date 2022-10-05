@@ -30,7 +30,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if(response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -52,7 +52,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml, true);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId, null, true);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -68,7 +68,7 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDF_Test_GenerateB64_EmptyXML_Error()
         {
-            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(!String.IsNullOrEmpty(response.message));
@@ -83,7 +83,7 @@ namespace sdk_test.Services.Pdf
         {
             var expectedResult = "The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.";
             var xml = GetXml(build);
-            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(String.Equals(response.message, expectedResult));
@@ -97,7 +97,7 @@ namespace sdk_test.Services.Pdf
         {
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
-            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(!String.IsNullOrEmpty(response.message));
@@ -110,7 +110,7 @@ namespace sdk_test.Services.Pdf
         [Fact]
         public async Task PDF_Test_Generate_EmptyXML_Error()
         {
-            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(!String.IsNullOrEmpty(response.message));
@@ -124,7 +124,7 @@ namespace sdk_test.Services.Pdf
         public async Task PDF_Test_Generate_NonTFD_Error()
         {
             var xml = GetXml(build);
-            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(!String.IsNullOrEmpty(response.message));
@@ -142,7 +142,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -164,7 +164,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml, true);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId, null, true);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -185,7 +185,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfDefaultAsync(response.data.cfdi, build.b64Logo);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -206,7 +206,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlSWServices, build.Token);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
                 var responsePdf = await pdf.GenerarPdfDefaultAsync(response.data.cfdi, build.b64Logo);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -228,7 +228,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.payment20);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -249,7 +249,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.payroll40);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -270,7 +270,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.billoflading40);
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }
@@ -292,7 +292,7 @@ namespace sdk_test.Services.Pdf
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             if (response.status == "success")
             {
-                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.UrlSWServices, build.User, build.Password);
+                SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
                 var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, "cfdi40");
                 Assert.True(responsePdf.data != null && responsePdf.status == "success");
             }

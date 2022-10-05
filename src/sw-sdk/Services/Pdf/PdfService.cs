@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SW.Services.Pdf
@@ -13,14 +15,19 @@ namespace SW.Services.Pdf
         protected PdfService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-
-        internal virtual MultipartFormDataContent GetMultipartContent(byte[] xml, Dictionary<string, string> ObservacionesAdcionales, string b64Logo)
+        internal virtual StringContent GetStringContent(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
         {
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            ByteArrayContent fileContent = new ByteArrayContent(xml);
-            content.Add(fileContent, "file", "xml");
-            content.Add(new StringContent(JsonConvert.SerializeObject(ObservacionesAdcionales, Formatting.None)), "extras");
-            content.Add(new StringContent(b64Logo != null ? b64Logo : ""), "logo", "logo");
+            var request = new PdfRequest();
+            request.xmlContent = isB64 ? Encoding.UTF8.GetString(Convert.FromBase64String(xml)) : xml;
+            request.extras = ObservacionesAdicionales;
+            request.logo = b64Logo;
+            request.templateId = templateId;
+            var content = new StringContent(JsonConvert.SerializeObject(
+                request, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                }),
+            Encoding.UTF8, "application/json");
             return content;
         }
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
