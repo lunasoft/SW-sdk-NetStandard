@@ -42,7 +42,6 @@ namespace SW.Services.Stamp
             if(response.status == "error" && response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.")
             {
                 StorageResponseHandler storangeHandler = new StorageResponseHandler();
-                await Task.Delay(5000);
                 string uuid = Helpers.XmlUtils.GetUUIDFromTFD(response.data.tfd);
                 var xmlFromStorange = await storangeHandler.GetResponseAsync(_apiUrl,
                                         headers, $"datawarehouse/v1/live/{uuid}",
