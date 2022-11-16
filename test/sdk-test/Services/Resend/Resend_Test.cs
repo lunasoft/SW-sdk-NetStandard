@@ -6,7 +6,7 @@ namespace sdk_test.Services.Resend
 {
     public class Resend_Test
     {
-        [Fact]
+        [Fact(Skip = "bug SMARTER-2687")]
         public async Task Resend_email()
         {
             var build = new BuildSettings();

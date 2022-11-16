@@ -7,6 +7,7 @@ namespace Test_SW.Helpers
 {
     class BuildSettings
     {
+        public string urlSAT = "https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc";
         public string Url = "http://services.test.sw.com.mx";
         public string UrlApi = "http://api.test.sw.com.mx";
         public string User = "pruebas_ut@sw.com.mx";

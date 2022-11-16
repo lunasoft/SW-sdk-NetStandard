@@ -7,7 +7,7 @@ namespace SW.Services.Validate
     {
         public override ValidateXmlResponse HandleException(Exception ex)
         {
-            return ex.ToValidateXmlResponse();
+            return ex.Response<ValidateXmlResponse>();
         }
     }
 }
