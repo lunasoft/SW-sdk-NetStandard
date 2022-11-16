@@ -7,21 +7,7 @@ namespace SW.Services.Validate
     {
         public override ValidateXmlResponse HandleException(Exception ex)
         {
-            return ex.Response<ValidateXmlResponse>();
-        }
-    }
-    internal class ValidateLrfcResponseHandler : ResponseHandler<ValidateLrfcResponse>
-    {
-        public override ValidateLrfcResponse HandleException(Exception ex)
-        {
-            return ex.Response<ValidateLrfcResponse>();
-        }
-    }
-    internal class ValidateLcoResponseHandler : ResponseHandler<ValidateLcoResponse>
-    {
-        public override ValidateLcoResponse HandleException(Exception ex)
-        {
-            return ex.Response<ValidateLcoResponse>();
+            return ex.ToValidateXmlResponse();
         }
     }
 }

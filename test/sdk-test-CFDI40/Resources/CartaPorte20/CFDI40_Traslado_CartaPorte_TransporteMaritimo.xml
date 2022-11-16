@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd" xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-02-23T00:18:10" Sello="e" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="20000"  xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="26015" RegimenFiscalReceptor="601" UsoCFDI="S01" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="50211503" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="0.00" Importe="0.00"  ObjetoImp="01">
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3807  8003832" />
+			<cfdi:Parte ClaveProdServ="50211503" ValorUnitario="200.00" Importe="200.00" Cantidad="1" Unidad="Pieza" NoIdentificacion="123" Descripcion="cosas" />
+		</cfdi:Concepto>
+	</cfdi:Conceptos>
+	<cfdi:Complemento>
+		<cartaporte20:CartaPorte TranspInternac="No" Version="2.0">
+			<cartaporte20:Ubicaciones>
+				<cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Rosarito" NumEstacion="PM001" RFCRemitenteDestinatario="URE180429TM6" TipoEstacion="01" IDUbicacion="OR123457" TipoUbicacion="Origen">
+					<cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+				</cartaporte20:Ubicacion>
+				<cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreEstacion="Rosarito" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="PM001" NumRegIdTrib="NumRegIdTrib" RFCRemitenteDestinatario="XAXX010101000" ResidenciaFiscal="USA" TipoEstacion="02" IDUbicacion="DE123457" TipoUbicacion="Destino">
+					<cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+				</cartaporte20:Ubicacion>
+			</cartaporte20:Ubicaciones>
+			<cartaporte20:Mercancias CargoPorTasacion="1" NumTotalMercancias="1" PesoBrutoTotal="1" PesoNetoTotal="1" UnidadPeso="A44">
+				<cartaporte20:Mercancia BienesTransp="01010101" Cantidad="1" ClaveSTCC="123456" ClaveUnidad="A1" Descripcion="Descripcion" Dimensiones="18/62/31cm" MaterialPeligroso="No" PesoEnKg="1" UUIDComercioExt="59AB274B-6CBC-4176-9BD7-BB67B28D3EA4" Unidad="Unidad" >
+					<cartaporte20:CantidadTransporta Cantidad="1" IDDestino="DE123457" IDOrigen="OR123457"/>
+					<cartaporte20:DetalleMercancia NumPiezas="1" PesoBruto="1" PesoNeto="1" PesoTara="1" UnidadPesoMerc="A44"/>
+				</cartaporte20:Mercancia>
+				<cartaporte20:TransporteMaritimo AnioEmbarcacion="2021" Calado="10" Eslora="10" LineaNaviera="lineanavera" Manga="10" Matricula="1234567" NacionalidadEmbarc="MEX" NombreAgenteNaviero="nombreAgente" NombreAseg="nombreAseg" NombreEmbarc="nombreEnbc" NumAutorizacionNaviero="ANC022/2022" NumCertITC="numcert" NumConocEmbarc="numconceembarc" NumPermisoSCT="1" NumPolizaSeguro="numpolisa" NumViaje="numviaje" NumeroOMI="IMO1234567" PermSCT="TPAF01" TipoCarga="CGS" TipoEmbarcacion="B02" UnidadesDeArqBruto="10">
+					<cartaporte20:Contenedor MatriculaContenedor="12345678901" NumPrecinto="numprecinto" TipoContenedor="CM001"/>
+				</cartaporte20:TransporteMaritimo>
+			</cartaporte20:Mercancias>
+			<cartaporte20:FiguraTransporte>
+				<cartaporte20:TiposFigura NombreFigura="NombreFigura" RFCFigura="URE180429TM6" TipoFigura="02">
+					<cartaporte20:PartesTransporte ParteTransporte="PT02"/>
+					<cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+				</cartaporte20:TiposFigura>
+			</cartaporte20:FiguraTransporte>
+		</cartaporte20:CartaPorte>
+	</cfdi:Complemento>
+</cfdi:Comprobante>

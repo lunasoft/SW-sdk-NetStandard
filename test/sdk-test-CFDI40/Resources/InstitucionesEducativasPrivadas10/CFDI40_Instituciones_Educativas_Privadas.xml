@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante Exportacion="01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xsi:schemaLocation=" http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/iedu http://www.sat.gob.mx/sitio_internet/cfd/iedu/iedu.xsd" xmlns:iedu="http://www.sat.gob.mx/iedu" Version="4.0" Fecha="2022-04-11T13:04:39" Folio="26480" FormaPago="01" LugarExpedicion="03100" MetodoPago="PUE" Moneda="MXN" SubTotal="1" TipoDeComprobante="I" Total="1">
+  <cfdi:Emisor Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="603" Rfc="EKU9003173C9" />
+  <cfdi:Receptor Nombre="XOCHILT CASAS CHAVEZ" Rfc="CACX7605101P8" UsoCFDI="G03" DomicilioFiscalReceptor="10740" RegimenFiscalReceptor="612" />
+  <cfdi:Conceptos>
+    <cfdi:Concepto Cantidad="1" ClaveProdServ="86121500" ClaveUnidad="E48" Descripcion="PAGO DE INSCRIPCIÓN" Importe="1.00" NoIdentificacion="292295" ObjetoImp="02" ValorUnitario="1.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1.00" Impuesto="002" TipoFactor="Exento" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+      <cfdi:ComplementoConcepto>
+        <iedu:instEducativas xmlns:iedu="http://www.sat.gob.mx/iedu" rfcPago="CACX7605101P8" autRVOE="118141" nivelEducativo="Primaria" CURP="RULO100120HDFBTDA4" nombreAlumno="RUBINHO LOPEZ ADILENE" version="1.0" />
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos>
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1.00" Impuesto="002" TipoFactor="Exento" />
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+</cfdi:Comprobante>

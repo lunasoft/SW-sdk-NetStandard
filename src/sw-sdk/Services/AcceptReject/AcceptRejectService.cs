@@ -16,7 +16,7 @@ namespace SW.Services.AcceptReject
         {
         }
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuid);
-        internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation, EnumAcceptReject enumCancelation);
+        internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation);
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(string pfx, string rfc, string password, AceptacionRechazoItem[] uuid);
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(string rfc, string uuid, EnumAcceptReject enumCancelation);
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
@@ -40,7 +40,7 @@ namespace SW.Services.AcceptReject
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual MultipartFormDataContent RequestAcceptReject(byte[] xmlCancelation, EnumAcceptReject enumAcceptReject)
+        internal virtual MultipartFormDataContent RequestAcceptReject(byte[] xmlCancelation)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xmlCancelation);

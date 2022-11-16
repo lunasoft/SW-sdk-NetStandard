@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/Pagos20 
+ http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos20.xsd" xmlns:pago20="http://www.sat.gob.mx/Pagos20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-03-29T00:18:10" Sello="e" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="P" Exportacion="01" LugarExpedicion="20000" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="CP01" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="84111506" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago" ValorUnitario="0" Importe="0" ObjetoImp="01" />
+	</cfdi:Conceptos>
+	<cfdi:Complemento>
+		<pago20:Pagos Version="2.0">
+			<pago20:Totales MontoTotalPagos="200.00" />
+			<pago20:Pago FechaPago="2021-12-15T00:00:00" FormaDePagoP="01" MonedaP="MXN" Monto="200.00" TipoCambioP="1">
+				<pago20:DoctoRelacionado IdDocumento="bfc36522-4b8e-45c4-8f14-d11b289f9eb7" MonedaDR="MXN" NumParcialidad="1" ImpSaldoAnt="200.00" ImpPagado="200.00" ImpSaldoInsoluto="0.00" ObjetoImpDR="01" EquivalenciaDR="1" />
+			</pago20:Pago>
+		</pago20:Pagos>
+	</cfdi:Complemento>
+</cfdi:Comprobante>

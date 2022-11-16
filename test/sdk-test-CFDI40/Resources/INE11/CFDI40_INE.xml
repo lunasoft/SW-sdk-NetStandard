@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ine="http://www.sat.gob.mx/ine" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/ine http://www.sat.gob.mx/sitio_internet/cfd/ine/ine11.xsd" Version="4.0" Fecha="2022-03-10T09:57:43" Serie="Cava tequilera" Folio="552404" FormaPago="01" CondicionesDePago="30 días" SubTotal="200.00" Moneda="MXN" Exportacion="01" TipoCambio="1" Total="228.00" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="45070" Certificado="" NoCertificado="" Sello="">
+	<cfdi:Emisor Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="603" Rfc="EKU9003173C9" />
+	<cfdi:Receptor Nombre="XOCHILT CASAS CHAVEZ" Rfc="CACX7605101P8" UsoCFDI="G03" DomicilioFiscalReceptor="10740" RegimenFiscalReceptor="612" />
+	<cfdi:Conceptos>
+        <cfdi:Concepto Cantidad="1.000000" Unidad="PZA" Descripcion="TEST" ValorUnitario="100.00" Importe="100.00" ClaveProdServ="01010101" ClaveUnidad="EA" ObjetoImp="02">
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado Base="100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="16.00" />
+                </cfdi:Traslados>
+                <cfdi:Retenciones>
+                    <cfdi:Retencion Base="100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.020000" Importe="2.00" />
+                </cfdi:Retenciones>
+            </cfdi:Impuestos>
+            <cfdi:InformacionAduanera NumeroPedimento="20  16  3870  0111113" />
+            <cfdi:Parte Cantidad="1.00" Descripcion="Partes Pruebas" NoIdentificacion="111" Importe="100.00" Unidad="EA" ValorUnitario="100.00" ClaveProdServ="01010101" />
+        </cfdi:Concepto>
+        <cfdi:Concepto Cantidad="1.000000" Unidad="PZA" Descripcion="TEST" ValorUnitario="100.00" Importe="100.00" ClaveProdServ="01010101" ClaveUnidad="EA" ObjetoImp="02">
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado Base="100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="16.00" />
+                </cfdi:Traslados>
+                <cfdi:Retenciones>
+                    <cfdi:Retencion Base="100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.020000" Importe="2.00" />
+                </cfdi:Retenciones>
+            </cfdi:Impuestos>
+            <cfdi:InformacionAduanera NumeroPedimento="20  16  3870  0111113" />
+            <cfdi:Parte Cantidad="1.00" Descripcion="Partes Pruebas" NoIdentificacion="111" Importe="100.00" Unidad="EA" ValorUnitario="100.00" ClaveProdServ="01010101" />
+        </cfdi:Concepto>
+ 
+    </cfdi:Conceptos>
+    <cfdi:Impuestos TotalImpuestosRetenidos="4.00" TotalImpuestosTrasladados="32.00">
+        <cfdi:Retenciones>
+            <cfdi:Retencion Impuesto="002" Importe="4.00" />
+        </cfdi:Retenciones>
+        <cfdi:Traslados>
+            <cfdi:Traslado Base="200.00" Impuesto="002" Importe="32.00" TasaOCuota="0.160000" TipoFactor="Tasa" />
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <ine:INE Version="1.1" TipoProceso="Ordinario" TipoComite="Ejecutivo Nacional" />
+    </cfdi:Complemento>
+</cfdi:Comprobante>

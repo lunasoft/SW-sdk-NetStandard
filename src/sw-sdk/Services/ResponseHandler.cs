@@ -79,7 +79,7 @@ namespace SW.Services
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                     client.BaseAddress = new Uri(url);
-                    var result = await client.GetAsync(path);
+                    var result = await client.GetAsync(path); 
                     return await TryGetResponseAsync(result);
                 }
             }

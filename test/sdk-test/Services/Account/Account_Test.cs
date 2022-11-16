@@ -13,7 +13,7 @@ namespace Test_SW.Services.Account_Test
         public async Task Account_Test_45_ConsultaDeSaldoByUserAsync()
         {
             var build = new BuildSettings();
-            BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", "userforut@ut.com", "swpassut");
+            BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", build.User, build.Password);
             AccountResponse response = await account.ConsultarSaldoAsync();
             if(response.status != "error")
             {
