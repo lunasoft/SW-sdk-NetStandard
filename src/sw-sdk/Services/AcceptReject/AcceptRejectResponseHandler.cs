@@ -7,7 +7,7 @@ namespace SW.Services.AcceptReject
     {
         public override AcceptRejectResponse HandleException(Exception ex)
         {
-            return ex.ToAcceptRejectResponse();
+            return ex.Response<AcceptRejectResponse>();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace SW.Services.Authentication
 
             }
             catch (Exception e)
-            {
+            {  
                 return _handler.HandleException(e);
             }
         }

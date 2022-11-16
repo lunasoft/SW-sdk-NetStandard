@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 
 namespace SW.Helpers
 {
@@ -50,10 +47,6 @@ namespace SW.Helpers
                                                                     boundary + "\r\n");
             var endBoundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
                                                                         boundary + "--");
-
-
-            string formdataTemplate = "\r\n--" + boundary +
-                                        "\r\nContent-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}";
 
             string headerTemplate =
                  "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" +

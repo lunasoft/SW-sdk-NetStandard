@@ -7,7 +7,7 @@ namespace SW.Services.Pendings
     {
         public override PendingsResponse HandleException(Exception ex)
         {
-            return ex.ToPendingsResponse();
+            return ex.Response<PendingsResponse>();
         }
     }
 }

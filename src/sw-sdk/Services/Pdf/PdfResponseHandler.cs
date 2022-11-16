@@ -7,7 +7,7 @@ namespace SW.Services.Pdf
     {
         public override PdfResponse HandleException(Exception ex)
         {
-            return ex.ToPdfResponse();
+            return ex.Response<PdfResponse>();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace SW.Helpers
+﻿namespace SW.Helpers
 {
     public class Validation
     {

@@ -7,7 +7,7 @@ namespace SW.Services.Cancelation
     {
         public override CancelationResponse HandleException(Exception ex)
         {
-            return ex.ToCancelationResponse();
+            return ex.Response<CancelationResponse>();
         }
     }
 }
