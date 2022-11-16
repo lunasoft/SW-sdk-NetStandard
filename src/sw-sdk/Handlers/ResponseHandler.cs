@@ -133,7 +133,7 @@ namespace SW.Handlers
             }
             return false;
         }
-        public T HandleException(Exception ex)
+        internal T HandleException(Exception ex)
         {
             return _handler.GetExceptionResponse(ex);
         }
