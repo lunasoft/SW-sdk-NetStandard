@@ -1,16 +1,18 @@
-﻿using System;
+﻿using SW.Handlers;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SW.Services.Authentication
 {
     public class Authentication : AuthenticationService
     {
-        AuthenticationResponseHandler _handler;
+        private readonly ResponseHandler<AuthResponse> _handler;
         public Authentication(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
-            _handler = new AuthenticationResponseHandler();
+            _handler = new ResponseHandler<AuthResponse>();
         }
-        public override async System.Threading.Tasks.Task<AuthResponse> GetTokenAsync()
+        public override async Task<AuthResponse> GetTokenAsync()
         {
             try
             {

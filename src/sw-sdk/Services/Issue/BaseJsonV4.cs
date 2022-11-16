@@ -1,4 +1,5 @@
-﻿using SW.Helpers;
+﻿using SW.Handlers;
+using SW.Helpers;
 using SW.Services.Stamp;
 using System;
 using System.Net.Http;
@@ -20,7 +21,7 @@ namespace SW.Services.Issue
         }
         public virtual async Task<StampResponseV1> TimbrarJsonV1Async(string json, string email = null, string customId = null, string[] extras = null)
         {
-            StampResponseHandlerV1 handler = new StampResponseHandlerV1();
+            ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
@@ -39,7 +40,7 @@ namespace SW.Services.Issue
         }
         public virtual async Task<StampResponseV2> TimbrarJsonV2Async(string json, string email = null, string customId = null, string[] extras = null)
         {
-            StampResponseHandlerV2 handler = new StampResponseHandlerV2();
+            ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
@@ -58,7 +59,7 @@ namespace SW.Services.Issue
         }
         public virtual async Task<StampResponseV3> TimbrarJsonV3Async(string json, string email = null, string customId = null, string[] extras = null)
         {
-            StampResponseHandlerV3 handler = new StampResponseHandlerV3();
+            ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
@@ -77,7 +78,7 @@ namespace SW.Services.Issue
         }
         public virtual async Task<StampResponseV4> TimbrarJsonV4Async(string json, string email = null, string customId = null, string[] extras = null)
         {
-            StampResponseHandlerV4 handler = new StampResponseHandlerV4();
+            ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
