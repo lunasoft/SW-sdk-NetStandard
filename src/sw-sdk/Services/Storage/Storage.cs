@@ -3,13 +3,14 @@ using SW.Helpers;
 using SW.Entities;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using SW.Handlers;
 
 namespace SW.Services.Storage
 {
     public class Storage : StorageService
     {
 
-        StorageResponseHandler _handler;
+        private readonly ResponseHandler<StorageResponse> _handler;
         /// <summary>
         /// This Service is Not Implemented
         /// </summary>
@@ -17,7 +18,7 @@ namespace SW.Services.Storage
         /// <param name="token"></param>
         public Storage(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
-            _handler = new StorageResponseHandler();
+            _handler = new ResponseHandler<StorageResponse>();
         }
 
         internal async override Task<Response> GetByUUID(Guid uuid)
@@ -27,7 +28,7 @@ namespace SW.Services.Storage
                 Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + this.Token }
                 };
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetResponseAsync(this.Url, headers, $"datawarehouse/v1/live/{uuid.ToString()}", proxy);
             }
             catch (Exception e)

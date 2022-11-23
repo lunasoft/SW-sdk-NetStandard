@@ -2,75 +2,72 @@
 using SW.Helpers;
 using System.Net;
 using System.Threading.Tasks;
+using SW.Handlers;
 
 namespace SW.Services.AcceptReject
 {
     public class AcceptReject : AcceptRejectService
     {
 
-        AcceptRejectResponseHandler _handler;
+        private readonly ResponseHandler<AcceptRejectResponse> _handler;
         public AcceptReject(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
-            _handler = new AcceptRejectResponseHandler();
+            _handler = new ResponseHandler<AcceptRejectResponse>();
         }
         public AcceptReject(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
-            _handler = new AcceptRejectResponseHandler();
+            _handler = new ResponseHandler<AcceptRejectResponse>();
         }
         internal async override Task<AcceptRejectResponse> AcceptRejectRequest(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuids)
         {
-            AcceptRejectResponseHandler handler = new AcceptRejectResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = GetHeadersAsync();
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var content = this.RequestAcceptReject(cer, key, rfc, password, uuids);
-                return await handler.GetPostResponseAsync(this.Url,
+                return await _handler.GetPostResponseAsync(this.Url,
                                 "acceptreject/csd", await headers, content, proxy);
             }
             catch (Exception e)
             {
-                return handler.HandleException(e);
+                return _handler.HandleException(e);
             }
         }
         internal async override Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation)
         {
-            AcceptRejectResponseHandler handler = new AcceptRejectResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = GetHeadersAsync();
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var content = this.RequestAcceptReject(xmlCancelation);
-                return await handler.GetPostResponseAsync(this.Url,
+                return await _handler.GetPostResponseAsync(this.Url,
                                 "acceptreject/xml", await headers, content, proxy);
             }
             catch (Exception e)
             {
-                return handler.HandleException(e);
+                return _handler.HandleException(e);
             }
         }
         internal async override Task<AcceptRejectResponse> AcceptRejectRequest(string pfx, string rfc, string password, AceptacionRechazoItem[] uuid)
         {
-            AcceptRejectResponseHandler handler = new AcceptRejectResponseHandler();
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = GetHeadersAsync();
-                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var content = this.RequestAcceptReject(pfx, rfc, password, uuid);
-                return await handler.GetPostResponseAsync(this.Url,
+                return await _handler.GetPostResponseAsync(this.Url,
                                 "acceptreject/pfx", await headers, content, proxy);
             }
             catch (Exception e)
             {
-                return handler.HandleException(e);
+                return _handler.HandleException(e);
             }
         }
         internal async override Task<AcceptRejectResponse> AcceptRejectRequest(string rfc, string uuid, EnumAcceptReject enumAcceptReject)
-        {
-            AcceptRejectResponseHandler handler = new AcceptRejectResponseHandler();
+        {   
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
@@ -80,11 +77,11 @@ namespace SW.Services.AcceptReject
                 request.Method = WebRequestMethods.Http.Post;
                 var headers = GetHeadersAsync();
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetPostResponseAsync(this.Url, await headers, $"acceptreject/{rfc}/{uuid}/{enumAcceptReject.ToString()}", proxy);
+                return await _handler.GetPostResponseAsync(this.Url, await headers, $"acceptreject/{rfc}/{uuid}/{enumAcceptReject.ToString()}", proxy);
             }
             catch (Exception e)
             {
-                return handler.HandleException(e);
+                return _handler.HandleException(e);
             }
         }
 
