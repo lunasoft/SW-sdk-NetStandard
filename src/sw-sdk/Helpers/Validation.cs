@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Linq;
+using System.Net.Mail;
 
 namespace SW.Helpers
 {
@@ -50,6 +52,24 @@ namespace SW.Helpers
             if (validToken.Length != 3)
             {
                 throw new ServicesException("Token Mal Formado");
+            }
+        }
+        internal static void ValidateEmail(string[] email)
+        {
+            if (email != null && email.Count() > 0 && email.Count() <= 5)
+            {
+                try
+                {
+                    email.ToList().ForEach(l => new MailAddress(l));
+                }
+                catch (Exception ex)
+                {
+                    throw new ServicesException("El email no tiene un formato válido.", ex);
+                }
+            }
+            else
+            {
+                throw new ServicesException("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos.");
             }
         }
     }
