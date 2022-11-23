@@ -19,9 +19,9 @@ namespace Test_SW.Services.Resend
             var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
-            Assert.True(String.IsNullOrEmpty(responseResend.message) &&
-                        String.IsNullOrEmpty(responseResend.messageDetail) &&
-                        String.IsNullOrEmpty(responseResend.data));
+            Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
+                        !String.IsNullOrEmpty(responseResend.messageDetail) &&
+                        !String.IsNullOrEmpty(responseResend.data));
         }
         [Fact]
         public async Task ResendEmail_Auth_Success()
@@ -30,9 +30,9 @@ namespace Test_SW.Services.Resend
             var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
-            Assert.True(String.IsNullOrEmpty(responseResend.message) &&
-                        String.IsNullOrEmpty(responseResend.messageDetail) &&
-                        String.IsNullOrEmpty(responseResend.data));
+            Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
+                        !String.IsNullOrEmpty(responseResend.messageDetail) &&
+                        !String.IsNullOrEmpty(responseResend.data));
         }
         [Fact]
         public async Task ResendEmail_Array_Success()
@@ -49,9 +49,9 @@ namespace Test_SW.Services.Resend
             var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), emails);
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
-            Assert.True(String.IsNullOrEmpty(responseResend.message) &&
-                        String.IsNullOrEmpty(responseResend.messageDetail) &&
-                        String.IsNullOrEmpty(responseResend.data));
+            Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
+                        !String.IsNullOrEmpty(responseResend.messageDetail) &&
+                        !String.IsNullOrEmpty(responseResend.data));
         }
         [Fact]
         public async Task ResendEmail_MaxEmails_Error()
