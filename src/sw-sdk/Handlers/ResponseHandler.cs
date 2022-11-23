@@ -8,16 +8,22 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using SW.Services.Stamp;
 
-namespace SW.Services
+namespace SW.Handlers
 {
-    internal abstract class ResponseHandler<T>
+    internal class ResponseHandler<T>
         where T : Response, new()
     {
-        public ResponseHandler() { }
+        private ResponseHandlerExtended<T> _handler;
         public readonly string _xmlOriginal;
+        public ResponseHandler() 
+        {
+            _handler = new ResponseHandlerExtended<T>();
+        }
         public ResponseHandler(string xmlOriginal)
         {
+            _handler = new ResponseHandlerExtended<T>();
             _xmlOriginal = xmlOriginal;
         }
         public virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
@@ -32,17 +38,12 @@ namespace SW.Services
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                     var result = await client.PostAsync(path, content);
-                    return await TryGetResponseAsync(result);
+                    return await _handler.TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
             {
-                return new T()
-                {
-                    message = wex.Message,
-                    status = "error",
-                    messageDetail = wex.StackTrace
-                };
+                return _handler.GetExceptionResponse(wex);
             }
         }
         public virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -57,17 +58,12 @@ namespace SW.Services
                     }
                     client.BaseAddress = new Uri(url);
                     var result = await client.PostAsync(path, null);
-                    return await TryGetResponseAsync(result);
+                    return await _handler.TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
             {
-                return new T()
-                {
-                    message = wex.Message,
-                    status = "error",
-                    messageDetail = wex.StackTrace
-                };
+                return _handler.GetExceptionResponse(wex);
             }
         }
 
@@ -82,61 +78,30 @@ namespace SW.Services
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                     client.BaseAddress = new Uri(url);
-                    var result = await client.GetAsync(path); 
-                    return await TryGetResponseAsync(result);
+                    var result = await client.GetAsync(path);
+                    return await _handler.TryGetResponseAsync(result);
                 }
             }
             catch (HttpRequestException wex)
             {
-                return new T()
-                {
-                    message = wex.Message,
-                    status = "error",
-                    messageDetail = wex.StackTrace
-                };
+                return _handler.GetExceptionResponse(wex);
             }
         }
-        public abstract T HandleException(Exception ex);
-        internal virtual async Task<T> TryGetResponseAsync(HttpResponseMessage response)
-        {
-            try
-            {
-                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.BadRequest)
-                {
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
-                }
-                else
-                    return new T()
-                    {
-                        message = ((int)response.StatusCode).ToString(),
-                        status = "error",
-                        messageDetail = response.ReasonPhrase
-                    };
-            }
-            catch (Exception)
-            {
-                return new T()
-                {
-                    message = ((int)response.StatusCode).ToString(),
-                    status = "error",
-                    messageDetail = response.ReasonPhrase
-                };
-            }
-        }
+        
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
         {
             try
             {
-               
+
                 return XmlUtils.AddAddenda(_xmlOriginal, cfdi, isb64);
-                
+
             }
             catch (Exception)
             {
             }
             return cfdi;
         }
-        internal virtual bool Has307AndAddenda(Response response, Stamp.Data_CFDI data)
+        internal virtual bool Has307AndAddenda(Response response, Data_CFDI data)
         {
             try
             {
@@ -152,7 +117,7 @@ namespace SW.Services
             }
             return false;
         }
-        internal virtual bool Has307AndAddenda(Response response, Stamp.Data_CFDI_TFD data)
+        internal virtual bool Has307AndAddenda(Response response, Data_CFDI_TFD data)
         {
             try
             {
@@ -167,6 +132,10 @@ namespace SW.Services
             {
             }
             return false;
+        }
+        internal T HandleException(Exception ex)
+        {
+            return _handler.GetExceptionResponse(ex);
         }
     }
 }

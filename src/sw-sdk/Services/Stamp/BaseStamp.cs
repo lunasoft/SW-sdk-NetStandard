@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
+using SW.Handlers;
 
 namespace SW.Services.Stamp
 {
@@ -19,7 +20,7 @@ namespace SW.Services.Stamp
         }
         public virtual async Task<StampResponseV1> TimbrarV1Async(string xml, bool isb64 = false)
         {
-            StampResponseHandlerV1 handler = new StampResponseHandlerV1();
+            ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
             try
             {
                 string format = isb64 ? "b64" : "";
@@ -41,7 +42,7 @@ namespace SW.Services.Stamp
         }
         public virtual ConcurrentDictionary<string, StampResponseV1> TimbrarV1Async(string[] xmls, bool isb64 = false)
         {
-            StampResponseHandlerV1 handler = new StampResponseHandlerV1();
+            ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV1> response = new ConcurrentDictionary<string, StampResponseV1>();
 
@@ -71,7 +72,7 @@ namespace SW.Services.Stamp
         }
         public virtual async Task<StampResponseV2> TimbrarV2Async(string xml, bool isb64 = false)
         {
-            StampResponseHandlerV2 handler = new StampResponseHandlerV2();
+            ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
             try
             {
                 string format = isb64 ? "b64" : "";
@@ -92,7 +93,7 @@ namespace SW.Services.Stamp
         }
         public virtual ConcurrentDictionary<string, StampResponseV2> TimbrarV2Async(string[] xmls, bool isb64 = false)
         {
-            StampResponseHandlerV2 handler = new StampResponseHandlerV2();
+            ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV2> response = new ConcurrentDictionary<string, StampResponseV2>();
 
@@ -122,7 +123,7 @@ namespace SW.Services.Stamp
         }
         public virtual async Task<StampResponseV3> TimbrarV3Async(string xml, bool isb64 = false)
         {
-            StampResponseHandlerV3 handler = new StampResponseHandlerV3();
+            ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
             try
             {
                 string format = isb64 ? "b64" : "";
@@ -143,7 +144,7 @@ namespace SW.Services.Stamp
         }
         public virtual ConcurrentDictionary<string, StampResponseV3> TimbrarV3Async(string[] xmls, bool isb64 = false)
         {
-            StampResponseHandlerV3 handler = new StampResponseHandlerV3();
+            ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV3> response = new ConcurrentDictionary<string, StampResponseV3>();
 
@@ -171,7 +172,7 @@ namespace SW.Services.Stamp
         }
         public virtual async Task<StampResponseV4> TimbrarV4Async(string xml, bool isb64 = false)
         {
-            StampResponseHandlerV4 handler = new StampResponseHandlerV4();
+            ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();
             try
             {
                 string format = isb64 ? "b64" : "";
@@ -192,7 +193,7 @@ namespace SW.Services.Stamp
         }
         public virtual ConcurrentDictionary<string, StampResponseV4> TimbrarV4Async(string[] xmls, bool isb64 = false)
         {
-            StampResponseHandlerV4 handler = new StampResponseHandlerV4();
+            ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV4> response = new ConcurrentDictionary<string, StampResponseV4>();
 

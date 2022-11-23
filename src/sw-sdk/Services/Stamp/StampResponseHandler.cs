@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using SW.Helpers;
+using SW.Handlers;
 
 namespace SW.Services.Stamp
 {
 
     internal class StampResponseHandlerV1 : ResponseHandler<StampResponseV1>
     {
-        public override StampResponseV1 HandleException(Exception ex)
-        {
-            return ex.ToStampResponseV1();
-        }
     }
     internal class StampResponseHandlerV2 : ResponseHandler<StampResponseV2>
     {
@@ -30,11 +27,6 @@ namespace SW.Services.Stamp
             if (base.Has307AndAddenda(response, response.data))
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;
-        }
-
-        public override StampResponseV2 HandleException(Exception ex)
-        {
-            return ex.ToStampResponseV2();
         }
     }
     internal class StampResponseHandlerV3 : ResponseHandler<StampResponseV3>
@@ -54,10 +46,6 @@ namespace SW.Services.Stamp
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;
         }
-        public override StampResponseV3 HandleException(Exception ex)
-        {
-            return ex.ToStampResponseV3();
-        }
     }
     internal class StampResponseHandlerV4 : ResponseHandler<StampResponseV4>
     {
@@ -74,11 +62,6 @@ namespace SW.Services.Stamp
 
         public StampResponseHandlerV4(string xmlOriginal) : base(xmlOriginal)
         {
-        }
-
-        public override StampResponseV4 HandleException(Exception ex)
-        {
-            return ex.ToStampResponseV4();
         }
     }
 }
