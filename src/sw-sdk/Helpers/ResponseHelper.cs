@@ -9,7 +9,7 @@ using SW.Services.Relations;
 using SW.Services.Stamp;
 using SW.Services.Storage;
 using SW.Services.Validate;
-using sw_sdk.Services.Resend;
+using SW.Services.Resend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
