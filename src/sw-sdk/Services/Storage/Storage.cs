@@ -9,37 +9,49 @@ namespace SW.Services.Storage
 {
     public class Storage : StorageService
     {
-
-        private readonly ResponseHandler<StorageResponse> _handler;
         /// <summary>
-        /// This Service is Not Implemented
+        /// Crear una instancia de la clase Storage.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="token"></param>
-        public Storage(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
+        /// <param name="urlApi">URL Api.</param>
+        /// <param name="token">Token de autenticacion.</param>
+        /// <param name="proxyPort">Puerto Proxy.</param>
+        /// <param name="proxy">Proxy.</param>
+        public Storage(string urlApi, string token, int proxyPort = 0, string proxy = null) 
+            : base(urlApi, token, proxy, proxyPort)
         {
-            _handler = new ResponseHandler<StorageResponse>();
+        }
+        /// <summary>
+        /// Crear una instancia de la clase Storage.
+        /// </summary>
+        /// <param name="urlApi">URL Api.</param>
+        /// <param name="url">URL Base.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contrasena.</param>
+        /// <param name="proxyPort">Puerto Proxy.</param>
+        /// <param name="proxy">Proxy.</param>
+        public Storage(string urlApi, string url, string user, string password, int proxyPort = 0, string proxy = null)
+            : base (urlApi, url, user, password, proxyPort, proxy)
+        {
         }
 
-        internal async override Task<Response> GetByUUID(Guid uuid)
+        /// <summary>
+        /// Servicio de recuperación de XML por UUID. Obtiene las URL de descarga de la información almacenada en storage, 
+        /// tal como el XML timbrado, Acuse de CFDI, Acuse de cancelación, PDF y Addenda.
+        /// </summary>
+        /// <param name="uuid">UUID del comprobante timbrado.</param>
+        /// <returns>StorageResponse</returns>
+        public async Task<StorageResponse> GetXmlAsync(Guid uuid)
         {
-            try
-            {
-                Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await _handler.GetResponseAsync(this.Url, headers, $"datawarehouse/v1/live/{uuid.ToString()}", proxy);
-            }
-            catch (Exception e)
-            {
-                return _handler.HandleException(e);
-            }
+            return await GetByUuidAsync(uuid);
         }
-
-        public async Task<StorageResponse> GetByUUIDAsync(Guid uuid)
+        /// <summary>
+        /// Servicio de recuperacion de XML por UUID. Adicional a las URL de descarga, se obtienen todos los datos extras correspondientes al comprobante timbrado.
+        /// </summary>
+        /// <param name="uuid">UUID del comprobante timbrado.</param>
+        /// <returns>StorageExtraResponse</returns>
+        public async Task<StorageExtraResponse> GetXmlExtrasAsync(Guid uuid)
         {
-            return (StorageResponse)await GetByUUID(uuid);
+            return await GetByUuidExtrasAsync(uuid);
         }
     }
 }

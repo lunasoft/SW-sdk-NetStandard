@@ -1,34 +1,52 @@
-﻿using System;
+﻿using SW.Entities;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace SW.Services.Storage
 {
-    public class StorageResponse : Entities.Response
+    [DataContract]
+    public class StorageResponse : Response
     {
         [DataMember]
-        public Data data { get; set; }
+        public StorageData data { get; set; }
     }
-    public partial class Data
+    public partial class StorageData
     {
         [DataMember]
-        public MetaData metaData { get; set; }
-        [DataMember]
-        public List<Records> records { get; set; }
+        public List<StorageRecords> records { get; set; }
     }
-    public partial class Records
+    public partial class StorageRecords
     {
-        [DataMember]
-        public string status { get; set; }
-      
-        [DataMember]
-        public string urlPdf { get; set; }
         [DataMember]
         public string urlXml { get; set; }
         [DataMember]
-        public bool hasAddenda { get; set; }
+        public string urlPdf { get; set; }
         [DataMember]
-        public object addenda { get; set; }
+        public string urlAckCfdi { get; set; }
+        [DataMember]
+        public string urlAckCancellation { get; set; }
+        [DataMember]
+        public string urlAddenda { get; set; }
+    }
+
+    [DataContract]
+    public class StorageExtraResponse : Response
+    {
+        [DataMember]
+        public StorageExtraData data { get; set; }
+    }
+    public class StorageExtraData
+    {
+        public List<StorageExtraRecords> records { get; set; }
+    }
+
+    public partial class StorageExtraRecords : StorageRecords
+    {
+        [DataMember]
+        public bool status { get; set; }
+        [DataMember]
+        public string fechaGeneracionPdf { get; set; }
         [DataMember]
         public string idDealer { get; set; }
         [DataMember]
@@ -40,19 +58,19 @@ namespace SW.Services.Storage
         [DataMember]
         public string folio { get; set; }
         [DataMember]
-        public DateTime fecha { get; set; }
+        public string fecha { get; set; }
         [DataMember]
         public string numeroCertificado { get; set; }
         [DataMember]
-        public double subtotal { get; set; }
+        public decimal subTotal { get; set; }
         [DataMember]
-        public double descuento { get; set; }
+        public decimal descuento { get; set; }
         [DataMember]
-        public double total { get; set; }
+        public decimal total { get; set; }
         [DataMember]
         public string moneda { get; set; }
         [DataMember]
-        public double tipoCambio { get; set; }
+        public decimal tipoCambio { get; set; }
         [DataMember]
         public string tipoDeComprobante { get; set; }
         [DataMember]
@@ -64,15 +82,15 @@ namespace SW.Services.Storage
         [DataMember]
         public string luegarExpedicion { get; set; }
         [DataMember]
-        public string rfcEmisor { get; set; }
+        public string emisorRfc { get; set; }
         [DataMember]
-        public string nombreEmisor { get; set; }
+        public string emisorNombre { get; set; }
         [DataMember]
         public string regimenFiscal { get; set; }
         [DataMember]
-        public string rfcReceptor { get; set; }
+        public string receptorRfc { get; set; }
         [DataMember]
-        public string nombreReceptor { get; set; }
+        public string receptorNombre { get; set; }
         [DataMember]
         public string residenciaFiscal { get; set; }
         [DataMember]
@@ -80,66 +98,32 @@ namespace SW.Services.Storage
         [DataMember]
         public string usoCFDI { get; set; }
         [DataMember]
-        public double totalImpuestosTraslados { get; set; }
+        public decimal totalImpuestosTraslados { get; set; }
         [DataMember]
-        public double totalImpuestosRetencion { get; set; }
+        public decimal totalImpuestosRetencion { get; set; }
         [DataMember]
-        public double trasladosIVA { get; set; }
+        public decimal trasladosIVA { get; set; }
         [DataMember]
-        public double trasladosIEPS { get; set; }
+        public decimal trasladosIEPS { get; set; }
         [DataMember]
-        public double retencionesISR { get; set; }
+        public decimal retencionesISR { get; set; }
         [DataMember]
-        public double retencionesIVA { get; set; }
+        public decimal retencionesIVA { get; set; }
         [DataMember]
-        public double retencionesIEPS { get; set; }
+        public decimal retencionesIEPS { get; set; }
         [DataMember]
-        public double totalImpuestosLocalesTraslados { get; set; }
+        public decimal totalImpuestosLocalesTraslados { get; set; }
         [DataMember]
-        public double totalImpuestosLocalesRetencion { get; set; }
+        public decimal totalImpuestosLocalesRetencion { get; set; }
         [DataMember]
         public string complementos { get; set; }
         [DataMember]
         public string uuid { get; set; }
         [DataMember]
-        public DateTime fechaTimbrado { get; set; }
+        public string fechaTimbrado { get; set; }
         [DataMember]
         public string rfcProvCertif { get; set; }
         [DataMember]
         public string selloCFD { get; set; }
-        [DataMember]
-        public string urlAckCfdi { get; set; }
-        [DataMember]
-        public string urlAckCancellation { get; set; }
-        [DataMember]
-        public string urlAddenda { get; set; }
-        [DataMember]
-        public DateTime? fechaGeneracionPdf { get; set; }
-        [DataMember]
-        public string emisorRfc { get; set; }
-        [DataMember]
-        public string emisorNombre { get; set; }
-        [DataMember]
-        public string receptorRfc { get; set; }
-        [DataMember]
-        public string receptorNombre { get; set; }
-        
-    }
-    public partial class MetaData
-    {
-        [DataMember]
-        public string page { get; set; }
-        [DataMember]
-        public string perPage { get; set; }
-        [DataMember]
-        public string pageCount { get; set; }
-        [DataMember]
-        public string totalCount { get; set; }
-        [DataMember]
-        public Links links { get; set; }
-    }
-    public partial class Links
-    {
-        public string current { get; set; }
     }
 }
