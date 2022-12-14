@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SW.Entities;
 using SW.Handlers;
 using SW.Helpers;
 using sw_sdk.Helpers;
@@ -14,12 +15,12 @@ namespace SW.Services.Pdf
     {
         private string _apiUrl;
         private readonly ResponseHandler<PdfResponse> _handler;
-        public BasePdf(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected BasePdf(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
             _apiUrl = url;
             _handler = new ResponseHandler<PdfResponse>();
         }
-        public BasePdf(string url, string urlApi, string user, string password, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected BasePdf(string url, string urlApi, string user, string password, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
             _apiUrl = urlApi;
             _handler = new ResponseHandler<PdfResponse>();
@@ -32,6 +33,21 @@ namespace SW.Services.Pdf
                 var content = GetStringContent(xml, b64Logo, templateId, ObservacionesAdicionales, isB64);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(_apiUrl,"/pdf/v1/api/GeneratePdf", headers, content, proxy);
+            }
+            catch (Exception ex)
+            {
+                return _handler.HandleException(ex);
+            }
+        }
+        internal virtual async Task<PdfResponse> RegeneratePdfAsync(Guid uuid)
+        {
+            try
+            {
+                var headers = await GetHeadersAsync();
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var result = await _handler.GetPostResponseAsync(_apiUrl, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
+                result.status = result.status ?? "success";
+                return result;
             }
             catch (Exception ex)
             {
@@ -76,5 +92,14 @@ namespace SW.Services.Pdf
         {
             return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40.ToString(), ObservacionesAdicionales, isB64);
         }
+        /// <summary>
+        /// Servicio para regenerar PDF de un comprobante previamente timbrado.
+        /// </summary>
+        /// <param name="uuid">Folio fiscal del comprobante.</param>
+        /// <returns>PdfResponse</returns>
+        public async Task<PdfResponse> RegenerarPdfAsync(Guid uuid)
+        {
+            return await RegeneratePdfAsync(uuid);
+        } 
     }
 }

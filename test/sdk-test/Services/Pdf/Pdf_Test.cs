@@ -1,5 +1,4 @@
-﻿using SW.Services.Issue;
-using SW.Services.Stamp;
+﻿using SW.Services.Stamp;
 using sw_sdk.Helpers;
 using System;
 using System.IO;
@@ -300,6 +299,44 @@ namespace sdk_test.Services.Pdf
             {
                 Assert.True(false);
             }
+        }
+        [Fact]
+        public async Task Pdf_Test_RegeneratePdf_Success()
+        {
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("success"));
+            Assert.True(response.message.Equals("Solicitud se proceso correctamente."));
+        }
+        [Fact]
+        public async Task Pdf_Test_RegeneratePdf_Auth_Success()
+        {
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("success"));
+            Assert.True(response.message.Equals("Solicitud se proceso correctamente."));
+        }
+        [Fact]
+        public async Task Pdf_Test_RegeneratePdf_NotFound_Error()
+        {
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
+            var response = await pdf.RegenerarPdfAsync(Guid.Empty);
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("error"));
+            Assert.NotNull(response.message);
+            Assert.NotNull(response.messageDetail);
+        }
+        [Fact]
+        public async Task Pdf_Test_RegeneratePdf_InvalidUrl_Error()
+        {
+            SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.Token);
+            var response = await pdf.RegenerarPdfAsync(Guid.Empty);
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("error"));
+            Assert.NotNull(response.message);
+            Assert.NotNull(response.messageDetail);
         }
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build, string fileName = null)
