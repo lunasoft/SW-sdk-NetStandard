@@ -33,7 +33,7 @@ namespace Test_SW.Services.AcceptReject_Test
         /// Aceptacion o Rechazo por UUID
         /// </summary>
         /// <returns></returns>
-        [Fact]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task AcceptRejectByRfcUuidAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
@@ -47,7 +47,7 @@ namespace Test_SW.Services.AcceptReject_Test
         /// Aceptacion o Rechazo por CSD
         /// </summary>
         /// <returns></returns>
-        [Fact]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task AcceptRejectByCSDAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
@@ -61,7 +61,7 @@ namespace Test_SW.Services.AcceptReject_Test
         /// Aceptacion o Rechazo por PFX
         /// </summary>
         /// <returns></returns>
-        [Fact]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task AcceptRejectByPfxAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
@@ -75,7 +75,7 @@ namespace Test_SW.Services.AcceptReject_Test
         /// Aceptacion o Rechazo por XML
         /// </summary>
         /// <returns></returns>
-        [Fact]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task AcceptRejectByXmlAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
