@@ -116,7 +116,7 @@ namespace Test_SW_sdk.Services.Csd
         public async Task Csd_Test_DeleteCsdAsync_Success()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
-            var response = await csd.DeleteCsdAsync("30001000000400002434");
+            var response = await csd.DeleteCsdAsync("30001000000400002442");
             Assert.True(response.status == "success");
             Assert.NotNull(response.data);
         }
