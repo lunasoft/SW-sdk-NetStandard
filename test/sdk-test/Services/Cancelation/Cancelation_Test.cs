@@ -33,7 +33,7 @@ namespace Test_SW.Services.Cancelation_Test
             }
             Assert.True(response.data.acuse != null && response.status == "success");
         }
-        [Fact(Skip = "Change of RFC for testing")]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByRfcUuidAsync()
         {
             var build = new BuildSettings();
@@ -42,7 +42,7 @@ namespace Test_SW.Services.Cancelation_Test
             Assert.True(response.data.acuse != null && response.status == "success");
         }
 
-        [Fact(Skip = "Change of RFC for testing")]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByPFXAsync()
         {
             var build = new BuildSettings();
@@ -50,8 +50,8 @@ namespace Test_SW.Services.Cancelation_Test
             var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.PfxPassword, uuid, "02");
             Assert.True(response != null && response.status == "success");
         }
-        
-        [Fact(Skip = "Change of RFC for testing")]
+
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByXMLAsync()
         {
             var build = new BuildSettings();
@@ -59,7 +59,7 @@ namespace Test_SW.Services.Cancelation_Test
             var response = await cancelation.CancelarByXMLAsync(build.CancelacionXML);
             Assert.True(response != null && response.status == "success");
         }
-        [Fact(Skip = "Change of RFC for testing")]
+        [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_ValidateParametersAsync()
         {
             var resultExpect = "Son necesarios el .Cer y el .Key en formato B64";

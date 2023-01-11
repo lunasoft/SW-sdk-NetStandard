@@ -41,7 +41,7 @@ namespace Test_SW.Services.Issue
             var json = GetJson(build);
             var response = (StampResponseV3)await issue.TimbrarJsonV3Async(json);
             Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+                && !string.IsNullOrEmpty(response.data.cfdi), response.message);
         }
         [Fact]
         public async Task IssueV4JsonV4fAsync()
