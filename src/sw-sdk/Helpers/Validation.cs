@@ -72,5 +72,12 @@ namespace SW.Helpers
                 throw new ServicesException("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos.");
             }
         }
+        internal static void ValidateCustomId(string customId)
+        {
+            if(customId.Length <= 0 || customId.Length > 150)
+            {
+                throw new ServicesException("El CustomId no es válido o viene vacío.");
+            }
+        }
     }
 }
