@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SW.Helpers;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -53,7 +54,8 @@ namespace SW.Services.Issue
             }
             if (customId != null)
             {
-                headers.Add("customId", customId);
+                Validation.ValidateCustomId(customId);
+                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
             }
             if (extras != null)
             {

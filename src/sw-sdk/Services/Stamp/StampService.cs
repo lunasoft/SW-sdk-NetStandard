@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using SW.Helpers;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace SW.Services.Stamp
@@ -41,7 +45,8 @@ namespace SW.Services.Stamp
             }
             if (customId != null)
             {
-                headers.Add("customId", customId);
+                Validation.ValidateCustomId(customId);
+                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
             }
             if (extras != null)
             {
