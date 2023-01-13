@@ -6,6 +6,8 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using System.Threading.Tasks;
+using System.Linq;
+using SW.Services.Issue;
 
 namespace Test_SW.Services.Issue
 {
@@ -86,6 +88,34 @@ namespace Test_SW.Services.Issue
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, extras: new string[]{"pdf"});
             Assert.True(response.status == "success"
                 && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+        }
+        [Fact]
+        public async Task IssueJsonV4XMLV1_HashedCustomId_IdDuplicado_Error()
+        {
+            var build = new BuildSettings();
+            IssueJsonV4 issue = new IssueJsonV4(build.Url, build.User, build.Password);
+            var customId = Guid.NewGuid().ToString();
+            customId = string.Concat(Enumerable.Repeat(customId, 4));
+            var json = GetJson(build);
+            var response = await issue.TimbrarJsonV1Async(json, customId: customId);
+            Assert.True(response.status == "success");
+            Assert.True(!String.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            json = GetJson(build);
+            response = await issue.TimbrarJsonV1Async(json, null, customId);
+            Assert.True(response.status == "error");
+            Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+        }
+        [Fact]
+        public async Task IssueJsonV4XMLV1_InvalidCustomId_Error()
+        {
+            var build = new BuildSettings();
+            IssueJsonV4 issue = new IssueJsonV4(build.Url, build.User, build.Password);
+            var customId = Guid.NewGuid().ToString();
+            customId = string.Concat(Enumerable.Repeat(customId, 10));
+            var json = GetJson(build);
+            var response = await issue.TimbrarJsonV1Async(json, null, customId);
+            Assert.True(response.status == "error");
+            Assert.True(response.message == "El CustomId no es válido o viene vacío.");
         }
         [Fact]
         public async Task StampJsonV4byTokenAsync()

@@ -7,6 +7,7 @@ using SW.Services.Stamp;
 using Test_SW.Helpers;
 using Xunit;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Test_SW.Services.Stamp_Test
 {
@@ -185,6 +186,34 @@ namespace Test_SW.Services.Stamp_Test
                 resultExpect = listXmlResult.FindAll(w => w.status == ResponseType.success.ToString() || w.message.Contains("72 horas")).Count == iterations;
 
             Assert.True((bool)resultExpect);
+        }
+        [Fact]
+        public async Task Stamp_Test_StampV4XMLV1_HashedCustomId_IdDuplicado_Error()
+        {
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var customId = Guid.NewGuid().ToString();
+            customId = string.Concat(Enumerable.Repeat(customId, 4));
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+            Assert.True(response.status == "success");
+            Assert.True(!String.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            xml = GetXml(build);
+            response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+            Assert.True(response.status == "error"); 
+            Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+        }
+        [Fact]
+        public async Task Stamp_Test_StampV4XMLV1_InvalidCustomId_Error()
+        {
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var customId = Guid.NewGuid().ToString();
+            customId = string.Concat(Enumerable.Repeat(customId, 10));
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+            Assert.True(response.status == "error");
+            Assert.True(response.message == "El CustomId no es válido o viene vacío.");
         }
         private string GetXml(BuildSettings build)
         {
