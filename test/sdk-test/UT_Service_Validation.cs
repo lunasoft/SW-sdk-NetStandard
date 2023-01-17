@@ -28,7 +28,7 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url, Build.Token + "FakeToken");
             string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.Contains("401", response.message);
+            Assert.Contains("Firma inválidad. Se esperaba", response.message);
         }
 
         [Fact]

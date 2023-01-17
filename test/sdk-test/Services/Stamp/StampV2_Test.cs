@@ -134,22 +134,20 @@ namespace Test_SW.Services.Stamp_Test
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
         {
-            var resultExpect = "Token Mal Formado";
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url, build.Token + ".");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.True(response.message.Contains("401"), (string)resultExpect);
+            Assert.Contains("El token debe contener 3 partes", response.message);
         }
         [Fact]
         public async Task Stamp_Test_ValidateExistTokenAsync()
         {
-            var resultExpect = "401 Unauthorized";
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url, "");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.True(response.message.Contains("401"), (string)resultExpect);
+            Assert.Contains("El token debe contener 3 partes", response.message);
         }
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
