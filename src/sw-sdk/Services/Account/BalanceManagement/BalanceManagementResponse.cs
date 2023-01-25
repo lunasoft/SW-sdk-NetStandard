@@ -1,11 +1,26 @@
-﻿using System.Runtime.Serialization;
+﻿using SW.Entities;
+using System.Runtime.Serialization;
 
-namespace SW.Services.Account
+namespace sw_sdk.Services.Account.BalanceManagement
 {
-    public class AccountResponse : Entities.Response
+    /// <summary>
+    /// Estructura de la respuesta que se obtiene en los metodos Añadir y Eliminar timbres
+    /// </summary>
+
+    public class BalanceManagementResponse : Response
+    {
+        [DataMember]
+        public string data { get; set; }
+    }
+    /// <summary>
+    /// Estructura de la respuesta que se obtiene del metodo Balance
+    /// </summary>
+
+    public class BalanceResponse : Response
     {
         [DataMember]
         public Data data { get; set; }
+
     }
     public partial class Data
     {
