@@ -13,9 +13,6 @@ namespace SW.Services.Account.BalanceManagement
 {
     public class BalanceManagement : BalanceManagementService
     {
-        //Atributo que nos ayudara con las respuestas del servicio
-        //private readonly ResponseHandler<BalanceManagementResponse> _handler;
-      //  private readonly ResponseHandler<BalanceManagementResponse> _handler;
         /// <summary>
         /// Balance Management que requiere de usuario y contraseña
         /// </summary>
@@ -27,7 +24,6 @@ namespace SW.Services.Account.BalanceManagement
         /// <param name="proxy">Proxy</param>
         public BalanceManagement(string urlApi,string url, string user, string password, int proxyPort = 0, string proxy = null) : base(urlApi, url, user, password, proxy, proxyPort)
         {
-           // _handler = new ResponseHandler<BalanceResponse>();
         }
         /// <summary>
         /// Balance Management que recibe el token para mostrar los datos
