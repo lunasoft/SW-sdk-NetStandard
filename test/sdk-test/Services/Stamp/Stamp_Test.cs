@@ -212,8 +212,10 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url + "/ot", build.Token);
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
             Assert.Equal(response.message, (string)resultExpect);
-            Assert.Equal(response.messageDetail, "Not Found");
+            Assert.Equal("error", response.status);
+            Assert.Equal("Not Found", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -222,6 +224,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.Token + ".");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
@@ -232,6 +236,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, "");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
@@ -243,7 +249,10 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.Token);
             var xml = File.ReadAllText("Resources/EmptyXML.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateSpecialCharactersFromXMLAsync()

@@ -109,13 +109,14 @@ namespace Test_SW.Services.Stamp_Test
         [Fact]
         public async Task Stamp_Test_ValidateServerErrorAsync()
         {
-            var resultExpect = "404";
             var build = new BuildSettings();
             StampV4 stamp = new StampV4(build.Url + "/ot", build.Token);
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
-            Assert.Equal(response.message, (string)resultExpect);
-            Assert.Equal(response.messageDetail, "Not Found");
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
+            Assert.Equal("404", response.message);
+            Assert.Equal("Not Found", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -124,6 +125,8 @@ namespace Test_SW.Services.Stamp_Test
             StampV4 stamp = new StampV4(build.Url, build.Token + ".");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
@@ -134,6 +137,8 @@ namespace Test_SW.Services.Stamp_Test
             StampV4 stamp = new StampV4(build.Url, "");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
@@ -145,6 +150,8 @@ namespace Test_SW.Services.Stamp_Test
             StampV4 stamp = new StampV4(build.Url, build.Token);
             var xml = File.ReadAllText("Resources/EmptyXML.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Equal(response.message, (string)resultExpect);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
@@ -156,6 +163,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/SpecialCharacters.xml");
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            Assert.NotNull(response);
             Assert.True(response.status == "success", "Result not expected. Error: " + response.message);
             Assert.False(string.IsNullOrEmpty(response.data.tfd), "Result not expected. Error: " + response.message);
             Assert.True(string.IsNullOrEmpty(response.messageDetail));
@@ -168,6 +176,8 @@ namespace Test_SW.Services.Stamp_Test
             StampV4 stamp = new StampV4(build.Url, build.Token);
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));            
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.True(response.message.Contains(resultExpect), "Result not expected. Error: " + response.message);
             Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.messageDetail);
         }
@@ -217,6 +227,7 @@ namespace Test_SW.Services.Stamp_Test
             customId = string.Concat(Enumerable.Repeat(customId, 10));
             var xml = GetXml(build);
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+            Assert.NotNull(response);
             Assert.True(response.status == "error");
             Assert.True(response.message == "El CustomId no es válido o viene vacío.");
             Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.messageDetail);

@@ -22,8 +22,11 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Usuario";
+            var resultExpectStatus = "error";
             Authentication auth = new Authentication(build.Url, "", build.Password);
             var response = await auth.GetTokenAsync();
+            Assert.NotNull(response);
+            Assert.Equal(response.status, (string)resultExpectStatus);
             Assert.Equal(response.message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }
@@ -32,8 +35,11 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Contraseña";
+            var resultExpectStatus = "error";
             Authentication auth = new Authentication(build.Url, build.User, "");
             var response = await auth.GetTokenAsync();
+            Assert.NotNull(response);
+            Assert.Equal(response.status, (string)resultExpectStatus);
             Assert.Equal(response.message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }
@@ -42,8 +48,11 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar URL";
+            var resultExpectStatus = "error";
             Authentication auth = new Authentication("", build.User, build.Password);
             var response = await auth.GetTokenAsync();
+            Assert.NotNull(response);
+            Assert.Equal(response.status, (string)resultExpectStatus);
             Assert.Equal(response.message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }

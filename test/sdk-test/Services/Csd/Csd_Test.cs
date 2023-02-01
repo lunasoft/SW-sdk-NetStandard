@@ -39,6 +39,7 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
             var response = await csd.UploadCsdAsync("", _build.Key, _build.CerPassword);
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("El certificado o llave privada vienen vacios"));
             Assert.Contains("at SW.Services.Csd.CsdService.UploadCsdServiceAsync", response.messageDetail);
@@ -48,6 +49,7 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, "password");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("Certificados"));
             Assert.True(response.messageDetail.Equals("El certificado no pertenece a la llave privada."));
@@ -94,6 +96,7 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetAllCsdAsync("MYRFC");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("Certificados"));
             Assert.True(response.messageDetail.Equals("El Rfc proporcionado es invalido. Favor de verificar."));
@@ -120,6 +123,7 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetCsdAsync("MYNOCER");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("Certificados"));
             Assert.True(response.messageDetail.Equals("Numero certificado invalido."));
@@ -139,6 +143,7 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.DeleteCsdAsync("1234567890");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("Certificados"));
             Assert.True(response.messageDetail.Equals("One or more errors occurred."));
