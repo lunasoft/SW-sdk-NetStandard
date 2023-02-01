@@ -115,6 +115,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.Equal(response.messageDetail, "Not Found");
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -124,6 +125,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateExistTokenAsync()
@@ -133,6 +135,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
@@ -143,6 +146,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/EmptyXML.xml");
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateSpecialCharactersFromXMLAsync()
@@ -154,6 +158,7 @@ namespace Test_SW.Services.Stamp_Test
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.True(response.status == "success", "Result not expected. Error: " + response.message);
             Assert.False(string.IsNullOrEmpty(response.data.tfd), "Result not expected. Error: " + response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateIsUTF8FromXMLAsync()
@@ -164,6 +169,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));            
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.True(response.message.Contains(resultExpect), "Result not expected. Error: " + response.message);
+            Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_MultipleStampV4XMLV1byTokenAsync()
@@ -200,6 +206,7 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
             Assert.True(response.status == "error"); 
             Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_StampV4XMLV1_InvalidCustomId_Error()
@@ -212,6 +219,7 @@ namespace Test_SW.Services.Stamp_Test
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
             Assert.True(response.status == "error");
             Assert.True(response.message == "El CustomId no es válido o viene vacío.");
+            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.messageDetail);
         }
         private string GetXml(BuildSettings build)
         {

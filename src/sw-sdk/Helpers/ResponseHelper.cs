@@ -24,7 +24,7 @@ namespace SW.Helpers
             if (ex.InnerException != null)
                 return ex.InnerException.Message;
             else
-                return ex.StackTrace ?? String.Empty;
+                return (ex.StackTrace ?? String.Empty).Trim();
         }
     }
 }

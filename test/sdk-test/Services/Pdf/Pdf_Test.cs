@@ -70,8 +70,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(String.Equals(response.message, "500"));
+            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, XML en B64, string B64 invalido.
@@ -86,6 +86,7 @@ namespace sdk_test.Services.Pdf
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
             Assert.True(String.Equals(response.message, expectedResult));
+            Assert.Contains("at System.Convert.FromBase64_ComputeResultLength", response.messageDetail);
         }
         /// <summary>
         /// Generar PDF, XML en B64, XML no timbrado.
@@ -99,8 +100,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
             Assert.True(String.Equals(response.status, "error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(String.Equals(response.message, "500"));
+            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, error XML vacio.
@@ -112,8 +113,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null);
             Assert.True(String.Equals(response.status, "error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(String.Equals(response.message, "500"));
+            Assert.True(String.Equals(response.messageDetail, "Internal Server Error")); ;
         }
         /// <summary>
         /// Generar PDF, XML no timbrado.
@@ -126,8 +127,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null);
             Assert.True(String.Equals(response.status, "error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(String.Equals(response.message, "500"));
+            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF mediante token
@@ -325,8 +326,8 @@ namespace sdk_test.Services.Pdf
             var response = await pdf.RegenerarPdfAsync(Guid.Empty);
             Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.NotNull(response.message);
-            Assert.NotNull(response.messageDetail);
+            Assert.True(String.Equals(response.message, "404"));
+            Assert.True(String.Equals(response.messageDetail, "Not Found"));
         }
         [Fact]
         public async Task Pdf_Test_RegeneratePdf_InvalidUrl_Error()
@@ -335,8 +336,8 @@ namespace sdk_test.Services.Pdf
             var response = await pdf.RegenerarPdfAsync(Guid.Empty);
             Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.NotNull(response.message);
-            Assert.NotNull(response.messageDetail);
+            Assert.True(String.Equals(response.message, "404"));
+            Assert.True(String.Equals(response.messageDetail, "Not Found"));
         }
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build, string fileName = null)

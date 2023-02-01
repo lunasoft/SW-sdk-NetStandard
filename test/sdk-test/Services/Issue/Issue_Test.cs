@@ -89,6 +89,7 @@ namespace Test_SW.Services.Issue
             response = await issue.TimbrarV1Async(xml, null, customId);
             Assert.True(response.status == "error");
             Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task IssueV4XMLV1_InvalidCustomId_Error()
@@ -101,6 +102,7 @@ namespace Test_SW.Services.Issue
             var response = await issue.TimbrarV1Async(xml, null, customId);
             Assert.True(response.status == "error");
             Assert.True(response.message == "El CustomId no es válido o viene vacío.");
+            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId", response.messageDetail);
         }
         private string GetXml(BuildSettings build)
         {

@@ -14,6 +14,8 @@ namespace Test_SW.Services.Authentication_Test
             Authentication auth = new Authentication(build.Url, build.User, build.Password);
             var response = await auth.GetTokenAsync();
             Assert.True(!string.IsNullOrEmpty(response.data.token));
+            Assert.True(string.IsNullOrEmpty(response.message));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Authentication_Test_ValidateExistUserAsync()
@@ -23,6 +25,7 @@ namespace Test_SW.Services.Authentication_Test
             Authentication auth = new Authentication(build.Url, "", build.Password);
             var response = await auth.GetTokenAsync();
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }
         [Fact]
         public async Task Authentication_Test_ValidateExistPasswordAsync()
@@ -32,6 +35,7 @@ namespace Test_SW.Services.Authentication_Test
             Authentication auth = new Authentication(build.Url, build.User, "");
             var response = await auth.GetTokenAsync();
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }
         [Fact]
         public async Task Authentication_Test_ValidateExistUrlAsync()
@@ -41,6 +45,7 @@ namespace Test_SW.Services.Authentication_Test
             Authentication auth = new Authentication("", build.User, build.Password);
             var response = await auth.GetTokenAsync();
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.messageDetail);
         }
     }
 }

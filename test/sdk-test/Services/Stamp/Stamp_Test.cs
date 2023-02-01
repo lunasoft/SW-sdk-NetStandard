@@ -213,6 +213,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.Equal(response.message, (string)resultExpect);
+            Assert.Equal(response.messageDetail, "Not Found");
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -222,6 +223,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateExistTokenAsync()
@@ -231,6 +233,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
@@ -262,6 +265,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));            
             var response = await stamp.TimbrarV1Async(xml);
             Assert.True(response.message.Contains(resultExpect), "Result not expected. Error: " + response.message);
+            Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_MultipleStampXMLV1byTokenAsync()
