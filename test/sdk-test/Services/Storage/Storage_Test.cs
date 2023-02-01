@@ -184,6 +184,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("404"));
             Assert.True(response.messageDetail.Equals("Not Found"));
@@ -193,6 +194,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("404"));
             Assert.True(response.messageDetail.Equals("Not Found"));
