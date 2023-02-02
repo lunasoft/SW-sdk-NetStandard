@@ -102,8 +102,10 @@ namespace Test_SW.Services.Issue
             Assert.True(!String.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
             json = GetJson(build);
             response = await issue.TimbrarJsonV1Async(json, null, customId);
+            Assert.NotNull(response);
             Assert.True(response.status == "error");
             Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task IssueJsonV4XMLV1_InvalidCustomId_Error()
@@ -114,8 +116,10 @@ namespace Test_SW.Services.Issue
             customId = string.Concat(Enumerable.Repeat(customId, 10));
             var json = GetJson(build);
             var response = await issue.TimbrarJsonV1Async(json, null, customId);
+            Assert.NotNull(response);
             Assert.True(response.status == "error");
             Assert.True(response.message == "El CustomId no es válido o viene vacío.");
+            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.messageDetail);
         }
         [Fact]
         public async Task StampJsonV4byTokenAsync()
