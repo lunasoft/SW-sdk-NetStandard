@@ -70,7 +70,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("at SW.Helpers.Validation.ValidateEmail", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_InvalidEmail_Error()
@@ -85,7 +85,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El email no tiene un formato válido."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("An invalid character was found in the mail header: '@'.", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_InvalidEmail_2_Error()
@@ -95,7 +95,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El email no tiene un formato válido."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("An invalid character was found in the mail header: '@'.", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_EmptyEmail_Error()
@@ -106,6 +106,7 @@ namespace Test_SW.Services.Resend
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos."));
             Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("at SW.Helpers.Validation.ValidateEmail", responseResend.messageDetail);
         }
     }
 }

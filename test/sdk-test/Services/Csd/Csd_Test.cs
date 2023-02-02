@@ -21,6 +21,8 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, _build.CerPassword);
             Assert.True(response.status == "success");
             Assert.NotNull(response.data);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
         }
         [Fact]
         public async Task Csd_Test_Auth_UploadCsdAsync_Success()
@@ -29,23 +31,29 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, _build.CerPassword);
             Assert.True(response.status == "success");
             Assert.NotNull(response.data);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
         }
         [Fact]
         public async Task Csd_Test_UploadCsd_EmptyCsdAsync_Error()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
             var response = await csd.UploadCsdAsync("", _build.Key, _build.CerPassword);
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("El certificado o llave privada vienen vacios"));
+            Assert.Contains("at SW.Services.Csd.CsdService.UploadCsdServiceAsync", response.messageDetail);
         }
         [Fact]
         public async Task Csd_Test_UploadCsd_InvalidPassword_Error()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, "password");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.message.Equals("Certificados"));
+            Assert.True(response.messageDetail.Equals("El certificado no pertenece a la llave privada."));
+            
         }
         [Fact]
         public async Task Csd_Test_GetAllCsd_Success()
@@ -54,6 +62,8 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.GetAllCsdAsync();
             Assert.True(response.status.Equals("success"));
             Assert.NotNull(response.data);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
             Assert.True(response.data.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.data.First().valid_to));
             Assert.True(!String.IsNullOrEmpty(response.data.First().valid_from));
@@ -70,6 +80,8 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.GetAllCsdAsync(_build.Rfc);
             Assert.True(response.status.Equals("success"));
             Assert.NotNull(response.data);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
             Assert.True(response.data.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.data.First().valid_to));
             Assert.True(!String.IsNullOrEmpty(response.data.First().valid_from));
@@ -84,9 +96,10 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetAllCsdAsync("MYRFC");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.message.Equals("Certificados"));
+            Assert.True(response.messageDetail.Equals("El Rfc proporcionado es invalido. Favor de verificar."));
         }
         [Fact]
         public async Task Csd_Test_GetCsd_Success()
@@ -94,6 +107,8 @@ namespace Test_SW_sdk.Services.Csd
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetCsdAsync("30001000000400002434");
             Assert.True(response.status.Equals("success"));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
             Assert.NotNull(response.data);
             Assert.True(!String.IsNullOrEmpty(response.data.valid_to));
             Assert.True(!String.IsNullOrEmpty(response.data.valid_from));
@@ -108,9 +123,10 @@ namespace Test_SW_sdk.Services.Csd
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetCsdAsync("MYNOCER");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.message.Equals("Certificados"));
+            Assert.True(response.messageDetail.Equals("Numero certificado invalido."));
         }
         [Fact]
         public async Task Csd_Test_DeleteCsdAsync_Success()
@@ -119,15 +135,18 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.DeleteCsdAsync("30001000000400002442");
             Assert.True(response.status == "success");
             Assert.NotNull(response.data);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(string.IsNullOrEmpty(response.message));
         }
         [Fact]
         public async Task Csd_Test_DeleteCsdAsync_Error()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.DeleteCsdAsync("1234567890");
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(!String.IsNullOrEmpty(response.message));
-            Assert.True(!String.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.message.Equals("Certificados"));
+            Assert.True(response.messageDetail.Equals("One or more errors occurred."));
         }
     }
 }

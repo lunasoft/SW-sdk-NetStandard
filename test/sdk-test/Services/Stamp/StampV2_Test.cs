@@ -124,12 +124,14 @@ namespace Test_SW.Services.Stamp_Test
         [Fact]
         public async Task Stamp_Test_ValidateServerErrorAsync()
         {
-            var resultExpect = "404";
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url + "/ot", build.Token);
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.Equal(response.message, (string)resultExpect);
+            Assert.NotNull(response);
+            Assert.Equal("404", response.message);
+            Assert.Equal("error", response.status);
+            Assert.Equal("Not Found", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -138,7 +140,10 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token + ".");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateExistTokenAsync()
@@ -147,17 +152,22 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, "");
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.Contains("El token debe contener 3 partes", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
         {
-            var resultExpect = "Xml CFDI33 no proporcionado o viene vacio.";
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = File.ReadAllText("Resources/EmptyXML.xml");
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.Equal(response.message, (string)resultExpect);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
+            Assert.Equal("Xml CFDI33 no proporcionado o viene vacio.", response.message);
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateSpecialCharactersFromXMLAsync()
@@ -178,7 +188,10 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));            
             var response = await stamp.TimbrarV1Async(xml);
+            Assert.NotNull(response);
+            Assert.Equal("error", response.status);
             Assert.True(response.message.Contains(resultExpect), "Result not expected. Error: " + response.message);
+            Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.messageDetail);
         }
         [Fact]
         public async Task Stamp_Test_MultipleStampV2XMLV1byTokenAsync()
