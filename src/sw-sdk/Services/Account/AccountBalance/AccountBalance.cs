@@ -77,11 +77,24 @@ namespace SW.Services.Account.AccountBalance
         /// </summary>
         /// <param name="idUser">ID del usuario al que se le asignaran los timbres</param>
         /// <param name="stamps">Cantidad de timbres a agregar</param>
+        /// <param name="action">Selecciona la opcion que desea ejecutar</param>
         /// <param name="comment">Comentario agregado al movimiento.</param>
         /// <returns>Retorna un objeto handler</returns>
-        public async Task<AccountBalanceResponse> DistribucionTimbresAsync(Guid idUser, int stamps, ActionsAccountBalance action, string comment)
+        public async Task<AccountBalanceResponse> AgregarTimbresAsync(Guid idUser, int stamps, string comment)
         {
-            return await StampsDistribution(idUser, stamps, action, comment);
+            return await StampsDistribution(idUser, stamps, ActionsAccountBalance.Add, comment);
+        }
+        /// <summary>
+        /// Metodo para eliminar timbres a una cuenta hijo desde la cuenta dealer
+        /// </summary>
+        /// <param name="idUser">ID del usuario al que se le asignaran los timbres</param>
+        /// <param name="stamps">Cantidad de timbres a agregar</param>
+        /// <param name="action">Selecciona la opcion que desea ejecutar</param>
+        /// <param name="comment">Comentario agregado al movimiento.</param>
+        /// <returns>Retorna un objeto handler</returns>
+        public async Task<AccountBalanceResponse> EliminarTimbresAsync(Guid idUser, int stamps, string comment)
+        {
+            return await StampsDistribution(idUser, stamps, ActionsAccountBalance.Remove, comment);
         }
     }
 }
