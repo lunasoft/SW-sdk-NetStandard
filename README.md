@@ -2144,16 +2144,17 @@ namespace ExampleSDK
 ```
 ---
 
-<details>
-<summary>
-Certificados
-</summary>
+
 
 # Certificados #
 Servicio para gestionar los certificados CSD de tu cuenta, será posible cargar, consultar y eliminar los certificados.
 Para administrar los certificados de manera gráfica, puede hacerlo desde el [Administrador de timbres](https://portal.sw.com.mx/).
 
+<details>
+<summary>
 ## Consultar Certificados ##
+</summary>
+
 Método para consultar todos los certificados cargados en la cuenta.
 
 Este metodo recibe los siguientes parametros:
@@ -2163,6 +2164,7 @@ Este metodo recibe los siguientes parametros:
 **Ejemplo de consumo de la libreria para la consulta de certificados mediante token**
 ```cs
 ```
+</details>
 
 ## Consultar Certificado Por NoCertificado ##
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
@@ -2203,7 +2205,6 @@ Este metodo recibe los siguientes parametros:
 **Ejemplo de consumo de la libreria para eliminar un certificado mediante token**
 ```java
 ```
-</details>
 
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
