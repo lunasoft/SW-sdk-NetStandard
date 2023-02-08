@@ -80,11 +80,6 @@ namespace ExampleSDK
 
 # Timbrado #
 
-<details>
-<summary>
-Timbrar CFDI V1
-</summary>
-
 ## Timbrar CFDI V1 ##
 **TimbrarV1** Recibe el contenido de un **XML** ya emitido (sellado) en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
@@ -185,12 +180,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Emisión Timbrado
-</summary>
 
 ## Emisión Timbrado ##
 **Emisión Timbrado** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **XML** en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
@@ -263,12 +252,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Emisión Timbrado JSON
-</summary>
 
 ## Emisión Timbrado JSON ##
 **Emisión Timbrado JSON** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **JSON** en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción
@@ -341,8 +324,6 @@ namespace ExampleSDK
 }
 ```
 
-</details>
-
 :pushpin: ***NOTA:*** Existen varias versiones de respuesta, las cuales son las siguientes:
 
 | Version |                         Respuesta                             | 
@@ -357,11 +338,6 @@ Para mayor referencia de estas versiones de respuesta, favor de visitar el sigui
 # Cancelación #
 
 Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
-
-<details>
-<summary>
-Cancelacion por CSD
-</summary>
 
 ## Cancelacion por CSD ##
 Como su nombre lo indica, este método realiza la cancelacion mediante los CSD.
@@ -489,12 +465,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Cancelacion por PFX
-</summary>
 
 ## Cancelacion por PFX ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el PFX.
@@ -616,12 +586,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Cancelacion por XML
-</summary>
 
 ## Cancelacion por XML ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el XML sellado con los UUID a cancelar.
@@ -722,12 +686,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Cancelacion por UUID
-</summary>
 
 ## Cancelacion por UUID ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el UUID a cancelar.
@@ -840,7 +798,6 @@ namespace PruebaReadme
     }
 }
 ```
-</details>
 
 # Consulta de Saldos #
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
@@ -936,11 +893,6 @@ namespace ExampleSDK
 ```
 
 # Validación #
-
-<details>
-<summary>
-Validación XML
-</summary>
 
 ## Validación XML ##
 Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
@@ -1075,15 +1027,8 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
 
 # Consulta Estatus #
-
-<details>
-<summary>
-Consulta Estatus SAT
-</summary>
 
 ## Consulta Estatus SAT ##
 Este servicio sirve para consultar el estatus de un CFDI antes y después de enviarlo a cancelar, con él sabremos sí puede ser cancelado de forma directa, o en caso de que se necesite consultar los CFDI relacionados para poder generar la cancelación.
@@ -1201,12 +1146,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Relacionados por PFX
-</summary>
 
 ## Relacionados por PFX ##
 Este método obtendra un listado de los UUID relacionados mediante PFX.
@@ -1274,12 +1213,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Relacionados por XML
-</summary>
 
 ## Relacionados por XML ##
 Este método obtendra un listado de los UUID relacionados mediante el XML.
@@ -1373,12 +1306,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Relacionados por UUID
-</summary>
 
 ## Relacionados por UUID ##
 Este método obtendra un listado de los UUID relacionados mediante el UUID de la factura.
@@ -1442,7 +1369,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
 
 # Consulta solicitudes pendientes Aceptar / Rechazar #
 Este método obtendra una lista de los UUID que tenemos pendientes por aceptar o rechazar.
@@ -1493,11 +1419,6 @@ namespace ExampleSDK
 
 # Aceptar / Rechazar #
 Servicio mediante el cual aceptaremos o rechazaremos los UUID.
-
-<details>
-<summary>
-Aceptar / Rechazar por CSD
-</summary>
 
 ## Aceptar / Rechazar por CSD ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante CSD.
@@ -1559,12 +1480,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Aceptar / Rechazar por PFX
-</summary>
 
 ## Aceptar / Rechazar por PFX ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante PFX.
@@ -1624,12 +1539,6 @@ namespace ExampleSDK
 }
 
 ```
-</details>
-
-<details>
-<summary>
-Aceptar / Rechazar por XML
-</summary>
 
 ## Aceptar / Rechazar por XML ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante XML.
@@ -1717,12 +1626,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Aceptar / Rechazar por UUID
-</summary>
 
 ## Aceptar / Rechazar por UUID ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante UUID.
@@ -1777,15 +1680,9 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
 
 # Recuperar XML #
 Servicio para recuperar información de un XML timbrado con SW.
-
-<details>
-<summary>
-Recuperar por UUID
-</summary>
 
 ## Recuperar por UUID ##
 Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
@@ -1855,14 +1752,8 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
 
 # PDF #
-
-<details>
-<summary>
-Generar PDF
-</summary>
 
 ## Generar PDF ##
 Este método genera y obtiene un pdf en base64 a partir de un documento XML timbrado y una plantilla. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
@@ -2061,12 +1952,6 @@ namespace ExampleSDK
 | :white_check_mark: | :white_check_mark: | Carta porte                     |
 
 Para mayor referencia de estas plantillas de PDF, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/plantillas-pdf/).
-</details>
-
-<details>
-<summary>
-Regenerar PDF
-</summary>
 
 ## Regenerar PDF ##
 El servicio podrá generar o regenerar un PDF de un CFDI previamente timbrados y podrá guardar o remplazar el archivo PDF para ser visualizado posteriormente desde el portal de Smarter. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
@@ -2138,12 +2023,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Reenvio Email
-</summary>
 
 ## Reenvio Email ##
 Este servicio realiza el reenvío de un xml y/o pdf existente mediante su UUID
@@ -2264,16 +2143,10 @@ namespace ExampleSDK
         }
     }
 ```
-</details>
 
 # Certificados #
 Servicio para gestionar los certificados CSD de tu cuenta, será posible cargar, consultar y eliminar los certificados.
 Para administrar los certificados de manera gráfica, puede hacerlo desde el [Administrador de timbres](https://portal.sw.com.mx/).
-
-<details>
-<summary>
-Consultar Certificados
-</summary>
 
 ## Consultar Certificados ##
 Método para consultar todos los certificados cargados en la cuenta.
@@ -2335,12 +2208,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Consultar Certificado Por NoCertificado
-</summary>
 
 ## Consultar Certificado Por NoCertificado ##
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
@@ -2403,12 +2270,6 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Cargar Certificado
-</summary>
 
 ## Cargar Certificado ##
 Método para cargar un certificado en la cuenta.
@@ -2457,12 +2318,6 @@ namespace PruebaReadme
     }
 }
 ```
-</details>
-
-<details>
-<summary>
-Eliminar Certificado
-</summary>
 
 ## Eliminar Certificado ##
 Método para eliminar un certificado de la cuenta.
@@ -2502,8 +2357,6 @@ namespace PruebaReadme
     }
 }
 ```
-</details>
-
 
 # TimbradoV4 #
 
