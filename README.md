@@ -78,6 +78,7 @@ namespace ExampleSDK
 }
 ```
 ---
+
 # Timbrado #
 
 <details>
@@ -355,6 +356,7 @@ namespace ExampleSDK
 Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
 ---
+
 # Cancelación #
 
 Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
@@ -844,6 +846,7 @@ namespace PruebaReadme
 </details>
 
 ---
+
 # Consulta de Saldos #
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 
@@ -937,7 +940,13 @@ namespace ExampleSDK
 }
 ```
 ---
+
 # Validación #
+
+<details>
+<summary>
+Validación XML
+</summary>
 
 ## Validación XML ##
 Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
@@ -1072,8 +1081,16 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
+
 ---
+
 # Consulta Estatus #
+
+<details>
+<summary>
+Consulta Estatus SAT
+</summary>
 
 ## Consulta Estatus SAT ##
 Este servicio sirve para consultar el estatus de un CFDI antes y después de enviarlo a cancelar, con él sabremos sí puede ser cancelado de forma directa, o en caso de que se necesite consultar los CFDI relacionados para poder generar la cancelación.
@@ -1103,7 +1120,7 @@ namespace ExampleSDK
             try
             {
                 Status status = new Status("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc");
-                var response = status.GetStatusCFDI("GOM0809114P5", "LSO1306189R5", "206.85", "021ea2fb-2254-4232-983b-9808c2ed831b", "WBjHe+9loaYIMM5wYwLxfhT6FnotG0KLRNheOlIxXoVMvsafsRdWY/aZkqPmYCbjyWVrdLN5120ThjlGPcUGcziOnHXfklslpW3aMu2RVAB8Lp95baMs+a7eTlzh4QcvU5eXYlzxGVIW+64UNQpAK2ssurE+1+7a/CUZeq7fdSLMKdwxulWaSADA+4le6QI16Lb/eLD+oJ+X8/zAT4KfYw5L/eRkOoAzrPpDFeydQq8dzTljPFRoHvsguZf4WrbOcyYqUzo9EiZl7bVuxDb0X6sV/Kn9ZKAEXhIyXbcGzVhJB3MM1Zi5Yh+zxvnzYXcE9pXCRp4ff7kvOpzyvtsNVA==");
+                var response = status.GetStatusCFDI("GOM0809114P5", "LSO1306189R5", "206.85", "021ea2fb-2254-4232-983b-9808c2ed831b", "WBjHe+9loaYIMM5wYwLxfhT6FnotG0KLRNheOlIxXoVMvsafsRdWY/aZ....");
             }
             catch (Exception e)
             {
@@ -1113,6 +1130,8 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
+
 ---
 
 # CFDI Relacionados #
@@ -1777,6 +1796,11 @@ namespace ExampleSDK
 # Recuperar XML #
 Servicio para recuperar información de un XML timbrado con SW.
 
+<details>
+<summary>
+Recuperar por UUID
+</summary>
+
 ## Recuperar por UUID ##
 Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
 
@@ -1845,6 +1869,8 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
+
 ---
 
 # PDF #
@@ -2279,8 +2305,9 @@ Este metodo recibe los siguientes parametros:
 using SW.Services.Csd;
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
@@ -2293,7 +2320,30 @@ namespace PruebaReadme
                 //Automaticamente se procedera a la consulta
                 CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await csd.GetAllCsdAsync();
-
+                //En caso exitoso se podran obtener los siguientes datos
+                List<CsdData> detail = response.data;
+                Console.Write("Status: " + response.status);
+                if(response.status == "success")
+                {
+                    Console.Write("\ndetail: ");
+                    foreach (var i in detail)
+                    {
+                        Console.Write(i.issuer_rfc + "\n");
+                        Console.Write(i.certificate_number + "\n");
+                        Console.Write(i.csd_certificate + "\n");
+                        Console.Write(i.is_active + "\n");
+                        Console.Write(i.issuer_business_name + "\n");
+                        Console.Write(i.valid_from + "\n");
+                        Console.Write(i.valid_to + "\n");
+                        Console.Write(i.certificate_type + "\n");
+                    }
+                }
+                else
+                {
+                    //En caso de error se pueden consultar los siguientes campos
+                    Console.WriteLine(response.message);
+                    Console.WriteLine(response.messageDetail);
+                }
             }
             catch (Exception e)
             {
@@ -2314,12 +2364,62 @@ Consultar Certificado Por NoCertificado
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
 
 Este metodo recibe los siguientes parametros:
-* Url Servicios SW
-* Token
+- Url Servicios SW
+- Token
 * Número de certificado a obtener
 
 **Ejemplo de consumo de la libreria para la consulta de certificados por Número de Certificado mediante token**
-```java
+```cs
+using SW.Services.Csd;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo CsdUtils
+                //A esta le pasamos la Url y token
+                //Automaticamente se procedera a la consulta
+                CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                var response = await csd.GetAllCsdAsync("30001000000400002434");
+                //En caso exitoso se podran obtener los siguientes datos
+                List<CsdData> detail = response.data;
+                Console.Write("Status: " + response.status);
+                if(response.status == "success")
+                {
+                    Console.Write("\ndetail: ");
+                    foreach (var i in detail)
+                    {
+                        Console.Write(i.issuer_rfc + "\n");
+                        Console.Write(i.certificate_number + "\n");
+                        Console.Write(i.csd_certificate + "\n");
+                        Console.Write(i.is_active + "\n");
+                        Console.Write(i.issuer_business_name + "\n");
+                        Console.Write(i.valid_from + "\n");
+                        Console.Write(i.valid_to + "\n");
+                        Console.Write(i.certificate_type + "\n");
+                    }
+                }
+                else
+                {
+                    //En caso de error se pueden consultar los siguientes campos
+                    Console.WriteLine(response.message);
+                    Console.WriteLine(response.messageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
 ```
 </details>
 
@@ -2332,16 +2432,48 @@ Cargar Certificado
 Método para cargar un certificado en la cuenta.
 
 Este metodo recibe los siguientes parametros:
-* Url Servicios SW
-* Token
+- Url Servicios SW
+- Token
 * CSD en Base64
 * Key en Base64
 * Contraseña del certificado
-* Tipo de certificado (Default = “stamp”)
-* Estado del certificado (Default = “true”)
 
 **Ejemplo de consumo de la libreria para la carga de certificado mediante token**
 ```cs
+using SW.Services.Csd;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+
+namespace PruebaReadme
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Datos necesarios
+                string CerPassword = "12345678a";
+                //Obtenemos Certificado y lo convertimos a Base 64 
+                string Cer = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.cer"));
+                //Obtenemos LLave y lo convertimos a Base 64 
+                string Key = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.key"));
+                //Creamos una instancia de tipo CsdUtils
+                //A esta le pasamos la Url y token
+                //Automaticamente se procedera a la carga de los certificados
+                CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                var response = await csd.UploadCsdAsync(Cer, Key, CerPassword);
+                //obtenemos la respuesta
+                Console.WriteLine(response.data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
 ```
 </details>
 
@@ -2354,24 +2486,115 @@ Eliminar Certificado
 Método para eliminar un certificado de la cuenta.
 
 Este metodo recibe los siguientes parametros:
-* Url Servicios SW
-* Token
+- Url Servicios SW
+- Token
 * Número de certificado a eliminar
 
 **Ejemplo de consumo de la libreria para eliminar un certificado mediante token**
-```java
+```cs
+using SW.Services.Csd;
+using System;
+using System.Threading.Tasks;
+
+namespace PruebaReadme
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo CsdUtils
+                //A esta le pasamos la Url y token
+                //Automaticamente se procedera a la eliminacion
+                CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                var response = await csd.DeleteCsdAsync("30001000000400002442");
+                //obtenemos la respuesta
+                Console.WriteLine(response.data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
 ```
-<details>
-
-
-
-<details>
-<summary>
-Installation
-</summary>
-
-## Installation
 </details>
+
+
+# TimbradoV4 #
+
+## StampV4(XML) - Email ##
+Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el xml timbrado así como también su pdf.
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+***NOTA:*** En caso de que no se cuente con una plantilla pdf customizada los pdf’s serán generados con las plantillas genéricas.
+**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PruebaReadme
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PruebaReadme
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url y el token
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+---
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
