@@ -1131,7 +1131,6 @@ namespace ExampleSDK
 }
 ```
 </details>
-
 ---
 
 # CFDI Relacionados #
