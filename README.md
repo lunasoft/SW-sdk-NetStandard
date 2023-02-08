@@ -1068,15 +1068,9 @@ namespace ExampleSDK
     }
 }
 ```
-</details>
 
 # CFDI Relacionados #
 A través de estos siguientes métodos obtendremos un listado de los UUID que se encuentren relacionados a una factura.
-
-<details>
-<summary>
-Relacionados por CSD
-</summary>
 
 ## Relacionados por CSD ##
 Este método obtendra un listado de los UUID relacionados mediante CSD
