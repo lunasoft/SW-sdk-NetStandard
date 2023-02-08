@@ -1029,10 +1029,11 @@ namespace ExampleSDK
 }
 ```
 ---
-# Consulta Estatus#
+# Consulta Estatus #
 
 ## Consulta Estatus SAT ##
 Este servicio sirve para consultar el estatus de un CFDI antes y después de enviarlo a cancelar, con él sabremos sí puede ser cancelado de forma directa, o en caso de que se necesite consultar los CFDI relacionados para poder generar la cancelación.
+
 :pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT.
 
 Este metodo recibe los siguientes parametros:
@@ -2143,6 +2144,11 @@ namespace ExampleSDK
 ```
 ---
 
+<details>
+<summary>
+Certificados
+</summary>
+
 # Certificados #
 Servicio para gestionar los certificados CSD de tu cuenta, será posible cargar, consultar y eliminar los certificados.
 Para administrar los certificados de manera gráfica, puede hacerlo desde el [Administrador de timbres](https://portal.sw.com.mx/).
@@ -2151,11 +2157,11 @@ Para administrar los certificados de manera gráfica, puede hacerlo desde el [Ad
 Método para consultar todos los certificados cargados en la cuenta.
 
 Este metodo recibe los siguientes parametros:
-* Url Servicios SW
-* Token
+- Url Servicios SW(cuando se añaden usuario y contraseña)
+- Token
 
 **Ejemplo de consumo de la libreria para la consulta de certificados mediante token**
-```java
+```cs
 ```
 
 ## Consultar Certificado Por NoCertificado ##
@@ -2197,7 +2203,7 @@ Este metodo recibe los siguientes parametros:
 **Ejemplo de consumo de la libreria para eliminar un certificado mediante token**
 ```java
 ```
-
+</details>
 
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
