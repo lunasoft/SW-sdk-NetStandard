@@ -2507,6 +2507,9 @@ namespace PruebaReadme
 
 # TimbradoV4 #
 
+<details>
+  <summary>StampV4(XML) - Email</summary>
+
 ## StampV4(XML) - Email ##
 Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el xml timbrado así como también su pdf.
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
@@ -2576,6 +2579,7 @@ namespace PruebaReadme
     }
 }
 ```
+</details>
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
