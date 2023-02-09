@@ -2435,7 +2435,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
@@ -2486,7 +2486,7 @@ using SW.Services.Csd;
 using System;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
