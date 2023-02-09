@@ -845,6 +845,9 @@ namespace PruebaReadme
 # Consulta de Saldos #
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 
+<details>
+  <summary>Ejemplos</summary>
+
 Este metodo recibe los siguientes parametros:
 - Usuario y contraseña o Token
 - Url Servicios SW
@@ -934,6 +937,7 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
 
 # Validación #
 
@@ -1447,6 +1451,9 @@ namespace ExampleSDK
 # Consulta solicitudes pendientes Aceptar / Rechazar #
 Este método obtendra una lista de los UUID que tenemos pendientes por aceptar o rechazar.
 
+<details>
+  <summary>Ejemplos</summary>
+
 Este método recibe los siguientes parametros:
 - Url Servicios SW
 - Usuario y contraseña ò token
@@ -1490,6 +1497,7 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
 
 # Aceptar / Rechazar #
 Servicio mediante el cual aceptaremos o rechazaremos los UUID.
