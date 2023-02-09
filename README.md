@@ -292,6 +292,7 @@ namespace ExampleSDK
     }
 }
 ```
+
 **Ejemplo de consumo de la libreria para la emisión Timbrado JSON en formato string utilizando token**
 ```cs
 using SW.Services.Issue;
