@@ -2531,7 +2531,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
@@ -2563,7 +2563,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
