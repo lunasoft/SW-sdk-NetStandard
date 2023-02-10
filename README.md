@@ -79,7 +79,7 @@ namespace ExampleSDK
 ```
 ---
 
-# Timbrado #
+## Timbrado ##
 
 <details>
 <summary>
@@ -354,7 +354,7 @@ namespace ExampleSDK
 
 Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
-# Cancelación #
+## Cancelación ##
 
 Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
 
@@ -843,7 +843,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Consulta de Saldos #
+## Consulta de Saldos ##
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 
 <details>
@@ -946,7 +946,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Validación #
+## Validación ##
 
 <details>
 <summary>
@@ -1089,7 +1089,7 @@ namespace ExampleSDK
 </details>
 
 
-# Consulta Estatus #
+## Consulta Estatus ##
 
 <details>
 <summary>
@@ -1139,7 +1139,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# CFDI Relacionados #
+## CFDI Relacionados ##
 A través de estos siguientes métodos obtendremos un listado de los UUID que se encuentren relacionados a una factura.
 
 <details>
@@ -1459,7 +1459,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Consulta solicitudes pendientes Aceptar / Rechazar #
+## Consulta solicitudes pendientes Aceptar / Rechazar ##
 Este método obtendra una lista de los UUID que tenemos pendientes por aceptar o rechazar.
 
 <details>
@@ -1510,7 +1510,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Aceptar / Rechazar #
+## Aceptar / Rechazar ##
 Servicio mediante el cual aceptaremos o rechazaremos los UUID.
 
 <details>
@@ -1799,7 +1799,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Recuperar XML #
+## Recuperar XML ##
 Servicio para recuperar información de un XML timbrado con SW.
 
 <details>
@@ -1877,7 +1877,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# PDF #
+## PDF ##
 
 <details>
 <summary>
@@ -2288,7 +2288,7 @@ namespace ExampleSDK
 ```
 </details>
 
-# Certificados #
+## Certificados ##
 Servicio para gestionar los certificados CSD de tu cuenta, será posible cargar, consultar y eliminar los certificados.
 Para administrar los certificados de manera gráfica, puede hacerlo desde el [Administrador de timbres](https://portal.sw.com.mx/).
 
@@ -2527,7 +2527,7 @@ namespace ExampleSDK
 </details>
 
 
-# TimbradoV4 #
+## TimbradoV4 ##
 
 <details>
   <summary>StampV4(XML) - Email</summary>
