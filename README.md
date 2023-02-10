@@ -23,7 +23,7 @@ Librería NetStandard para el consumo de los servicios de SW sapien®.
 - NewtonSoft
 ---
 
-### Documentacion
+### Documentación
 * [Inicio Rápido](https://developers.sw.com.mx/knowledge-base/conoce-el-proceso-de-integracion-en-solo-7-pasos/)
 * [Documentacion Oficial Servicios](http://developers.sw.com.mx)
 ---
@@ -77,6 +77,7 @@ namespace ExampleSDK
     }
 }
 ```
+---
 
 # Timbrado #
 
@@ -140,8 +141,8 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo Stamp 
-                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                //A esta le pasamos la Url y el token
+                //Despues se procedera a timbrar el xml
                 Stamp stamp = new Stamp("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var xml = Encoding.UTF8.GetString(File.ReadAllBytes("file.xml"));
                 var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
@@ -171,8 +172,8 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo Stamp 
-                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                //A esta le pasamos la Url y el token
+                //Despues se procedera a timbrar el xml
                 Stamp stamp = new Stamp("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var xml = Convert.ToBase64String(Encoding.UTF8.GetBytes("file.xml"));
                 var response = (StampResponseV1)await stamp.TimbrarV1Async(xml,true);
@@ -216,7 +217,7 @@ namespace ExampleSDK
         {
             try
             {
-                //Creamos una instancia de tipo Stamp 
+                //Creamos una instancia de tipo Issue 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
                 //Automaticamente despues de obtenerlo se procedera a timbrar el xml
                 Issue issue = new Issue("http://services.test.sw.com.mx", "user", "password");
@@ -248,9 +249,9 @@ namespace ExampleSDK
         {
             try
             {
-                //Creamos una instancia de tipo Stamp 
-                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                //Creamos una instancia de tipo Issue 
+                //A esta le pasamos la Url y el token
+                //Despues se procedera a timbrar el xml
                 Issue issue = new Issue("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var xml = Encoding.UTF8.GetString(File.ReadAllBytes("file.xml"));
                 var response = (StampResponseV1)await issue.TimbrarV1Async(xml);
@@ -294,9 +295,9 @@ namespace ExampleSDK
         {
             try
             {
-                //Creamos una instancia de tipo Stamp 
-                //A esta le pasamos la Url y su Token infinito 
-                //Este lo puede obtener ingresando al administrador de timbres con su usuario y contraseña
+                //Creamos una instancia de tipo IssueJson 
+                //A esta le pasamos la Url, usuario y contraseña 
+                //Despues se procedera a timbrar el xml
                 IssueJson issue = new IssueJson("http://services.test.sw.com.mx", "user", "password");
                 var json = Encoding.UTF8.GetString(File.ReadAllBytes("file.json"));
                 var response = (StampResponseV1)await issue.TimbrarJsonV1Async(json);
@@ -325,9 +326,9 @@ namespace ExampleSDK
         {
             try
             {
-                //Creamos una instancia de tipo Stamp 
+                //Creamos una instancia de tipo IssueJson 
                 //A esta le pasamos la Url y su Token infinito 
-                //Este lo puede obtener ingresando al administrador de timbres con su usuario y contraseña
+                //Despues se procedera a timbrar el xml
                 IssueJson issue = new IssueJson("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var json = Encoding.UTF8.GetString(File.ReadAllBytes("file.json"));
                 var response = (StampResponseV1)await issue.TimbrarJsonV1Async(json);
@@ -340,7 +341,6 @@ namespace ExampleSDK
     }
 }
 ```
-
 </details>
 
 :pushpin: ***NOTA:*** Existen varias versiones de respuesta, las cuales son las siguientes:
@@ -367,8 +367,8 @@ Cancelacion por CSD
 Como su nombre lo indica, este método realiza la cancelacion mediante los CSD.
 
 Este método recibe los siguientes parametros:
-- Usuario y contraseña
-- Url Servicios SW
+* Usuario y contraseña
+* Url Servicios SW
 * Certificado (.cer) en **Base64**
 * Key (.key) en **Base64**
 * RFC emisor
@@ -377,7 +377,7 @@ Este método recibe los siguientes parametros:
 * Motivo
 * Folio Sustitución (Si el motivo es 01)
 
-**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 02 sin relación a documento mediante token**
+**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 02 sin relación a documento mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -433,7 +433,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 01 con relación a documento mediante token**
+**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 01 con relación a documento mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -500,15 +500,16 @@ Cancelacion por PFX
 Como su nombre lo indica, este método realiza la cancelacion mediante el PFX.
 
 Este método recibe los siguientes parametros:
-- Usuario y contraseña
-- Url Servicios SW
+* Usuario y contraseña
+* Url Servicios SW
 * Archivo PFX en **Base64**
 * RFC emisor
 * Password (CSD)
 * UUID
 * Motivo
 * Folio Sustitución
-**Ejemplo de consumo de la libreria para cancelar con PFX con motivo de cancelación 02 sin relación a documento mediante token**
+
+**Ejemplo de consumo de la libreria para cancelar con PFX con motivo de cancelación 02 sin relación a documento mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -562,7 +563,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con PFX con motivo 01 con documento relacionado mediante token**
+**Ejemplo de consumo de la libreria para cancelar con PFX con motivo 01 con documento relacionado mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -627,8 +628,8 @@ Cancelacion por XML
 Como su nombre lo indica, este método realiza la cancelacion mediante el XML sellado con los UUID a cancelar.
 
 Este método recibe los siguientes parametros:
-- Usuario y contraseña
-- Url Servicios SW
+* Usuario y contraseña
+* Url Servicios SW
 * XML sellado con los UUID a cancelar.
 
 **Ejemplo de XML para Cancelar**
@@ -673,7 +674,7 @@ Ejemplo de nodo Folio:
 </Folios>
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con XML mediante token**
+**Ejemplo de consumo de la libreria para cancelar con XML mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -733,8 +734,8 @@ Cancelacion por UUID
 Como su nombre lo indica, este método realiza la cancelacion mediante el UUID a cancelar.
 
 Este método recibe los siguientes parametros:
-- Usuario y contraseña
-- Url Servicios SW
+* Usuario y contraseña
+* Url Servicios SW
 * RFC emisor
 * UUID
 * Motivo
@@ -746,7 +747,7 @@ using SW.Services.Cancelation;
 using System;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
@@ -796,7 +797,7 @@ using SW.Services.Cancelation;
 using System;
 using System.Threading.Tasks;
 
-namespace PruebaReadme
+namespace ExampleSDK
 {
     class Program
     {
@@ -849,8 +850,8 @@ Método mediante el cual puedes realizar la consulta de tu saldo para consumir l
   <summary>Ejemplos</summary>
 
 Este metodo recibe los siguientes parametros:
-- Usuario y contraseña o Token
-- Url Servicios SW
+* Usuario y contraseña o Token
+* Url Servicios SW
 
 **Ejemplo de consumo de la libreria para consultar el saldo mediante usuario y contraseña**
 ```cs
@@ -866,6 +867,9 @@ namespace ExampleSDK
         {
             try
             {
+                //Creamos una instancia de tipo BalanceAccount 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a la consulta de saldo
                 BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", "user", "password");
                 AccountResponse response = await account.ConsultarSaldoAsync();
                 if (response.status != "error")
@@ -909,6 +913,9 @@ namespace ExampleSDK
         {
             try
             {
+                //Creamos una instancia de tipo BalanceAccount 
+                //A esta le pasamos la Url y el token
+                //Despues se procedera a la consulta de saldo
                 BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 AccountResponse response = await account.ConsultarSaldoAsync();
                 if (response.status != "error")
@@ -950,8 +957,8 @@ Validación XML
 Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña o token
+* Url Servicios SW
+* Usuario y contraseña o token
 * XML
 
 **Ejemplo de consumo de la libreria para validación de XML mediante usuario y contraseña**
@@ -1095,8 +1102,8 @@ Este servicio sirve para consultar el estatus de un CFDI antes y después de env
 :pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña o token
+* Url Servicios SW
+* Usuario y contraseña o token
 * RFC Emisor
 * RFC Receptor
 * Total declarado en el comprobante
@@ -1116,6 +1123,9 @@ namespace ExampleSDK
         {
             try
             {
+                //Creamos una instancia de tipo Status
+                //A esta le pasamos la Url.
+                //Despues realizamos la peticion pasando los parametros necesarios en el orden mencionados.
                 Status status = new Status("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc");
                 var response = status.GetStatusCFDI("GOM0809114P5", "LSO1306189R5", "206.85", "021ea2fb-2254-4232-983b-9808c2ed831b", "WBjHe+9loaYIMM5wYwLxfhT6FnotG0KLRNheOlIxXoVMvsafsRdWY/aZ....");
             }
@@ -1141,8 +1151,8 @@ Relacionados por CSD
 Este método obtendra un listado de los UUID relacionados mediante CSD
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * Certificado en base64
 * Llave en base64 
 * RFC del emisor 
@@ -1172,7 +1182,7 @@ namespace ExampleSDK
                 //Obtenemos LLave y lo convertimos a Base 64
                 string Key = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.key"));
                 //Creamos una instancia de tipo Relations
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a consultar las facturas relacionadas
                 Relations relations = new Relations("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1216,8 +1226,8 @@ Relacionados por PFX
 Este método obtendra un listado de los UUID relacionados mediante PFX.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * UUID del comprobante
 * RFC del emisor
 * Archivo Pfx en Base64
@@ -1244,7 +1254,7 @@ namespace ExampleSDK
                 //Obtenemos PFX y lo convertimos a Base 64
                 string Pfx = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.pfx"));
                 //Creamos una instancia de tipo Relations
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a consultar las facturas relacionadas
                 Relations relations = new Relations("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1289,8 +1299,8 @@ Relacionados por XML
 Este método obtendra un listado de los UUID relacionados mediante el XML.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * XML del comprobante
 
 **Ejemplo de XML**
@@ -1343,7 +1353,7 @@ namespace ExampleSDK
                 //Obtenemos el XML
                 byte[] Rxml = File.ReadAllBytes("cancelacion.xml");
                 //Creamos una instancia de tipo Relations
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a consultar las facturas relacionadas
                 Relations relations = new Relations("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1388,12 +1398,13 @@ Relacionados por UUID
 Este método obtendra un listado de los UUID relacionados mediante el UUID de la factura.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * UUID de la factura que ser requiere consultar relacionados
 * RFC del emisor
 
 :pushpin: ***NOTA:*** El usuario deberá tener sus certificados en el administrador de timbres para la utilización de este método.
+
 **Ejemplo de consumo de la librería para la consulta CFDI relacionados por UUID mediante usuario y contraseña**
 ```cs
 using SW.Services.Relations;
@@ -1412,7 +1423,7 @@ namespace ExampleSDK
                 string Rfc = "EKU9003173C9";
                 string uuid = "31c885c8-6dcb-4d82-9cfd-01707c828c50";
                 //Creamos una instancia de tipo Relations
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a consultar las facturas relacionadas
                 Relations relations = new Relations("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1455,8 +1466,8 @@ Este método obtendra una lista de los UUID que tenemos pendientes por aceptar o
   <summary>Ejemplos</summary>
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * RFC Receptor
 
 **Ejemplo de consumo de la librería para la consulta de solicitudes pendientes mediante usuario y contraseña**
@@ -1474,7 +1485,7 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo Pending
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a consultar las facturas relacionadas
                 Pending pendientes = new Pending("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1511,8 +1522,8 @@ Aceptar / Rechazar por CSD
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante CSD.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * Certificado del receptor en Base64
 * Llave(key) del receptor en Base64
 * RFC del emisor
@@ -1542,7 +1553,7 @@ namespace ExampleSDK
                 //Obtenemos LLave del receptor y lo convertimos a Base 64
                 string KeyReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CACX7605101P8.key"));
                 //Creamos una instancia de tipo AcceptReject
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a procesar las facturas con su acción
                 AcceptReject acceptReject = new AcceptReject("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1578,8 +1589,8 @@ Aceptar / Rechazar por PFX
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante PFX.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * Archivo Pfx en Base64
 * Contraseña del certificado
 * RFC del emisor
@@ -1606,7 +1617,7 @@ namespace ExampleSDK
                 //Obtenemos PFX del receptor y lo convertimos a Base 64 
                 string PfxReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CACX7605101P8.pfx"));
                 //Creamos una instancia de tipo AcceptReject
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a procesar las facturas con su acción
                 AcceptReject acceptReject = new AcceptReject("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la peticion
@@ -1643,8 +1654,8 @@ Aceptar / Rechazar por XML
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante XML.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * XML con datos requeridos para la aceptacion/rechazo de la cancelación
 
 **Ejemplo de XML**
@@ -1700,7 +1711,7 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo AcceptReject
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a procesar las facturas con su acción
                 AcceptReject acceptReject = new AcceptReject("http://services.test.sw.com.mx", "user", "password");
                 var xml = File.ReadAllText("Resources/aceptacionRechazo.xml");
@@ -1736,13 +1747,14 @@ Aceptar / Rechazar por UUID
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante UUID.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW
-- Usuario y contraseña ò token
+* Url Servicios SW
+* Usuario y contraseña ò token
 * RFC del receptor
 * UUID de la factura que se requiere aceptar/rechazar
 * Acción que se requiera realizar Aceptacion/Rechazo
 
 :pushpin: ***NOTA:*** El usuario deberá tener sus certificados en el administrador de timbres para la utilización de este método.
+
 **Ejemplo de consumo de la librería para la aceptacion/rechazo de la solicitud por UUID mediante usuario y contraseña**
 ```cs
 using SW.Services.AcceptReject;
@@ -1799,9 +1811,9 @@ Recuperar por UUID
 Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
 
 Este metodo recibe los siguientes parametros:
-- Url Api SW
-- Url Servicios SW (Cuando se use usuario y contraseña)
-- Usuario y contraseña ò token
+* Url Api SW
+* Url Servicios SW (Cuando se use usuario y contraseña)
+* Usuario y contraseña ò token
 * UUID
 
 **Ejemplo de consumo de la libreria para la recuperación de XML mediante usuario y contraseña**
@@ -1881,6 +1893,7 @@ Este método genera y obtiene un pdf en base64 a partir de un documento XML timb
 * Template id
 * Xml timbrado
 * Datos extra (opcional)
+
 **Ejemplo de consumo de la libreria para la generación de PDF mediante usuario y contraseña**
 ```cs
 using SW.Services.Pdf;
@@ -2079,8 +2092,8 @@ Regenerar PDF
 ## Regenerar PDF ##
 El servicio podrá generar o regenerar un PDF de un CFDI previamente timbrados y podrá guardar o remplazar el archivo PDF para ser visualizado posteriormente desde el portal de Smarter. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
 
-- Url Servicios SW(cuando se añaden usuario y contraseña)
-- Url Api
+* Url Servicios SW(cuando se añaden usuario y contraseña)
+* Url Api
 * UUID
 **Ejemplo de consumo de la libreria para la regeneración de PDF mediante usuario y contraseña**
 ```cs
@@ -2158,8 +2171,8 @@ Este servicio realiza el reenvío de un xml y/o pdf existente mediante su UUID
 a través de correo electrónico.
 
 Este método recibe los siguientes parametros:
-- Url Servicios SW(cuando se añaden usuario y contraseña)
-- Url Api
+* Url Servicios SW(cuando se añaden usuario y contraseña)
+* Url Api
 * UUID: Folico fiscal del comprobante timbrado
 * email: Correo electrónico (máximo 5 correos separados por ” , ” )
 
@@ -2177,7 +2190,7 @@ namespace ExampleSDK
         {
             try
             {
-                //Creamos una instancia de tipo Pdf
+                //Creamos una instancia de tipo Resend
                 //A esta le pasamos la Url api, Url Servicios, usuario y contraseña
                 //Automaticamente despues de obtenerlo se procedera al reenvio de email
                 Resend resend = new Resend("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
@@ -2287,8 +2300,8 @@ Consultar Certificados
 Método para consultar todos los certificados cargados en la cuenta.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW(cuando se añaden usuario y contraseña)
-- Token
+* Url Servicios SW(cuando se añaden usuario y contraseña)
+* Token
 
 **Ejemplo de consumo de la libreria para la consulta de certificados mediante token**
 ```cs
@@ -2354,8 +2367,8 @@ Consultar Certificado Por NoCertificado
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW
-- Token
+* Url Servicios SW
+* Token
 * Número de certificado a obtener
 
 **Ejemplo de consumo de la libreria para la consulta de certificados por Número de Certificado mediante token**
@@ -2422,8 +2435,8 @@ Cargar Certificado
 Método para cargar un certificado en la cuenta.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW
-- Token
+* Url Servicios SW
+* Token
 * CSD en Base64
 * Key en Base64
 * Contraseña del certificado
@@ -2476,8 +2489,8 @@ Eliminar Certificado
 Método para eliminar un certificado de la cuenta.
 
 Este metodo recibe los siguientes parametros:
-- Url Servicios SW
-- Token
+* Url Servicios SW
+* Token
 * Número de certificado a eliminar
 
 **Ejemplo de consumo de la libreria para eliminar un certificado mediante token**
@@ -2523,6 +2536,7 @@ Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado d
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
 ***NOTA:*** En caso de que no se cuente con una plantilla pdf customizada los pdf’s serán generados con las plantillas genéricas.
+
 **Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
 ```cs
 using SW.Services.Stamp;
