@@ -7,6 +7,7 @@ using SW.Services.Stamp;
 using Test_SW.Helpers;
 using Xunit;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Test_SW.Services.Stamp_Test
 {
@@ -197,7 +198,6 @@ namespace Test_SW.Services.Stamp_Test
         public async Task Stamp_Test_MultipleStampV2XMLV1byTokenAsync()
         {
             var build = new BuildSettings();
-            var resultExpect = false;
             int iterations = 10;
             StampV2 stamp = new StampV2(build.Url, build.Token);
             List<StampResponseV1> listXmlResult = new List<StampResponseV1>();
@@ -208,10 +208,8 @@ namespace Test_SW.Services.Stamp_Test
                 var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
                 listXmlResult.Add(response);
             }
-            if (listXmlResult != null)
-                resultExpect = listXmlResult.FindAll(w => w.status == ResponseType.success.ToString() || w.message.Contains("72 horas")).Count == iterations;
-
-            Assert.True((bool)resultExpect);
+            Assert.True(listXmlResult.Count.Equals(iterations));
+            Assert.True(!listXmlResult.Any(l => l.status != "success"));
         }
         private string GetXml(BuildSettings build)
         {
