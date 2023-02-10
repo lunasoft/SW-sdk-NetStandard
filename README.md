@@ -251,7 +251,7 @@ namespace ExampleSDK
             {
                 //Creamos una instancia de tipo Issue 
                 //A esta le pasamos la Url y el token
-                //Despues se procedera a timbrar el xml
+                //Despues se procedera a timbrar el XML
                 Issue issue = new Issue("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var xml = Encoding.UTF8.GetString(File.ReadAllBytes("file.xml"));
                 var response = (StampResponseV1)await issue.TimbrarV1Async(xml);
@@ -297,7 +297,7 @@ namespace ExampleSDK
             {
                 //Creamos una instancia de tipo IssueJson 
                 //A esta le pasamos la Url, usuario y contraseña 
-                //Despues se procedera a timbrar el xml
+                //Despues se procedera a timbrar el XML
                 IssueJson issue = new IssueJson("http://services.test.sw.com.mx", "user", "password");
                 var json = Encoding.UTF8.GetString(File.ReadAllBytes("file.json"));
                 var response = (StampResponseV1)await issue.TimbrarJsonV1Async(json);
@@ -328,7 +328,7 @@ namespace ExampleSDK
             {
                 //Creamos una instancia de tipo IssueJson 
                 //A esta le pasamos la Url y su Token infinito 
-                //Despues se procedera a timbrar el xml
+                //Despues se procedera a timbrar el XML
                 IssueJson issue = new IssueJson("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var json = Encoding.UTF8.GetString(File.ReadAllBytes("file.json"));
                 var response = (StampResponseV1)await issue.TimbrarJsonV1Async(json);
@@ -348,7 +348,7 @@ namespace ExampleSDK
 | Version |                         Respuesta                             | 
 |---------|---------------------------------------------------------------|
 |  V1     | Devuelve el timbre fiscal digital                             | 
-|  V2     | Devuelve el timbre fiscal digital y el cfdi timbrado          | 
+|  V2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
 |  V3     | Devuelve el CFDI timbrado                                     | 
 |  V4     | Devuelve todos los datos del timbrado                         |
 
@@ -402,7 +402,7 @@ namespace ExampleSDK
                 string keyBase64 = Convert.ToBase64String(File.ReadAllBytes("EKU9003173C9.key"));
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid, "02");
@@ -459,7 +459,7 @@ namespace ExampleSDK
                 string keyBase64 = Convert.ToBase64String(File.ReadAllBytes("EKU9003173C9.key"));
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid, "01", folioSustitucion);
@@ -532,7 +532,7 @@ namespace ExampleSDK
                 string Pfx = Convert.ToBase64String(File.ReadAllBytes("EKU9003173C9.pfx"));
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByPFXAsync(Pfx, Rfc, password, uuid, "02");
@@ -587,7 +587,7 @@ namespace ExampleSDK
                 string Pfx = Convert.ToBase64String(File.ReadAllBytes("EKU9003173C9.pfx"));
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByPFXAsync(Pfx, Rfc, password, uuid, "02");
@@ -693,7 +693,7 @@ namespace ExampleSDK
                 byte[] xml = File.ReadAllBytes("cancelacion.xml");
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByXMLAsync(xml);
@@ -760,7 +760,7 @@ namespace ExampleSDK
                 string uuid = "478569b5-c323-4dc4-91cf-b6e9f6979527";
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByRfcUuidAsync(rfc, uuid, "02");
@@ -811,7 +811,7 @@ namespace ExampleSDK
                 string folioSustitucion = "01724196-ac5a-4735-b621-e3b42bcbb459";
                 //Creamos una instancia de tipo Cancelation 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a Cancelar el xml o cfdi
+                //Automaticamente despues de obtenerlo se procedera a Cancelar el XML o CFDI
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByRfcUuidAsync(rfc, uuid, "01", folioSustitucion);
@@ -1772,7 +1772,7 @@ namespace ExampleSDK
                 //Dato necesario
                 string RfcReceptor = "CACX7605101P8";
                 //Creamos una instancia de tipo AcceptReject
-                //A esta le pasamos la Url, usuario y password o token de authentication
+                //A esta le pasamos la Url, usuario y password o token
                 //Automaticamente despues de obtenerlo se procedera a procesar las facturas con su acción
                 AcceptReject acceptReject = new AcceptReject("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos peticion
@@ -1891,7 +1891,7 @@ Este método genera y obtiene un pdf en base64 a partir de un documento XML timb
 * Url Api
 * Logo Base64 (opcional)
 * Template id
-* Xml timbrado
+* XML timbrado
 * Datos extra (opcional)
 
 **Ejemplo de consumo de la libreria para la generación de PDF mediante usuario y contraseña**
@@ -2175,7 +2175,7 @@ Este método recibe los siguientes parametros:
 * Url Servicios SW(cuando se añaden usuario y contraseña)
 * Url Api
 * UUID: Folico fiscal del comprobante timbrado
-* email: Correo electrónico (máximo 5 correos separados por ” , ” )
+* Email: Correo electrónico (máximo 5 correos separados por ” , ” )
 
 **Ejemplo de consumo de la libreria para el reenvio de email mediante usuario y contraseña**
 ```cs
@@ -2558,7 +2558,7 @@ namespace ExampleSDK
                 var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
                 //Creamos una instancia de tipo StampV4 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
                 StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "user", "password");
                 var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
             }
