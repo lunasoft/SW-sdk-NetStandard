@@ -16,7 +16,7 @@ namespace Test_SW.Services.Resend
         public async Task ResendEmail_Success()
         {
             SW.Services.Resend.Resend resend = new SW.Services.Resend.Resend(_build.UrlApi, _build.Token);
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
@@ -27,7 +27,7 @@ namespace Test_SW.Services.Resend
         public async Task ResendEmail_Auth_Success()
         {
             SW.Services.Resend.Resend resend = new SW.Services.Resend.Resend(_build.UrlApi, _build.Url, _build.User, _build.Password);
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
@@ -46,7 +46,7 @@ namespace Test_SW.Services.Resend
                 "someemail@some.com",
                 "someemail@some.com"
             };
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("f555f184-6a60-44ce-8531-5ebc997a512e"), emails);
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
@@ -70,7 +70,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("at SW.Helpers.Validation.ValidateEmail", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_InvalidEmail_Error()
@@ -85,7 +85,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El email no tiene un formato válido."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("An invalid character was found in the mail header: '@'.", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_InvalidEmail_2_Error()
@@ -95,7 +95,7 @@ namespace Test_SW.Services.Resend
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El email no tiene un formato válido."));
-            Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("An invalid character was found in the mail header: '@'.", responseResend.messageDetail);
         }
         [Fact]
         public async Task ResendEmail_EmptyEmail_Error()
@@ -106,6 +106,7 @@ namespace Test_SW.Services.Resend
             Assert.True(responseResend.status.Equals("error"));
             Assert.True(responseResend.message.Equals("El listado de correos no tiene un formato válido, está vacío o contiene más de 5 correos."));
             Assert.True(!String.IsNullOrEmpty(responseResend.messageDetail));
+            Assert.Contains("at SW.Helpers.Validation.ValidateEmail", responseResend.messageDetail);
         }
     }
 }

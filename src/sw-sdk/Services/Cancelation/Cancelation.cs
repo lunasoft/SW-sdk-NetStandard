@@ -11,20 +11,26 @@ namespace SW.Services.Cancelation
 
         private readonly ResponseHandler<CancelationResponse> _handler;
         /// <summary>
-        /// This Service is Not Implemented
+        /// Crear una instancia de la clase Cancelation.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="user"></param>
-        /// <param name="password"></param>
+        /// <remarks>Incluye métodos para realizar cancelaciones de CFDI.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Cancelation(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _handler = new ResponseHandler<CancelationResponse>();
         }
         /// <summary>
-        /// This Service is Not Implemented
+        /// Crear una instancia de la clase Cancelation.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="token"></param>
+        /// <remarks>Incluye métodos para realizar cancelaciones de CFDI.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="token">Token de autenticación.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Cancelation(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _handler = new ResponseHandler<CancelationResponse>();
@@ -96,18 +102,52 @@ namespace SW.Services.Cancelation
                 return _handler.HandleException(e);
             }
         }
+        /// <summary>
+        /// Servicio de cancelación por CSD.
+        /// </summary>
+        /// <param name="cer">Certificado CSD del emisor en formato B64.</param>
+        /// <param name="key">Key del certificado del emisor en formato B64.</param>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="password">Contraseña del certificado.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a cancelar.</param>
+        /// <param name="motivo">Motivo de cancelación.</param>
+        /// <param name="folioSustitucion">Folio fiscal del comprobante que sustituye.</param>
+        /// <returns><see cref="CancelationResponse"/></returns>
         public Task<CancelationResponse> CancelarByCSDAsync(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
             return Cancelar(cer, key, rfc, password, uuid, motivo, folioSustitucion);
         }
+        /// <summary>
+        /// Servicio de cancelación por XML.
+        /// </summary>
+        /// <param name="xmlCancelation">XML de cancelación.</param>
+        /// <returns><see cref="CancelationResponse"/></returns>
         public Task<CancelationResponse> CancelarByXMLAsync(byte[] xmlCancelation)
         {
             return Cancelar(xmlCancelation);
         }
+        /// <summary>
+        /// Servicio de cancelación por PFX.
+        /// </summary>
+        /// <param name="pfx">Certificados en formato PFX.</param>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="password">Contraseña del PFX.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a cancelar.</param>
+        /// <param name="motivo">Motivo de cancelación.</param>
+        /// <param name="folioSustitucion">Folio fiscal del comprobante que sustituye.</param>
+        /// <returns><see cref="CancelationResponse"/></returns>
         public Task<CancelationResponse> CancelarByPFXAsync(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
             return Cancelar(pfx, rfc, password, uuid, motivo, folioSustitucion);
         }
+        /// <summary>
+        /// Servicio de cancelación por UUID.
+        /// </summary>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a cancelar.</param>
+        /// <param name="motivo">Motivo de cancelación.</param>
+        /// <param name="folioSustitucion">Folio fiscal del comprobante que sustituye.</param>
+        /// <returns><see cref="CancelationResponse"/></returns>
         public Task<CancelationResponse> CancelarByRfcUuidAsync(string rfc, string uuid, string motivo, string folioSustitucion = null)
         {
             return Cancelar(rfc, uuid, motivo, folioSustitucion);

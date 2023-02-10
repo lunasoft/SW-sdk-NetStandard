@@ -9,10 +9,27 @@ namespace SW.Services.Pendings
     public class Pending : PendingsService
     {
         private readonly ResponseHandler<PendingsResponse> _handler;
+        /// <summary>
+        /// Crear una instancia de la clase Pending.
+        /// </summary>
+        /// <remarks>Incluye métodos para la consulta de cancelaciones pendientes de aceptación o rechazo.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Pending(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _handler = new ResponseHandler<PendingsResponse>();
         }
+        /// <summary>
+        /// Crear una instancia de la clase Pending.
+        /// </summary>
+        /// <remarks>Incluye métodos para la consulta de cancelaciones pendientes de aceptación o rechazo.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="token">Token de autenticación.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Pending(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _handler = new ResponseHandler<PendingsResponse>();
@@ -35,6 +52,11 @@ namespace SW.Services.Pendings
                 return _handler.HandleException(e);
             }
         }
+        /// <summary>
+        /// Servicio de consulta de cancelaciones pendientes de aceptación o rechazo.
+        /// </summary>
+        /// <param name="rfc">RFC del receptor.</param>
+        /// <returns><see cref="PendingsResponse"/></returns>
         public async Task<PendingsResponse> PendingsByRfcAsync(string rfc)
         {
             return await PendingsRequestAsync(rfc);

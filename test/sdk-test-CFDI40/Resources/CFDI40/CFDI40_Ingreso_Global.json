@@ -22,7 +22,7 @@
   "InformacionGlobal": {
     "Periodicidad": "01",
     "Meses": "01",
-    "Año": "2021"
+    "Año": "2023"
   },
   "Emisor": {
     "Rfc": "EKU9003173C9",
@@ -45,7 +45,7 @@
             "Base": 200,
             "Impuesto": "001",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.1,
+            "TasaOCuota": 0.100000,
             "Importe": 20
           }
         ]

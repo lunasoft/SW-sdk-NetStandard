@@ -87,6 +87,26 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse(wex);
             }
         }
+        internal async Task<T> DeleteResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient(proxy))
+                {
+                    foreach (var header in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                    }
+                    client.BaseAddress = new Uri(url);
+                    var result = await client.DeleteAsync(path);
+                    return await _handler.TryGetResponseAsync(result);
+                }
+            }
+            catch (HttpRequestException wex)
+            {
+                return _handler.GetExceptionResponse(wex);
+            }
+        }
         
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
         {

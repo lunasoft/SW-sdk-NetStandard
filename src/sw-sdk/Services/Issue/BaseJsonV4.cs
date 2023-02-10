@@ -19,6 +19,15 @@ namespace SW.Services.Issue
         {
             _operation = operation;
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato JSON. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="json">String del CFDI en formato JSON.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV1"/></returns>
         public virtual async Task<StampResponseV1> TimbrarJsonV1Async(string json, string email = null, string customId = null, string[] extras = null)
         {
             ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
@@ -38,6 +47,15 @@ namespace SW.Services.Issue
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato JSON. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="json">String del CFDI en formato JSON.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV2"/></returns>
         public virtual async Task<StampResponseV2> TimbrarJsonV2Async(string json, string email = null, string customId = null, string[] extras = null)
         {
             ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
@@ -57,6 +75,15 @@ namespace SW.Services.Issue
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato JSON. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="json">String del CFDI en formato JSON.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV3"/></returns>
         public virtual async Task<StampResponseV3> TimbrarJsonV3Async(string json, string email = null, string customId = null, string[] extras = null)
         {
             ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
@@ -76,6 +103,15 @@ namespace SW.Services.Issue
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato JSON. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="json">String del CFDI en formato JSON.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV4"/></returns>
         public virtual async Task<StampResponseV4> TimbrarJsonV4Async(string json, string email = null, string customId = null, string[] extras = null)
         {
             ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();

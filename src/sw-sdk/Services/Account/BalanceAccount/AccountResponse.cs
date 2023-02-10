@@ -6,6 +6,7 @@ namespace SW.Services.Account
     {
         [DataMember]
         public Data data { get; set; }
+        
     }
     public partial class Data
     {

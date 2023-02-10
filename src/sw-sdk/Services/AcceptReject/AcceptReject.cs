@@ -10,10 +10,27 @@ namespace SW.Services.AcceptReject
     {
 
         private readonly ResponseHandler<AcceptRejectResponse> _handler;
+        /// <summary>
+        /// Crear una instancia de la clase AcceptReject.
+        /// </summary>
+        /// <remarks>Incluye métodos para la aceptación o rechazo de cancelaciones pendientes de aceptación.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public AcceptReject(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _handler = new ResponseHandler<AcceptRejectResponse>();
         }
+        /// <summary>
+        /// Crear una instancia de la clase AcceptReject.
+        /// </summary>
+        /// <remarks>Incluye métodos para la aceptación o rechazo de cancelaciones pendientes de aceptación.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="token">Token de autenticación.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public AcceptReject(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _handler = new ResponseHandler<AcceptRejectResponse>();
@@ -93,7 +110,7 @@ namespace SW.Services.AcceptReject
         /// <param name="rfc">RFC del receptor.</param>
         /// <param name="password">Contraseña del certificado.</param>
         /// <param name="uuids">Folios a aceptar o rechazar.</param>
-        /// <returns></returns>
+        /// <returns><see cref="AcceptRejectResponse"/></returns>
         public async Task<AcceptRejectResponse> AcceptByCSD(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuids)
         {
             return await AcceptRejectRequest(cer, key, rfc, password, uuids);
@@ -102,7 +119,7 @@ namespace SW.Services.AcceptReject
         /// Servicio de aceptación o rechazo por XML de comprobantes pendientes de cancelación.
         /// </summary>
         /// <param name="xmlCancelation">XML de aceptación o rechazo.</param>
-        /// <returns></returns>
+        /// <returns><see cref="AcceptRejectResponse"/></returns>
         public async Task<AcceptRejectResponse> AcceptByXML(byte[] xmlCancelation)
         {
             return await AcceptRejectRequest(xmlCancelation);
@@ -114,7 +131,7 @@ namespace SW.Services.AcceptReject
         /// <param name="rfc">RFC del receptor.</param>
         /// <param name="password">Contraseña del certificado.</param>
         /// <param name="uuid">Folios a aceptar o rechazar.</param>
-        /// <returns></returns>
+        /// <returns><see cref="AcceptRejectResponse"/></returns>
         public async Task<AcceptRejectResponse> AcceptByPFX(string pfx, string rfc, string password, AceptacionRechazoItem[] uuid)
         {
             return await AcceptRejectRequest(pfx, rfc, password, uuid);
@@ -125,7 +142,7 @@ namespace SW.Services.AcceptReject
         /// <param name="rfc">RFC del receptor.</param>
         /// <param name="uuid">Folio a aceptar o rechazar.</param>
         /// <param name="enumAcceptReject">Especifica aceptación o rechazo.</param>
-        /// <returns></returns>
+        /// <returns><see cref="AcceptRejectResponse"/></returns>
         public async Task<AcceptRejectResponse> AcceptByRfcUuid(string rfc, string uuid, EnumAcceptReject enumAcceptReject)
         {
             return await AcceptRejectRequest(rfc, uuid, enumAcceptReject);

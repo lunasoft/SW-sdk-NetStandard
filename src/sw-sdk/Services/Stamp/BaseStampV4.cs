@@ -16,6 +16,16 @@ namespace SW.Services.Stamp
         {
             _operation = operation;
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato XML. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="xml">String del CFDI en formato XML.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="isb64">Especifica si el XML está en base 64.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV1"/></returns>
         public virtual async Task<StampResponseV1> TimbrarV1Async(string xml, string email = null, string customId = null, bool isb64 = false, string[] extras = null)
         {
             StampResponseHandlerV1 handler = new StampResponseHandlerV1();
@@ -38,6 +48,16 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato XML. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="xml">String del CFDI en formato XML.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="isb64">Especifica si el XML está en base 64.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV2"/></returns>
         public virtual async Task<StampResponseV2> TimbrarV2Async(string xml, string email = null, string customId = null, bool isb64 = false, string[] extras = null)
         {
             StampResponseHandlerV2 handler = new StampResponseHandlerV2(xml);
@@ -59,6 +79,16 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato XML. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="xml">String del CFDI en formato XML.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="isb64">Especifica si el XML está en base 64.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV3"/></returns>
         public virtual async Task<StampResponseV3> TimbrarV3Async(string xml, string email = null, string customId = null, bool isb64 = false, string[] extras = null)
         {
             StampResponseHandlerV3 handler = new StampResponseHandlerV3(xml);
@@ -80,6 +110,16 @@ namespace SW.Services.Stamp
                 return handler.HandleException(ex);
             }
         }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI previamente sellado en formato XML. Si se especifica recibe un Custom Id y 
+        /// puede realizar el envío del CFDI y PDF por correo.
+        /// </summary>
+        /// <param name="xml">String del CFDI en formato XML.</param>
+        /// <param name="email">Correo para el envío del CFDI y PDF.</param>
+        /// <param name="customId">Identificador unico asignado al comprobante.</param>
+        /// <param name="isb64">Especifica si el XML está en base 64.</param>
+        /// <param name="extras">Agrega datos extras en la generación del PDF.</param>
+        /// <returns><see cref="StampResponseV4"/></returns>
         public virtual async Task<StampResponseV4> TimbrarV4Async(string xml, string email = null, string customId = null, bool isb64 = false, string[] extras = null)
         {
             StampResponseHandlerV4 handler = new StampResponseHandlerV4(xml);

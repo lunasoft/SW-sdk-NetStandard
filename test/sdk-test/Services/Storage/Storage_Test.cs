@@ -124,58 +124,67 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("401"));
-            Assert.True(response.messageDetail.Equals("Unauthorized"));
+            Assert.True(response.message.Equals("El token debe contener 3 partes"));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Storage_Auth_Error()
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("401"));
-            Assert.True(response.messageDetail.Equals("Unauthorized"));
+            Assert.True(response.message.Equals("AU4101 - El token proporcionado viene vacio."));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task StorageExtras_Token_Error()
         {
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("401"));
-            Assert.True(response.messageDetail.Equals("Unauthorized"));
+            Assert.True(response.message.Equals("El token debe contener 3 partes"));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task StorageExtras_Auth_Error()
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("401"));
-            Assert.True(response.messageDetail.Equals("Unauthorized"));
+            Assert.True(response.message.Equals("AU4101 - El token proporcionado viene vacio."));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Storage_NotFound_Error()
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("No se encuentra registro del timbrado."));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task StorageExtras_NotFound_Error()
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("No se encuentra registro del timbrado."));
+            Assert.True(string.IsNullOrEmpty(response.messageDetail));
         }
         [Fact]
         public async Task Storage_WrongUrlApi_Error()
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("404"));
             Assert.True(response.messageDetail.Equals("Not Found"));
@@ -185,6 +194,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
+            Assert.NotNull(response);
             Assert.True(response.status.Equals("error"));
             Assert.True(response.message.Equals("404"));
             Assert.True(response.messageDetail.Equals("Not Found"));
