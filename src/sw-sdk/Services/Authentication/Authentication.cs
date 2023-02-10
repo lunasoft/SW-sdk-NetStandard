@@ -8,6 +8,15 @@ namespace SW.Services.Authentication
     public class Authentication : AuthenticationService
     {
         private readonly ResponseHandler<AuthResponse> _handler;
+        /// <summary>
+        /// Crear una instancia de la clase Authentication.
+        /// </summary>
+        /// <remarks>Incluye método la obtención del token.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Authentication(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _handler = new ResponseHandler<AuthResponse>();

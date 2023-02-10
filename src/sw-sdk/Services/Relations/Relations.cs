@@ -9,10 +9,27 @@ namespace SW.Services.Relations
     public class Relations : RelationsService
     {
         private readonly ResponseHandler<RelationsResponse> _handler;
+        /// <summary>
+        /// Crear una instancia de la clase Relations.
+        /// </summary>
+        /// <remarks>Incluye métodos para la consulta de comprobantes relacionados.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Relations(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _handler = new ResponseHandler<RelationsResponse>();
         }
+        /// <summary>
+        /// Crear una instancia de la clase Relations.
+        /// </summary>
+        /// <remarks>Incluye métodos para la consulta de comprobantes relacionados.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="token">Token de autenticación.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Relations(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _handler = new ResponseHandler<RelationsResponse>();
@@ -84,19 +101,46 @@ namespace SW.Services.Relations
             }
         }
 
-
+        /// <summary>
+        /// Servicio de consulta de comprobantes relacionados por CSD.
+        /// </summary>
+        /// <param name="cer">Certificado CSD del emisor en base 64.</param>
+        /// <param name="key">Key del certificado en base 64.</param>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="password">Contraseña del certificado.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a consultar.</param>
+        /// <returns></returns>
         public async Task<RelationsResponse> RelationsByCSDAsync(string cer, string key, string rfc, string password, string uuid)
         {
             return await RelationsRequestAsync(cer, key, rfc, password, uuid);
         }
+        /// <summary>
+        /// Servicio de consulta de comprobantes relacionados por CSD.
+        /// </summary>
+        /// <param name="xmlCancelation">XML de consulta de relacionados.</param>
+        /// <returns></returns>
         public async Task<RelationsResponse> RelationsByXMLAsync(byte[] xmlCancelation)
         {
             return await RelationsRequestAsync(xmlCancelation);
         }
+        /// <summary>
+        /// Servicio de consulta de comprobantes relacionados por PFX.
+        /// </summary>
+        /// <param name="pfx">Certificados en formato PFX.</param>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="password">Contraseña del PFX.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a consultar.</param>
+        /// <returns></returns>
         public async Task<RelationsResponse> RelationsByPFXAsync(string pfx, string rfc, string password, string uuid)
         {
             return await RelationsRequestAsync(pfx, rfc, password, uuid);
         }
+        /// <summary>
+        /// Servicio de consulta de comprobantes relacionados por UUID.
+        /// </summary>
+        /// <param name="rfc">RFC del emisor.</param>
+        /// <param name="uuid">Folio fiscal del comprobante a consultar.</param>
+        /// <returns></returns>
         public async Task<RelationsResponse> RelationsByRfcUuidAsync(string rfc, string uuid)
         {
             return await RelationsRequestAsync(rfc, uuid);
