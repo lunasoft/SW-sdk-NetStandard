@@ -19,6 +19,11 @@ namespace SW.Services.Validate
             _operation = operation;
             _handler = new ResponseHandler<ValidateXmlResponse>();
         }
+        /// <summary>
+        /// Servicio para validar un CFDI en formato XML.
+        /// </summary>
+        /// <param name="XML">XML del CFDI en formato string.</param>
+        /// <returns><see cref="ValidateXmlResponse"/></returns>
         public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string XML)
         {
             try

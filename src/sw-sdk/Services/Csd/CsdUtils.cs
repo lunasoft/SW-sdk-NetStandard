@@ -10,11 +10,11 @@ namespace SW.Services.Csd
         /// <summary>
         /// Crear una instancia de la clase CsdUtils.
         /// </summary>
-        /// <param name="url">URL Base.</param>
-        /// <param name="url">URL Base.</param>
+        /// <remarks>Incluye métodos para realizar cancelaciones de CFDI.</remarks>
+        /// <param name="url">Url Services.</param>
         /// <param name="user">Usuario.</param>
-        /// <param name="password">Contrasena.</param>
-        /// <param name="proxyPort">Puerto Proxy.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
         /// <param name="proxy">Proxy.</param>
         public CsdUtils(string url, string user, string password, int proxyPort = 0, string proxy = null) 
             : base(url, user, password, proxy, proxyPort)
@@ -24,7 +24,8 @@ namespace SW.Services.Csd
         /// <summary>
         /// Crear una instancia de la clase CsdUtils.
         /// </summary>
-        /// <param name="url">URL Base.</param>
+        /// <remarks>Incluye métodos para realizar cancelaciones de CFDI.</remarks>
+        /// <param name="url">Url Services.</param>
         /// <param name="token">Token de autenticacion.</param>
         /// <param name="proxyPort">Puerto Proxy.</param>
         /// <param name="proxy">Proxy.</param>
@@ -38,7 +39,7 @@ namespace SW.Services.Csd
         /// <param name="b64Cer">Certificado CSD en formato B64.</param>
         /// <param name="b64Key">Certificado Key en formato B64.</param>
         /// <param name="password">Contraseña del certificado.</param>
-        /// <returns>CsdResponse</returns>
+        /// <returns><see cref="CsdResponse"/></returns>
         public async Task<CsdResponse> UploadCsdAsync(string b64Cer, string b64Key, string password)
         {
             return await UploadCsdServiceAsync(b64Cer, b64Key, password);
@@ -47,7 +48,7 @@ namespace SW.Services.Csd
         /// Servicio para eliminar un certificado.
         /// </summary>
         /// <param name="noCertificado">Numero de certificado.</param>
-        /// <returns>CsdResponse</returns>
+        /// <returns><see cref="CsdResponse"/></returns>
         public async Task<CsdResponse> DeleteCsdAsync(string noCertificado)
         {
             return await DeleteCsdServiceAsync(noCertificado);
@@ -55,7 +56,7 @@ namespace SW.Services.Csd
         /// <summary>
         /// Servicio para obtener todos los certificados cargados.
         /// </summary>
-        /// <returns>AllCsdResponse</returns>
+        /// <returns><see cref="AllCsdResponse"/></returns>
         public async Task<AllCsdResponse> GetAllCsdAsync()
         {
             return await GetAllCsdServiceAsync();
@@ -64,7 +65,7 @@ namespace SW.Services.Csd
         /// Servicio para obtener todos los certificados cargados filtrados por RFC.
         /// </summary>
         /// <param name="rfc">RFC del certificado.</param>
-        /// <returns>AllCsdResponse</returns>
+        /// <returns><see cref="AllCsdResponse"/></returns>
         public async Task<AllCsdResponse> GetAllCsdAsync(string rfc)
         {
             return await GetAllCsdServiceAsync(rfc);
@@ -72,8 +73,8 @@ namespace SW.Services.Csd
         /// <summary>
         /// Servicio para obtener un certificado por numero de certificado.
         /// </summary>
-        /// <param name="noCertificado">Numero de certificado.</param>
-        /// <returns>GetCsdResponse</returns>
+        /// <param name="noCertificado">Número de certificado.</param>
+        /// <returns><see cref="GetCsdResponse"/></returns>
         public async Task<GetCsdResponse> GetCsdAsync(string noCertificado)
         {
             return await GetCsdServiceAsync(noCertificado);

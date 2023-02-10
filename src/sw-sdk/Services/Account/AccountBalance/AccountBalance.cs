@@ -10,25 +10,26 @@ namespace SW.Services.Account.AccountBalance
     {
         private readonly string path = "/management/api/balance";
         /// <summary>
-        /// Balance que se genera por usuario y contraseña
+        /// Crear una instancia de la clase AccountBalance.
         /// </summary>
-        /// <param name="urlApi">URL de la API que se usará</param>
-        /// <param name="url">URL Services que realiza la autenticación</param>
-        /// <param name="user">Correo del usuario</param>
-        /// <param name="password">Contraseña del usuario</param>
-        /// <param name="proxyPort">Port</param>
-        /// <param name="proxy">Proxy</param>
+        /// <remarks>Incluye métodos para consultar saldo, agregar y eliminar timbres.</remarks>
+        /// <param name="urlApi">Url Api.</param>
+        /// <param name="url">Url Services.</param>
+        /// <param name="user">Usuario.</param>
+        /// <param name="password">Contraseña.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public AccountBalance(string urlApi, string url, string user, string password, int proxyPort = 0, string proxy = null) : base(urlApi, url, user, password, proxy, proxyPort)
         {
         }
         /// <summary>
-        /// Balance que requiere del token para mostrar los datos
+        /// Crear una instancia de la clase AccountBalance.
         /// </summary>
-        /// <param name="url">URL de la API que se usará</param>
-        /// <param name="token">Token de la cuenta del usuario</param>
-        /// <param name="proxyPort">Port</param>
-        /// <param name="proxy">Proxy</param>
-
+        /// <remarks>Incluye métodos para consultar saldo, agregar y eliminar timbres.</remarks>
+        /// <param name="url">Url Services.</param>
+        /// <param name="token">Token de autenticación.</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public AccountBalance(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
         }
@@ -48,10 +49,10 @@ namespace SW.Services.Account.AccountBalance
             }
         }
         /// <summary>
-        /// Metodo que obtiene el balance de timbres del usuario
+        /// Metodo que obtiene el balance de timbres del usuario.
         /// </summary>
-        /// <param name="idUser">ID del usuario a consultar timbres</param>
-        /// <returns>Retorna un objeto handler</returns>
+        /// <param name="idUser">ID del usuario a consultar timbres.</param>
+        /// <returns><see cref="BalanceResponse"/></returns>
         public async Task<BalanceResponse> ConsultarSaldoAsync(Guid idUser)
         {
             return await GetBalanceID(idUser);
@@ -73,25 +74,23 @@ namespace SW.Services.Account.AccountBalance
             }
         }
         /// <summary>
-        /// Metodo para añadir timbres a una cuenta hijo desde la cuenta dealer
+        /// Metodo para añadir timbres a una cuenta hijo desde la cuenta dealer.
         /// </summary>
-        /// <param name="idUser">ID del usuario al que se le asignaran los timbres</param>
-        /// <param name="stamps">Cantidad de timbres a agregar</param>
-        /// <param name="action">Selecciona la opcion que desea ejecutar</param>
+        /// <param name="idUser">ID del usuario al que se le asignaran los timbres.</param>
+        /// <param name="stamps">Cantidad de timbres a agregar.</param>
         /// <param name="comment">Comentario agregado al movimiento.</param>
-        /// <returns>Retorna un objeto handler</returns>
+        /// <returns><see cref="AccountBalanceResponse"/></returns>
         public async Task<AccountBalanceResponse> AgregarTimbresAsync(Guid idUser, int stamps, string comment)
         {
             return await StampsDistribution(idUser, stamps, ActionsAccountBalance.Add, comment);
         }
         /// <summary>
-        /// Metodo para eliminar timbres a una cuenta hijo desde la cuenta dealer
+        /// Metodo para eliminar timbres a una cuenta hijo desde la cuenta dealer.
         /// </summary>
-        /// <param name="idUser">ID del usuario al que se le asignaran los timbres</param>
-        /// <param name="stamps">Cantidad de timbres a agregar</param>
-        /// <param name="action">Selecciona la opcion que desea ejecutar</param>
+        /// <param name="idUser">ID del usuario al que se le eliminaran los timbres.</param>
+        /// <param name="stamps">Cantidad de timbres a eliminar.</param>
         /// <param name="comment">Comentario agregado al movimiento.</param>
-        /// <returns>Retorna un objeto handler</returns>
+        /// <returns><see cref="AccountBalanceResponse"/></returns>
         public async Task<AccountBalanceResponse> EliminarTimbresAsync(Guid idUser, int stamps, string comment)
         {
             return await StampsDistribution(idUser, stamps, ActionsAccountBalance.Remove, comment);
