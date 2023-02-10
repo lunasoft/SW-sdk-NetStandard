@@ -2095,6 +2095,7 @@ El servicio podrá generar o regenerar un PDF de un CFDI previamente timbrados y
 * Url Servicios SW(cuando se añaden usuario y contraseña)
 * Url Api
 * UUID
+
 **Ejemplo de consumo de la libreria para la regeneración de PDF mediante usuario y contraseña**
 ```cs
 using SW.Services.Pdf;
