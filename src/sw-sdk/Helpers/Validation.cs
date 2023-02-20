@@ -4,16 +4,16 @@ using System.Net.Mail;
 
 namespace SW.Helpers
 {
-    public class Validation
+    internal class Validation
     {
-        private string _url;
-        private string _user;
-        private string _password;
-        private string _token;
-        public Validation()
+        private readonly string _url;
+        private readonly string _user;
+        private readonly string _password;
+        private readonly string _token;
+        internal Validation()
         {
         }
-        public Validation(string url, string user, string password, string token)
+        internal Validation(string url, string user, string password, string token)
         {
             _url = url;
             _user = user;
@@ -21,7 +21,7 @@ namespace SW.Helpers
             _token = token;
             ValidateHeaderParameters();
         }
-        public void ValidateHeaderParameters()
+        internal void ValidateHeaderParameters()
         {
             if (string.IsNullOrEmpty(_url) || _url == "/")
                 throw new ServicesException("Falta Capturar URL");
