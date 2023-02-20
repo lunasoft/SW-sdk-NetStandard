@@ -2,11 +2,7 @@
 using SW.Helpers;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using SW.Services.Stamp;
 
@@ -15,18 +11,18 @@ namespace SW.Handlers
     internal class ResponseHandler<T>
         where T : Response, new()
     {
-        private ResponseHandlerExtended<T> _handler;
+        private readonly ResponseHandlerExtended<T> _handler;
         public readonly string _xmlOriginal;
-        public ResponseHandler() 
+        internal ResponseHandler() 
         {
             _handler = new ResponseHandlerExtended<T>();
         }
-        public ResponseHandler(string xmlOriginal)
+        internal ResponseHandler(string xmlOriginal)
         {
             _handler = new ResponseHandlerExtended<T>();
             _xmlOriginal = xmlOriginal;
         }
-        public virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        internal virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             try
             {
@@ -46,7 +42,7 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse(wex);
             }
         }
-        public virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        internal virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
@@ -67,7 +63,7 @@ namespace SW.Handlers
             }
         }
 
-        public virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        internal virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
