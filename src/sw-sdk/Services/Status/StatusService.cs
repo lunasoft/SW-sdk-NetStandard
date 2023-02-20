@@ -30,7 +30,7 @@ namespace SW.Services.Status
             }
             return acuse;
         }
-        public Acuse ConsultaCFDIService(string consulta)
+        private Acuse ConsultaCFDIService(string consulta)
         {
             try
             {

@@ -7,14 +7,14 @@ namespace SW.Services.Validate
 {
     public abstract class BaseValidate : ValidateService
     {
-        private string _operation;
+        private readonly string _operation;
         private readonly ResponseHandler<ValidateXmlResponse> _handler;
-        public BaseValidate(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected BaseValidate(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
             _handler = new ResponseHandler<ValidateXmlResponse>();
         }
-        public BaseValidate(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected BaseValidate(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
             _handler = new ResponseHandler<ValidateXmlResponse>();

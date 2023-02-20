@@ -9,7 +9,7 @@ namespace SW.Services.Cancelation
         [DataMember(Name = "data")]
         public Data data { get; set; }
     }
-    public partial class Data
+    public class Data
     {
         [DataMember(Name = "acuse")]
         public string acuse { get; set; }

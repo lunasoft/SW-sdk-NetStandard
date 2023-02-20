@@ -3,17 +3,17 @@
 namespace SW.Services.Relations
 {
     [DataContract]
-    public class RelationsRequestCSD
+    internal class RelationsRequestCSD
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string uuid { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string rfc { get; set; }
         [DataMember]
-        public string b64Cer { get; set; }
+        internal string b64Cer { get; set; }
         [DataMember]
-        public string b64Key { get; set; }
+        internal string b64Key { get; set; }
     }
 }

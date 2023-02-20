@@ -5,10 +5,10 @@ namespace SW.Services.Cancelation
 {
     internal class CancelationValidation : Validation
     {
-        public CancelationValidation(string url, string user, string password, string token) : base(url, user, password, token)
+        internal CancelationValidation(string url, string user, string password, string token) : base(url, user, password, token)
         {
         }
-        public void ValidateRequest(string Certificado, string Key, string Contraseña, string[] uuids)
+        internal void ValidateRequest(string Certificado, string Key, string Contraseña, string[] uuids)
         {
             if (uuids.Length == 0)
             {

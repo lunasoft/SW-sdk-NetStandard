@@ -13,7 +13,7 @@ namespace SW.Services.Pendings
         {
         }
         internal abstract Task<PendingsResponse> PendingsRequestAsync(string rfc);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
+        internal async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
@@ -21,7 +21,7 @@ namespace SW.Services.Pendings
                 };
             return headers;
         }
-        internal virtual async Task<HttpWebRequest> RequestPendingsAsync(string rfc)
+        internal async Task<HttpWebRequest> RequestPendingsAsync(string rfc)
         {
             await this.SetupRequestAsync();
             string path = $"pendings/{rfc}";

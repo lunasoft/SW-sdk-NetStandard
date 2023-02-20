@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using SW.Helpers;
 using SW.Handlers;
 
 namespace SW.Services.Stamp
@@ -13,15 +11,15 @@ namespace SW.Services.Stamp
     }
     internal class StampResponseHandlerV2 : ResponseHandler<StampResponseV2>
     {
-        public StampResponseHandlerV2()
+        internal StampResponseHandlerV2()
         {
         }
 
-        public StampResponseHandlerV2(string xmlOriginal) : base(xmlOriginal)
+        internal StampResponseHandlerV2(string xmlOriginal) : base(xmlOriginal)
         {
         }
 
-        public override async Task<StampResponseV2> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        internal override async Task<StampResponseV2> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
@@ -31,15 +29,15 @@ namespace SW.Services.Stamp
     }
     internal class StampResponseHandlerV3 : ResponseHandler<StampResponseV3>
     {
-        public StampResponseHandlerV3()
+        internal StampResponseHandlerV3()
         {
         }
 
-        public StampResponseHandlerV3(string xmlOriginal) : base(xmlOriginal)
+        internal StampResponseHandlerV3(string xmlOriginal) : base(xmlOriginal)
         {
         }
 
-        public override async Task<StampResponseV3> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        internal override async Task<StampResponseV3> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
@@ -49,18 +47,18 @@ namespace SW.Services.Stamp
     }
     internal class StampResponseHandlerV4 : ResponseHandler<StampResponseV4>
     {
-        public override async Task<StampResponseV4> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        internal override async Task<StampResponseV4> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
             if (base.Has307AndAddenda(response, response.data))
                 response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
             return response;
         }
-        public StampResponseHandlerV4()
+        internal StampResponseHandlerV4()
         {
         }
 
-        public StampResponseHandlerV4(string xmlOriginal) : base(xmlOriginal)
+        internal StampResponseHandlerV4(string xmlOriginal) : base(xmlOriginal)
         {
         }
     }

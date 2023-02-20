@@ -9,11 +9,11 @@ namespace SW.Services.Validate
     internal class ValidateValidation : Validation
     {
         private string _xmlString;
-        public ValidateValidation(string url, string user, string password, string token) : base(url, user, password, token)
+        internal ValidateValidation(string url, string user, string password, string token) : base(url, user, password, token)
         {
         }
 
-        public void ValidaXML(string XMLString)
+        internal void ValidaXML(string XMLString)
         {
             this._xmlString = XMLString;
             Validations();

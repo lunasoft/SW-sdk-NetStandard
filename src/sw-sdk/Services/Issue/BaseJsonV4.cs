@@ -11,11 +11,11 @@ namespace SW.Services.Issue
     public abstract class BaseStampJsonV4 : IssueService
     {
         private string _operation;
-        public BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
         }
-        public BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
         }

@@ -19,7 +19,7 @@ namespace SW.Services.AcceptReject
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(byte[] xmlCancelation);
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(string pfx, string rfc, string password, AceptacionRechazoItem[] uuid);
         internal abstract Task<AcceptRejectResponse> AcceptRejectRequest(string rfc, string uuid, EnumAcceptReject enumCancelation);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
+        internal async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
@@ -27,7 +27,7 @@ namespace SW.Services.AcceptReject
                 };
             return headers;
         }
-        internal virtual StringContent RequestAcceptReject(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuids)
+        internal StringContent RequestAcceptReject(string cer, string key, string rfc, string password, AceptacionRechazoItem[] uuids)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new AcceptRejectRequestCSD()
             {
@@ -40,14 +40,14 @@ namespace SW.Services.AcceptReject
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual MultipartFormDataContent RequestAcceptReject(byte[] xmlCancelation)
+        internal MultipartFormDataContent RequestAcceptReject(byte[] xmlCancelation)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xmlCancelation);
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual StringContent RequestAcceptReject(string pfx, string rfc, string password, AceptacionRechazoItem[] uuids)
+        internal StringContent RequestAcceptReject(string pfx, string rfc, string password, AceptacionRechazoItem[] uuids)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new AcceptRejectRequestPFX()
             {
@@ -59,7 +59,7 @@ namespace SW.Services.AcceptReject
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual async Task<HttpWebRequest> RequestAcceptRejectAsync(string rfc, string uuid, EnumAcceptReject enumAcceptReject)
+        internal async Task<HttpWebRequest> RequestAcceptRejectAsync(string rfc, string uuid, EnumAcceptReject enumAcceptReject)
         {
             await this.SetupRequestAsync();
             string path = $"acceptreject/{rfc}/{uuid}/{enumAcceptReject.ToString()}";

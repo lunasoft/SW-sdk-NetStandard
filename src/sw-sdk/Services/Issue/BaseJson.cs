@@ -10,12 +10,12 @@ namespace SW.Services.Issue
 {
     public abstract class BaseStampJson : IssueService
     {
-        private string _operation;
-        public BaseStampJson(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
+        private readonly string _operation;
+        protected BaseStampJson(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
         }
-        public BaseStampJson(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
+        protected BaseStampJson(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
         }
