@@ -15,7 +15,7 @@ namespace SW.Services.Pdf
         protected PdfService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-        internal virtual StringContent GetStringContent(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
+        internal StringContent GetStringContent(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
         {
             var request = new PdfRequest();
             request.xmlContent = isB64 ? Encoding.UTF8.GetString(Convert.FromBase64String(xml)) : xml;
@@ -30,7 +30,7 @@ namespace SW.Services.Pdf
             Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
+        internal async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {

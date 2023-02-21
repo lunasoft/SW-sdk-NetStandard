@@ -2,9 +2,9 @@
 
 namespace SW.Services.Authentication
 {
-    class AuthenticationValidation : Validation
+    internal class AuthenticationValidation : Validation
     {
-        public AuthenticationValidation(string url, string user, string password, string token) : base(url, user, password, token)
+        internal AuthenticationValidation(string url, string user, string password, string token) : base(url, user, password, token)
         {
         }
     }

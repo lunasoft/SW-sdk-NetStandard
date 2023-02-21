@@ -1,31 +1,101 @@
-﻿using SW.Services.Pdf;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using SW.Handlers;
+using SW.Helpers;
+using sw_sdk.Helpers;
+
 namespace SW.Services.Pdf
 {
-    public class Pdf : BasePdf
+    public class Pdf : PdfService
     {
-        /// <summary>
-        /// Crear una instancia de la clase Pdf.
-        /// </summary>
-        /// <remarks>Incluye métodos de generación de PDF.</remarks>
-        /// <param name="urlApi">Url Api.</param>
-        /// <param name="url">Url Services.</param>
-        /// <param name="user">Email del usuario.</param>
-        /// <param name="password">Contraseña.</param>
-        /// <param name="proxyPort">Puerto proxy.</param>
-        /// <param name="proxy">Proxy.</param>
-        public Pdf(string urlApi, string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, urlApi, user, password, proxy, proxyPort)
+        private readonly string _apiUrl;
+        private readonly ResponseHandler<PdfResponse> _handler;
+        public Pdf(string url, string token, string proxy = null, int proxyPort = 0) : base(url, token, proxy, proxyPort)
         {
+            _apiUrl = url;
+            _handler = new ResponseHandler<PdfResponse>();
+        }
+        public Pdf(string urlApi, string url, string user, string password, string proxy = null, int proxyPort = 0) : base(url, user, password, proxy, proxyPort)
+        {
+            _apiUrl = urlApi;
+            _handler = new ResponseHandler<PdfResponse>();
+        }
+        internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
+        {
+            try
+            {
+                var headers = await GetHeadersAsync();
+                var content = GetStringContent(xml, b64Logo, templateId, ObservacionesAdicionales, isB64);
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                return await _handler.GetPostResponseAsync(_apiUrl,"/pdf/v1/api/GeneratePdf", headers, content, proxy);
+            }
+            catch (Exception ex)
+            {
+                return _handler.HandleException(ex);
+            }
+        }
+        internal virtual async Task<PdfResponse> RegeneratePdfAsync(Guid uuid)
+        {
+            try
+            {
+                var headers = await GetHeadersAsync();
+                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                var result = await _handler.GetPostResponseAsync(_apiUrl, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
+                result.status = result.status ?? "success";
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return _handler.HandleException(ex);
+            }
         }
         /// <summary>
-        /// Crear una instancia de la clase Pdf.
+        /// Servicio para generar PDF con plantillas genericas.
         /// </summary>
-        /// <remarks>Incluye métodos de generación de PDF.</remarks>
-        /// <param name="urlApi">Url Api.</param>
-        /// <param name="token">Token de autenticación.</param>
-        /// <param name="proxyPort">Puerto proxy.</param>
-        /// <param name="proxy">Proxy.</param>
-        public Pdf(string urlApi, string token, int proxyPort = 0, string proxy = null) : base(urlApi, token, proxy, proxyPort)
+        /// <param name="xml">XML timbrado.</param>
+        /// <param name="b64Logo">Logo en B64.</param>
+        /// <param name="templateId">Identificador de la plantilla.</param>
+        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="isB64">Especifica si el XML está en B64.</param>
+        /// <returns></returns>
+        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, PdfTemplates templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
         {
+            return await GeneratePdfAsync(xml, b64Logo, templateId.ToString(), ObservacionesAdicionales, isB64);
         }
+        /// <summary>
+        /// Servicio para generar PDF con plantillas personalizadas.
+        /// </summary>
+        /// <param name="xml">XML timbrado.</param>
+        /// <param name="b64Logo">Logo en B64.</param>
+        /// <param name="templateId">Identificador de la plantilla.</param>
+        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="isB64">Especifica si el XML está en B64.</param>
+        /// <returns></returns>
+        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        {
+            return await GeneratePdfAsync(xml, b64Logo, templateId, ObservacionesAdicionales, isB64);
+        }
+        /// <summary>
+        /// Servicio para generar PDF con plantilla por defecto CFDI 4.0.
+        /// </summary>
+        /// <param name="xml">XML timbrado.</param>
+        /// <param name="b64Logo">Logo en B64.</param>
+        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="isB64">Especifica si el XML está en B64.</param>
+        /// <returns></returns>
+        public async Task<PdfResponse> GenerarPdfDefaultAsync(string xml, string b64Logo, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        {
+            return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40.ToString(), ObservacionesAdicionales, isB64);
+        }
+        /// <summary>
+        /// Servicio para regenerar PDF de un comprobante previamente timbrado.
+        /// </summary>
+        /// <param name="uuid">Folio fiscal del comprobante.</param>
+        /// <returns>PdfResponse</returns>
+        public async Task<PdfResponse> RegenerarPdfAsync(Guid uuid)
+        {
+            return await RegeneratePdfAsync(uuid);
+        } 
     }
 }

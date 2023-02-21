@@ -6,15 +6,15 @@ namespace SW.Helpers
     [Serializable]
     internal class ServicesException : Exception
     {
-        public ServicesException()
+        internal ServicesException()
         {
         }
 
-        public ServicesException(string message) : base(message)
+        internal ServicesException(string message) : base(message)
         {
         }
 
-        public ServicesException(string message, Exception innerException) : base(message, innerException)
+        internal ServicesException(string message, Exception innerException) : base(message, innerException)
         {
         }
 

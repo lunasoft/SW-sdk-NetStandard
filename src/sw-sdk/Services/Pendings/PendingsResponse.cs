@@ -11,7 +11,7 @@ namespace SW.Services.Pendings
         [DataMember]
         public string codStatus { get; set; }
     }
-    public partial class Data
+    public class Data
     {
         [DataMember]
         public string codEstatus { get; set; }

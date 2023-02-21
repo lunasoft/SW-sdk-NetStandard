@@ -8,7 +8,7 @@ namespace SW.Services.Authentication
         [DataMember]
         public Data data { get; set; }
     }
-    public partial class Data
+    public class Data
     {
         [DataMember]
         public string token { get; set; }
