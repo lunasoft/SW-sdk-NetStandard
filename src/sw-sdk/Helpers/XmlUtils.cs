@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace SW.Helpers
 {
-    public static class XmlUtils
+    internal static class XmlUtils
     {
-        public static string AddAddenda(string cfdiOriginal, string cfdiStamped,bool isb64)
+        internal static string AddAddenda(string cfdiOriginal, string cfdiStamped,bool isb64)
         {
             string cfdi = cfdiStamped;
             try

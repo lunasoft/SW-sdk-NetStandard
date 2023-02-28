@@ -14,12 +14,12 @@ namespace SW.Services.Issue
     {
         private string _operation;
         private readonly string _contentType;
-        public BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
             _contentType = "application/jsontoxml";
         }
-        public BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
             _contentType = "application/jsontoxml";

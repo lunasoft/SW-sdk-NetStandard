@@ -18,7 +18,7 @@ namespace SW.Services.Relations
         internal abstract Task<RelationsResponse> RelationsRequestAsync(byte[] xmlCancelation);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string pfx, string rfc, string password, string uuid);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string rfc, string uuid);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
+        internal async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
@@ -26,7 +26,7 @@ namespace SW.Services.Relations
                 };
             return headers;
         }
-        internal virtual StringContent RequestRelations(string cer, string key, string rfc, string password, string uuid)
+        internal StringContent RequestRelations(string cer, string key, string rfc, string password, string uuid)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestCSD()
             {
@@ -39,14 +39,14 @@ namespace SW.Services.Relations
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual MultipartFormDataContent RequestRelations(byte[] xmlCancelation)
+        internal MultipartFormDataContent RequestRelations(byte[] xmlCancelation)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xmlCancelation);
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual StringContent RequestRelations(string pfx, string rfc, string password, string uuid)
+        internal StringContent RequestRelations(string pfx, string rfc, string password, string uuid)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestPFX()
             {

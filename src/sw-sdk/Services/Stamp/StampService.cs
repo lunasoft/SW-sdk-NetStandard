@@ -1,9 +1,6 @@
 ﻿using SW.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace SW.Services.Stamp
@@ -55,7 +52,7 @@ namespace SW.Services.Stamp
             return headers;
         }
 
-        internal virtual bool ValidateEmail(string email)
+        private bool ValidateEmail(string email)
         {
             try 
             {

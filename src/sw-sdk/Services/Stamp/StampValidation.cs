@@ -9,11 +9,11 @@ namespace SW.Services.Stamp
     internal class StampValidation : Validation
     {
         private string _xmlString;
-        public StampValidation(string url, string user, string password, string token) : base(url, user, password, token)
+        internal StampValidation(string url, string user, string password, string token) : base(url, user, password, token)
         {
         }
 
-        public void ValidaXML(string XMLString)
+        internal void ValidaXML(string XMLString)
         {
             this._xmlString = XMLString;
             Validations();

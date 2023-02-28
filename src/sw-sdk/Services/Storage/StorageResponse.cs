@@ -11,12 +11,12 @@ namespace SW.Services.Storage
         [DataMember]
         public StorageData data { get; set; }
     }
-    public partial class StorageData
+    public class StorageData
     {
         [DataMember]
         public List<StorageRecords> records { get; set; }
     }
-    public partial class StorageRecords
+    public class StorageRecords
     {
         [DataMember]
         public string urlXml { get; set; }
@@ -41,7 +41,7 @@ namespace SW.Services.Storage
         public List<StorageExtraRecords> records { get; set; }
     }
 
-    public partial class StorageExtraRecords : StorageRecords
+    public class StorageExtraRecords : StorageRecords
     {
         [DataMember]
         public bool status { get; set; }

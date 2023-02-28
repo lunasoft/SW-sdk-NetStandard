@@ -197,7 +197,7 @@ namespace Test_SW.Services.Stamp_Test
                 listXmlResult.Add(response);
             }
             if (listXmlResult != null)
-                resultExpect = listXmlResult.FindAll(w => w.status == ResponseType.success.ToString() || w.message.Contains("72 horas")).Count == iterations;
+                resultExpect = listXmlResult.FindAll(w => w.status == "success" || w.message.Contains("72 horas")).Count == iterations;
 
             Assert.True((bool)resultExpect);
         }

@@ -3,19 +3,19 @@
 namespace SW.Services.Cancelation
 {
     [DataContract]
-    public class CancelationRequestPFX
+    internal class CancelationRequestPFX
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string uuid { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string rfc { get; set; }
         [DataMember]
-        public string b64Pfx { get; set; }
+        internal string b64Pfx { get; set; }
         [DataMember]
-        public string motivo { get; set; }
+        internal string motivo { get; set; }
         [DataMember]
-        public string folioSustitucion { get; set; }
+        internal string folioSustitucion { get; set; }
     }
 }

@@ -3,17 +3,17 @@
 namespace SW.Services.AcceptReject
 {
     [DataContract]
-    public class AcceptRejectRequestPFX
+    internal class AcceptRejectRequestPFX
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string uuid { get; set; }
         [DataMember]
-        public AceptacionRechazoItem[] uuids { get; set; }
+        internal AceptacionRechazoItem[] uuids { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string rfc { get; set; }
         [DataMember]
-        public string b64Pfx { get; set; }        
+        internal string b64Pfx { get; set; }        
     }
 }
