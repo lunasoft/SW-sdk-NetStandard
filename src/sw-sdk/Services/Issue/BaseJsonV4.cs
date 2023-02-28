@@ -3,6 +3,8 @@ using SW.Helpers;
 using SW.Services.Stamp;
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +13,16 @@ namespace SW.Services.Issue
     public abstract class BaseStampJsonV4 : IssueService
     {
         private string _operation;
+        private readonly string _contentType;
         public BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
+            _contentType = "application/jsontoxml";
         }
         public BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
+            _contentType = "application/jsontoxml";
         }
         /// <summary>
         /// Servicio de timbrado de un CFDI previamente sellado en formato JSON. Si se especifica recibe un Custom Id y 
@@ -34,7 +39,8 @@ namespace SW.Services.Issue
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/jsontoxml");
+                StringContent content = new StringContent(json, Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
@@ -62,7 +68,8 @@ namespace SW.Services.Issue
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/jsontoxml");
+                StringContent content = new StringContent(json, Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
@@ -90,7 +97,8 @@ namespace SW.Services.Issue
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/jsontoxml");
+                StringContent content = new StringContent(json, Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
@@ -118,7 +126,8 @@ namespace SW.Services.Issue
             try
             {
                 var headers = await GetHeadersAsync(email, customId, extras);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/jsontoxml");
+                StringContent content = new StringContent(json, Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
