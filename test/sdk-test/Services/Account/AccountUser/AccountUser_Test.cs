@@ -107,6 +107,24 @@ namespace Test_SW.Services.AccountUser_Test
             Assert.True(response.status.Equals("error"));
             Assert.True(!String.IsNullOrEmpty(response.message));
         }
+        [Fact]
+        public async Task AccountUser_Test_UpdateUser_Success()
+        {
+            AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
+            var response = await user.ModificarUsuarioAsync(Guid.Parse("4ee2d8af-a663-45c0-8128-7f0b7b153c7d"), "XAXX010101000", "Nombre Usuario");
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("success"));
+            Assert.True(!String.IsNullOrEmpty(response.message));
+        }
+        [Fact]
+        public async Task AccountUser_Test_UpdateUser_Error()
+        {
+            AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
+            var response = await user.ModificarUsuarioAsync(_idUser, "XAXX010101000", "Nombre Usuario");
+            Assert.NotNull(response);
+            Assert.True(response.status.Equals("error"));
+            Assert.True(!String.IsNullOrEmpty(response.message));
+        }
         [Fact(Skip = "Se omite ya que afecta las demas UT, habilitar segun se requiera.")]
         public async Task AccountUser_Test_EliminarUsuario_Success()
         {
