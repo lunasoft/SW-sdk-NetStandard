@@ -16,7 +16,7 @@ namespace Test_SW.Services.Resend
         public async Task ResendEmail_Success()
         {
             SW.Services.Resend.Resend resend = new SW.Services.Resend.Resend(_build.UrlApi, _build.Token);
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("ee2a9dd4-2994-43d4-bc4e-605995b30617"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
@@ -27,7 +27,7 @@ namespace Test_SW.Services.Resend
         public async Task ResendEmail_Auth_Success()
         {
             SW.Services.Resend.Resend resend = new SW.Services.Resend.Resend(_build.UrlApi, _build.Url, _build.User, _build.Password);
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("ee2a9dd4-2994-43d4-bc4e-605995b30617"), "someemail@some.com");
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
@@ -46,7 +46,7 @@ namespace Test_SW.Services.Resend
                 "someemail@some.com",
                 "someemail@some.com"
             };
-            var responseResend = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
+            var responseResend = await resend.ResendEmailAsync(Guid.Parse("ee2a9dd4-2994-43d4-bc4e-605995b30617"), emails);
             Assert.NotNull(responseResend);
             Assert.True(responseResend.status.Equals("success"));
             Assert.True(!String.IsNullOrEmpty(responseResend.message) &&
