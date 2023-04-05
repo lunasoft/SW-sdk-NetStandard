@@ -23,6 +23,9 @@
   <ItemGroup>
     <None Remove="Resources\CFDI40\billoflading40.xml" />
     <None Remove="Resources\CFDI40\cfdi40.xml" />
+    <None Remove="Resources\CFDI40\cfdi40_addenda.xml" />
+    <None Remove="Resources\CFDI40\cfdi40_ansi.xml" />
+    <None Remove="Resources\CFDI40\cfdi40_specialchar.xml" />
     <None Remove="Resources\CFDI40\payment20.xml" />
     <None Remove="Resources\CFDI40\payroll40.xml" />
   </ItemGroup>
