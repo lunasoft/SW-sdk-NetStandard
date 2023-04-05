@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using SW.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace SW.Handlers
 {
@@ -15,7 +17,8 @@ namespace SW.Handlers
             {
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.BadRequest || response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(),
+                        new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 }
                 else
                     return GetExceptionResponse(response);
