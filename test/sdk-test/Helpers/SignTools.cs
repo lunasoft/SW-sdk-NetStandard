@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,8 +17,9 @@ namespace Test_SW.Helpers
             xml = RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
+            doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
             doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-            doc.DocumentElement.SetAttribute("Folio", DateTime.Now.Ticks.ToString() + randomNumber.Next(100));
+            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
             xml = doc.OuterXml;
             xml = SellarCFDIv40(pfx, password, xml);
             return xml;
