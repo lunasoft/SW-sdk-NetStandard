@@ -6,6 +6,7 @@ using sw_cadenaoriginal;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Reflection;
 
 namespace Test_SW.Helpers
 {
@@ -19,8 +20,9 @@ namespace Test_SW.Helpers
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
+            doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
             doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-            doc.DocumentElement.SetAttribute("Folio", DateTime.Now.Ticks.ToString() + randomNumber.Next(100));
+            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
             xml = doc.OuterXml;
             xml = SellarCFDI(Convert.FromBase64String(pfx), password, xml);
             return xml;
@@ -32,6 +34,7 @@ namespace Test_SW.Helpers
             var json = JObject.Parse(xml);
             json["Fecha"] = DateTime.Now.AddHours(-12).ToString("s");
             json["Folio"] = Guid.NewGuid().ToString();
+            json["Serie"] = "SW-Sdk-NetStandard";
             return json.ToString();
         }
 
