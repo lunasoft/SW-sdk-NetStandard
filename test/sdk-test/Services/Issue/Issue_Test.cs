@@ -108,7 +108,7 @@ namespace Test_SW.Services.Issue
         }
         private string GetXml(BuildSettings build)
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileIssue.xml"));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40.xml"));
             xml = Helpers.SignTools.RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);

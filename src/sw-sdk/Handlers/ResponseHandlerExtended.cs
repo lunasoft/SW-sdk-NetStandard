@@ -17,11 +17,8 @@ namespace SW.Handlers
             {
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.BadRequest || response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    if (Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync())!= null) { 
-                    }
-
-                   // return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
-                   return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(), new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver()});
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(),
+                        new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 }
                 else
                     return GetExceptionResponse(response);

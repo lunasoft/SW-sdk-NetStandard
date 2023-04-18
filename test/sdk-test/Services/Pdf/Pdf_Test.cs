@@ -305,7 +305,7 @@ namespace sdk_test.Services.Pdf
         public async Task Pdf_Test_RegeneratePdf_Success()
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
-            var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("02d8d5db-7e28-443f-b803-b3449168a107"));
             Assert.NotNull(response);
             Assert.True(response.Status.Equals("success"));
             Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
@@ -314,7 +314,7 @@ namespace sdk_test.Services.Pdf
         public async Task Pdf_Test_RegeneratePdf_Auth_Success()
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-            var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("02d8d5db-7e28-443f-b803-b3449168a107"));
             Assert.NotNull(response);
             Assert.True(response.Status.Equals("success"));
             Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));

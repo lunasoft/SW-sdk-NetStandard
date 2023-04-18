@@ -141,7 +141,7 @@ namespace Test_SW.Services.Issue
         }
         private string GetJson(BuildSettings build)
         {
-            var file = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/cfdi.json"));
+            var file = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40.json"));
             var json = JObject.Parse(file);
             json["Fecha"] = DateTime.Now.AddHours(-12).ToString("s");
             json["Folio"] = Guid.NewGuid().ToString();

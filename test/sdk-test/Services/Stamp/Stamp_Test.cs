@@ -210,7 +210,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "404";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url + "/ot", build.Token);
-            var xml = File.ReadAllText("Resources/file.xml");
+            var xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
             Assert.Equal(response.Message, (string)resultExpect);
@@ -222,7 +222,7 @@ namespace Test_SW.Services.Stamp_Test
         {
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token + ".");
-            var xml = File.ReadAllText("Resources/file.xml");
+            var xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);
@@ -234,7 +234,7 @@ namespace Test_SW.Services.Stamp_Test
         {
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, "");
-            var xml = File.ReadAllText("Resources/file.xml");
+            var xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);
@@ -247,8 +247,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "Xml Cfdi33 no proporcionado o viene vacio.";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
-            var xml = File.ReadAllText("Resources/EmptyXML.xml");
-            var response = await stamp.TimbrarV1Async(xml);
+            var response = await stamp.TimbrarV1Async(String.Empty);
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);
             Assert.Equal(response.Message, (string)resultExpect);
@@ -259,7 +258,7 @@ namespace Test_SW.Services.Stamp_Test
         {
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
-            var xml = File.ReadAllText("Resources/SpecialCharacters.xml");
+            var xml = GetXml(build, "cfdi40_specialchar.xml");
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             var response = await stamp.TimbrarV1Async(xml);
             Assert.True(response.Status == "success", "Result not expected. Error: " + response.Message);
@@ -286,7 +285,7 @@ namespace Test_SW.Services.Stamp_Test
             List<StampResponseV1> listXmlResult = new List<StampResponseV1>();
             for (int i = 0; i < iterations; i++)
             {
-                string xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
+                string xml = GetXml(build);
                 xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
                 var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
                 listXmlResult.Add(response);
@@ -296,9 +295,9 @@ namespace Test_SW.Services.Stamp_Test
 
             Assert.True((bool)resultExpect);
         }
-        private string GetXml(BuildSettings build)
+        private string GetXml(BuildSettings build, string fileName = null)
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/file.xml"));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(String.Format("Resources/CFDI40/{0}", fileName ?? "cfdi40.xml")));
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             return xml;
         }

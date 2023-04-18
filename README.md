@@ -843,6 +843,100 @@ namespace ExampleSDK
 ```
 </details>
 
+## Usuarios
+
+Servicios para trabajar con usuarios, incluye metodos para crear, modificar, obtener y eliminar usuarios.
+
+### Inicializar
+
+- Usuario y contraseña
+
+```cs
+ AccountUser user = new AccountUser(_build.UrlApi, _build.Url, _build.User, _build.Password);
+```
+
+- Token
+
+```cs
+ AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
+```
+
+<details>
+<summary>
+Crear Usuario
+</summary>
+
+```cs
+ var response = await user.CrearUsuarioAsync(new AccountUserRequest()
+{
+    Email = $"hijo_{_build.User}",
+    Password = $"${_build.Password}",
+    ProfileType = SW.Helpers.AccountUserProfile.Hijo,
+    Rfc = "XAXX010101000",
+    Name = "Pruebas UT Hijo",
+    Unlimited = false,
+    Stamps = 1
+});
+```
+
+</details>
+
+<details>
+<summary>
+Obtener Usuario Por Token
+</summary>
+
+```cs
+var response = await user.ObtenerUsuarioAsync();
+```
+
+</details>
+
+<details>
+<summary>
+Obtener Usuario Por UUID
+</summary>
+
+```cs
+var response = await user.ObtenerUsuarioAsync(_idUser);
+```
+
+</details>
+
+<details>
+<summary>
+Obtener Usuarios
+</summary>
+
+```cs
+var response = await user.ObtenerUsuariosAsync();
+```
+
+</details>
+
+<details>
+<summary>
+Editar Usuario
+</summary>
+
+
+```cs
+var response = await user.ModificarUsuarioAsync(_idUser, "XAXX010101000", "Nombre Usuario");
+```
+
+</details>
+
+<details>
+<summary>
+Eliminar Usuario
+</summary>
+
+```cs
+var response = await user.EliminarUsuarioAsync(_idUser);
+```
+
+</details>
+
 ## Consulta de Saldos ##
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 
