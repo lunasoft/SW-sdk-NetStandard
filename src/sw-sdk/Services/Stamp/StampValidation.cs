@@ -13,9 +13,9 @@ namespace SW.Services.Stamp
         {
         }
 
-        internal void ValidaXML(string XMLString)
+        internal void ValidaXML(string xmlString)
         {
-            this._xmlString = XMLString;
+            this._xmlString = xmlString;
             Validations();
         }
         internal void ValidaXML(byte[] xmlString)

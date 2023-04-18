@@ -42,13 +42,13 @@ namespace SW.Services.Cancelation
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestCSD()
             {
-                folioSustitucion = folioSustitucion,
-                motivo = motivo,
-                b64Cer = cer,
-                b64Key = key,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                _folioSustitucion = folioSustitucion,
+                _motivo = motivo,
+                _b64Cer = cer,
+                _b64Key = key,
+                _password = password,
+                _rfc = rfc,
+                _uuid = uuid
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
@@ -57,12 +57,12 @@ namespace SW.Services.Cancelation
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestPFX()
             {
-                folioSustitucion = folioSustitucion,
-                motivo = motivo,
-                b64Pfx = pfx,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                _folioSustitucion = folioSustitucion,
+                _motivo = motivo,
+                _b64Pfx = pfx,
+                _password = password,
+                _rfc = rfc,
+                _uuid = uuid
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

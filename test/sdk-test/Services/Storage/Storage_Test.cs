@@ -15,109 +15,109 @@ namespace Test_SW.Services.Storage_Test
         private readonly BuildSettings _build;
         public Storage_Test()
         {
-            _build= new BuildSettings();
+            _build = new BuildSettings();
         }
         [Fact]
         public async Task Storage_Success()
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
-            Assert.True(response.status.Equals("success"));
-            Assert.NotNull(response.data);
-            Assert.True(response.data.records.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlXml));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCfdi));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlPdf));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCancellation));
+            Assert.True(response.Status.Equals("success"));
+            Assert.NotNull(response.Data);
+            Assert.True(response.Data.Records.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlPdf));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCancellation));
         }
         [Fact]
         public async Task Storage_Auth_Success()
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, _build.Password);
             var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
-            Assert.True(response.status.Equals("success"));
-            Assert.NotNull(response.data);
-            Assert.True(response.data.records.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlXml));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCfdi));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlPdf));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCancellation));
+            Assert.True(response.Status.Equals("success"));
+            Assert.NotNull(response.Data);
+            Assert.True(response.Data.Records.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlPdf));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCancellation));
         }
         [Fact]
         public async Task StorageExtras_Success()
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
-            Assert.True(response.status.Equals("success"));
-            Assert.NotNull(response.data);
-            Assert.True(response.data.records.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlXml));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCfdi));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlPdf));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCancellation));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].uuid));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].formaPago));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].condicionesPago));
-            Assert.True(response.data.records[0].descuento >= 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].emisorNombre));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].emisorRfc));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].fecha));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].fechaTimbrado));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].version));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].usoCFDI));
-            Assert.True(response.data.records[0].trasladosIVA >= 0);
-            Assert.True(response.data.records[0].trasladosIEPS >= 0);
-            Assert.True(response.data.records[0].retencionesIEPS >= 0);
-            Assert.True(response.data.records[0].retencionesISR >= 0);
-            Assert.True(response.data.records[0].retencionesIVA >= 0);
-            Assert.True(response.data.records[0].totalImpuestosLocalesRetencion >= 0);
-            Assert.True(response.data.records[0].totalImpuestosLocalesTraslados >= 0);
-            Assert.True(response.data.records[0].totalImpuestosRetencion >= 0);
-            Assert.True(response.data.records[0].totalImpuestosTraslados >= 0);
-            Assert.True(response.data.records[0].total >= 0);
-            Assert.True(response.data.records[0].subTotal >= 0);
-            Assert.True(response.data.records[0].status);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].serie));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].luegarExpedicion));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].selloCFD));
+            Assert.True(response.Status.Equals("success"));
+            Assert.NotNull(response.Data);
+            Assert.True(response.Data.Records.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlPdf));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCancellation));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Uuid));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].FormaPago));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].CondicionesPago));
+            Assert.True(response.Data.Records[0].Descuento >= 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].EmisorNombre));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].EmisorRfc));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Fecha));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].FechaTimbrado));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Version));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UsoCFDI));
+            Assert.True(response.Data.Records[0].TrasladosIVA >= 0);
+            Assert.True(response.Data.Records[0].TrasladosIEPS >= 0);
+            Assert.True(response.Data.Records[0].RetencionesIEPS >= 0);
+            Assert.True(response.Data.Records[0].RetencionesISR >= 0);
+            Assert.True(response.Data.Records[0].RetencionesIVA >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosLocalesRetencion >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosLocalesTraslados >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosRetencion >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosTraslados >= 0);
+            Assert.True(response.Data.Records[0].Total >= 0);
+            Assert.True(response.Data.Records[0].SubTotal >= 0);
+            Assert.True(response.Data.Records[0].Status);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Serie));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].LuegarExpedicion));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].SelloCfd));
         }
         [Fact]
         public async Task StorageExtras_Auth_Success()
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, _build.Password);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
-            Assert.True(response.status.Equals("success"));
-            Assert.NotNull(response.data);
-            Assert.True(response.data.records.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlXml));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCfdi));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlPdf));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].urlAckCancellation));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].uuid));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].formaPago));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].condicionesPago));
-            Assert.True(response.data.records[0].descuento >= 0);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].emisorNombre));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].emisorRfc));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].fecha));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].fechaTimbrado));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].version));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].usoCFDI));
-            Assert.True(response.data.records[0].trasladosIVA >= 0);
-            Assert.True(response.data.records[0].trasladosIEPS >= 0);
-            Assert.True(response.data.records[0].retencionesIEPS >= 0);
-            Assert.True(response.data.records[0].retencionesISR >= 0);
-            Assert.True(response.data.records[0].retencionesIVA >= 0);
-            Assert.True(response.data.records[0].totalImpuestosLocalesRetencion >= 0);
-            Assert.True(response.data.records[0].totalImpuestosLocalesTraslados >= 0);
-            Assert.True(response.data.records[0].totalImpuestosRetencion >= 0);
-            Assert.True(response.data.records[0].totalImpuestosTraslados >= 0);
-            Assert.True(response.data.records[0].total >= 0);
-            Assert.True(response.data.records[0].subTotal >= 0);
-            Assert.True(response.data.records[0].status);
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].serie));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].luegarExpedicion));
-            Assert.True(!String.IsNullOrEmpty(response.data.records[0].selloCFD));
+            Assert.True(response.Status.Equals("success"));
+            Assert.NotNull(response.Data);
+            Assert.True(response.Data.Records.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlPdf));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCancellation));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Uuid));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].FormaPago));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].CondicionesPago));
+            Assert.True(response.Data.Records[0].Descuento >= 0);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].EmisorNombre));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].EmisorRfc));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Fecha));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].FechaTimbrado));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Version));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UsoCFDI));
+            Assert.True(response.Data.Records[0].TrasladosIVA >= 0);
+            Assert.True(response.Data.Records[0].TrasladosIEPS >= 0);
+            Assert.True(response.Data.Records[0].RetencionesIEPS >= 0);
+            Assert.True(response.Data.Records[0].RetencionesISR >= 0);
+            Assert.True(response.Data.Records[0].RetencionesIVA >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosLocalesRetencion >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosLocalesTraslados >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosRetencion >= 0);
+            Assert.True(response.Data.Records[0].TotalImpuestosTraslados >= 0);
+            Assert.True(response.Data.Records[0].Total >= 0);
+            Assert.True(response.Data.Records[0].SubTotal >= 0);
+            Assert.True(response.Data.Records[0].Status);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].Serie));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].LuegarExpedicion));
+            Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].SelloCfd));
         }
         [Fact]
         public async Task Storage_Token_Error()
@@ -125,9 +125,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("El token debe contener 3 partes"));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("El token debe contener 3 partes"));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Storage_Auth_Error()
@@ -135,9 +135,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("AU4101 - El token proporcionado viene vacio."));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("AU4101 - El token proporcionado viene vacio."));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task StorageExtras_Token_Error()
@@ -145,9 +145,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("El token debe contener 3 partes"));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("El token debe contener 3 partes"));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task StorageExtras_Auth_Error()
@@ -155,9 +155,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("AU4101 - El token proporcionado viene vacio."));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("AU4101 - El token proporcionado viene vacio."));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Storage_NotFound_Error()
@@ -165,9 +165,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("No se encuentra registro del timbrado."));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("No se encuentra registro del timbrado."));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task StorageExtras_NotFound_Error()
@@ -175,9 +175,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("005ee4ad-1000-4db6-8806-123491c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("No se encuentra registro del timbrado."));
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("No se encuentra registro del timbrado."));
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Storage_WrongUrlApi_Error()
@@ -185,9 +185,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("404"));
-            Assert.True(response.messageDetail.Equals("Not Found"));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("404"));
+            Assert.True(response.MessageDetail.Equals("Not Found"));
         }
         [Fact]
         public async Task StorageExtras_WrongUrlApi_Error()
@@ -195,9 +195,9 @@ namespace Test_SW.Services.Storage_Test
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(response.message.Equals("404"));
-            Assert.True(response.messageDetail.Equals("Not Found"));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(response.Message.Equals("404"));
+            Assert.True(response.MessageDetail.Equals("Not Found"));
         }
     }
 }

@@ -6,16 +6,16 @@ namespace SW.Services.Cancelation
     internal class CancelationRequestPFX
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string _uuid { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string _password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string _rfc { get; set; }
         [DataMember]
-        internal string b64Pfx { get; set; }
+        internal string _b64Pfx { get; set; }
         [DataMember]
-        internal string motivo { get; set; }
+        internal string _motivo { get; set; }
         [DataMember]
-        internal string folioSustitucion { get; set; }
+        internal string _folioSustitucion { get; set; }
     }
 }

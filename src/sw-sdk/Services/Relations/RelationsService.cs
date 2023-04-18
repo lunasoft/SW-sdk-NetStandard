@@ -30,11 +30,11 @@ namespace SW.Services.Relations
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestCSD()
             {
-                b64Cer = cer,
-                b64Key = key,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                _b64Cer = cer,
+                _b64Key = key,
+                _password = password,
+                _rfc = rfc,
+                _uuid = uuid
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
@@ -50,10 +50,10 @@ namespace SW.Services.Relations
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestPFX()
             {
-                b64Pfx = pfx,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                _b64Pfx = pfx,
+                _password = password,
+                _rfc = rfc,
+                _uuid = uuid
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

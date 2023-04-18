@@ -7,36 +7,36 @@ namespace SW.Services.Csd
     public class CsdResponse : Response
     {
         [DataMember(Name = "data")]
-        public string data { get; set; }
+        public string Data { get; set; }
     }
     public class GetCsdResponse : Response
     {
         [DataMember]
-        public CsdData data { get; set; }
+        public CsdData Data { get; set; }
     }
     public class AllCsdResponse : Response
     {
         [DataMember]
-        public List<CsdData> data { get; set; }
+        public List<CsdData> Data { get; set; }
     }
     [DataContract]
     public class CsdData
     {
         [DataMember]
-        public string issuer_rfc { get; set; }
+        public string IssuerRfc { get; set; }
         [DataMember]
-        public string certificate_number { get; set; }
+        public string CertificateNumber { get; set; }
         [DataMember]
-        public string csd_certificate { get; set; }
+        public string CsdCertificate { get; set; }
         [DataMember]
-        public bool is_active { get; set; }
+        public bool IsActive { get; set; }
         [DataMember]
-        public string issuer_business_name { get; set; }
+        public string IssuerBusinessName { get; set; }
         [DataMember]
-        public string valid_from { get; set; }
+        public string ValidFrom { get; set; }
         [DataMember]
-        public string valid_to { get; set;}
+        public string ValidTo { get; set;}
         [DataMember]
-        public string certificate_type { get; set; }
+        public string CertificateType { get; set; }
     }
 }

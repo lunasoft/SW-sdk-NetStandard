@@ -15,22 +15,22 @@ namespace Test_SW.Services.Account_Test
             var build = new BuildSettings();
             BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", build.User, build.Password);
             AccountResponse response = await account.ConsultarSaldoAsync();
-            if(response.status != "error")
+            if(response.Status != "error")
             {
                 //saldo timbres
-                Console.WriteLine(response.data.saldoTimbres);
+                Console.WriteLine(response.Data.SaldoTimbres);
                 //timbres utilizados
-                Console.WriteLine(response.data.timbresUtilizados);
+                Console.WriteLine(response.Data.TimbresUtilizados);
                 //En caso de tener timbres infinitos (para cuentas hijo)
-                Console.WriteLine(response.data.unlimited);
+                Console.WriteLine(response.Data.Unlimited);
             }
             else
             {
                 //errores
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
-            Assert.True(response.status == "success", response.messageDetail);
+            Assert.True(response.Status == "success", response.MessageDetail);
         }
         [Fact]
         public async Task Account_Test_45_ConsultaDeSaldoByTokenAsync()
@@ -38,7 +38,7 @@ namespace Test_SW.Services.Account_Test
             var build = new BuildSettings();
             BalanceAccount account = new BalanceAccount(build.Url, build.Token);
             var response = await account.ConsultarSaldoAsync();
-            Assert.True(response.status == "success", response.messageDetail);
+            Assert.True(response.Status == "success", response.MessageDetail);
         }
     }
 }

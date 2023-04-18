@@ -27,16 +27,16 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if(response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, build.templateId);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
                 Assert.True(false);
-            }          
+            }
         }
         /// <summary>
         /// Generar PDF mediante usuario y contraseña, XML en B64
@@ -49,11 +49,11 @@ namespace sdk_test.Services.Pdf
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml, true);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId, null, true);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, build.templateId, null, true);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -69,9 +69,9 @@ namespace sdk_test.Services.Pdf
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null, true);
-            Assert.True(String.Equals(response.status, "error"));
-            Assert.True(String.Equals(response.message, "500"));
-            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
+            Assert.True(String.Equals(response.Status, "error"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, XML en B64, string B64 invalido.
@@ -84,9 +84,9 @@ namespace sdk_test.Services.Pdf
             var xml = GetXml(build);
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
-            Assert.True(String.Equals(response.status, "error"));
-            Assert.True(String.Equals(response.message, expectedResult));
-            Assert.Contains("at System.Convert.FromBase64_ComputeResultLength", response.messageDetail);
+            Assert.True(String.Equals(response.Status, "error"));
+            Assert.True(String.Equals(response.Message, expectedResult));
+            Assert.Contains("at System.Convert.FromBase64_ComputeResultLength", response.MessageDetail);
         }
         /// <summary>
         /// Generar PDF, XML en B64, XML no timbrado.
@@ -99,9 +99,9 @@ namespace sdk_test.Services.Pdf
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
-            Assert.True(String.Equals(response.status, "error"));
-            Assert.True(String.Equals(response.message, "500"));
-            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
+            Assert.True(String.Equals(response.Status, "error"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, error XML vacio.
@@ -112,9 +112,9 @@ namespace sdk_test.Services.Pdf
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null);
-            Assert.True(String.Equals(response.status, "error"));
-            Assert.True(String.Equals(response.message, "500"));
-            Assert.True(String.Equals(response.messageDetail, "Internal Server Error")); ;
+            Assert.True(String.Equals(response.Status, "error"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error")); ;
         }
         /// <summary>
         /// Generar PDF, XML no timbrado.
@@ -126,9 +126,9 @@ namespace sdk_test.Services.Pdf
             var xml = GetXml(build);
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null);
-            Assert.True(String.Equals(response.status, "error"));
-            Assert.True(String.Equals(response.message, "500"));
-            Assert.True(String.Equals(response.messageDetail, "Internal Server Error"));
+            Assert.True(String.Equals(response.Status, "error"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF mediante token
@@ -140,11 +140,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, build.templateId);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -162,11 +162,11 @@ namespace sdk_test.Services.Pdf
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml, true);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, build.templateId, null, true);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, build.templateId, null, true);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -183,11 +183,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfDefaultAsync(response.data.cfdi, build.b64Logo);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfDefaultAsync(response.Data.Cfdi, build.b64Logo);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -204,11 +204,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
-                var responsePdf = await pdf.GenerarPdfDefaultAsync(response.data.cfdi, build.b64Logo);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfDefaultAsync(response.Data.Cfdi, build.b64Logo);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -226,11 +226,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "payment20");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.payment20);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, PdfTemplates.payment20);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -243,15 +243,15 @@ namespace sdk_test.Services.Pdf
         /// <returns></returns>
         [Fact]
         public async Task PDf_Test_Generate_Payroll40()
-        {    
+        {
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "payroll40");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.payroll40);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, PdfTemplates.payroll40);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -259,7 +259,7 @@ namespace sdk_test.Services.Pdf
             }
         }
         /// <summary>
-        /// Generar PDF de Carta Porte 2.0 CFDI 4.0
+        /// Generar PDF de Carta Porte 2.0 Cfdi 4.0
         /// </summary>
         /// <returns></returns>
         [Fact]
@@ -268,11 +268,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build, "billoflading40");
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, PdfTemplates.billoflading40);
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, PdfTemplates.billoflading40);
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -290,11 +290,11 @@ namespace sdk_test.Services.Pdf
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            if (response.status == "success")
+            if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.data.cfdi, build.b64Logo, "cfdi40");
-                Assert.True(responsePdf.data != null && responsePdf.status == "success");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, "Cfdi40");
+                Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
             {
@@ -307,8 +307,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("success"));
-            Assert.True(response.message.Equals("Solicitud se proceso correctamente."));
+            Assert.True(response.Status.Equals("success"));
+            Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
         }
         [Fact]
         public async Task Pdf_Test_RegeneratePdf_Auth_Success()
@@ -316,8 +316,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
             var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("success"));
-            Assert.True(response.message.Equals("Solicitud se proceso correctamente."));
+            Assert.True(response.Status.Equals("success"));
+            Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
         }
         [Fact]
         public async Task Pdf_Test_RegeneratePdf_NotFound_Error()
@@ -325,9 +325,9 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.RegenerarPdfAsync(Guid.Empty);
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(String.Equals(response.message, "404"));
-            Assert.True(String.Equals(response.messageDetail, "Not Found"));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(String.Equals(response.Message, "404"));
+            Assert.True(String.Equals(response.MessageDetail, "Not Found"));
         }
         [Fact]
         public async Task Pdf_Test_RegeneratePdf_InvalidUrl_Error()
@@ -335,14 +335,14 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.Url, build.Token);
             var response = await pdf.RegenerarPdfAsync(Guid.Empty);
             Assert.NotNull(response);
-            Assert.True(response.status.Equals("error"));
-            Assert.True(String.Equals(response.message, "404"));
-            Assert.True(String.Equals(response.messageDetail, "Not Found"));
+            Assert.True(response.Status.Equals("error"));
+            Assert.True(String.Equals(response.Message, "404"));
+            Assert.True(String.Equals(response.MessageDetail, "Not Found"));
         }
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build, string fileName = null)
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(string.Format("Resources/CFDI40/{0}.xml", fileName ?? "cfdi40")));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(string.Format("Resources/Cfdi40/{0}.xml", fileName ?? "Cfdi40")));
             xml = Test_SW.Helpers.SignTools.RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);

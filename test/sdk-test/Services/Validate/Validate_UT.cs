@@ -17,8 +17,8 @@ namespace Test_SW_sdk.Services.Validate_Test
             Validate validate = new Validate(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             ValidateXmlResponse response = await validate.ValidateXmlAsync(xml.ToString());
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.statusCodeSat), "N - 601: La expresión impresa proporcionada no es válida.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.StatusCodeSat), "N - 601: La expresión impresa proporcionada no es válida.");
         }
         [Fact]
         public async Task Validate_Test_ValidateXMLErrorAsync()
@@ -27,8 +27,8 @@ namespace Test_SW_sdk.Services.Validate_Test
             Validate validate = new Validate(build.Url, build.User, build.Password);
             var xml = "";
             ValidateXmlResponse response = await validate.ValidateXmlAsync(xml);
-            Assert.True(response.status == "error"
-                && !string.IsNullOrEmpty(response.status), "Error al leer el documento XML. La estructura del documento no es un Xml valido y/o la codificación del documento no es UTF8. Root element is missing.");
+            Assert.True(response.Status == "error"
+                && !string.IsNullOrEmpty(response.Status), "Error al leer el documento XML. La estructura del documento no es un Xml valido y/o la codificación del documento no es UTF8. Root element is missing.");
         }
         private object GetXml(BuildSettings build)
         {

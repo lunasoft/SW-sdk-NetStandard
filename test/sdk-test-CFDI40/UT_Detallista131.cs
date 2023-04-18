@@ -16,7 +16,7 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV1_ResponseV1()
         {
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Detallista131/CFDI40_Detallista.xml", "V1");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.tfd), response.message);
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }        
         #endregion
         
@@ -28,7 +28,7 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV2_ResponseV2()
         {
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Detallista131/CFDI40_Detallista.xml", "V2");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.tfd), response.message);
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }        
         #endregion
         
@@ -40,7 +40,7 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV4_ResponseV3()
         {
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Detallista131/CFDI40_Detallista.xml", "V4");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.cfdi), response.message);
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }        
         #endregion
         
@@ -52,16 +52,16 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV4Json_ResponseV4()
         {
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Detallista131/CFDI40_Detallista.json", "IssueJsonV4");
-            Assert.True(response.status == "success", response.message);
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+            Assert.True(response.Status == "success", response.Message);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado data.cadenaOriginalSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado data.noCertificadoSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado data.noCertificadoCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado data.uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado data.selloSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado data.selloCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado data.qrCode viene vacio.");
         }        
         #endregion
     }

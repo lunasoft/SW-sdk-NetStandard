@@ -19,8 +19,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV1byTokenAsync()
@@ -29,8 +29,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV1Base64Async()
@@ -40,8 +40,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, true);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.tfd), response.message);
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV1Base64byTokenAsync()
@@ -51,8 +51,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, true);
-            Assert.True(response.status == "success"
-              && !string.IsNullOrEmpty(response.data.tfd), response.message);
+            Assert.True(response.Status == "success"
+              && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV2Async()
@@ -61,8 +61,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV2byTokenAsync()
@@ -71,8 +71,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV2Base64Async()
@@ -82,8 +82,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml, true);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV2Base64byTokenAsync()
@@ -93,8 +93,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml, true);
-            Assert.True(response.status == "success"
-              && !string.IsNullOrEmpty(response.data.cfdi), response.message);
+            Assert.True(response.Status == "success"
+              && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV3byTokenAsync()
@@ -103,8 +103,8 @@ namespace Test_SW.Services.Stamp_Test
             Stamp stamp = new Stamp(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV3Base64byTokenAsync()
@@ -114,8 +114,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV3)await stamp.TimbrarV3Async(xml, true);
-            Assert.True(response.status == "success"
-               && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
+            Assert.True(response.Status == "success"
+               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
 
         [Fact]
@@ -127,38 +127,38 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             //--- para cada xml ejecutar lo siguiente ↓
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            if (response.status != "error")
-            {//Si el comprobante se timbró tendrá un status: "success"
+            if (response.Status != "error")
+            {//Si el comprobante se timbró tendrá un Status: "success"
                 //Datos de la respuesta dependiendo de la versión utilizada para timbrar
-                Console.WriteLine(response.data.cadenaOriginalSAT);
-                Console.WriteLine(response.data.cfdi);
-                Console.WriteLine(response.data.fechaTimbrado);
-                Console.WriteLine(response.data.noCertificadoCFDI);
-                Console.WriteLine(response.data.noCertificadoSAT);
-                Console.WriteLine(response.data.qrCode);
-                Console.WriteLine(response.data.selloCFDI);
-                Console.WriteLine(response.data.selloSAT);
-                Console.WriteLine(response.data.uuid);
+                Console.WriteLine(response.Data.CadenaOriginalSat);
+                Console.WriteLine(response.Data.Cfdi);
+                Console.WriteLine(response.Data.FechaTimbrado);
+                Console.WriteLine(response.Data.NoCertificadoCfdi);
+                Console.WriteLine(response.Data.NoCertificadoSat);
+                Console.WriteLine(response.Data.QrCode);
+                Console.WriteLine(response.Data.SelloCfdi);
+                Console.WriteLine(response.Data.SelloSat);
+                Console.WriteLine(response.Data.Uuid);
             }
             else
             {//En caso de errores por parte del WebService o la librería vendrán como "error"
-                //Obtener datos de los errores mediante los campos "message" y "messageDetail"
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                //Obtener datos de los errores mediante los campos "Message" y "MessageDetail"
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
 
 
 
-            Assert.True(response.data != null, "El resultado data viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         [Fact]
         public async Task Stamp_Test_StampXMLV4Base64byTokenAsync()
@@ -168,16 +168,16 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build);
             xml = Convert.ToBase64String(Encoding.UTF8.GetBytes(xml));
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml, true);
-            Assert.True(response.data != null, "El resultado data viene vacio." + response.message);
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+            Assert.True(response.Data != null, "El resultado Data viene vacio." + response.Message);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         [Fact]
         public void Stamp_Test_MassStampXMLV4()
@@ -192,16 +192,16 @@ namespace Test_SW.Services.Stamp_Test
             var mass_response = stamp.TimbrarV4Async(xmls.ToArray());
             foreach (var dic in mass_response)
             {
-                Assert.True(dic.Key != null, "El resultado data viene vacio." + dic.Value.message);
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.cfdi), "El resultado data.cfdi viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.uuid), "El resultado data.uuid viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(dic.Value.data.qrCode), "El resultado data.qrCode viene vacio.");
+                Assert.True(dic.Key != null, "El resultado Data viene vacio." + dic.Value.Message);
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(dic.Value.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             }
         }
         [Fact]
@@ -213,9 +213,9 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
-            Assert.Equal(response.message, (string)resultExpect);
-            Assert.Equal("error", response.status);
-            Assert.Equal("Not Found", response.messageDetail);
+            Assert.Equal(response.Message, (string)resultExpect);
+            Assert.Equal("error", response.Status);
+            Assert.Equal("Not Found", response.MessageDetail);
         }
         [Fact]
         public async Task Stamp_Test_ValidateFormatTokenAsync()
@@ -225,9 +225,9 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
-            Assert.Equal("error", response.status);
-            Assert.Contains("El token debe contener 3 partes", response.message);
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.Equal("error", response.Status);
+            Assert.Contains("El token debe contener 3 partes", response.Message);
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateExistTokenAsync()
@@ -237,22 +237,22 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/file.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
-            Assert.Equal("error", response.status);
-            Assert.Contains("El token debe contener 3 partes", response.message);
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.Equal("error", response.Status);
+            Assert.Contains("El token debe contener 3 partes", response.Message);
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
         {
-            var resultExpect = "Xml CFDI33 no proporcionado o viene vacio.";
+            var resultExpect = "Xml Cfdi33 no proporcionado o viene vacio.";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
             var xml = File.ReadAllText("Resources/EmptyXML.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
-            Assert.Equal("error", response.status);
-            Assert.Equal(response.message, (string)resultExpect);
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.Equal("error", response.Status);
+            Assert.Equal(response.Message, (string)resultExpect);
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task Stamp_Test_ValidateSpecialCharactersFromXMLAsync()
@@ -262,8 +262,8 @@ namespace Test_SW.Services.Stamp_Test
             var xml = File.ReadAllText("Resources/SpecialCharacters.xml");
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.True(response.status == "success", "Result not expected. Error: " + response.message);
-            Assert.False(string.IsNullOrEmpty(response.data.tfd), "Result not expected. Error: " + response.message);
+            Assert.True(response.Status == "success", "Result not expected. Error: " + response.Message);
+            Assert.False(string.IsNullOrEmpty(response.Data.Tfd), "Result not expected. Error: " + response.Message);
         }
         [Fact]
         public async Task Stamp_Test_ValidateIsUTF8FromXMLAsync()
@@ -271,10 +271,10 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "301";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));            
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.True(response.message.Contains(resultExpect), "Result not expected. Error: " + response.message);
-            Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.messageDetail);
+            Assert.True(response.Message.Contains(resultExpect), "Result not expected. Error: " + response.Message);
+            Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.MessageDetail);
         }
         [Fact]
         public async Task Stamp_Test_MultipleStampXMLV1byTokenAsync()
@@ -292,7 +292,7 @@ namespace Test_SW.Services.Stamp_Test
                 listXmlResult.Add(response);
             }
             if (listXmlResult != null)
-                resultExpect = listXmlResult.FindAll(w => w.status == "success" || w.message.Contains("72 horas")).Count == iterations;
+                resultExpect = listXmlResult.FindAll(w => w.Status == "success" || w.Message.Contains("72 horas")).Count == iterations;
 
             Assert.True((bool)resultExpect);
         }

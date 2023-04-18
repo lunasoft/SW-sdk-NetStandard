@@ -14,7 +14,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, "");
-            Assert.Contains((string)resultExpect, response.messageDetail);
+            Assert.Contains((string)resultExpect, response.MessageDetail);
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsByRfcUuidAsync()
@@ -22,7 +22,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByRfcUuidAsync(build.Rfc, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.status == "success");
+            Assert.True(response.Status == "success");
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsByCSDAsync()
@@ -30,7 +30,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.status == "success");
+            Assert.True(response.Status == "success");
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsRejectByPfxAsync()
@@ -38,7 +38,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByPFXAsync(build.Pfx, build.Rfc, build.CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.status == "success");
+            Assert.True(response.Status == "success");
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsByXmlAsync()
@@ -46,7 +46,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByXMLAsync(build.RelationsXML);
-            Assert.True(response.status == "success");
+            Assert.True(response.Status == "success");
         }
     }
 }

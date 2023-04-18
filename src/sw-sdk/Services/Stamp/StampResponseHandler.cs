@@ -22,8 +22,8 @@ namespace SW.Services.Stamp
         internal override async Task<StampResponseV2> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
-            if (base.Has307AndAddenda(response, response.data))
-                response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
+            if (base.Has307AndAddenda(response, response.Data))
+                response.Data.Cfdi = base.GetCfdiData(response, response.Data.Cfdi, path.ToLower().EndsWith("b64"));
             return response;
         }
     }
@@ -40,8 +40,8 @@ namespace SW.Services.Stamp
         internal override async Task<StampResponseV3> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
-            if (base.Has307AndAddenda(response, response.data))
-                response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
+            if (base.Has307AndAddenda(response, response.Data))
+                response.Data.Cfdi = base.GetCfdiData(response, response.Data.Cfdi, path.ToLower().EndsWith("b64"));
             return response;
         }
     }
@@ -50,8 +50,8 @@ namespace SW.Services.Stamp
         internal override async Task<StampResponseV4> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             var response = await base.GetPostResponseAsync(url, path, headers, content, proxy);
-            if (base.Has307AndAddenda(response, response.data))
-                response.data.cfdi = base.GetCfdiData(response, response.data.cfdi, path.ToLower().EndsWith("b64"));
+            if (base.Has307AndAddenda(response, response.Data))
+                response.Data.Cfdi = base.GetCfdiData(response, response.Data.Cfdi, path.ToLower().EndsWith("b64"));
             return response;
         }
         internal StampResponseHandlerV4()

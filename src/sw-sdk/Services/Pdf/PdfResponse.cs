@@ -8,32 +8,32 @@ namespace SW.Services.Pdf
     public class PdfResponse : Response
     {
         [DataMember(Name = "data")]
-        public Data data { get; set; }
+        public Data Data { get; set; }
         [DataMember]
-        public int responseCode { get; set; }
+        public int ResponseCode { get; set; }
     }
 
     public class Data
     {
         [DataMember]
-        public string contentB64 { get; set; }
+        public string ContentB64 { get; set; }
         [DataMember]
-        public int contentSizeBytes { get; set; }
+        public int ContentSizeBytes { get; set; }
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         [DataMember]
-        public string serie { get; set; }
+        public string Serie { get; set; }
         [DataMember]
-        public string folio { get; set; }
+        public string Folio { get; set; }
         [DataMember]
-        public DateTime stampDate { get; set; }
+        public DateTime StampDate { get; set; }
         [DataMember]
-        public DateTime issuedDate { get; set; }
+        public DateTime IssuedDate { get; set; }
         [DataMember]
-        public string rfcIssuer { get; set; }
+        public string RfcIssuer { get; set; }
         [DataMember]
-        public string rfcReceptor { get; set; }
+        public string RfcReceptor { get; set; }
         [DataMember]
-        public string total { get; set; }
+        public string Total { get; set; }
     }
 }

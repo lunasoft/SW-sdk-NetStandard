@@ -6,59 +6,59 @@ namespace SW.Services.Stamp
     public class StampResponseV1 : Response
     {
         [DataMember]
-        public Data_TFD data { get; set; }
+        public DataTfd Data { get; set; }
     }
     public class StampResponseV2 : Response
     {
         [DataMember]
-        public Data_CFDI_TFD data { get; set; }
+        public DataCfdiTfd Data { get; set; }
     }
     public class StampResponseV3 : Response
     {
         [DataMember]
-        public Data_CFDI data { get; set; }
+        public DataCfdi Data { get; set; }
     }
 
     public class StampResponseV4 : Response
     {
         [DataMember]
-        public Data_Complete data { get; set; }
+        public DataComplete Data { get; set; }
     }
-    public class Data_TFD
+    public class DataTfd
     {
         [DataMember]
-        public string tfd { get; set; }
-    }
-
-    public class Data_CFDI
-    {
-        [DataMember]
-        public string cfdi { get; set; }
+        public string Tfd { get; set; }
     }
 
-    public class Data_CFDI_TFD : Data_TFD
+    public class DataCfdi
     {
         [DataMember]
-        public string cfdi { get; set; }
+        public string Cfdi { get; set; }
     }
 
-    public class Data_Complete : Data_CFDI
+    public class DataCfdiTfd : DataTfd
     {
         [DataMember]
-        public string cadenaOriginalSAT { get; set; }
+        public string Cfdi { get; set; }
+    }
+
+    public class DataComplete : DataCfdi
+    {
         [DataMember]
-        public string noCertificadoSAT { get; set; }
+        public string CadenaOriginalSat { get; set; }
         [DataMember]
-        public string noCertificadoCFDI { get; set; }
+        public string NoCertificadoSat { get; set; }
         [DataMember]
-        public string uuid { get; set; }
+        public string NoCertificadoCfdi { get; set; }
         [DataMember]
-        public string selloSAT { get; set; }
+        public string Uuid { get; set; }
         [DataMember]
-        public string selloCFDI { get; set; }
+        public string SelloSat { get; set; }
         [DataMember]
-        public string fechaTimbrado { get; set; }
+        public string SelloCfdi { get; set; }
         [DataMember]
-        public string qrCode { get; set; }
+        public string FechaTimbrado { get; set; }
+        [DataMember]
+        public string QrCode { get; set; }
     }
 }

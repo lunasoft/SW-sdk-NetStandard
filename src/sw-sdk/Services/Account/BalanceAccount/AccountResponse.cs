@@ -5,24 +5,24 @@ namespace SW.Services.Account
     public class AccountResponse : Entities.Response
     {
         [DataMember]
-        public Data data { get; set; }
+        public Data Data { get; set; }
         
     }
     public partial class Data
     {
         [DataMember]
-        public string idSaldoCliente { get; set; }
+        public string IdSaldoCliente { get; set; }
         [DataMember]
-        public string idClienteUsuario { get; set; }
+        public string IdClienteUsuario { get; set; }
         [DataMember]
-        public int saldoTimbres { get; set; }
+        public int SaldoTimbres { get; set; }
         [DataMember]
-        public int timbresUtilizados { get; set; }
+        public int TimbresUtilizados { get; set; }
         [DataMember]
-        public string fechaExpiracion { get; set; }
+        public string FechaExpiracion { get; set; }
         [DataMember]
-        public bool unlimited { get; set; }
+        public bool Unlimited { get; set; }
         [DataMember]
-        public int timbresAsignados { get; set; }
+        public int TimbresAsignados { get; set; }
     }
 }

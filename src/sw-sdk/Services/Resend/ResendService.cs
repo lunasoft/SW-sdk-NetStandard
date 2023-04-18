@@ -28,8 +28,8 @@ namespace SW.Services.Resend
                 var headers = await GetHeadersAsync();
                 var request = new ResendRequest()
                 {
-                    uuid = uuid.ToString(),
-                    to = String.Join(",", email)
+                    Uuid = uuid.ToString(),
+                    To = String.Join(",", email)
                 };
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings

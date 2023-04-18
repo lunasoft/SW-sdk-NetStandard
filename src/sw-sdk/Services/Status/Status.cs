@@ -26,9 +26,9 @@ namespace SW.Services.Status
         /// <param name="uuid">Folio fiscal del CFDI timbrado.</param>
         /// <param name="sello">Ultimos ocho dígitos del sello del comprobante.</param>
         /// <returns><see cref="Acuse"/></returns>
-        public Acuse GetStatusCFDI(string rfcEmisor, string rfcReceptor, string Total, string uuid, string sello)
+        public Acuse GetStatusCFDI(string rfcEmisor, string rfcReceptor, string total, string uuid, string sello)
         {
-            return StatusRequest(rfcEmisor, rfcReceptor, Total, uuid, sello);
+            return StatusRequest(rfcEmisor, rfcReceptor, total, uuid, sello);
         }
     }
 }

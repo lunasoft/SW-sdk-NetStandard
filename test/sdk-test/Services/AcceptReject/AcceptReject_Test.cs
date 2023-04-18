@@ -26,8 +26,8 @@ namespace Test_SW.Services.AcceptReject_Test
         {
             var resultExpect = "El uuid proporcionado es inválido. Favor de verificar";
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
-            AcceptRejectResponse response = await acceptReject.AcceptByCSD(build.Cer, build.Key, build.Rfc, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { uuid = "" } });
-            Assert.Contains((string)resultExpect, response.messageDetail);
+            AcceptRejectResponse response = await acceptReject.AcceptByCSD(build.Cer, build.Key, build.Rfc, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { Uuid = "" } });
+            Assert.Contains((string)resultExpect, response.MessageDetail);
         }
         /// <summary>
         /// Aceptacion o Rechazo por UUID
@@ -38,10 +38,10 @@ namespace Test_SW.Services.AcceptReject_Test
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
             var response = await acceptReject.AcceptByRfcUuid(build.RfcReceptor, "DB68450F-355B-4915-AFDC-A980497C4D70", EnumAcceptReject.Aceptacion);
-            Assert.True(response.status == "success");
-            Assert.NotNull(response.data);
-            Assert.True(!String.IsNullOrEmpty(response.data.acuse));
-            Assert.True(response.data.folios.Count > 0);
+            Assert.True(response.Status == "success");
+            Assert.NotNull(response.Data);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Acuse));
+            Assert.True(response.Data.Folios.Count > 0);
         }
         /// <summary>
         /// Aceptacion o Rechazo por CSD
@@ -51,11 +51,11 @@ namespace Test_SW.Services.AcceptReject_Test
         public async Task AcceptRejectByCSDAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
-            var response = await acceptReject.AcceptByCSD(build.CerReceptor, build.KeyReceptor, build.RfcReceptor, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = EnumAcceptReject.Aceptacion } });
-            Assert.True(response.status == "success");
-            Assert.NotNull(response.data);
-            Assert.True(!String.IsNullOrEmpty(response.data.acuse));
-            Assert.True(response.data.folios.Count > 0);
+            var response = await acceptReject.AcceptByCSD(build.CerReceptor, build.KeyReceptor, build.RfcReceptor, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { Uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = EnumAcceptReject.Aceptacion } });
+            Assert.True(response.Status == "success");
+            Assert.NotNull(response.Data);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Acuse));
+            Assert.True(response.Data.Folios.Count > 0);
         }
         /// <summary>
         /// Aceptacion o Rechazo por PFX
@@ -65,11 +65,11 @@ namespace Test_SW.Services.AcceptReject_Test
         public async Task AcceptRejectByPfxAsync()
         {
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
-            var response = await acceptReject.AcceptByPFX(build.PfxReceptor, build.RfcReceptor, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = EnumAcceptReject.Aceptacion } });
-            Assert.True(response.status == "success");
-            Assert.NotNull(response.data);
-            Assert.True(!String.IsNullOrEmpty(response.data.acuse));
-            Assert.True(response.data.folios.Count > 0);
+            var response = await acceptReject.AcceptByPFX(build.PfxReceptor, build.RfcReceptor, build.CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { Uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = EnumAcceptReject.Aceptacion } });
+            Assert.True(response.Status == "success");
+            Assert.NotNull(response.Data);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Acuse));
+            Assert.True(response.Data.Folios.Count > 0);
         }
         /// <summary>
         /// Aceptacion o Rechazo por XML
@@ -81,10 +81,10 @@ namespace Test_SW.Services.AcceptReject_Test
             AcceptReject acceptReject = new AcceptReject(build.Url, build.User, build.Password);
             var xml = File.ReadAllText("Resources/aceptacionRechazo.xml");
             var response = await acceptReject.AcceptByXML(Encoding.UTF8.GetBytes(xml));
-            Assert.True(response.status == "success");
-            Assert.NotNull(response.data);
-            Assert.True(!String.IsNullOrEmpty(response.data.acuse));
-            Assert.True(response.data.folios.Count > 0);
+            Assert.True(response.Status == "success");
+            Assert.NotNull(response.Data);
+            Assert.True(!String.IsNullOrEmpty(response.Data.Acuse));
+            Assert.True(response.Data.Folios.Count > 0);
         }
     }
 }

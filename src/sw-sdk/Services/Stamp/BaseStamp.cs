@@ -49,7 +49,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -115,7 +115,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -181,7 +181,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -245,7 +245,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>

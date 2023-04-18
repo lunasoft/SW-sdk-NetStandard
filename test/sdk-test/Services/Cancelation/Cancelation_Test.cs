@@ -21,17 +21,17 @@ namespace Test_SW.Services.Cancelation_Test
             string rfc = build.Rfc;
             string folioSustitucion = Guid.NewGuid().ToString();
             var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid, "01", folioSustitucion);
-            if (response.status != "error")
+            if (response.Status != "error")
             {
                 //acuse de cancelación
                 Console.WriteLine(response.data.acuse);
             }
             else
             {
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
-            Assert.True(response.data.acuse != null && response.status == "success");
+            Assert.True(response.data.acuse != null && response.Status == "success");
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByRfcUuidAsync()
@@ -39,7 +39,7 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid, "02");
-            Assert.True(response.data.acuse != null && response.status == "success");
+            Assert.True(response.data.acuse != null && response.Status == "success");
         }
 
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
@@ -48,7 +48,7 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.PfxPassword, uuid, "02");
-            Assert.True(response != null && response.status == "success");
+            Assert.True(response != null && response.Status == "success");
         }
 
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
@@ -57,7 +57,7 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByXMLAsync(build.CancelacionXML);
-            Assert.True(response != null && response.status == "success");
+            Assert.True(response != null && response.Status == "success");
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_ValidateParametersAsync()
@@ -69,9 +69,9 @@ namespace Test_SW.Services.Cancelation_Test
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, uuid, "02");
             Assert.NotNull(response);
-            Assert.Contains((string)resultExpect, response.messageDetail);
-            Assert.Equal(response.status, (string)resultExpectStatus);
-            Assert.Equal(response.status, (string)resultExpectMessage);
+            Assert.Contains((string)resultExpect, response.MessageDetail);
+            Assert.Equal(response.Status, (string)resultExpectStatus);
+            Assert.Equal(response.Status, (string)resultExpectMessage);
         }
     }
 }

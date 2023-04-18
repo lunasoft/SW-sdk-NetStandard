@@ -20,8 +20,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueJson issue = new SW.Services.Issue.IssueJson(build.Url, build.User, build.Password);
             var json = GetJson(build);
             var response = (StampResponseV1)await issue.TimbrarJsonV1Async(json);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
 
         [Fact]
@@ -31,8 +31,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueJson issue = new SW.Services.Issue.IssueJson(build.Url, build.User, build.Password);
             var json = GetJson(build);
             var response = (StampResponseV2)await issue.TimbrarJsonV2Async(json);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
 
         [Fact]
@@ -42,8 +42,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueJson issue = new SW.Services.Issue.IssueJson(build.Url, build.User, build.Password);
             var json = GetJson(build);
             var response = (StampResponseV3)await issue.TimbrarJsonV3Async(json);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), response.message);
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         [Fact]
         public async Task IssueV4JsonV4fAsync()
@@ -52,8 +52,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
             var json = GetJson(build);
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com");
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task IssueV4JsonV4CustomIdfAsync()
@@ -61,12 +61,12 @@ namespace Test_SW.Services.Issue
             var build = new BuildSettings();
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
             var json = GetJson(build);
-            var customNumber = new Random().Next(1000,10000).ToString();
+            var customNumber = new Random().Next(1000, 10000).ToString();
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com", customNumber);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "someemail@some.com", customNumber);
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task IssueV4JsonV4MultipleEmailAsync()
@@ -74,10 +74,10 @@ namespace Test_SW.Services.Issue
             var build = new BuildSettings();
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
             var json = GetJson(build);
-            var customNumber = new Random().Next(1000,10000).ToString();
+            var customNumber = new Random().Next(1000, 10000).ToString();
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, "email1@abcdfg.com,email2@abcdfg.com", customNumber);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task IssueV4JsonV4PDFAsync()
@@ -85,9 +85,9 @@ namespace Test_SW.Services.Issue
             var build = new BuildSettings();
             SW.Services.Issue.IssueJsonV4 issue = new SW.Services.Issue.IssueJsonV4(build.Url, build.User, build.Password);
             var json = GetJson(build);
-            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, extras: new string[]{"pdf"});
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json, extras: new string[] { "pdf" });
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task IssueJsonV4XMLV1_HashedCustomId_IdDuplicado_Error()
@@ -98,14 +98,14 @@ namespace Test_SW.Services.Issue
             customId = string.Concat(Enumerable.Repeat(customId, 4));
             var json = GetJson(build);
             var response = await issue.TimbrarJsonV1Async(json, customId: customId);
-            Assert.True(response.status == "success");
-            Assert.True(!String.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success");
+            Assert.True(!String.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
             json = GetJson(build);
             response = await issue.TimbrarJsonV1Async(json, null, customId);
             Assert.NotNull(response);
-            Assert.True(response.status == "error");
-            Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status == "error");
+            Assert.True(response.Message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task IssueJsonV4XMLV1_InvalidCustomId_Error()
@@ -117,9 +117,9 @@ namespace Test_SW.Services.Issue
             var json = GetJson(build);
             var response = await issue.TimbrarJsonV1Async(json, null, customId);
             Assert.NotNull(response);
-            Assert.True(response.status == "error");
-            Assert.True(response.message == "El CustomId no es válido o viene vacío.");
-            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.messageDetail);
+            Assert.True(response.Status == "error");
+            Assert.True(response.Message == "El CustomId no es válido o viene vacío.");
+            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.MessageDetail);
         }
         [Fact]
         public async Task StampJsonV4byTokenAsync()
@@ -128,16 +128,16 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueJson issue = new SW.Services.Issue.IssueJson(build.Url, build.Token);
             var json = GetJson(build);
             var response = (StampResponseV4)await issue.TimbrarJsonV4Async(json);
-            Assert.True(response.data != null, "El resultado data viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
         }
         private string GetJson(BuildSettings build)
         {

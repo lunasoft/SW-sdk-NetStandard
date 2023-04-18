@@ -7,12 +7,12 @@ namespace SW.Services.Pdf
     internal class PdfRequest
     {
         [DataMember]
-        internal string xmlContent { get; set; }
+        public string XmlContent { get; set; }
         [DataMember]
-        internal string logo { get; set; }
+        public string Logo { get; set; }
         [DataMember]
-        internal Dictionary<string, string> extras { get; set; }
+        public Dictionary<string, string> Extras { get; set; }
         [DataMember]
-        internal string templateId { get; set; }
+        public string TemplateId { get; set; }
     }
 }
