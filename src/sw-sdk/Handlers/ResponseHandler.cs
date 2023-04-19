@@ -12,7 +12,7 @@ namespace SW.Handlers
         where T : Response, new()
     {
         private readonly ResponseHandlerExtended<T> _handler;
-         public readonly string XmlOriginal;
+        public readonly string XmlOriginal;
         internal ResponseHandler() 
         {
             _handler = new ResponseHandlerExtended<T>();
@@ -29,6 +29,7 @@ namespace SW.Handlers
                 using (HttpClient client = new HttpClient(proxy))
                 {
                     client.BaseAddress = new Uri(url);
+                    client.Timeout = TimeSpan.FromMinutes(5);
                     foreach (var header in headers)
                     {
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);

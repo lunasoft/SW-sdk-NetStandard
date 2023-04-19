@@ -45,7 +45,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v1.ToString(),
+                                StampTypes.V1.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v2.ToString(),
+                                StampTypes.V2.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v3.ToString(),
+                                StampTypes.V3.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -132,7 +132,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v4.ToString(),
+                                StampTypes.V4.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)

@@ -7,13 +7,13 @@ namespace SW.Services.Cancelation
     public class CancelationResponse : Response
     {
         [DataMember(Name = "data")]
-        public Data data { get; set; }
+        public Data Data { get; set; }
     }
     public class Data
     {
         [DataMember(Name = "acuse")]
-        public string acuse { get; set; }
+        public string Acuse { get; set; }
         [DataMember]
-        public Dictionary<string, string> uuid { get; set; }
+        public Dictionary<string, string> Uuid { get; set; }
     }
 }

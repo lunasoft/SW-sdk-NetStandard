@@ -22,7 +22,7 @@ namespace SW.Services.Status
         /// </summary>
         /// <param name="rfcEmisor">RFC del emisor.</param>
         /// <param name="rfcReceptor">RFC del receptor.</param>
-        /// <param name="Total">Total del CFDI.</param>
+        /// <param name="total">Total del CFDI.</param>
         /// <param name="uuid">Folio fiscal del CFDI timbrado.</param>
         /// <param name="sello">Ultimos ocho dígitos del sello del comprobante.</param>
         /// <returns><see cref="Acuse"/></returns>

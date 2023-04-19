@@ -244,7 +244,7 @@ namespace Test_SW.Services.Stamp_Test
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
         {
-            var resultExpect = "Xml Cfdi33 no proporcionado o viene vacio.";
+            var resultExpect = "Xml CFDI33 no proporcionado o viene vacio.";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
             var response = await stamp.TimbrarV1Async(String.Empty);
@@ -270,7 +270,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "301";
             var build = new BuildSettings();
             Stamp stamp = new Stamp(build.Url, build.Token);
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40_ansi.xml"));
             var response = await stamp.TimbrarV1Async(xml);
             Assert.True(response.Message.Contains(resultExpect), "Result not expected. Error: " + response.Message);
             Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.MessageDetail);

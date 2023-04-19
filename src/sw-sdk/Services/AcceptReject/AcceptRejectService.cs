@@ -51,10 +51,10 @@ namespace SW.Services.AcceptReject
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new AcceptRejectRequestPFX()
             {
-                _b64Pfx = pfx,
-                _password = password,
-                _rfc = rfc,
-                _uuids = uuids
+                B64Pfx = pfx,
+                Password = password,
+                Rfc = rfc,
+                Uuids = uuids
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

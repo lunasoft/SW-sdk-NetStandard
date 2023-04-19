@@ -96,21 +96,21 @@ namespace SW.Services.Storage
         [DataMember]
         public string NumRegIdTrib { get; set; }
         [DataMember]
-        public string UsoCFDI { get; set; }
+        public string UsoCfdi { get; set; }
         [DataMember]
         public decimal TotalImpuestosTraslados { get; set; }
         [DataMember]
         public decimal TotalImpuestosRetencion { get; set; }
         [DataMember]
-        public decimal TrasladosIVA { get; set; }
+        public decimal TrasladosIva { get; set; }
         [DataMember]
-        public decimal TrasladosIEPS { get; set; }
+        public decimal TrasladosIeps { get; set; }
         [DataMember]
-        public decimal RetencionesISR { get; set; }
+        public decimal RetencionesIsr { get; set; }
         [DataMember]
-        public decimal RetencionesIVA { get; set; }
+        public decimal RetencionesIva { get; set; }
         [DataMember]
-        public decimal RetencionesIEPS { get; set; }
+        public decimal RetencionesIeps { get; set; }
         [DataMember]
         public decimal TotalImpuestosLocalesTraslados { get; set; }
         [DataMember]

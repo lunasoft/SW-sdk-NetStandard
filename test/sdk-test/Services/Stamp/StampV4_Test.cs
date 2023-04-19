@@ -49,7 +49,7 @@ namespace Test_SW.Services.Stamp_Test
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV2)await stamp.TimbrarV2Async(xml, "someemail@some.com");
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV3)await stamp.TimbrarV3Async(xml, "someemail@some.com");
             Assert.True(response.Status == "error"
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
 
         }
         [Fact]
@@ -103,7 +103,7 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             response = (StampResponseV4)await stamp.TimbrarV4Async(xml, "someemail@some.com");
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
 
         }
         [Fact]
@@ -145,7 +145,7 @@ namespace Test_SW.Services.Stamp_Test
         [Fact]
         public async Task Stamp_Test_ValidateEmptyXMLAsync()
         {
-            var resultExpect = "Xml Cfdi33 no proporcionado o viene vacio.";
+            var resultExpect = "Xml CFDI33 no proporcionado o viene vacio.";
             var build = new BuildSettings();
             StampV4 stamp = new StampV4(build.Url, build.Token);
             var response = await stamp.TimbrarV1Async(string.Empty, "someemail@some.com");
@@ -173,7 +173,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "301";
             var build = new BuildSettings();
             StampV4 stamp = new StampV4(build.Url, build.Token);
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40_ansi.xml"));
             var response = await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);
@@ -214,7 +214,7 @@ namespace Test_SW.Services.Stamp_Test
             xml = GetXml(build);
             response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
             Assert.True(response.Status == "error");
-            Assert.True(response.Message == "Cfdi3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(response.Message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]

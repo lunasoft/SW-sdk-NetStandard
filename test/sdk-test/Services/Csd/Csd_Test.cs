@@ -20,7 +20,7 @@ namespace Test_SW_sdk.Services.Csd
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, _build.CerPassword);
             Assert.True(response.Status == "success");
-            Assert.NotNull(response.Data);
+            Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
         }
@@ -30,7 +30,7 @@ namespace Test_SW_sdk.Services.Csd
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, _build.CerPassword);
             Assert.True(response.Status == "success");
-            Assert.NotNull(response.Data);
+            Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
         }
@@ -61,17 +61,17 @@ namespace Test_SW_sdk.Services.Csd
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetAllCsdAsync();
             Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
-            Assert.True(response.Data.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().ValidTo));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().ValidFrom));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().IssuerRfc));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().IssuerBusinessName));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CertificateNumber));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CertificateType));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CsdCertificate));
+            Assert.True(response.data.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.data.First().valid_to));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().valid_from));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().issuer_rfc));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().issuer_business_name));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().certificate_number));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().certificate_type));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().csd_certificate));
         }
         [Fact]
         public async Task Csd_Test_GetAllCsdByRfc_Success()
@@ -79,17 +79,17 @@ namespace Test_SW_sdk.Services.Csd
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
             var response = await csd.GetAllCsdAsync(_build.Rfc);
             Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
-            Assert.True(response.Data.Count > 0);
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().ValidTo));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().ValidFrom));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().IssuerRfc));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().IssuerBusinessName));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CertificateNumber));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CertificateType));
-            Assert.True(!String.IsNullOrEmpty(response.Data.First().CsdCertificate));
+            Assert.True(response.data.Count > 0);
+            Assert.True(!String.IsNullOrEmpty(response.data.First().valid_to));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().valid_from));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().issuer_rfc));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().issuer_business_name));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().certificate_number));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().certificate_type));
+            Assert.True(!String.IsNullOrEmpty(response.data.First().csd_certificate));
         }
         [Fact]
         public async Task Csd_Test_GetAllCsdByRfc_Error()
@@ -109,14 +109,14 @@ namespace Test_SW_sdk.Services.Csd
             Assert.True(response.Status.Equals("success"));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
-            Assert.NotNull(response.Data);
-            Assert.True(!String.IsNullOrEmpty(response.Data.ValidTo));
-            Assert.True(!String.IsNullOrEmpty(response.Data.ValidFrom));
-            Assert.True(!String.IsNullOrEmpty(response.Data.IssuerRfc));
-            Assert.True(!String.IsNullOrEmpty(response.Data.IssuerBusinessName));
-            Assert.True(!String.IsNullOrEmpty(response.Data.CertificateNumber));
-            Assert.True(!String.IsNullOrEmpty(response.Data.CertificateType));
-            Assert.True(!String.IsNullOrEmpty(response.Data.CsdCertificate));
+            Assert.NotNull(response.data);
+            Assert.True(!String.IsNullOrEmpty(response.data.valid_to));
+            Assert.True(!String.IsNullOrEmpty(response.data.valid_from));
+            Assert.True(!String.IsNullOrEmpty(response.data.issuer_rfc));
+            Assert.True(!String.IsNullOrEmpty(response.data.issuer_business_name));
+            Assert.True(!String.IsNullOrEmpty(response.data.certificate_number));
+            Assert.True(!String.IsNullOrEmpty(response.data.certificate_type));
+            Assert.True(!String.IsNullOrEmpty(response.data.csd_certificate));
         }
         [Fact]
         public async Task Csd_Test_GetCsd_Error()
@@ -132,9 +132,9 @@ namespace Test_SW_sdk.Services.Csd
         public async Task Csd_Test_DeleteCsdAsync_Success()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
-            var response = await csd.DeleteCsdAsync("30001000000400002442");
+            var response = await csd.DeleteCsdAsync("30001000000400002434");
             Assert.True(response.Status == "success");
-            Assert.NotNull(response.Data);
+            Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
         }

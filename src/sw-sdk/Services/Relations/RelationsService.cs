@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -30,11 +32,15 @@ namespace SW.Services.Relations
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestCSD()
             {
-                _b64Cer = cer,
-                _b64Key = key,
-                _password = password,
-                _rfc = rfc,
-                _uuid = uuid
+                B64Cer = cer,
+                B64Key = key,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
@@ -50,10 +56,14 @@ namespace SW.Services.Relations
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestPFX()
             {
-                _b64Pfx = pfx,
-                _password = password,
-                _rfc = rfc,
-                _uuid = uuid
+                B64Pfx = pfx,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

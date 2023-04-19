@@ -24,14 +24,14 @@ namespace Test_SW.Services.Cancelation_Test
             if (response.Status != "error")
             {
                 //acuse de cancelación
-                Console.WriteLine(response.data.acuse);
+                Console.WriteLine(response.Data.Acuse);
             }
             else
             {
                 Console.WriteLine(response.Message);
                 Console.WriteLine(response.MessageDetail);
             }
-            Assert.True(response.data.acuse != null && response.Status == "success");
+            Assert.True(response.Data.Acuse != null && response.Status == "success");
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByRfcUuidAsync()
@@ -39,7 +39,7 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid, "02");
-            Assert.True(response.data.acuse != null && response.Status == "success");
+            Assert.True(response.Data.Acuse != null && response.Status == "success");
         }
 
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]

@@ -26,9 +26,9 @@ namespace SW.Services.Account.AccountUser
             }
             return new Response()
             {
-                status = result.status,
-                message = result.status.Equals("success") ? result.Data : result.message,
-                messageDetail = result.messageDetail
+                Status = result.Status,
+                Message = result.Status.Equals("success") ? result.Data : result.Message,
+                MessageDetail = result.MessageDetail
             };
         }
     }

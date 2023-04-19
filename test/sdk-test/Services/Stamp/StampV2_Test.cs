@@ -49,7 +49,7 @@ namespace Test_SW.Services.Stamp_Test
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
             Assert.True(response.Status == "error"
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
 
         }
         [Fact]
@@ -119,7 +119,7 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
-            Assert.Contains("Cfdi:Addenda", response.Data.Cfdi);
+            Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
 
         }
         [Fact]
@@ -166,7 +166,7 @@ namespace Test_SW.Services.Stamp_Test
             var response = await stamp.TimbrarV1Async(String.Empty);
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);
-            Assert.Equal("Xml Cfdi33 no proporcionado o viene vacio.", response.Message);
+            Assert.Equal("Xml CFDI33 no proporcionado o viene vacio.", response.Message);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
@@ -186,7 +186,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "301";
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url, build.Token);
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileANSI.xml"));
+            var xml = File.ReadAllText("Resources/CFDI40/cfdi40_ansi.xml");
             var response = await stamp.TimbrarV1Async(xml);
             Assert.NotNull(response);
             Assert.Equal("error", response.Status);

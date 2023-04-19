@@ -293,7 +293,7 @@ namespace sdk_test.Services.Pdf
             if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, "Cfdi40");
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, "cfdi40");
                 Assert.True(responsePdf.Data != null && responsePdf.Status == "success");
             }
             else
@@ -342,7 +342,7 @@ namespace sdk_test.Services.Pdf
         static Random randomNumber = new Random(1);
         private string GetXml(BuildSettings build, string fileName = null)
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(string.Format("Resources/Cfdi40/{0}.xml", fileName ?? "Cfdi40")));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(string.Format("Resources/CFDI40/{0}.xml", fileName ?? "cfdi40")));
             xml = Test_SW.Helpers.SignTools.RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);

@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using SW.Services.Pdf;
+using System;
 
 namespace SW.Services.Cancelation
 {
@@ -40,29 +44,39 @@ namespace SW.Services.Cancelation
         }
         internal virtual StringContent RequestCancelar(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
-            var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestCSD()
+            var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestCSD() 
             {
-                _folioSustitucion = folioSustitucion,
-                _motivo = motivo,
-                _b64Cer = cer,
-                _b64Key = key,
-                _password = password,
-                _rfc = rfc,
-                _uuid = uuid
+                Foliosustitucion = folioSustitucion,
+                Motivo = motivo,
+                B64Cer = cer,
+                B64Key = key,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
-            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
+           StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
+
+       
         }
         internal virtual StringContent RequestCancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new CancelationRequestPFX()
             {
-                _folioSustitucion = folioSustitucion,
-                _motivo = motivo,
-                _b64Pfx = pfx,
-                _password = password,
-                _rfc = rfc,
-                _uuid = uuid
+                Foliosustitucion = folioSustitucion,
+                Motivo = motivo,
+                B64Pfx = pfx,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
