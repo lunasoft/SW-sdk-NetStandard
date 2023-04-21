@@ -128,7 +128,7 @@ namespace Test_SW_sdk.Services.Csd
             Assert.True(response.Message.Equals("Certificados"));
             Assert.True(response.MessageDetail.Equals("Numero certificado invalido."));
         }
-        [Fact]
+        [Fact(Skip = "Se omite ya que afecta las demas UT, habilitar segun se requiera.")]
         public async Task Csd_Test_DeleteCsdAsync_Success()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
