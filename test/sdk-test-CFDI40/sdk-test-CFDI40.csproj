@@ -26,91 +26,91 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_Autotransporte.json">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_Autotransporte.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_Autotransporte.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_Autotransporte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_TransporteAereo.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_TransporteAereo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_TransporteFerroviario.json">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_TransporteFerroviario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_TransporteFerroviario.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Ingreso_CartaPorte_TransporteMaritimo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Traslado_CartaPorte_Autotransporte.json">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Traslado_CartaPorte_Autotransporte.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Traslado_CartaPorte_Autotransporte.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Traslado_CartaPorte_Autotransporte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Traslado_CartaPorte_TransporteAereo.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Traslado_CartaPorte_TransporteAereo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Traslado_CartaPorte_TransporteFerroviario.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CartaPorte20\CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml">
+    <Content Update="Resources\CartaPorte20\Cfdi40_Traslado_CartaPorte_TransporteMaritimo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Egreso_NotaDeCredito.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Egreso_NotaDeCredito.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Egreso_NotaDeCredito.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Egreso_NotaDeCredito.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_ACuentaTerceros.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_ACuentaTerceros.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_ACuentaTerceros.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_ACuentaTerceros.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_Global.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_Global.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_Global.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_Global.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_GlobalExtranjero.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_GlobalExtranjero.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_GlobalExtranjero.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_GlobalExtranjero.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_KitParte.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_KitParte.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Ingreso_KitParte.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Ingreso_KitParte.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Traslado.json">
+    <Content Update="Resources\CFDI40\Cfdi40_Traslado.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\CFDI40\CFDI40_Traslado.xml">
+    <Content Update="Resources\CFDI40\Cfdi40_Traslado.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\ComercioExterior11\CFDI40_ComercioExterior.json">
+    <Content Update="Resources\ComercioExterior11\Cfdi40_ComercioExterior.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\ComercioExterior11\CFDI40_ComercioExterior.xml">
+    <Content Update="Resources\ComercioExterior11\Cfdi40_ComercioExterior.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\ComercioExterior11\CFDI40_ComercioExterior_DiferentesMonedas.json">
+    <Content Update="Resources\ComercioExterior11\Cfdi40_ComercioExterior_DiferentesMonedas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Resources\ComercioExterior11\CFDI40_ComercioExterior_DiferentesMonedas.xml">
+    <Content Update="Resources\ComercioExterior11\Cfdi40_ComercioExterior_DiferentesMonedas.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
