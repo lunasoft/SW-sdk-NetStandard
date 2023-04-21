@@ -113,5 +113,35 @@
     <Content Update="Resources\ComercioExterior11\Cfdi40_ComercioExterior_DiferentesMonedas.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_DoctoRelacionadoEnDolar.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_Dolar.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_Dolar.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_EURyDRenUSD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_EURyDRenUSD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_Factoraje.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_MonedasDistintasyDRenUSD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Resources\Pagos20\Cfdi40_Pago_MonedasDistintasyDRenUSD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
