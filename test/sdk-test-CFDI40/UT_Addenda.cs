@@ -17,9 +17,9 @@ namespace Test_SW
         {
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Addenda/CFDI40_Addenda.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
-        }        
+        }
         #endregion
-        
+
         #region Timbrado Versión 2
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo ingreso con Addenda mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
@@ -29,9 +29,9 @@ namespace Test_SW
         {
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Addenda/CFDI40_Addenda.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
-        }        
+        }
         #endregion
-        
+
         #region Timbrado Versión 4
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo ingreso con Addenda mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
@@ -41,7 +41,7 @@ namespace Test_SW
         {
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Addenda/CFDI40_Addenda.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
-        }        
+        }
         #endregion
     }
 }

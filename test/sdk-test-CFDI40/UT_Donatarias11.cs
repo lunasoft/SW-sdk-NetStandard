@@ -4,44 +4,44 @@ using System.Threading.Tasks;
 
 namespace Test_SW
 {
-    public class UT_Donatarias11
-    {
-        Test_SW.Helpers.StampService stampService = new Test_SW.Helpers.StampService();
+        public class UT_Donatarias11
+        {
+            Test_SW.Helpers.StampService stampService = new Test_SW.Helpers.StampService();
 
-        #region Timbrado Versión 1
-        /// <summary>
-        /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
-        /// </summary>
-        [Fact]
-        public async Task UT_CFDI40_Detallista_StampV1_ResponseV1()
-        {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Donatarias11/CFDI40_Donatarias.xml", "V1");
-            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
-        }        
-        #endregion
-        
-        #region Timbrado Versión 2
-        /// <summary>
-        /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
-        /// </summary>
-        [Fact]
-        public async Task UT_CFDI40_Detallista_StampV2_ResponseV2()
-        {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Donatarias11/CFDI40_Donatarias.xml", "V2");
-            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
-        }        
-        #endregion
-        
-        #region Timbrado Versión 4
-        /// <summary>
-        /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
-        /// </summary>
-        [Fact]
-        public async Task UT_CFDI40_Detallista_StampV4_ResponseV3()
-        {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Donatarias11/CFDI40_Donatarias.xml", "V4");
-            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
-        }        
-        #endregion
-    }
+            #region Timbrado Versión 1
+            /// <summary>
+            /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
+            /// </summary>
+            [Fact]
+            public async Task UT_CFDI40_Detallista_StampV1_ResponseV1()
+            {
+                var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Donatarias11/CFDI40_Donatarias.xml", "V1");
+                Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
+            }
+            #endregion
+
+            #region Timbrado Versión 2
+            /// <summary>
+            /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
+            /// </summary>
+            [Fact]
+            public async Task UT_CFDI40_Detallista_StampV2_ResponseV2()
+            {
+                var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Donatarias11/CFDI40_Donatarias.xml", "V2");
+                Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
+            }
+            #endregion
+
+            #region Timbrado Versión 4
+            /// <summary>
+            /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Donatarias mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
+            /// </summary>
+            [Fact]
+            public async Task UT_CFDI40_Detallista_StampV4_ResponseV3()
+            {
+                var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Donatarias11/CFDI40_Donatarias.xml", "V4");
+                Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
+            }
+            #endregion
+        }
 }

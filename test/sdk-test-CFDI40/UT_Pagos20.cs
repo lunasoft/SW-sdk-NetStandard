@@ -15,7 +15,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_StampV1_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/Cfdi40_Pago.xml", "V1");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -25,7 +25,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Dolar_StampV1_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/Cfdi40_Pago_Dolar.xml", "V1");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -35,7 +35,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_DoctoRelacionadoEnDolar_StampV1_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/Cfdi40_Pago_DoctoRelacionadoEnDolar.xml", "V1");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -45,7 +45,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_EURyDRenUSD_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_EURyDRenUSD.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_EURyDRenUSD.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -64,7 +64,7 @@ namespace Test_SW
         [Fact(Skip = "Skip por error de en el documento")]
         public async Task UT_Cfdi40_Pago_MonedasDistintasyDRenUSD_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_MonedasDistintasyDRenUSD.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_MonedasDistintasyDRenUSD.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -83,7 +83,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Factoraje_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_Factoraje.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_Factoraje.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -104,7 +104,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_StampV2_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/Cfdi40_Pago.xml", "V2");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -114,7 +114,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Dolar_StampV2_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/Cfdi40_Pago_Dolar.xml", "V2");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -124,7 +124,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_DoctoRelacionadoEnDolar_StampV2_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/Cfdi40_Pago_DoctoRelacionadoEnDolar.xml", "V2");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -134,7 +134,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_EURyDRenUSD_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_EURyDRenUSD.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_EURyDRenUSD.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -153,7 +153,7 @@ namespace Test_SW
         [Fact(Skip = "Skip por error de en el documento")]
         public async Task UT_Cfdi40_Pago_MonedasDistintasyDRenUSD_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_MonedasDistintasyDRenUSD.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_MonedasDistintasyDRenUSD.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -172,7 +172,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Factoraje_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_Factoraje.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_Factoraje.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -193,7 +193,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_StampV4_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/Cfdi40_Pago.xml", "V4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -203,7 +203,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Dolar_StampV4_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/Cfdi40_Pago_Dolar.xml", "V4");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -213,7 +213,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_DoctoRelacionadoEnDolar_StampV4_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/Cfdi40_Pago_DoctoRelacionadoEnDolar.xml", "V4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -223,7 +223,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_EURyDRenUSD_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_EURyDRenUSD.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_EURyDRenUSD.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -242,7 +242,7 @@ namespace Test_SW
         [Fact(Skip = "Skip por error de en el documento")]
         public async Task UT_Cfdi40_Pago_MonedasDistintasyDRenUSD_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_MonedasDistintasyDRenUSD.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_MonedasDistintasyDRenUSD.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -261,7 +261,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Factoraje_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_Factoraje.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_Factoraje.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -282,7 +282,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_StampV4Json_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/Cfdi40_Pago.json", "IssueJsonV4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -292,7 +292,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_Dolar_StampV4Json_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/Cfdi40_Pago_Dolar.json", "IssueJsonV4");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -302,7 +302,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Pago_EURyDRenUSD_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_EURyDRenUSD.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_EURyDRenUSD.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -321,7 +321,7 @@ namespace Test_SW
         [Fact(Skip = "Skip por error de en el JSON")]
         public async Task UT_Cfdi40_Pago_MonedasDistintasyDRenUSD_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/Cfdi40_Pago_MonedasDistintasyDRenUSD.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Pagos20/CFDI40_Pago_MonedasDistintasyDRenUSD.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");

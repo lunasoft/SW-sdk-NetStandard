@@ -15,7 +15,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_instEducativas_StampV1_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/InstitucionesEducativasPrivadas10/Cfdi40_Instituciones_Educativas_Privadas.xml", "V1");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/InstitucionesEducativasPrivadas10/CFDI40_Instituciones_Educativas_Privadas.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         #endregion
@@ -27,7 +27,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_instEducativas_StampV2_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/InstitucionesEducativasPrivadas10/Cfdi40_Instituciones_Educativas_Privadas.xml", "V2");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/InstitucionesEducativasPrivadas10/CFDI40_Instituciones_Educativas_Privadas.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         #endregion
@@ -39,7 +39,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_instEducativas_StampV4_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/InstitucionesEducativasPrivadas10/Cfdi40_Instituciones_Educativas_Privadas.xml", "V4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/InstitucionesEducativasPrivadas10/CFDI40_Instituciones_Educativas_Privadas.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         #endregion
@@ -51,15 +51,15 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_instEducativas_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/InstitucionesEducativasPrivadas10/Cfdi40_Instituciones_Educativas_Privadas.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/InstitucionesEducativasPrivadas10/CFDI40_Instituciones_Educativas_Privadas.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }

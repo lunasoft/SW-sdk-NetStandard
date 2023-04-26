@@ -48,14 +48,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_SinDeducciones.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
 
         /// <summary>
@@ -97,14 +97,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro2.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         #endregion
 
@@ -148,14 +148,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_SinDeducciones.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
 
         /// <summary>
@@ -197,14 +197,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro2.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         #endregion
 
@@ -248,14 +248,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_SinDeducciones.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
 
         /// <summary>
@@ -297,14 +297,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro2.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         #endregion
 
@@ -348,14 +348,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_SinDeducciones.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
 
         /// <summary>
@@ -397,14 +397,14 @@ namespace Test_SW
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro2.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
         #endregion
     }

@@ -16,7 +16,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_StampV1_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Cfdi40/Cfdi40_Ingreso.xml", "V1");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -26,7 +26,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_KitParte_StampV1_Token_ResponseV2()
         {
-            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/Cfdi40/Cfdi40_Ingreso_KitParte.xml", "V1");
+            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -36,7 +36,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_ACuentaTerceros_StampV1_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Cfdi40/Cfdi40_Ingreso_ACuentaTerceros.xml", "V1");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -46,7 +46,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_Global_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_Global.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_Global.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -65,7 +65,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_GlobalExtranjero_StampV1_Token_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_GlobalExtranjero.xml", "V1");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_GlobalExtranjero.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -84,7 +84,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_NotaDeCredito_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Egreso_NotaDeCredito.xml", "V1");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Egreso_NotaDeCredito.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -103,7 +103,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_Traslado_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Traslado.xml", "V1");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Traslado.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -124,7 +124,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_StampV2_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Cfdi40/Cfdi40_Ingreso.xml", "V2");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -134,7 +134,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_KitParte_StampV2_Token_ResponseV2()
         {
-            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/Cfdi40/Cfdi40_Ingreso_KitParte.xml", "V2");
+            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -144,7 +144,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_ACuentaTerceros_StampV2_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Cfdi40/Cfdi40_Ingreso_ACuentaTerceros.xml", "V2");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -154,7 +154,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_Global_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_Global.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_Global.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -173,7 +173,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_GlobalExtranjero_StampV2_Token_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_GlobalExtranjero.xml", "V2");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_GlobalExtranjero.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -192,7 +192,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_NotaDeCredito_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Egreso_NotaDeCredito.xml", "V2");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Egreso_NotaDeCredito.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -211,7 +211,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_Traslado_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Traslado.xml", "V2");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Traslado.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -232,7 +232,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_StampV4_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Cfdi40/Cfdi40_Ingreso.xml", "V4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -242,7 +242,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_KitParte_StampV4_Token_ResponseV2()
         {
-            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/Cfdi40/Cfdi40_Ingreso_KitParte.xml", "V4");
+            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -252,7 +252,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_ACuentaTerceros_StampV4_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Cfdi40/Cfdi40_Ingreso_ACuentaTerceros.xml", "V4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -262,7 +262,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_Global_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_Global.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_Global.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -281,7 +281,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_GlobalExtranjero_StampV4_Token_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_GlobalExtranjero.xml", "V4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_GlobalExtranjero.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -300,7 +300,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_NotaDeCredito_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Egreso_NotaDeCredito.xml", "V4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Egreso_NotaDeCredito.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -319,7 +319,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_Traslado_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Traslado.xml", "V4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Traslado.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -340,7 +340,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_StampV4Json_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Cfdi40/Cfdi40_Ingreso.json", "IssueJsonV4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -350,7 +350,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_KitParte_StampV4Json_Token_ResponseV2()
         {
-            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/Cfdi40/Cfdi40_Ingreso_KitParte.json", "IssueJsonV4");
+            var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -360,7 +360,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_ACuentaTerceros_StampV4Json_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Cfdi40/Cfdi40_Ingreso_ACuentaTerceros.json", "IssueJsonV4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
 
@@ -370,7 +370,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_Global_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_Global.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_Global.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -389,7 +389,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_GlobalExtranjero_StampV4Json_Token_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Ingreso_GlobalExtranjero.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Ingreso_GlobalExtranjero.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -408,7 +408,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_NotaDeCredito_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Egreso_NotaDeCredito.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Egreso_NotaDeCredito.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -427,7 +427,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Egreso_Traslado_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/Cfdi40/Cfdi40_Traslado.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampServiceToken.StampResponseV4("Resources/CFDI40/CFDI40_Traslado.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
