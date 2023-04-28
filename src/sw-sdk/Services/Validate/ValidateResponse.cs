@@ -7,7 +7,7 @@ namespace SW.Services.Validate
     public class ValidateXmlResponse : Response
     {
         [DataMember]
-        public List<Detail> Detail { get; set; }
+        public List<Details> Detail { get; set; }
         [DataMember]
         public string CadenaOriginalSAT { get; set; }
         [DataMember]
@@ -19,10 +19,10 @@ namespace SW.Services.Validate
         [DataMember]
         public string StatusCodeSat { get; set; }
     }
-    public class Detail
+    public class Details
     {
         [DataMember]
-        public List<DetailNode> detail { get; set; }
+        public List<DetailNode> Detail { get; set; }
         [DataMember]
         public string Section { get; set; }
     }
