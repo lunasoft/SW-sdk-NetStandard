@@ -15,8 +15,8 @@ namespace SW.Helpers
         {
             if (!string.IsNullOrEmpty(proxy))
             {
-                WebProxy myproxy = new WebProxy(proxy, port);
-                request.Proxy = myproxy;
+                WebProxy myProxy = new WebProxy(proxy, port);
+                request.Proxy = myProxy;
             }
         }
         internal static HttpClientHandler ProxySettings(string proxy, int proxyPort)
@@ -43,24 +43,24 @@ namespace SW.Helpers
             request.Method = "POST";
             request.KeepAlive = true;
             Stream memStream = new System.IO.MemoryStream();
-            var boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
+            var boundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
                                                                     boundary + "\r\n");
             var endBoundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
                                                                         boundary + "--");
 
 
-            string formdataTemplate = "\r\n--" + boundary +
+            string formDataTemplate = "\r\n--" + boundary +
                                         "\r\nContent-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}";
 
             string headerTemplate =
                  "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" +
                  "Content-Type: application/octet-stream\r\n\r\n";
 
-            memStream.Write(boundarybytes, 0, boundarybytes.Length);
+            memStream.Write(boundaryBytes, 0, boundaryBytes.Length);
             var header = string.Format(headerTemplate, "xml", "xml");
-            var headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
+            var headerBytes = System.Text.Encoding.UTF8.GetBytes(header);
 
-            memStream.Write(headerbytes, 0, headerbytes.Length);
+            memStream.Write(headerBytes, 0, headerBytes.Length);
 
             using (var fileStream = new MemoryStream(file))
             {

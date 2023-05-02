@@ -6,18 +6,18 @@ namespace SW.Services.Cancelation
     internal class CancelationRequestCSD
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        internal string b64Cer { get; set; }
+        internal string B64Cer { get; set; }
         [DataMember]
-        internal string b64Key { get; set; }
+        internal string B64Key { get; set; }
         [DataMember]
-        internal string motivo { get; set; }
+        internal string Motivo { get; set; }
         [DataMember]
-        internal string folioSustitucion { get; set; }
+        internal string Foliosustitucion { get; set; }
     }
 }

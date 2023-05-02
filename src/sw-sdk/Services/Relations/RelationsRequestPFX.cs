@@ -6,12 +6,12 @@ namespace SW.Services.Relations
     internal class RelationsRequestPFX
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        internal string b64Pfx { get; set; }
+        internal string B64Pfx { get; set; }
     }
 }

@@ -22,13 +22,13 @@ namespace SW.Services.Validate
         /// <summary>
         /// Servicio para validar un CFDI en formato XML.
         /// </summary>
-        /// <param name="XML">XML del CFDI en formato string.</param>
+        /// <param name="xml">XML del CFDI en formato string.</param>
         /// <returns><see cref="ValidateXmlResponse"/></returns>
-        public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string XML)
+        public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string xml)
         {
             try
             {
-                var xmlBytes = Encoding.UTF8.GetBytes(XML);
+                var xmlBytes = Encoding.UTF8.GetBytes(xml);
                 var headers = await GetHeadersAsync();
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);

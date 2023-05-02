@@ -6,8 +6,8 @@ namespace SW.Services.Resend
     public class ResendRequest
     {
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         [DataMember]
-        public string to { get; set; }
+        public string To { get; set; }
     }
 }

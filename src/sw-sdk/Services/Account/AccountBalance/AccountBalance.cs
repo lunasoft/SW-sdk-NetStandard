@@ -7,7 +7,7 @@ namespace SW.Services.Account.AccountBalance
 {
     public class AccountBalance : AccountBalanceService
     {
-        private readonly string path = "/management/api/balance";
+        private readonly string _path = "/management/api/balance";
         /// <summary>
         /// Crear una instancia de la clase AccountBalance.
         /// </summary>
@@ -40,7 +40,7 @@ namespace SW.Services.Account.AccountBalance
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
                 var headers = await GetHeadersAsync();
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, String.Format("{0}/{1}", path, idUser), proxy);
+                return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, String.Format("{0}/{1}", _path, idUser), proxy);
             }
             catch (Exception e)
             {
@@ -65,7 +65,7 @@ namespace SW.Services.Account.AccountBalance
                 var headers = await GetHeadersAsync();
                 var content = GetStringContent(comment);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetPostResponseAsync(this.UrlApi ?? this.Url, String.Format("{0}/{1}/"+action.ToString().ToLower()+"/{2}", path, idUser, stamps), headers, content, proxy);
+                return await handler.GetPostResponseAsync(this.UrlApi ?? this.Url, String.Format("{0}/{1}/"+action.ToString().ToLower()+"/{2}", _path, idUser, stamps), headers, content, proxy);
             }
             catch (Exception ex)
             {

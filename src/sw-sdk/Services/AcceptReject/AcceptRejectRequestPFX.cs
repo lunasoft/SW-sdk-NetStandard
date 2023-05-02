@@ -6,14 +6,14 @@ namespace SW.Services.AcceptReject
     internal class AcceptRejectRequestPFX
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        internal AceptacionRechazoItem[] uuids { get; set; }
+        internal AceptacionRechazoItem[] Uuids { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        internal string b64Pfx { get; set; }        
+        internal string B64Pfx { get; set; }        
     }
 }

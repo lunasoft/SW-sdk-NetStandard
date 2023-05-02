@@ -16,7 +16,7 @@ namespace Test_SW.Services.Pendings
             var build = new BuildSettings();
             Pending pendientes = new Pending(build.Url, build.User, build.Password);
             var response = await pendientes.PendingsByRfcAsync("Test");
-            Assert.True(response.message.Contains((string)resultExpect) || response.status != "success");
+            Assert.True(response.Message.Contains((string)resultExpect) || response.Status != "success");
         }
         [Fact (Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task RelationsByRfcUuidAsync()
@@ -24,7 +24,7 @@ namespace Test_SW.Services.Pendings
             var build = new BuildSettings();
             Pending pendientes = new Pending(build.Url, build.User, build.Password);
             PendingsResponse response = await pendientes.PendingsByRfcAsync(build.Rfc);
-            Assert.True(response.status == "success");
+            Assert.True(response.Status == "success");
         }
     }
 }

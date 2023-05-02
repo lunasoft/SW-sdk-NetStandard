@@ -6,14 +6,14 @@ namespace SW.Services.Relations
     internal class RelationsRequestCSD
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        internal string b64Cer { get; set; }
+        internal string B64Cer { get; set; }
         [DataMember]
-        internal string b64Key { get; set; }
+        internal string B64Key { get; set; }
     }
 }

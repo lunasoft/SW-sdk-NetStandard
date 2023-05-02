@@ -12,7 +12,7 @@ namespace SW.Handlers
         where T : Response, new()
     {
         private readonly ResponseHandlerExtended<T> _handler;
-        public readonly string _xmlOriginal;
+        public readonly string XmlOriginal;
         internal ResponseHandler() 
         {
             _handler = new ResponseHandlerExtended<T>();
@@ -20,7 +20,7 @@ namespace SW.Handlers
         internal ResponseHandler(string xmlOriginal)
         {
             _handler = new ResponseHandlerExtended<T>();
-            _xmlOriginal = xmlOriginal;
+            XmlOriginal = xmlOriginal;
         }
         internal virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
@@ -29,6 +29,7 @@ namespace SW.Handlers
                 using (HttpClient client = new HttpClient(proxy))
                 {
                     client.BaseAddress = new Uri(url);
+                    client.Timeout = TimeSpan.FromMinutes(5);
                     foreach (var header in headers)
                     {
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -129,7 +130,7 @@ namespace SW.Handlers
             try
             {
 
-                return XmlUtils.AddAddenda(_xmlOriginal, cfdi, isb64);
+                return XmlUtils.AddAddenda(XmlOriginal, cfdi, isb64);
 
             }
             catch (Exception)
@@ -137,13 +138,13 @@ namespace SW.Handlers
             }
             return cfdi;
         }
-        internal virtual bool Has307AndAddenda(Response response, Data_CFDI data)
+        internal virtual bool Has307AndAddenda(Response response, DataCfdi data)
         {
             try
             {
-                if (response.status == "error" &&
-               (response.message != null && response.message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
-               && (data != null && !string.IsNullOrEmpty(data.cfdi)))
+                if (response.Status == "error" &&
+               (response.Message != null && response.Message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
+               && (data != null && !string.IsNullOrEmpty(data.Cfdi)))
                 {
                     return true;
                 }
@@ -153,13 +154,13 @@ namespace SW.Handlers
             }
             return false;
         }
-        internal virtual bool Has307AndAddenda(Response response, Data_CFDI_TFD data)
+        internal virtual bool Has307AndAddenda(Response response, DataCfdiTfd data)
         {
             try
             {
-                if (response.status == "error" &&
-               (response.message != null && response.message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
-               && (data != null && !string.IsNullOrEmpty(data.cfdi)))
+                if (response.Status == "error" &&
+               (response.Message != null && response.Message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
+               && (data != null && !string.IsNullOrEmpty(data.Cfdi)))
                 {
                     return true;
                 }

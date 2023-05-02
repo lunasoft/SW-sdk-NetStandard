@@ -66,7 +66,7 @@ namespace SW.Services.Account.AccountBalance
         internal virtual StringContent GetStringContent(string comment)
         {
             var request = new AccountBalanceRequest();
-            request.comment = comment;
+            request.Comment = comment;
             var content = new StringContent(JsonConvert.SerializeObject(
                 request, new JsonSerializerSettings
                 {

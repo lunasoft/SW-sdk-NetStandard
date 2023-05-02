@@ -21,12 +21,12 @@ namespace SW.Services.Pdf
             _apiUrl = urlApi;
             _handler = new ResponseHandler<PdfResponse>();
         }
-        internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales, bool isB64)
+        internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> observacionesAdicionales, bool isB64)
         {
             try
             {
                 var headers = await GetHeadersAsync();
-                var content = GetStringContent(xml, b64Logo, templateId, ObservacionesAdicionales, isB64);
+                var content = GetStringContent(xml, b64Logo, templateId, observacionesAdicionales, isB64);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(_apiUrl,"/pdf/v1/api/GeneratePdf", headers, content, proxy);
             }
@@ -42,7 +42,7 @@ namespace SW.Services.Pdf
                 var headers = await GetHeadersAsync();
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var result = await _handler.GetPostResponseAsync(_apiUrl, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
-                result.status = result.status ?? "success";
+                result.Status = result.Status ?? "success";
                 return result;
             }
             catch (Exception ex)
@@ -56,12 +56,12 @@ namespace SW.Services.Pdf
         /// <param name="xml">XML timbrado.</param>
         /// <param name="b64Logo">Logo en B64.</param>
         /// <param name="templateId">Identificador de la plantilla.</param>
-        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="observacionesAdicionales">Observaciones adicionales.</param>
         /// <param name="isB64">Especifica si el XML está en B64.</param>
         /// <returns></returns>
-        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, PdfTemplates templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, PdfTemplates templateId, Dictionary<string, string> observacionesAdicionales = null, bool isB64 = false)
         {
-            return await GeneratePdfAsync(xml, b64Logo, templateId.ToString(), ObservacionesAdicionales, isB64);
+            return await GeneratePdfAsync(xml, b64Logo, templateId.ToString(), observacionesAdicionales, isB64);
         }
         /// <summary>
         /// Servicio para generar PDF con plantillas personalizadas.
@@ -69,24 +69,24 @@ namespace SW.Services.Pdf
         /// <param name="xml">XML timbrado.</param>
         /// <param name="b64Logo">Logo en B64.</param>
         /// <param name="templateId">Identificador de la plantilla.</param>
-        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="observacionesAdicionales">Observaciones adicionales.</param>
         /// <param name="isB64">Especifica si el XML está en B64.</param>
         /// <returns></returns>
-        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public async Task<PdfResponse> GenerarPdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> observacionesAdicionales = null, bool isB64 = false)
         {
-            return await GeneratePdfAsync(xml, b64Logo, templateId, ObservacionesAdicionales, isB64);
+            return await GeneratePdfAsync(xml, b64Logo, templateId, observacionesAdicionales, isB64);
         }
         /// <summary>
         /// Servicio para generar PDF con plantilla por defecto CFDI 4.0.
         /// </summary>
         /// <param name="xml">XML timbrado.</param>
         /// <param name="b64Logo">Logo en B64.</param>
-        /// <param name="ObservacionesAdicionales">Observaciones adicionales.</param>
+        /// <param name="observacionesAdicionales">Observaciones adicionales.</param>
         /// <param name="isB64">Especifica si el XML está en B64.</param>
         /// <returns></returns>
-        public async Task<PdfResponse> GenerarPdfDefaultAsync(string xml, string b64Logo, Dictionary<string, string> ObservacionesAdicionales = null, bool isB64 = false)
+        public async Task<PdfResponse> GenerarPdfDefaultAsync(string xml, string b64Logo, Dictionary<string, string> observacionesAdicionales = null, bool isB64 = false)
         {
-            return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40.ToString(), ObservacionesAdicionales, isB64);
+            return await GeneratePdfAsync(xml, b64Logo, PdfTemplates.cfdi40.ToString(), observacionesAdicionales, isB64);
         }
         /// <summary>
         /// Servicio para regenerar PDF de un comprobante previamente timbrado.

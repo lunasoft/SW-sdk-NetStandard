@@ -20,7 +20,7 @@ namespace Test_SW
             Stamp stamp = new Stamp("http://fake123999459493494949.com", Build.User, Build.Password);
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.status == "error");
+            Assert.True(response.Status == "error");
         }
         [Fact]
         public async Task UT_Service_Validation_401Async()
@@ -28,7 +28,7 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url, Build.Token + "FakeToken");
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.Contains("Firma inválidad. Se esperaba", response.message);
+            Assert.Contains("Firma inválidad. Se esperaba", response.Message);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url + "/fakeurl", Build.User, Build.Password);
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.Contains("404", response.message);
+            Assert.Contains("404", response.Message);
         }
 
         [Fact]
@@ -46,19 +46,19 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = GetXml(Build, true, "cfdi40_big.xml");
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            if (response.status == "error")
-                Assert.True(response.message.Contains("72 horas"), "Error en el servicio: " + response.message + " " + response.messageDetail);
+            if (response.Status == "error")
+                Assert.True(response.Message.Contains("72 horas"), "Error en el servicio: " + response.Message + " " + response.MessageDetail);
             else
             {
-                Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             }
         }
         [Fact]
@@ -67,19 +67,19 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);
             string xml = GetXml(Build, true, "cfdi40_big.xml");
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            if (response.status == "error")
-                Assert.True(response.message.Contains("72 horas"), "Error en el servicio: " + response.message + " " + response.messageDetail);
+            if (response.Status == "error")
+                Assert.True(response.Message.Contains("72 horas"), "Error en el servicio: " + response.Message + " " + response.MessageDetail);
             else
             {
-                Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-                Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+                Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             }
         }
         private string GetXml(BuildSettings build = null, bool sign = false, string filename = null)

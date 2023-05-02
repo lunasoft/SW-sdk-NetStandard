@@ -8,22 +8,22 @@ namespace SW.Services.AcceptReject
     public class AcceptRejectResponse : Response
     {
         [DataMember(Name = "data")]
-        public Data data { get; set; }
+        public Data Data { get; set; }
         [DataMember(Name = "codStatus")]
-        public string codStatus { get; set; }
+        public string CodStatus { get; set; }
 
     }
     public class Data
     {
         [DataMember(Name = "acuse")]
-        public string acuse { get; set; }
+        public string Acuse { get; set; }
         [DataMember(Name = "folios")]
-        public List<invoicesStatus> folios { get; set; }
+        public List<invoicesStatus> Folios { get; set; }
     }
     public class invoicesStatus
     {
-        public Guid uuid { get; set; }
-        public string estatusUUID { get; set; }
-        public string respuesta { get; set; }
+        public Guid Uuid { get; set; }
+        public string EstatusUuid { get; set; }
+        public string Respuesta { get; set; }
     }
 }

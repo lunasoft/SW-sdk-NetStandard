@@ -84,9 +84,9 @@ namespace SW.Services
             {
                 Authentication.Authentication auth = new Authentication.Authentication(Url,User,Password, ProxyPort, Proxy);
                 var response = await auth.GetTokenAsync();
-                if (response.status == ResponseType.success.ToString())
+                if (response.Status == ResponseType.Success.ToString().ToLower())
                 {
-                    Token = response.data.token;
+                    Token = response.Data.Token;
                     ExpirationDate = DateTime.Now.AddHours(_timeSession);
                 }
             }

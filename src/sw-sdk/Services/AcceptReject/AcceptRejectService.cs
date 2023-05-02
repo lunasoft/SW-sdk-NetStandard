@@ -31,11 +31,11 @@ namespace SW.Services.AcceptReject
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new AcceptRejectRequestCSD()
             {
-                b64Cer = cer,
-                b64Key = key,
-                password = password,
-                rfc = rfc,
-                uuids = uuids
+                B64Cer = cer,
+                B64Key = key,
+                Password = password,
+                Rfc = rfc,
+                Uuids = uuids
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
@@ -51,10 +51,10 @@ namespace SW.Services.AcceptReject
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new AcceptRejectRequestPFX()
             {
-                b64Pfx = pfx,
-                password = password,
-                rfc = rfc,
-                uuids = uuids
+                B64Pfx = pfx,
+                Password = password,
+                Rfc = rfc,
+                Uuids = uuids
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

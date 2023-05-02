@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using SW.Handlers;
 using SW.Helpers;
 using System;
@@ -28,13 +29,14 @@ namespace SW.Services.Resend
                 var headers = await GetHeadersAsync();
                 var request = new ResendRequest()
                 {
-                    uuid = uuid.ToString(),
-                    to = String.Join(",", email)
+                    Uuid = uuid.ToString(),
+                    To = String.Join(",", email)
                 };
                 var content = new StringContent(JsonConvert.SerializeObject(
                     request, new JsonSerializerSettings
                     {
-                        NullValueHandling = NullValueHandling.Ignore
+                        NullValueHandling = NullValueHandling.Ignore,
+                         ContractResolver = new CamelCasePropertyNamesContractResolver()
                     }),
                 Encoding.UTF8, "application/json");
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);

@@ -9,23 +9,23 @@ namespace SW.Services.AcceptReject
     internal class AcceptRejectRequestCSD
     {
         [DataMember]
-        internal string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        internal AceptacionRechazoItem[] uuids { get; set; }
+        internal AceptacionRechazoItem[] Uuids { get; set; }
         [DataMember]
-        internal string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        internal string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        internal string b64Cer { get; set; }
+        internal string B64Cer { get; set; }
         [DataMember]
-        internal string b64Key { get; set; }
+        internal string B64Key { get; set; }
     }
     [DataContract]
     public class AceptacionRechazoItem
     {
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         private EnumAcceptReject _action;
 
         [DataMember]

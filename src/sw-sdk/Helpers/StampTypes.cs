@@ -2,9 +2,9 @@
 {
     internal enum StampTypes
     {
-        v1,
-        v2,
-        v3,
-        v4
+        V1,
+        V2,
+        V3,
+        V4
     }
 }
