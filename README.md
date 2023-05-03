@@ -1927,7 +1927,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Storage
                 //A esta le pasamos la Url de servicios y api, usuario y password
                 //Automaticamente despues de obtenerlo se procedera a la recuperación
-                Storage storage = new Storage("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Storage storage = new Storage("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 //Realizamos peticion enviando el UUID
                 var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
             }
@@ -1957,7 +1957,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Storage
                 //A esta le pasamos la Url de api y token
                 //Automaticamente despues de obtenerlo se procedera a la recuperación
-                Storage storage = new Storage("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Storage storage = new Storage("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 //Realizamos peticion enviando el UUID
                 var response = await storage.GetXmlAsync(Guid.Parse("6d5ee4ad-102e-4db6-8806-6df891c2253e"));
             }
@@ -2012,7 +2012,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Pdf
                 //A esta le pasamos la Url de servicios, url api, usuario y contraseña
                 //Automaticamente despues de obtenerlo se procedera a la generación
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,null, templateId);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2029,7 +2029,7 @@ namespace ExampleSDK
                 string xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2047,7 +2047,7 @@ namespace ExampleSDK
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 Dictionary<string, string> observaciones = new Dictionary<string, string>() { { "Observaciones", "Entregar de 9am a 6pm" } };
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2063,7 +2063,7 @@ namespace ExampleSDK
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 Dictionary<string, string> observaciones = new Dictionary<string, string>() { { "Observaciones", "Entregar de 9am a 6pm" } };
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2101,7 +2101,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Pdf
                 //A esta le pasamos la Url api y token
                 //Automaticamente despues de obtenerlo se procedera a la generación
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,null, templateId);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2118,7 +2118,7 @@ namespace ExampleSDK
                 string xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2136,7 +2136,7 @@ namespace ExampleSDK
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 Dictionary<string, string> observaciones = new Dictionary<string, string>() { { "Observaciones", "Entregar de 9am a 6pm" } };
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2152,7 +2152,7 @@ namespace ExampleSDK
                 PdfTemplates templateId = PdfTemplates.cfdi40;
                 Dictionary<string, string> observaciones = new Dictionary<string, string>() { { "Observaciones", "Entregar de 9am a 6pm" } };
                 string b64Logo = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgs......";
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
                 Console.WriteLine(response.data.contentB64);
@@ -2207,7 +2207,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Pdf
                 //A esta le pasamos la Url api, Url Servicios, usuario y contraseña
                 //Automaticamente despues de obtenerlo se procedera a la regeneración
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
@@ -2239,7 +2239,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Pdf
                 //A esta le pasamos la Url api y token
                 //Automaticamente despues de obtenerlo se procedera a la regeneración
-                Pdf pdf = new Pdf("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
@@ -2288,7 +2288,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Resend
                 //A esta le pasamos la Url api, Url Servicios, usuario y contraseña
                 //Automaticamente despues de obtenerlo se procedera al reenvio de email
-                Resend resend = new Resend("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Resend resend = new Resend("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
@@ -2311,7 +2311,7 @@ namespace ExampleSDK
                     "someemail@some.com",
                     "someemail@some.com"
                 };
-                Resend resend = new Resend("http://api.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
+                Resend resend = new Resend("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
@@ -2343,7 +2343,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo Pdf
                 //A esta le pasamos la Url api y token
                 //Automaticamente despues de obtenerlo se procedera al reenvio de email
-                Resend resend = new Resend("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Resend resend = new Resend("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
@@ -2366,7 +2366,7 @@ namespace ExampleSDK
                     "someemail@some.com",
                     "someemail@some.com"
                 };
-                Resend resend = new Resend("http://api.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Resend resend = new Resend("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
                 //Obtenemos el detalle de la respuesta 
                 Console.WriteLine(response.status); 
