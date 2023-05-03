@@ -4,7 +4,6 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
-using sw_sdk.Services.Account.AccountBalance;
 using SW.Helpers;
 
 namespace SW.Services.Account.AccountBalance
@@ -67,7 +66,7 @@ namespace SW.Services.Account.AccountBalance
         internal virtual StringContent GetStringContent(string comment)
         {
             var request = new AccountBalanceRequest();
-            request.comment = comment;
+            request.Comment = comment;
             var content = new StringContent(JsonConvert.SerializeObject(
                 request, new JsonSerializerSettings
                 {

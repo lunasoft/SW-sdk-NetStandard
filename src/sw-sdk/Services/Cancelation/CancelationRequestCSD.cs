@@ -3,21 +3,21 @@
 namespace SW.Services.Cancelation
 {
     [DataContract]
-    public class CancelationRequestCSD
+    internal class CancelationRequestCSD
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        public string b64Cer { get; set; }
+        internal string B64Cer { get; set; }
         [DataMember]
-        public string b64Key { get; set; }
+        internal string B64Key { get; set; }
         [DataMember]
-        public string motivo { get; set; }
+        internal string Motivo { get; set; }
         [DataMember]
-        public string folioSustitucion { get; set; }
+        internal string Foliosustitucion { get; set; }
     }
 }

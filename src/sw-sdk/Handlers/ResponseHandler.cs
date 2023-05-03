@@ -2,11 +2,7 @@
 using SW.Helpers;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using SW.Services.Stamp;
 
@@ -15,24 +11,25 @@ namespace SW.Handlers
     internal class ResponseHandler<T>
         where T : Response, new()
     {
-        private ResponseHandlerExtended<T> _handler;
-        public readonly string _xmlOriginal;
-        public ResponseHandler() 
+        private readonly ResponseHandlerExtended<T> _handler;
+        public readonly string XmlOriginal;
+        internal ResponseHandler() 
         {
             _handler = new ResponseHandlerExtended<T>();
         }
-        public ResponseHandler(string xmlOriginal)
+        internal ResponseHandler(string xmlOriginal)
         {
             _handler = new ResponseHandlerExtended<T>();
-            _xmlOriginal = xmlOriginal;
+            XmlOriginal = xmlOriginal;
         }
-        public virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
+        internal virtual async Task<T> GetPostResponseAsync(string url, string path, Dictionary<string, string> headers, HttpContent content, HttpClientHandler proxy)
         {
             try
             {
                 using (HttpClient client = new HttpClient(proxy))
                 {
                     client.BaseAddress = new Uri(url);
+                    client.Timeout = TimeSpan.FromMinutes(5);
                     foreach (var header in headers)
                     {
                         client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -46,7 +43,7 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse(wex);
             }
         }
-        public virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        internal virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
@@ -67,7 +64,7 @@ namespace SW.Handlers
             }
         }
 
-        public virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
+        internal virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
             {
@@ -107,13 +104,33 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse(wex);
             }
         }
+        internal async Task<T> PutResponseAsync(string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient(proxy))
+                {
+                    foreach (var header in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                    }
+                    client.BaseAddress = new Uri(url);
+                    var result = await client.PutAsync(path, content);
+                    return await _handler.TryGetResponseAsync(result);
+                }
+            }
+            catch (HttpRequestException wex)
+            {
+                return _handler.GetExceptionResponse(wex);
+            }
+        }
         
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
         {
             try
             {
 
-                return XmlUtils.AddAddenda(_xmlOriginal, cfdi, isb64);
+                return XmlUtils.AddAddenda(XmlOriginal, cfdi, isb64);
 
             }
             catch (Exception)
@@ -121,13 +138,13 @@ namespace SW.Handlers
             }
             return cfdi;
         }
-        internal virtual bool Has307AndAddenda(Response response, Data_CFDI data)
+        internal virtual bool Has307AndAddenda(Response response, DataCfdi data)
         {
             try
             {
-                if (response.status == "error" &&
-               (response.message != null && response.message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
-               && (data != null && !string.IsNullOrEmpty(data.cfdi)))
+                if (response.Status == "error" &&
+               (response.Message != null && response.Message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
+               && (data != null && !string.IsNullOrEmpty(data.Cfdi)))
                 {
                     return true;
                 }
@@ -137,13 +154,13 @@ namespace SW.Handlers
             }
             return false;
         }
-        internal virtual bool Has307AndAddenda(Response response, Data_CFDI_TFD data)
+        internal virtual bool Has307AndAddenda(Response response, DataCfdiTfd data)
         {
             try
             {
-                if (response.status == "error" &&
-               (response.message != null && response.message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
-               && (data != null && !string.IsNullOrEmpty(data.cfdi)))
+                if (response.Status == "error" &&
+               (response.Message != null && response.Message.Trim().ToLower().Replace(".", "").Contains("307 el comprobante contiene un timbre previo"))
+               && (data != null && !string.IsNullOrEmpty(data.Cfdi)))
                 {
                     return true;
                 }

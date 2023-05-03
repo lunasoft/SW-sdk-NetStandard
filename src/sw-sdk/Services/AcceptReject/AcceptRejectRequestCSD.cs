@@ -6,26 +6,26 @@ using System.Runtime.Serialization;
 namespace SW.Services.AcceptReject
 {
     [DataContract]
-    public class AcceptRejectRequestCSD
+    internal class AcceptRejectRequestCSD
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        public AceptacionRechazoItem[] uuids { get; set; }
+        internal AceptacionRechazoItem[] Uuids { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        public string b64Cer { get; set; }
+        internal string B64Cer { get; set; }
         [DataMember]
-        public string b64Key { get; set; }
+        internal string B64Key { get; set; }
     }
     [DataContract]
     public class AceptacionRechazoItem
     {
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         private EnumAcceptReject _action;
 
         [DataMember]

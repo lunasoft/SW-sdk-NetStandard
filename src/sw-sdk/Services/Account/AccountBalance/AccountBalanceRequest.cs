@@ -1,14 +1,14 @@
 ﻿using System.Runtime.Serialization;
 
-namespace sw_sdk.Services.Account.AccountBalance
+namespace SW.Services.Account.AccountBalance
 {
     /// <summary>
     /// Estructura del body del servicio Balance Management
     /// </summary>
     [DataContract]
-    class AccountBalanceRequest
+    internal class AccountBalanceRequest
     {
         [DataMember]
-        public string comment { get; set; }
+       public string Comment { get; set; }
     }
 }

@@ -8,11 +8,11 @@ namespace SW.Services.Stamp
     public abstract class BaseStampV4 : StampService
     {
         private string _operation;
-        public BaseStampV4(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected BaseStampV4(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
         }
-        public BaseStampV4(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected BaseStampV4(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
         }
@@ -39,7 +39,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v1.ToString(),
+                                StampTypes.V1.ToString(),
                                 format), headers, content, proxy);
 
             }
@@ -71,7 +71,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v2.ToString(),
+                                StampTypes.V2.ToString(),
                                 format), headers, content, proxy);
             }
             catch (Exception ex)
@@ -102,7 +102,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v3.ToString(),
+                                StampTypes.V3.ToString(),
                                 format), headers, content, proxy);
             }
             catch (Exception ex)
@@ -133,7 +133,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v4.ToString(),
+                                StampTypes.V4.ToString(),
                                 format), headers, content,proxy);
             }
             catch (Exception ex)

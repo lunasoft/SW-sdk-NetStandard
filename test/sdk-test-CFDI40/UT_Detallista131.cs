@@ -16,10 +16,10 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV1_ResponseV1()
         {
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Detallista131/CFDI40_Detallista.xml", "V1");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.tfd), response.message);
-        }        
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
+        }
         #endregion
-        
+
         #region Timbrado Versión 2
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Detallista mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
@@ -28,10 +28,10 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV2_ResponseV2()
         {
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Detallista131/CFDI40_Detallista.xml", "V2");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.tfd), response.message);
-        }        
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
+        }
         #endregion
-        
+
         #region Timbrado Versión 4
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Detallista mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
@@ -40,10 +40,10 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV4_ResponseV3()
         {
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Detallista131/CFDI40_Detallista.xml", "V4");
-            Assert.True(response.status == "success" && !string.IsNullOrEmpty(response.data.cfdi), response.message);
-        }        
+            Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
+        }
         #endregion
-        
+
         #region Timbrado Versión 4 enviando Json
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo ingreso con complemento Detallista mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
@@ -52,17 +52,17 @@ namespace Test_SW
         public async Task UT_CFDI40_Detallista_StampV4Json_ResponseV4()
         {
             var response = (StampResponseV4)await stampService.StampResponseV4("Resources/Detallista131/CFDI40_Detallista.json", "IssueJsonV4");
-            Assert.True(response.status == "success", response.message);
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
-        }        
+            Assert.True(response.Status == "success", response.Message);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.NoCertificadoCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.SelloSat viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.SelloCfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado data.QrCode viene vacio.");
+        }
         #endregion
     }
 }

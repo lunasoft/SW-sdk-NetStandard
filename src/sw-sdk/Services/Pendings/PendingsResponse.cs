@@ -7,16 +7,16 @@ namespace SW.Services.Pendings
     public class PendingsResponse : Response
     {        
         [DataMember(Name = "data")]
-        public Data data { get; set; }
+        public Data Data { get; set; }
         [DataMember]
-        public string codStatus { get; set; }
+        public string CodStatus { get; set; }
     }
-    public partial class Data
+    public class Data
     {
         [DataMember]
-        public string codEstatus { get; set; }
+        public string CodEstatus { get; set; }
         [DataMember]
-        public List<string> uuid { get; set; }
+        public List<string> Uuid { get; set; }
     }
 }
 

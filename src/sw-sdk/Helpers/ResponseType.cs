@@ -1,8 +1,8 @@
 ﻿namespace SW.Helpers
 {
-    public enum ResponseType
+    internal enum ResponseType
     {
-        success = 0,        
-        error = 3
+        Success = 0,        
+        Error = 3
     }
 }

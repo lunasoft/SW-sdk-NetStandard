@@ -9,121 +9,121 @@ namespace SW.Services.Storage
     public class StorageResponse : Response
     {
         [DataMember]
-        public StorageData data { get; set; }
+        public StorageData Data { get; set; }
     }
-    public partial class StorageData
+    public class StorageData
     {
         [DataMember]
-        public List<StorageRecords> records { get; set; }
+        public List<StorageRecords> Records { get; set; }
     }
-    public partial class StorageRecords
+    public class StorageRecords
     {
         [DataMember]
-        public string urlXml { get; set; }
+        public string UrlXml { get; set; }
         [DataMember]
-        public string urlPdf { get; set; }
+        public string UrlPdf { get; set; }
         [DataMember]
-        public string urlAckCfdi { get; set; }
+        public string UrlAckCfdi { get; set; }
         [DataMember]
-        public string urlAckCancellation { get; set; }
+        public string UrlAckCancellation { get; set; }
         [DataMember]
-        public string urlAddenda { get; set; }
+        public string UrlAddenda { get; set; }
     }
 
     [DataContract]
     public class StorageExtraResponse : Response
     {
         [DataMember]
-        public StorageExtraData data { get; set; }
+        public StorageExtraData Data { get; set; }
     }
     public class StorageExtraData
     {
-        public List<StorageExtraRecords> records { get; set; }
+        public List<StorageExtraRecords> Records { get; set; }
     }
 
-    public partial class StorageExtraRecords : StorageRecords
+    public class StorageExtraRecords : StorageRecords
     {
         [DataMember]
-        public bool status { get; set; }
+        public bool Status { get; set; }
         [DataMember]
-        public string fechaGeneracionPdf { get; set; }
+        public string FechaGeneracionPdf { get; set; }
         [DataMember]
-        public string idDealer { get; set; }
+        public string IdDealer { get; set; }
         [DataMember]
-        public string idUser { get; set; }
+        public string IdUser { get; set; }
         [DataMember]
-        public string version { get; set; }
+        public string Version { get; set; }
         [DataMember]
-        public string serie { get; set; }
+        public string Serie { get; set; }
         [DataMember]
-        public string folio { get; set; }
+        public string Folio { get; set; }
         [DataMember]
-        public string fecha { get; set; }
+        public string Fecha { get; set; }
         [DataMember]
-        public string numeroCertificado { get; set; }
+        public string NumeroCertificado { get; set; }
         [DataMember]
-        public decimal subTotal { get; set; }
+        public decimal SubTotal { get; set; }
         [DataMember]
-        public decimal descuento { get; set; }
+        public decimal Descuento { get; set; }
         [DataMember]
-        public decimal total { get; set; }
+        public decimal Total { get; set; }
         [DataMember]
-        public string moneda { get; set; }
+        public string Moneda { get; set; }
         [DataMember]
-        public decimal tipoCambio { get; set; }
+        public decimal TipoCambio { get; set; }
         [DataMember]
-        public string tipoDeComprobante { get; set; }
+        public string TipoDeComprobante { get; set; }
         [DataMember]
-        public string metodoPago { get; set; }
+        public string MetodoPago { get; set; }
         [DataMember]
-        public string formaPago { get; set; }
+        public string FormaPago { get; set; }
         [DataMember]
-        public string condicionesPago { get; set; }
+        public string CondicionesPago { get; set; }
         [DataMember]
-        public string luegarExpedicion { get; set; }
+        public string LuegarExpedicion { get; set; }
         [DataMember]
-        public string emisorRfc { get; set; }
+        public string EmisorRfc { get; set; }
         [DataMember]
-        public string emisorNombre { get; set; }
+        public string EmisorNombre { get; set; }
         [DataMember]
-        public string regimenFiscal { get; set; }
+        public string RegimenFiscal { get; set; }
         [DataMember]
-        public string receptorRfc { get; set; }
+        public string ReceptorRfc { get; set; }
         [DataMember]
-        public string receptorNombre { get; set; }
+        public string ReceptorNombre { get; set; }
         [DataMember]
-        public string residenciaFiscal { get; set; }
+        public string ResidenciaFiscal { get; set; }
         [DataMember]
-        public string numRegIdTrib { get; set; }
+        public string NumRegIdTrib { get; set; }
         [DataMember]
-        public string usoCFDI { get; set; }
+        public string UsoCfdi { get; set; }
         [DataMember]
-        public decimal totalImpuestosTraslados { get; set; }
+        public decimal TotalImpuestosTraslados { get; set; }
         [DataMember]
-        public decimal totalImpuestosRetencion { get; set; }
+        public decimal TotalImpuestosRetencion { get; set; }
         [DataMember]
-        public decimal trasladosIVA { get; set; }
+        public decimal TrasladosIva { get; set; }
         [DataMember]
-        public decimal trasladosIEPS { get; set; }
+        public decimal TrasladosIeps { get; set; }
         [DataMember]
-        public decimal retencionesISR { get; set; }
+        public decimal RetencionesIsr { get; set; }
         [DataMember]
-        public decimal retencionesIVA { get; set; }
+        public decimal RetencionesIva { get; set; }
         [DataMember]
-        public decimal retencionesIEPS { get; set; }
+        public decimal RetencionesIeps { get; set; }
         [DataMember]
-        public decimal totalImpuestosLocalesTraslados { get; set; }
+        public decimal TotalImpuestosLocalesTraslados { get; set; }
         [DataMember]
-        public decimal totalImpuestosLocalesRetencion { get; set; }
+        public decimal TotalImpuestosLocalesRetencion { get; set; }
         [DataMember]
-        public string complementos { get; set; }
+        public string Complementos { get; set; }
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         [DataMember]
-        public string fechaTimbrado { get; set; }
+        public string FechaTimbrado { get; set; }
         [DataMember]
-        public string rfcProvCertif { get; set; }
+        public string RfcProvCertif { get; set; }
         [DataMember]
-        public string selloCFD { get; set; }
+        public string SelloCfd { get; set; }
     }
 }

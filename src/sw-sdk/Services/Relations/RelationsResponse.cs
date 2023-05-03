@@ -8,26 +8,26 @@ namespace SW.Services.Relations
     public class RelationsResponse : Response
     {
         [DataMember(Name = "data")]
-        public Data data { get; set; }
+        public Data Data { get; set; }
         [DataMember]
-        public string codStatus { get; set; }
+        public string CodStatus { get; set; }
     }
-    public partial class Data
+    public class Data
     {
         [DataMember]
-        public Guid uuidConsultado { get; set; }
+        public Guid UuidConsultado { get; set; }
         [DataMember]
-        public string resultado { get; set; }
+        public string Resultado { get; set; }
         [DataMember]
-        public List<invoicesStatus> uuidsRelacionadosPadres { get; set; }
+        public List<InvoicesStatus> UuidsRelacionadosPadres { get; set; }
         [DataMember]
-        public List<invoicesStatus> uuidsRelacionadosHijos { get; set; }
+        public List<InvoicesStatus> UuidsRelacionadosHijos { get; set; }
     }
 
-    public class invoicesStatus
+    public class InvoicesStatus
     {
-        public Guid uuid { get; set; }
-        public string rfcEmisor { get; set; }
-        public string rfcReceptor { get; set; }
+        public Guid Uuid { get; set; }
+        public string RfcEmisor { get; set; }
+        public string RfcReceptor { get; set; }
     }
 }

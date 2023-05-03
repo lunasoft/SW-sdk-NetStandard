@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using SW.Entities;
 
@@ -8,32 +7,32 @@ namespace SW.Services.Validate
     public class ValidateXmlResponse : Response
     {
         [DataMember]
-        public List<Detail> detail { get; set; }
+        public List<Details> Detail { get; set; }
         [DataMember]
-        public string cadenaOriginalSAT { get; set; }
+        public string CadenaOriginalSAT { get; set; }
         [DataMember]
-        public string cadenaOriginalComprobante { get; set; }
+        public string CadenaOriginalComprobante { get; set; }
         [DataMember]
-        public string uuid { get; set; }
+        public string Uuid { get; set; }
         [DataMember]
-        public string statusSat { get; set; }
+        public string StatusSat { get; set; }
         [DataMember]
-        public string statusCodeSat { get; set; }
+        public string StatusCodeSat { get; set; }
     }
-    public class Detail
+    public class Details
     {
         [DataMember]
-        public List<DetailNode> detail { get; set; }
+        public List<DetailNode> Detail { get; set; }
         [DataMember]
-        public string section { get; set; }
+        public string Section { get; set; }
     }
     public class DetailNode
     {
         [DataMember]
-        public string message { get; set; }
+        public string Message { get; set; }
         [DataMember]
-        public string messageDetail { get; set; }
+        public string MessageDetail { get; set; }
         [DataMember]
-        public int type { get; set; }
+        public int Type { get; set; }
     }
 }

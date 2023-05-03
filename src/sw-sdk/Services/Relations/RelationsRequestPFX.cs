@@ -3,15 +3,15 @@
 namespace SW.Services.Relations
 {
     [DataContract]
-    public class RelationsRequestPFX
+    internal class RelationsRequestPFX
     {
         [DataMember]
-        public string uuid { get; set; }
+        internal string Uuid { get; set; }
         [DataMember]
-        public string password { get; set; }
+        internal string Password { get; set; }
         [DataMember]
-        public string rfc { get; set; }
+        internal string Rfc { get; set; }
         [DataMember]
-        public string b64Pfx { get; set; }
+        internal string B64Pfx { get; set; }
     }
 }

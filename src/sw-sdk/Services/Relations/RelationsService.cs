@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -18,7 +20,7 @@ namespace SW.Services.Relations
         internal abstract Task<RelationsResponse> RelationsRequestAsync(byte[] xmlCancelation);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string pfx, string rfc, string password, string uuid);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string rfc, string uuid);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
+        internal async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
@@ -26,34 +28,42 @@ namespace SW.Services.Relations
                 };
             return headers;
         }
-        internal virtual StringContent RequestRelations(string cer, string key, string rfc, string password, string uuid)
+        internal StringContent RequestRelations(string cer, string key, string rfc, string password, string uuid)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestCSD()
             {
-                b64Cer = cer,
-                b64Key = key,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                B64Cer = cer,
+                B64Key = key,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
         }
-        internal virtual MultipartFormDataContent RequestRelations(byte[] xmlCancelation)
+        internal MultipartFormDataContent RequestRelations(byte[] xmlCancelation)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
             ByteArrayContent fileContent = new ByteArrayContent(xmlCancelation);
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual StringContent RequestRelations(string pfx, string rfc, string password, string uuid)
+        internal StringContent RequestRelations(string pfx, string rfc, string password, string uuid)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestPFX()
             {
-                b64Pfx = pfx,
-                password = password,
-                rfc = rfc,
-                uuid = uuid
+                B64Pfx = pfx,
+                Password = password,
+                Rfc = rfc,
+                Uuid = uuid
+            }, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;

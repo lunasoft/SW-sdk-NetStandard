@@ -15,7 +15,7 @@ namespace SW.Services.Status
               delegate (object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
             _myBinding = GetBinding(receiveTimeoutInSeconds);
         }
-        internal abstract Acuse StatusRequest(string rfcEmisor, string rfcReceptor, string Total, string uuid, string sello);
+        internal abstract Acuse StatusRequest(string rfcEmisor, string rfcReceptor, string total, string uuid, string sello);
         internal virtual Acuse RequestStatus(string rfcEmisor, string rfcReceptor, string total, string uuid, string sello)
         {
             var fe = !String.IsNullOrEmpty(sello) && sello.Length >= 8 ? sello.Substring(sello.Length - 8) : String.Empty;
@@ -30,7 +30,7 @@ namespace SW.Services.Status
             }
             return acuse;
         }
-        public Acuse ConsultaCFDIService(string consulta)
+        private Acuse ConsultaCFDIService(string consulta)
         {
             try
             {

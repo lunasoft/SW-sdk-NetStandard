@@ -234,7 +234,7 @@
             "CargoPorTasacion": "1",
             "NumTotalMercancias": "1",
             "PesoBrutoTotal": "1",
-            "PesoNetoTotal": "1",
+            "PesoNetoTotal": "0.001",
             "UnidadPeso": "A44",
             "Mercancia": [
               {
@@ -280,7 +280,7 @@
                   "GuiaCarro": "guiacarro",
                   "MatriculaCarro": "matriculacarro",
                   "TipoCarro": "TC03",
-                  "ToneladasNetasCarro": "1",
+                  "ToneladasNetasCarro": "0.001",
                   "Contenedor": [
                     {
                       "PesoContenedorVacio": "1",

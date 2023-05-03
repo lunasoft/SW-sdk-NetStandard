@@ -19,8 +19,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await issue.TimbrarV1Async(xml);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
 
         [Fact]
@@ -30,8 +30,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
 
         [Fact]
@@ -41,8 +41,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV3)await issue.TimbrarV3Async(xml);
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
 
         [Fact]
@@ -52,16 +52,16 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml);
-            Assert.True(response.data != null, "El resultado data viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cfdi), "El resultado data.cfdi viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.cadenaOriginalSAT), "El resultado data.cadenaOriginalSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoSAT), "El resultado data.noCertificadoSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.noCertificadoCFDI), "El resultado data.noCertificadoCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.uuid), "El resultado data.uuid viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloSAT), "El resultado data.selloSAT viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.selloCFDI), "El resultado data.selloCFDI viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.fechaTimbrado), "El resultado data.fechaTimbrado viene vacio.");
-            Assert.True(!string.IsNullOrEmpty(response.data.qrCode), "El resultado data.qrCode viene vacio.");
+            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.cadenaOriginalSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.noCertificadoSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoCfdi), "El resultado Data.noCertificadoCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.Uuid), "El resultado Data.Uuid viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloSat), "El resultado Data.selloSAT viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.SelloCfdi), "El resultado Data.selloCFDI viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
+            Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
         }
 
         [Fact]
@@ -71,8 +71,8 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV3)await issue.TimbrarV3Async(xml, "email@domainxyz.abc.com");
-            Assert.True(response.status == "success"
-                && !string.IsNullOrEmpty(response.data.cfdi), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
         public async Task IssueV4XMLV1_HashedCustomId_IdDuplicado_Error()
@@ -83,14 +83,14 @@ namespace Test_SW.Services.Issue
             customId = string.Concat(Enumerable.Repeat(customId, 4));
             var xml = GetXml(build);
             var response = await issue.TimbrarV1Async(xml, null, customId);
-            Assert.True(response.status == "success");
-            Assert.True(!String.IsNullOrEmpty(response.data.tfd), "El resultado data.tfd viene vacio.");
+            Assert.True(response.Status == "success");
+            Assert.True(!String.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
             xml = GetXml(build);
             response = await issue.TimbrarV1Async(xml, null, customId);
             Assert.NotNull(response);
-            Assert.True(response.status == "error");
-            Assert.True(response.message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
-            Assert.True(string.IsNullOrEmpty(response.messageDetail));
+            Assert.True(response.Status == "error");
+            Assert.True(response.Message == "CFDI3307 - Timbre duplicado. El customId proporcionado está duplicado.");
+            Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
         public async Task IssueV4XMLV1_InvalidCustomId_Error()
@@ -102,13 +102,13 @@ namespace Test_SW.Services.Issue
             var xml = GetXml(build);
             var response = await issue.TimbrarV1Async(xml, null, customId);
             Assert.NotNull(response);
-            Assert.True(response.status == "error");
-            Assert.True(response.message == "El CustomId no es válido o viene vacío.");
-            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId", response.messageDetail);
+            Assert.True(response.Status == "error");
+            Assert.True(response.Message == "El CustomId no es válido o viene vacío.");
+            Assert.Contains("at SW.Helpers.Validation.ValidateCustomId", response.MessageDetail);
         }
         private string GetXml(BuildSettings build)
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/fileIssue.xml"));
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40.xml"));
             xml = Helpers.SignTools.RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);

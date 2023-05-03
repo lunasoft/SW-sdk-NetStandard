@@ -14,12 +14,12 @@ namespace SW.Services.Issue
     {
         private string _operation;
         private readonly string _contentType;
-        public BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string user, string password, string operation, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
             _contentType = "application/jsontoxml";
         }
-        public BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
+        protected BaseStampJsonV4(string url, string token, string operation, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
             _contentType = "application/jsontoxml";
@@ -45,7 +45,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v1.ToString(),
+                                StampTypes.V1.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v2.ToString(),
+                                StampTypes.V2.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v3.ToString(),
+                                StampTypes.V3.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)
@@ -132,7 +132,7 @@ namespace SW.Services.Issue
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v4.ToString(),
+                                StampTypes.V4.ToString(),
                                 ""), headers, content, proxy);
             }
             catch (Exception ex)

@@ -7,6 +7,6 @@ namespace SW.Services.Resend
     public class ResendResponse : Response
     {
         [DataMember(Name = "data")]
-        public string data { get; set; }
+        public string Data { get; set; }
     }
 }

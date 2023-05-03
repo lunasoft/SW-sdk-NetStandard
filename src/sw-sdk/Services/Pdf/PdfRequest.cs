@@ -4,15 +4,15 @@ using System.Runtime.Serialization;
 namespace SW.Services.Pdf
 {
     [DataContract]
-    public class PdfRequest
+    internal class PdfRequest
     {
         [DataMember]
-        public string xmlContent { get; set; }
+        public string XmlContent { get; set; }
         [DataMember]
-        public string logo { get; set; }
+        public string Logo { get; set; }
         [DataMember]
-        public Dictionary<string, string> extras { get; set; }
+        public Dictionary<string, string> Extras { get; set; }
         [DataMember]
-        public string templateId { get; set; }
+        public string TemplateId { get; set; }
     }
 }

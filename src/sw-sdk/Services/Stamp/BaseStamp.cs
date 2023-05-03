@@ -10,11 +10,11 @@ namespace SW.Services.Stamp
     public abstract class BaseStamp : StampService
     {
         private string _operation;
-        public BaseStamp(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected BaseStamp(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
         }
-        public BaseStamp(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected BaseStamp(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
         }
@@ -37,7 +37,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v1.ToString(),
+                                StampTypes.V1.ToString(),
                                 format), headers, content, proxy);
 
             }
@@ -49,7 +49,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -73,7 +73,7 @@ namespace SW.Services.Stamp
                     response.TryAdd(i, await handler.GetPostResponseAsync(this.Url,
                                     string.Format("cfdi33/{0}/{1}/{2}",
                                     _operation,
-                                    StampTypes.v1.ToString(),
+                                    StampTypes.V1.ToString(),
                                     format), headers, content, proxy));
 
 
@@ -104,7 +104,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v2.ToString(),
+                                StampTypes.V2.ToString(),
                                 format), headers, content, proxy);
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -139,7 +139,7 @@ namespace SW.Services.Stamp
                     response.TryAdd(i, await handler.GetPostResponseAsync(this.Url,
                                     string.Format("cfdi33/{0}/{1}/{2}",
                                     _operation,
-                                    StampTypes.v2.ToString(),
+                                    StampTypes.V2.ToString(),
                                     format), headers, content, proxy));
 
 
@@ -170,7 +170,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v3.ToString(),
+                                StampTypes.V3.ToString(),
                                 format), headers, content, proxy);
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -205,7 +205,7 @@ namespace SW.Services.Stamp
                     response.TryAdd(i, await handler.GetPostResponseAsync(this.Url,
                                     string.Format("cfdi33/{0}/{1}/{2}",
                                     _operation,
-                                    StampTypes.v3.ToString(),
+                                    StampTypes.V3.ToString(),
                                     format), headers, content, proxy));
                 }
                 catch (Exception ex)
@@ -234,7 +234,7 @@ namespace SW.Services.Stamp
                 return await handler.GetPostResponseAsync(this.Url,
                                 string.Format("cfdi33/{0}/{1}/{2}",
                                 _operation,
-                                StampTypes.v4.ToString(),
+                                StampTypes.V4.ToString(),
                                 format), headers, content, proxy);
             }
             catch (Exception ex)
@@ -245,7 +245,7 @@ namespace SW.Services.Stamp
         /// <summary>
         /// Servicio de timbrado masivo de multiples CFDI's previamente sellados en formato XML.
         /// </summary>
-        /// <param name="xml">String array de los CFDI en formato XML.</param>
+        /// <param name="xmls">String array de los CFDI en formato XML.</param>
         /// <param name="isb64">Especifica si los XML están en base 64.</param>
         /// <returns><see cref="ConcurrentDictionary{Tkey, TValue}"/>
         /// <br/>TKey is <see cref="string"/>
@@ -269,7 +269,7 @@ namespace SW.Services.Stamp
                     response.TryAdd(i, await handler.GetPostResponseAsync(this.Url,
                                     string.Format("cfdi33/{0}/{1}/{2}",
                                     _operation,
-                                    StampTypes.v4.ToString(),
+                                    StampTypes.V4.ToString(),
                                     format), headers, content, proxy));
 
 

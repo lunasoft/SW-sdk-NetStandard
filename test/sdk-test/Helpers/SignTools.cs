@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,14 +17,15 @@ namespace Test_SW.Helpers
             xml = RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
+            doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
             doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-            doc.DocumentElement.SetAttribute("Folio", DateTime.Now.Ticks.ToString() + randomNumber.Next(100));
+            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
             xml = doc.OuterXml;
-            xml = SellarCFDIv33(pfx, password, xml);
+            xml = SellarCFDIv40(pfx, password, xml);
             return xml;
         }
 
-        public static string SellarCFDIv33(byte[] certificatePfx, string password, string xml)
+        public static string SellarCFDIv40(byte[] certificatePfx, string password, string xml)
         {
             xml = RemoverCaracteresInvalidosXml(xml);
             X509Certificate2 x509Certificate = new X509Certificate2(certificatePfx, password
@@ -41,7 +43,7 @@ namespace Test_SW.Helpers
                 xml = RemoverCaracteresInvalidosXml(Encoding.UTF8.GetString(ms.ToArray()));
             }
             //Get original string
-            string originalString = CadenaOriginalCFDIv33(xml);
+            string originalString = CadenaOriginalCFDIv40(xml);
             //Sign Document
             var signResult = GetSignature(password, certificatePfx, originalString, "SHA256");
             //Set Values Signature
@@ -58,14 +60,14 @@ namespace Test_SW.Helpers
 
         }
 
-        public static string CadenaOriginalCFDIv33(string strXml)
+        public static string CadenaOriginalCFDIv40(string strXml)
         {
             try
             {
                 var xslt_cadenaoriginal_3_3 = new XslCompiledTransform();
                 XsltSettings settings = new XsltSettings(true, true);
                 XmlUrlResolver resolver = new XmlUrlResolver();
-                xslt_cadenaoriginal_3_3.Load("Resources/XSLT/cadenaoriginal_3_3.xslt", settings, resolver);
+                xslt_cadenaoriginal_3_3.Load("Resources/XSLT/cadenaoriginal_4_0.xslt", settings, resolver);
                 string resultado = null;
                 StringWriter writer = new StringWriter();
                 XmlReader xml = XmlReader.Create(new StringReader(strXml));

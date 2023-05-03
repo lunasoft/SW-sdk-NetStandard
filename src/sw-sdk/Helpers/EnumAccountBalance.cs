@@ -1,6 +1,5 @@
 ﻿
-
 namespace SW.Helpers
 {
-   public enum ActionsAccountBalance {Add, Remove}
+   internal enum ActionsAccountBalance {Add, Remove}
 }

@@ -7,14 +7,14 @@ namespace SW.Services.Validate
 {
     public abstract class BaseValidate : ValidateService
     {
-        private string _operation;
+        private readonly string _operation;
         private readonly ResponseHandler<ValidateXmlResponse> _handler;
-        public BaseValidate(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected BaseValidate(string url, string user, string password, string operation, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
             _operation = operation;
             _handler = new ResponseHandler<ValidateXmlResponse>();
         }
-        public BaseValidate(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected BaseValidate(string url, string token, string operation, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
             _operation = operation;
             _handler = new ResponseHandler<ValidateXmlResponse>();
@@ -22,13 +22,13 @@ namespace SW.Services.Validate
         /// <summary>
         /// Servicio para validar un CFDI en formato XML.
         /// </summary>
-        /// <param name="XML">XML del CFDI en formato string.</param>
+        /// <param name="xml">XML del CFDI en formato string.</param>
         /// <returns><see cref="ValidateXmlResponse"/></returns>
-        public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string XML)
+        public virtual async Task<ValidateXmlResponse> ValidateXmlAsync(string xml)
         {
             try
             {
-                var xmlBytes = Encoding.UTF8.GetBytes(XML);
+                var xmlBytes = Encoding.UTF8.GetBytes(xml);
                 var headers = await GetHeadersAsync();
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
