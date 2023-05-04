@@ -406,12 +406,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid, "02");
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -420,8 +420,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -463,12 +463,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByCSDAsync(csdBase64, keyBase64, rfc, password, uuid, "01", folioSustitucion);
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -477,8 +477,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -536,12 +536,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByPFXAsync(Pfx, Rfc, password, uuid, "02");
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -550,8 +550,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -591,12 +591,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByPFXAsync(Pfx, Rfc, password, uuid, "02");
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -605,8 +605,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -697,12 +697,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByXMLAsync(xml);
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -711,8 +711,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -764,12 +764,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByRfcUuidAsync(rfc, uuid, "02");
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -778,8 +778,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -815,12 +815,12 @@ namespace ExampleSDK
                 Cancelation cancelation = new Cancelation("http://services.test.sw.com.mx", "user", "password");
                 //Realizamos la petición de cancelación al servicio.
                 var response = await cancelation.CancelarByRfcUuidAsync(rfc, uuid, "01", folioSustitucion);
-                if (response.status == "success" && response.data != null)
+                if (response.Status == "success" && response.Data != null)
                 {
                     //Acuse de cancelación
-                    Console.WriteLine(response.data.acuse);
+                    Console.WriteLine(response.Data.Acuse);
                     //Estatus por UUID
-                    foreach (var folio in response.data.uuid)
+                    foreach (var folio in response.Data.Uuid)
                     {
                         Console.WriteLine("UUID: {0} Estatus: {1}", folio.Key, folio.Value);
                     }
@@ -829,8 +829,8 @@ namespace ExampleSDK
                 {
                     //Obtenemos el detalle del Error
                     Console.WriteLine("Error al Cancelar\n\n");
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -946,6 +946,7 @@ Método mediante el cual puedes realizar la consulta de tu saldo para consumir l
 Este metodo recibe los siguientes parametros:
 * Usuario y contraseña o Token
 * Url Servicios SW
+* Id de usuario
 
 **Ejemplo de consumo de la libreria para consultar el saldo mediante usuario y contraseña**
 ```cs
@@ -964,24 +965,25 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo BalanceAccount 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
                 //Automaticamente despues de obtenerlo se procedera a la consulta de saldo
-                BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", "user", "password");
-                AccountResponse response = await account.ConsultarSaldoAsync();
-                if (response.status != "error")
+                AccountBalance balance = new AccountBalance("http://services.test.sw.com.mx", "user", "password");
+                Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
+                BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
+                if (response.Status != "error")
                 {
                      //Para Obtener el saldo Timbres
-                    Console.WriteLine(response.data.saldoTimbres);
+                    Console.WriteLine(response.Data.SaldoTimbres);
 
                     //Para Obtenerlos timbres Utilizados
-                    Console.WriteLine(response.data.timbresUtilizados);
+                    Console.WriteLine(response.Data.TimbresUtilizados);
 
                     //Para Obtener si es Ilimitado (para cuentas hijo)
-                    Console.WriteLine(response.data.unlimited);
+                    Console.WriteLine(response.Data.Unlimited);
                 }
                 else
                 {
                     //En caso de error, se pueden visualizar los campos message y/o messageDetail
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1010,24 +1012,25 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo BalanceAccount 
                 //A esta le pasamos la Url y el token
                 //Despues se procedera a la consulta de saldo
-                BalanceAccount account = new BalanceAccount("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
-                AccountResponse response = await account.ConsultarSaldoAsync();
-                if (response.status != "error")
+                AccountBalance balance = new AccountBalance("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
+                BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
+                if (response.Status != "error")
                 {
                      //Para Obtener el saldo Timbres
-                    Console.WriteLine(response.data.saldoTimbres);
+                    Console.WriteLine(response.Data.SaldoTimbres);
 
                     //Para Obtenerlos timbres Utilizados
-                    Console.WriteLine(response.data.timbresUtilizados);
+                    Console.WriteLine(response.Data.TimbresUtilizados);
 
                     //Para Obtener si es Ilimitado (para cuentas hijo)
-                    Console.WriteLine(response.data.unlimited);
+                    Console.WriteLine(response.Data.Unlimited);
                 }
                 else
                 {
                     //En caso de error, se pueden visualizar los campos message y/o messageDetail
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1081,33 +1084,33 @@ namespace ExampleSDK
                 ValidateXmlResponse response = await validate.ValidateXmlAsync(xml);
                 
                 //El objeto response tendra los siguientes atributos:
-                List<Detail> detail1 = response.detail;
-                Console.Write("Status: " + response.status); 
+                List<Details> Detail1 = response.Detail;
+                Console.Write("Status: " + response.Status); 
                 Console.Write("\ndetail: ");
-                foreach (var i in detail1)
+                foreach (var i in Detail1)
                 {
-                    foreach (var j in i.detail)
+                    foreach (var j in i.Detail)
                     {
                         Console.Write("\n\tdetail: ");
-                        Console.Write("\n\t\tMessage: " + j.message);
-                        Console.Write("\n\t\tMessageDetail: " + j.messageDetail);
-                        Console.Write("\n\t\tType: " + j.type);
+                        Console.Write("\n\t\tMessage: " + j.Message);
+                        Console.Write("\n\t\tMessageDetail: " + j.MessageDetail);
+                        Console.Write("\n\t\tType: " + j.Type);
                     }
-                    Console.Write("\n\tSection: \n" + i.section);
+                    Console.Write("\n\tSection: \n" + i.Section);
                 }
                 //Para obtener la cadena original SAT
-                Console.Write(response.cadenaOriginalSAT + "\n");
+                Console.Write(response.CadenaOriginalSAT + "\n");
                 //Para obtener la cadena original del comprobante
-                Console.Write(response.cadenaOriginalComprobante + "\n");
+                Console.Write(response.CadenaOriginalComprobante + "\n");
                 //Para obtener el uuid
-                Console.Write(response.uuid + "\n");
+                Console.Write(response.Uuid + "\n");
                 //Para obtener el status SAT
-                Console.Write(response.statusSat + "\n");
+                Console.Write(response.StatusSat + "\n");
                 //Para obtener el status code SAT
-                Console.Write(response.statusCodeSat + "\n");
+                Console.Write(response.StatusCodeSat + "\n");
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -1144,33 +1147,33 @@ namespace ExampleSDK
                 ValidateXmlResponse response = await validate.ValidateXmlAsync(xml);
                 
                 //El objeto response tendra los siguientes atributos:
-                List<Detail> detail1 = response.detail;
-                Console.Write("Status: " + response.status); 
+                List<Details> Detail1 = response.Detail;
+                Console.Write("Status: " + response.Status); 
                 Console.Write("\ndetail: ");
-                foreach (var i in detail1)
+                foreach (var i in Detail1)
                 {
-                    foreach (var j in i.detail)
+                    foreach (var j in i.Detail)
                     {
                         Console.Write("\n\tdetail: ");
-                        Console.Write("\n\t\tMessage: " + j.message);
-                        Console.Write("\n\t\tMessageDetail: " + j.messageDetail);
-                        Console.Write("\n\t\tType: " + j.type);
+                        Console.Write("\n\t\tMessage: " + j.Message);
+                        Console.Write("\n\t\tMessageDetail: " + j.MessageDetail);
+                        Console.Write("\n\t\tType: " + j.Type);
                     }
-                    Console.Write("\n\tSection: \n" + i.section);
+                    Console.Write("\n\tSection: \n" + i.Section);
                 }
                 //Para obtener la cadena original SAT
-                Console.Write(response.cadenaOriginalSAT + "\n");
+                Console.Write(response.CadenaOriginalSAT + "\n");
                 //Para obtener la cadena original del comprobante
-                Console.Write(response.cadenaOriginalComprobante + "\n");
+                Console.Write(response.CadenaOriginalComprobante + "\n");
                 //Para obtener el uuid
-                Console.Write(response.uuid + "\n");
+                Console.Write(response.Uuid + "\n");
                 //Para obtener el status SAT
-                Console.Write(response.statusSat + "\n");
+                Console.Write(response.StatusSat + "\n");
                 //Para obtener el status code SAT
-                Console.Write(response.statusCodeSat + "\n");
+                Console.Write(response.StatusCodeSat + "\n");
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -1282,23 +1285,23 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 RelationsResponse response = await relations.RelationsByCSDAsync(Cer, Key, Rfc, CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
                 
-                if (response.status == "success")
+                if (response.Status == "success")
                 {
                     Console.WriteLine(response.codStatus);
-                    //Para obtener el uuid consultado
-                    Console.WriteLine(response.data.uuidConsultado);
+                    //Para obtener el Uuid consultado
+                    Console.WriteLine(response.Data.UuidConsultado);
                     //Para obtener el resultado de la consulta
-                    Console.WriteLine(response.data.resultado);
+                    Console.WriteLine(response.Data.Resultado);
                     //Para obtener los uuid padres
-                    Console.WriteLine(response.data.uuidsRelacionadosPadres);
+                    Console.WriteLine(response.Data.UuidsRelacionadosPadres);
                     //Para obtener los uuid hijo
-                    Console.WriteLine(response.data.uuidsRelacionadosHijos);
+                    Console.WriteLine(response.Data.UuidsRelacionadosHijos);
                 }
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1354,24 +1357,24 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 RelationsResponse response = await relations.RelationsByPFXAsync(Pfx, Rfc, CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
                 
-                if (response.status == "success")
+                if (response.Status == "success")
                 {
                     //Para obtener el codigoStatus
-                    Console.WriteLine(response.codStatus);
+                    Console.WriteLine(response.CodStatus);
                     //Para obtener el uuid consultado
-                    Console.WriteLine(response.data.uuidConsultado);
+                    Console.WriteLine(response.Data.UuidConsultado);
                     //Para obtener el resultado de la consulta
-                    Console.WriteLine(response.data.resultado);
+                    Console.WriteLine(response.Data.Resultado);
                     //Para obtener los uuid padres
-                    Console.WriteLine(response.data.uuidsRelacionadosPadres);
+                    Console.WriteLine(response.Data.UuidsRelacionadosPadres);
                     //Para obtener los uuid hijo
-                    Console.WriteLine(response.data.uuidsRelacionadosHijos);
+                    Console.WriteLine(response.Data.UuidsRelacionadosHijos);
                 }
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1453,24 +1456,24 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 RelationsResponse response = await relations.RelationsByXMLAsync(Rxml);
 
-                if (response.status == "success")
+                if (response.Status == "success")
                 {
                     //Para obtener el codigoStatus
-                    Console.WriteLine(response.codStatus);
+                    Console.WriteLine(response.CodStatus);
                     //Para obtener el uuid consultado
-                    Console.WriteLine(response.data.uuidConsultado);
+                    Console.WriteLine(response.Data.UuidConsultado);
                     //Para obtener el resultado de la consulta
-                    Console.WriteLine(response.data.resultado);
+                    Console.WriteLine(response.Data.Resultado);
                     //Para obtener los uuid padres
-                    Console.WriteLine(response.data.uuidsRelacionadosPadres);
+                    Console.WriteLine(response.Data.UuidsRelacionadosPadres);
                     //Para obtener los uuid hijo
-                    Console.WriteLine(response.data.uuidsRelacionadosHijos);
+                    Console.WriteLine(response.Data.UuidsRelacionadosHijos);
                 }
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1523,24 +1526,24 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 RelationsResponse response = await relations.RelationsByRfcUuidAsync(Rfc, uuid);
 
-                if (response.status == "success")
+                if (response.Status == "success")
                 {
                     //Para obtener el codigoStatus
-                    Console.WriteLine(response.codStatus);
+                    Console.WriteLine(response.CodStatus);
                     //Para obtener el uuid consultado
-                    Console.WriteLine(response.data.uuidConsultado);
+                    Console.WriteLine(response.Data.UuidConsultado);
                     //Para obtener el resultado de la consulta
-                    Console.WriteLine(response.data.resultado);
+                    Console.WriteLine(response.Data.Resultado);
                     //Para obtener los uuid padres
-                    Console.WriteLine(response.data.uuidsRelacionadosPadres);
+                    Console.WriteLine(response.Data.UuidsRelacionadosPadres);
                     //Para obtener los uuid hijo
-                    Console.WriteLine(response.data.uuidsRelacionadosHijos);
+                    Console.WriteLine(response.Data.UuidsRelacionadosHijos);
                 }
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -1585,14 +1588,14 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 PendingsResponse response = await pendientes.PendingsByRfcAsync("EKU9003173C9");
                 //Para obtener el status de la consulta
-                Console.Write(response.status);
+                Console.Write(response.Status);
                 //Para obtener el codigoStatus
-                Console.WriteLine(response.codStatus);
+                Console.WriteLine(response.CodStatus);
                 //Para obtener la lista de uuid's
-                Console.WriteLine(response.data.uuid);
+                Console.WriteLine(response.Data.Uuid);
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -1653,16 +1656,16 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 var response = await acceptReject.AcceptByCSD(CerReceptor, KeyReceptor, RfcReceptor, CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = SW.Helpers.EnumAcceptReject.Aceptacion } });
                 //Para obtener el status de la consulta
-                Console.Write(response.status);
+                Console.Write(response.Status);
                 //Para obtener el codigoStatus
-                Console.WriteLine(response.codStatus);
+                Console.WriteLine(response.CodStatus);
                 //Para obtener una lista con los folios
-                Console.WriteLine(response.data.folios);
+                Console.WriteLine(response.Data.Folios);
                 //Para obtener el acuse
-                Console.WriteLine(response.data.acuse);
+                Console.WriteLine(response.Data.Acuse);
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -1717,16 +1720,16 @@ namespace ExampleSDK
                 //Realizamos la peticion
                 var response = await acceptReject.AcceptByPFX(PfxReceptor, RfcReceptor, CerPassword, new AceptacionRechazoItem[] { new AceptacionRechazoItem() { uuid = "DB68450F-355B-4915-AFDC-A980497C4D70", action = SW.Helpers.EnumAcceptReject.Aceptacion } });
                 //Para obtener el status de la consulta
-                Console.Write(response.status);
+                Console.Write(response.Status);
                 //Para obtener el codigoStatus
-                Console.WriteLine(response.codStatus);
+                Console.WriteLine(response.CodStatus);
                 //Para obtener una lista con los folios
-                Console.WriteLine(response.data.folios);
+                Console.WriteLine(response.Data.Folios);
                 //Para obtener el acuse
-                Console.WriteLine(response.data.acuse);
+                Console.WriteLine(response.Data.Acuse);
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -1811,16 +1814,16 @@ namespace ExampleSDK
                 var xml = File.ReadAllText("Resources/aceptacionRechazo.xml");
                 var response = await acceptReject.AcceptByXML(Encoding.UTF8.GetBytes(xml));
                 //Para obtener el status de la consulta
-                Console.Write(response.status);
+                Console.Write(response.Status);
                 //Para obtener el codigoStatus
-                Console.WriteLine(response.codStatus);
+                Console.WriteLine(response.CodStatus);
                 //Para obtener una lista con los folios
-                Console.WriteLine(response.data.folios);
+                Console.WriteLine(response.Data.Folios);
                 //Para obtener el acuse
-                Console.WriteLine(response.data.acuse);
+                Console.WriteLine(response.Data.Acuse);
                 //En caso de error se pueden consultar los siguientes campos
-                Console.WriteLine(response.message);
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Message);
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2015,7 +2018,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,null, templateId);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
 
             }
             catch (Exception e)
@@ -2032,7 +2035,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
 
             }
             catch (Exception e)
@@ -2050,7 +2053,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
             }
             catch (Exception e)
             {
@@ -2066,7 +2069,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
             }
             catch (Exception e)
             {
@@ -2104,7 +2107,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,null, templateId);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
 
             }
             catch (Exception e)
@@ -2121,7 +2124,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
 
             }
             catch (Exception e)
@@ -2139,7 +2142,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
             }
             catch (Exception e)
             {
@@ -2155,7 +2158,7 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.GenerarPdfAsync(xml,b64Logo, templateId, observaciones);
                 //Devuleve el pdf en formato Base64
-                Console.WriteLine(response.data.contentB64);
+                Console.WriteLine(response.Data.ContentB64);
             }
             catch (Exception e)
             {
@@ -2210,9 +2213,9 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2242,9 +2245,9 @@ namespace ExampleSDK
                 Pdf pdf = new Pdf("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await pdf.RegenerarPdfAsync(Guid.Parse("ac45f6b1-9b1b-473c-8a35-6fab7a3a3c36"));
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2291,9 +2294,9 @@ namespace ExampleSDK
                 Resend resend = new Resend("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2314,9 +2317,9 @@ namespace ExampleSDK
                 Resend resend = new Resend("http://api.test.sw.com.mx", "http://services.test.sw.com.mx", "user", "password");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2346,9 +2349,9 @@ namespace ExampleSDK
                 Resend resend = new Resend("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), "someemail@some.com");
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2369,9 +2372,9 @@ namespace ExampleSDK
                 Resend resend = new Resend("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 var response = await resend.ResendEmailAsync(Guid.Parse("9c50a99e-93d4-499d-a6bc-ef1ad1360814"), emails);
                 //Obtenemos el detalle de la respuesta 
-                Console.WriteLine(response.status); 
-                Console.WriteLine(response.message); 
-                Console.WriteLine(response.messageDetail);
+                Console.WriteLine(response.Status); 
+                Console.WriteLine(response.Message); 
+                Console.WriteLine(response.MessageDetail);
             }
             catch (Exception e)
             {
@@ -2420,8 +2423,8 @@ namespace ExampleSDK
                 var response = await csd.GetAllCsdAsync();
                 //En caso exitoso se podran obtener los siguientes datos
                 List<CsdData> detail = response.data;
-                Console.Write("Status: " + response.status);
-                if(response.status == "success")
+                Console.Write("Status: " + response.Status);
+                if(response.Status == "success")
                 {
                     Console.Write("\ndetail: ");
                     foreach (var i in detail)
@@ -2439,8 +2442,8 @@ namespace ExampleSDK
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
@@ -2488,8 +2491,8 @@ namespace ExampleSDK
                 var response = await csd.GetAllCsdAsync("30001000000400002434");
                 //En caso exitoso se podran obtener los siguientes datos
                 List<CsdData> detail = response.data;
-                Console.Write("Status: " + response.status);
-                if(response.status == "success")
+                Console.Write("Status: " + response.Status);
+                if(response.Status == "success")
                 {
                     Console.Write("\ndetail: ");
                     foreach (var i in detail)
@@ -2507,8 +2510,8 @@ namespace ExampleSDK
                 else
                 {
                     //En caso de error se pueden consultar los siguientes campos
-                    Console.WriteLine(response.message);
-                    Console.WriteLine(response.messageDetail);
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
                 }
             }
             catch (Exception e)
