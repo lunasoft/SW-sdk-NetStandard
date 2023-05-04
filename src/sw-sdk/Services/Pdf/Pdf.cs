@@ -9,16 +9,13 @@ namespace SW.Services.Pdf
 {
     public class Pdf : PdfService
     {
-        private readonly string _apiUrl;
         private readonly ResponseHandler<PdfResponse> _handler;
-        public Pdf(string url, string token, string proxy = null, int proxyPort = 0) : base(url, token, proxy, proxyPort)
+        public Pdf(string urlApi, string url, string user, string password, string proxy = null, int proxyPort = 0) : base(urlApi, url, user, password, proxy, proxyPort)
         {
-            _apiUrl = url;
             _handler = new ResponseHandler<PdfResponse>();
         }
-        public Pdf(string urlApi, string url, string user, string password, string proxy = null, int proxyPort = 0) : base(url, user, password, proxy, proxyPort)
+        public Pdf(string urlApi, string token, string proxy = null, int proxyPort = 0) : base(urlApi, token, proxy, proxyPort)
         {
-            _apiUrl = urlApi;
             _handler = new ResponseHandler<PdfResponse>();
         }
         internal virtual async Task<PdfResponse> GeneratePdfAsync(string xml, string b64Logo, string templateId, Dictionary<string, string> observacionesAdicionales, bool isB64)
@@ -28,7 +25,7 @@ namespace SW.Services.Pdf
                 var headers = await GetHeadersAsync();
                 var content = GetStringContent(xml, b64Logo, templateId, observacionesAdicionales, isB64);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await _handler.GetPostResponseAsync(_apiUrl,"/pdf/v1/api/GeneratePdf", headers, content, proxy);
+                return await _handler.GetPostResponseAsync(this.UrlApi ?? this.Url, "/pdf/v1/api/GeneratePdf", headers, content, proxy);
             }
             catch (Exception ex)
             {
@@ -41,7 +38,7 @@ namespace SW.Services.Pdf
             {
                 var headers = await GetHeadersAsync();
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                var result = await _handler.GetPostResponseAsync(_apiUrl, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
+                var result = await _handler.GetPostResponseAsync(UrlApi ?? Url, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
                 result.Status = result.Status ?? "success";
                 return result;
             }
