@@ -2698,6 +2698,90 @@ namespace ExampleSDK
 ```
 </details>
 
+<details>
+  <summary>StampV4(XML) - CustomId</summary>
+
+## StampV4(XML) - CustomId ##
+Este servicio recibe un comprobante CFDI 3.3 ó 4.0 para ser timbrado y que recibe un header conocido como CustomID, 
+el cuál tiene el objetivo de agregar un filtro adicional al timbrado para evitar la duplicidad de timbrado.
+El CustomId es un string y el valor es asignado por el usuario, no hay restricción de formación.
+
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url y el token
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
 Si deseas contribuir a la libreria o tienes dudas envianos un correo a **soporte@sw.com.mx**.
