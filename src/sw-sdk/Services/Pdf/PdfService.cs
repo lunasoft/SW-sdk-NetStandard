@@ -10,10 +10,10 @@ namespace SW.Services.Pdf
 {
     public abstract class PdfService : Services
     {
-        protected PdfService(string url, string user, string password, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
+        protected PdfService(string urlApi, string url, string user, string password, string proxy, int proxyPort) : base(urlApi, url, user, password, proxy, proxyPort)
         {
         }
-        protected PdfService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
+        protected PdfService(string urlApi, string token, string proxy, int proxyPort) : base(urlApi, token, proxy, proxyPort)
         {
         }
         internal StringContent GetStringContent(string xml, string b64Logo, string templateId, Dictionary<string, string> observacionesAdicionales, bool isB64)
