@@ -83,10 +83,9 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Timbrar CFDI V1
+Timbrado CFDI V1
 </summary>
 
-## Timbrar CFDI V1 ##
 **TimbrarV1** Recibe el contenido de un **XML** ya emitido (sellado) en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 Este método recibe los siguientes parametros:
@@ -190,10 +189,9 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Emisión Timbrado
+Emisión Timbrado V1
 </summary>
 
-## Emisión Timbrado ##
 **Emisión Timbrado** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **XML** en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 Este método recibe los siguientes parametros:
@@ -268,10 +266,9 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Emisión Timbrado JSON
+Emisión Timbrado JSON V1
 </summary>
 
-## Emisión Timbrado JSON ##
 **Emisión Timbrado JSON** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **JSON** en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción
 
 Este método recibe los siguientes parametros:
@@ -363,7 +360,6 @@ Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante 
 Cancelacion por CSD
 </summary>
 
-## Cancelacion por CSD ##
 Como su nombre lo indica, este método realiza la cancelacion mediante los CSD.
 
 Este método recibe los siguientes parametros:
@@ -496,7 +492,6 @@ namespace ExampleSDK
 Cancelacion por PFX
 </summary>
 
-## Cancelacion por PFX ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el PFX.
 
 Este método recibe los siguientes parametros:
@@ -624,7 +619,6 @@ namespace ExampleSDK
 Cancelacion por XML
 </summary>
 
-## Cancelacion por XML ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el XML sellado con los UUID a cancelar.
 
 Este método recibe los siguientes parametros:
@@ -730,7 +724,6 @@ namespace ExampleSDK
 Cancelacion por UUID
 </summary>
 
-## Cancelacion por UUID ##
 Como su nombre lo indica, este método realiza la cancelacion mediante el UUID a cancelar.
 
 Este método recibe los siguientes parametros:
@@ -1050,7 +1043,6 @@ namespace ExampleSDK
 Validación XML
 </summary>
 
-## Validación XML ##
 Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
 
 Este metodo recibe los siguientes parametros:
@@ -1192,8 +1184,6 @@ namespace ExampleSDK
 <summary>
 Consulta Estatus SAT
 </summary>
-
-## Consulta Estatus SAT ##
 Este servicio sirve para consultar el estatus de un CFDI antes y después de enviarlo a cancelar, con él sabremos sí puede ser cancelado de forma directa, o en caso de que se necesite consultar los CFDI relacionados para poder generar la cancelación.
 
 :pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT.
@@ -1615,7 +1605,6 @@ Servicio mediante el cual aceptaremos o rechazaremos los UUID.
 Aceptar / Rechazar por CSD
 </summary>
 
-## Aceptar / Rechazar por CSD ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante CSD.
 
 Este método recibe los siguientes parametros:
@@ -1682,7 +1671,6 @@ namespace ExampleSDK
 Aceptar / Rechazar por PFX
 </summary>
 
-## Aceptar / Rechazar por PFX ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante PFX.
 
 Este método recibe los siguientes parametros:
@@ -1747,7 +1735,6 @@ namespace ExampleSDK
 Aceptar / Rechazar por XML
 </summary>
 
-## Aceptar / Rechazar por XML ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante XML.
 
 Este método recibe los siguientes parametros:
@@ -1840,7 +1827,6 @@ namespace ExampleSDK
 Aceptar / Rechazar por UUID
 </summary>
 
-## Aceptar / Rechazar por UUID ##
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante UUID.
 
 Este método recibe los siguientes parametros:
@@ -1904,7 +1890,6 @@ Servicio para recuperar información de un XML timbrado con SW.
 Recuperar por UUID
 </summary>
 
-## Recuperar por UUID ##
 Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
 
 Este metodo recibe los siguientes parametros:
@@ -1981,7 +1966,6 @@ namespace ExampleSDK
 Generar PDF
 </summary>
 
-## Generar PDF ##
 Este método genera y obtiene un pdf en base64 a partir de un documento XML timbrado y una plantilla. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
 
 * Url servicios SW
@@ -2186,7 +2170,6 @@ Para mayor referencia de estas plantillas de PDF, favor de visitar el siguiente 
 Regenerar PDF
 </summary>
 
-## Regenerar PDF ##
 El servicio podrá generar o regenerar un PDF de un CFDI previamente timbrados y podrá guardar o remplazar el archivo PDF para ser visualizado posteriormente desde el portal de Smarter. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
 
 * Url Servicios SW(cuando se añaden usuario y contraseña)
@@ -2264,7 +2247,6 @@ namespace ExampleSDK
 Reenvio Email
 </summary>
 
-## Reenvio Email ##
 Este servicio realiza el reenvío de un xml y/o pdf existente mediante su UUID
 a través de correo electrónico.
 
@@ -2394,7 +2376,6 @@ Para administrar los certificados de manera gráfica, puede hacerlo desde el [Ad
 Consultar Certificados
 </summary>
 
-## Consultar Certificados ##
 Método para consultar todos los certificados cargados en la cuenta.
 
 Este metodo recibe los siguientes parametros:
@@ -2461,7 +2442,6 @@ namespace ExampleSDK
 Consultar Certificado Por NoCertificado
 </summary>
 
-## Consultar Certificado Por NoCertificado ##
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
 
 Este metodo recibe los siguientes parametros:
@@ -2529,7 +2509,6 @@ namespace ExampleSDK
 Cargar Certificado
 </summary>
 
-## Cargar Certificado ##
 Método para cargar un certificado en la cuenta.
 
 Este metodo recibe los siguientes parametros:
@@ -2583,7 +2562,6 @@ namespace ExampleSDK
 Eliminar Certificado
 </summary>
 
-## Eliminar Certificado ##
 Método para eliminar un certificado de la cuenta.
 
 Este metodo recibe los siguientes parametros:
@@ -2626,14 +2604,14 @@ namespace ExampleSDK
 
 ## TimbradoV4 ##
 
-<details>
-  <summary>StampV4(XML) - Email</summary>
-
-## StampV4(XML) - Email ##
-Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el xml timbrado así como también su pdf.
+### **Email** ###
+Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el xml timbrado.
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
-***NOTA:*** En caso de que no se cuente con una plantilla pdf customizada los pdf’s serán generados con las plantillas genéricas.
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+
 
 **Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
 ```cs
@@ -2700,16 +2678,156 @@ namespace ExampleSDK
 }
 ```
 </details>
-
 <details>
-  <summary>StampV4(XML) - CustomId</summary>
+  <summary>Emisión Timbrado (IssueV4)</summary>
 
-## StampV4(XML) - CustomId ##
-Este servicio recibe un comprobante CFDI 3.3 ó 4.0 para ser timbrado y que recibe un header conocido como CustomID, 
-el cuál tiene el objetivo de agregar un filtro adicional al timbrado para evitar la duplicidad de timbrado.
-El CustomId es un string y el valor es asignado por el usuario, no hay restricción de formación.
+
+
+**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url y el token
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+<details>
+  <summary>Timbrado Json (IssueJsonV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarJsonV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url y el token
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarJsonV1Async(xml, "someemail@some.com");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
+### **CustomId** ###
+Este servicio recibe un comprobante CFDI para ser timbrado y que recibe un header conocido como CustomID, el cuál tiene el objetivo de agregar un filtro adicional al timbrado para evitar la duplicidad de timbrado.
+El CustomId es un string y el valor es asignado por el usuario, el cual tiene un límite de 100 caracteres.
 
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+
 
 **Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
 ```cs
@@ -2784,6 +2902,404 @@ namespace ExampleSDK
 }
 ```
 </details>
+<details>
+  <summary>Emisión Timbrado (IssueV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url y el token
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+<details>
+  <summary>Timbrado Json (IssueJsonV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable de nuestro customId
+                var customId = Guid.NewGuid().ToString();
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url y el token
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, customId);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
+### **PDF** ###
+Este servicio recibe un comprobante CFDI para ser timbrado y que recibe un header conocido como extra mediante el cual se confirma la generación de un pdf del CFDI timbrado que será guardado en automático en el ADT.
+
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+***NOTA:*** En caso de que no se cuente con una plantilla pdf customizada los pdf’s serán generados con las plantillas genéricas.
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo StampV4 
+                //A esta le pasamos la Url y el token
+                StampV4 stamp = new StampV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+<details>
+  <summary>Emisión Timbrado (IssueV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo IssueV4 
+                //A esta le pasamos la Url y el token
+                IssueV4 stamp = new IssueV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+<details>
+  <summary>Timbrado Json (IssueJsonV4)</summary>
+
+
+
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+          try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el XML
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "user", "password");
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la version de respuesta 1**
+```cs
+using SW.Services.Stamp;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //obtenemos el XML
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes(file));
+                //creamos la variable para la confirmación del PDF
+                var pdf = new String[] { "pdf" };
+                //Creamos una instancia de tipo IssueJsonV4 
+                //A esta le pasamos la Url y el token
+                IssueJsonV4 stamp = new IssueJsonV4("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //Realizamos la peticion
+                var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, null, null,false,pdf);
+                Console.WriteLine(response.Status);
+                Console.WriteLine(response.Data.Tfd);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
