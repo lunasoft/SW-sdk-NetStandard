@@ -1,6 +1,9 @@
 ﻿using SW.Helpers;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SW.Services.Stamp
@@ -20,6 +23,28 @@ namespace SW.Services.Stamp
             ByteArrayContent fileContent = new ByteArrayContent(xml);
             content.Add(fileContent, "xml", "xml");
             return content;
+
+
+        }
+        internal virtual MultipartFormDataContent GetMultipartContentZip(byte[] xml)
+        {
+
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            var memoryStream = new MemoryStream();
+            using (var zipArchive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+            {
+                var zipEntry = zipArchive.CreateEntry("archivo.xml", CompressionLevel.Fastest);
+                using (var entryStream = zipEntry.Open())
+                {
+                    entryStream.Write(xml, 0, xml.Length);
+                }
+            }
+            memoryStream.Position = 0;
+            var fileContent = new StreamContent(memoryStream);
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue("application/zip");
+            content.Add(fileContent, "xml", "archivo.zip");
+            return content;
+
         }
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
@@ -54,12 +79,12 @@ namespace SW.Services.Stamp
 
         private bool ValidateEmail(string email)
         {
-            try 
+            try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
             }
-            catch 
+            catch
             {
                 return false;
             }

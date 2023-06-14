@@ -205,6 +205,16 @@ namespace Test_SW.Services.Stamp_Test
             }
         }
         [Fact]
+        public async Task Stamp_Test_TimbrarV1TooLongAsync()
+        {
+            var build = new BuildSettings();
+            StampV4XML stamp = new StampV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            var xml = GetXml(build, "70000conceptos.xml");
+            var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+        }
+        [Fact]
         public async Task Stamp_Test_ValidateServerErrorAsync()
         {
             var resultExpect = "404";
@@ -294,6 +304,18 @@ namespace Test_SW.Services.Stamp_Test
                 resultExpect = listXmlResult.FindAll(w => w.Status == "success" || w.Message.Contains("72 horas")).Count == iterations;
 
             Assert.True((bool)resultExpect);
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1TooLongAsync_Error()
+        {
+            var resultExpect = "En este path sólo es posible timbrar facturas que tengan más de 10000 nodos" +
+                "cfdi:Concepto , favor de utiliza el timbrado normal";
+            var build = new BuildSettings();
+            StampV4XML stamp = new StampV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "error"
+                && !string.IsNullOrEmpty(response.Message), resultExpect);
         }
         private string GetXml(BuildSettings build, string fileName = null)
         {

@@ -75,6 +75,16 @@ namespace Test_SW.Services.Issue
                 && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
         [Fact]
+        public async Task Issue_Test_TimbrarV1TooLongAsync()
+        {
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueV4XML issue = new SW.Services.Issue.IssueV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            var xml = GetXml(build, "70000conceptos.xml");
+            var response = (StampResponseV1)await issue.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+        }
+        [Fact]
         public async Task IssueV4XMLV1_HashedCustomId_IdDuplicado_Error()
         {
             var build = new BuildSettings();
@@ -106,9 +116,20 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Message == "El CustomId no es válido o viene vacío.");
             Assert.Contains("at SW.Helpers.Validation.ValidateCustomId", response.MessageDetail);
         }
-        private string GetXml(BuildSettings build)
+        [Fact]
+        public async Task Issue_Test_TimbrarV1TooLongAsync_Error()
         {
-            var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40.xml"));
+            var build = new BuildSettings();
+            SW.Services.Issue.IssueV4XML issue = new SW.Services.Issue.IssueV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await issue.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "error"
+                && !string.IsNullOrEmpty(response.Message), "En este path sólo es posible timbrar facturas que tengan más de 10000 nodos" +
+                "cfdi:Concepto , favor de utiliza el timbrado normal");
+        }
+        private string GetXml(BuildSettings build, string fileName = null)
+        {
+            var xml = Encoding.UTF8.GetString(File.ReadAllBytes(String.Format("Resources/CFDI40/{0}", fileName ?? "cfdi40.xml")));
             xml = Helpers.SignTools.RemoverCaracteresInvalidosXml(xml);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
