@@ -16,13 +16,13 @@
         "Nombre": "ESCUELA KEMPER URGATE",
         "RegimenFiscal": "601"
     },
-    "Receptor": {
-        "Rfc": "URE180429TM6",
-        "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-        "DomicilioFiscalReceptor": "65000",
-        "RegimenFiscalReceptor": "601",
-        "UsoCFDI": "CP01"
-    },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "86991",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "CP01"
+  },
     "Conceptos": [
         {
             "Cantidad": "1",
