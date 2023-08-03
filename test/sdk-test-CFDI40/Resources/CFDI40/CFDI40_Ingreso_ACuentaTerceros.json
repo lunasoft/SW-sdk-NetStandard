@@ -24,7 +24,7 @@
   "Receptor": {
     "Rfc": "URE180429TM6",
     "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-    "DomicilioFiscalReceptor": "65000",
+    "DomicilioFiscalReceptor": "86991",
     "RegimenFiscalReceptor": "601",
     "UsoCFDI": "S01"
   },
@@ -54,7 +54,7 @@
         "RfcACuentaTerceros": "CACX7605101P8",
         "NombreACuentaTerceros": "XOCHILT CASAS CHAVEZ",
         "RegimenFiscalACuentaTerceros": "601",
-        "DomicilioFiscalACuentaTerceros": "10740"
+        "DomicilioFiscalACuentaTerceros": "36257"
       }
     }
   ],

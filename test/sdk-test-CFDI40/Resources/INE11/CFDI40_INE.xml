@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ine="http://www.sat.gob.mx/ine" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/ine http://www.sat.gob.mx/sitio_internet/cfd/ine/ine11.xsd" Version="4.0" Fecha="2022-03-10T09:57:43" Serie="Cava tequilera" Folio="552404" FormaPago="01" CondicionesDePago="30 días" SubTotal="200.00" Moneda="MXN" Exportacion="01" TipoCambio="1" Total="228.00" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="45070" Certificado="" NoCertificado="" Sello="">
 	<cfdi:Emisor Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="603" Rfc="EKU9003173C9" />
-	<cfdi:Receptor Nombre="XOCHILT CASAS CHAVEZ" Rfc="CACX7605101P8" UsoCFDI="G03" DomicilioFiscalReceptor="10740" RegimenFiscalReceptor="612" />
+	<cfdi:Receptor Nombre="XOCHILT CASAS CHAVEZ" Rfc="CACX7605101P8" UsoCFDI="G03" DomicilioFiscalReceptor="36257" RegimenFiscalReceptor="612" />
 	<cfdi:Conceptos>
         <cfdi:Concepto Cantidad="1.000000" Unidad="PZA" Descripcion="TEST" ValorUnitario="100.00" Importe="100.00" ClaveProdServ="01010101" ClaveUnidad="EA" ObjetoImp="02">
             <cfdi:Impuestos>

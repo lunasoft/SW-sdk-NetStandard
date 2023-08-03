@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd" xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-02-23T00:18:10" Sello="e" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="20000"  xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
-	<cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="26015" RegimenFiscalReceptor="601" UsoCFDI="S01" />
+	<cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="42501" RegimenFiscalReceptor="601" UsoCFDI="S01" />
 	<cfdi:Conceptos>
 		<cfdi:Concepto ClaveProdServ="50211503" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="0.00" Importe="0.00"  ObjetoImp="01">
 			<cfdi:InformacionAduanera NumeroPedimento="21  47  3807  8003832" />
@@ -17,7 +17,7 @@
                         Referencia="casa blanca" Municipio="004" Estado="COA" Pais="MEX" CodigoPostal="25350" />
 				</cartaporte20:Ubicacion>
 				<cartaporte20:Ubicacion IDUbicacion="DE202020" TipoUbicacion="Destino"
-                    RFCRemitenteDestinatario="AAA010101AAA" FechaHoraSalidaLlegada="2021-11-01T01:00:00"
+                    RFCRemitenteDestinatario="EKU9003173C9" FechaHoraSalidaLlegada="2021-11-01T01:00:00"
                     DistanciaRecorrida="1">
 					<cartaporte20:Domicilio Calle="calle" NumeroExterior="214" Colonia="0347" Localidad="23"
                         Referencia="casa blanca" Municipio="004" Estado="COA" Pais="MEX" CodigoPostal="25350" />

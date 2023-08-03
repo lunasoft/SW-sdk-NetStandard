@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cfdi:Comprobante Version="4.0" Serie="P" Folio="1944" Fecha="2022-03-28T17:48:03" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="P" LugarExpedicion="31607" Exportacion="01" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pago20="http://www.sat.gob.mx/Pagos20" xsi:schemaLocation="xsi:schemaLocation= http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/Pagos20 http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos20.xsd">
 	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"></cfdi:Emisor>
-	<cfdi:Receptor Rfc="JUFA7608212V6" Nombre="ADRIANA JUAREZ FERNANDEZ" UsoCFDI="CP01" DomicilioFiscalReceptor="29133" RegimenFiscalReceptor="616"></cfdi:Receptor>
+	<cfdi:Receptor Rfc="JUFA7608212V6" Nombre="ADRIANA JUAREZ FERNANDEZ" UsoCFDI="CP01" DomicilioFiscalReceptor="01160" RegimenFiscalReceptor="616"></cfdi:Receptor>
 	<cfdi:Conceptos>
 		<cfdi:Concepto ClaveProdServ="84111506" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago" ValorUnitario="0" Importe="0" ObjetoImp="01"></cfdi:Concepto>
 	</cfdi:Conceptos>

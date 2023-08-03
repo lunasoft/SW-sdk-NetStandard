@@ -15,15 +15,15 @@ namespace Test_SW.Helpers
         public string CerPassword = "12345678a";
         public string PfxPassword = "swpass";
         
-        public string Cer = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.cer"));
-        public string Key = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.key"));
+        public string Cer = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CSD_Sucursal_1_EKU9003173C9_20230517_223850.cer"));
+        public string Key = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CSD_Sucursal_1_EKU9003173C9_20230517_223850.key"));
         public string Pfx = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/EKU9003173C9.pfx"));
-        public string CerReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CACX7605101P8.cer"));
-        public string KeyReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CACX7605101P8.key"));
+        public string CerReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CSD_Sucursal_1_CACX7605101P8_20230509_130254.cer"));
+        public string KeyReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CSD_Sucursal_1_CACX7605101P8_20230509_130254.key"));
         public string PfxReceptor = Convert.ToBase64String(File.ReadAllBytes("Resources/CertificadosDePrueba/CACX7605101P8.pfx"));
         public string Rfc = "EKU9003173C9";
         public string RfcReceptor = "CACX7605101P8";
-        public string noCertificado = "30001000000400002434";
+        public string noCertificado = "30001000000500003416";
         public byte[] Acuse = File.ReadAllBytes("Resources/acuse.xml");
         public byte[] RelationsXML = File.ReadAllBytes("Resources/RelationsXML.xml");
         public byte[] CancelacionXML = File.ReadAllBytes("Resources/CancelacionXML.xml");
