@@ -20,7 +20,6 @@ namespace SW.Helpers
                 {
                     addenda = elements[0];
                     if (addenda != null)
-
                         if (addenda != null && addenda.HasChildNodes)
                         {
                             XmlDocument xmlDocumentStamped = new XmlDocument();

@@ -43,15 +43,13 @@ namespace SW.Helpers
             request.Method = "POST";
             request.KeepAlive = true;
             Stream memStream = new System.IO.MemoryStream();
+            
             var boundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
                                                                     boundary + "\r\n");
             var endBoundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" +
                                                                         boundary + "--");
-
-
             string formDataTemplate = "\r\n--" + boundary +
                                         "\r\nContent-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}";
-
             string headerTemplate =
                  "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" +
                  "Content-Type: application/octet-stream\r\n\r\n";

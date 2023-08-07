@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 
 namespace ExternalServices
 {
@@ -13,12 +10,10 @@ namespace ExternalServices
         {
             get { return _url; }
         }
-
         public SATServices(string url)
         {
             _url = url; ;
         }
-
         public BasicHttpBinding GetBinding(int receiveTimeoutInSeconds)
         {
             var myBinding = new BasicHttpBinding();

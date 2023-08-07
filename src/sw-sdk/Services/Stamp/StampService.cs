@@ -9,7 +9,6 @@ namespace SW.Services.Stamp
     {
         protected StampService(string url, string user, string password, string proxy, int proxyPort) : base(url, user, password, proxy, proxyPort)
         {
-
         }
         protected StampService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
@@ -29,7 +28,6 @@ namespace SW.Services.Stamp
                 };
             return headers;
         }
-
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
         {
             await this.SetupRequestAsync();
@@ -51,7 +49,6 @@ namespace SW.Services.Stamp
             }
             return headers;
         }
-
         private bool ValidateEmail(string email)
         {
             try 

@@ -42,7 +42,6 @@ namespace SW.Services.Issue
                                 _operation,
                                 StampTypes.V1.ToString(),
                                 ""), headers, content, proxy);
-
             }
             catch (Exception ex)
             {

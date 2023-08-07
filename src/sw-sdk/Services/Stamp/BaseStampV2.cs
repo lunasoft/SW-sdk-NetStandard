@@ -37,7 +37,6 @@ namespace SW.Services.Stamp
                                 _operation,
                                 StampTypes.V1.ToString(),
                                 format), headers, content, proxy);
-
             }
             catch (Exception ex)
             {

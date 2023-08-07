@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SW.Helpers;
 using SW.Services.Stamp;
 using Test_SW.Helpers;
 using Xunit;
@@ -25,7 +24,6 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
         }
-
         [Fact]
         public async Task Stamp_Test_StampV4XMLV2Async()
         {
@@ -51,7 +49,6 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
-
         [Fact]
         public async Task Stamp_Test_StampV4XMLV3byTokenAsync()
         {
@@ -78,7 +75,6 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(response.Status == "error"
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
-
         }
         [Fact]
         public async Task Stamp_Test_StampV4XMLV4byTokenAsync()
@@ -104,7 +100,6 @@ namespace Test_SW.Services.Stamp_Test
             response = (StampResponseV4)await stamp.TimbrarV4Async(xml, "someemail@some.com");
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
-
         }
         [Fact]
         public async Task Stamp_Test_ValidateServerErrorAsync()
@@ -197,7 +192,6 @@ namespace Test_SW.Services.Stamp_Test
             }
             if (listXmlResult != null)
                 resultExpect = listXmlResult.FindAll(w => w.Status == "success" || w.Message.Contains("72 horas")).Count == iterations;
-
             Assert.True((bool)resultExpect);
         }
         [Fact]

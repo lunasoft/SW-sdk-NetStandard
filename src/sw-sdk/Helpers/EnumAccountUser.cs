@@ -1,5 +1,4 @@
-﻿
-namespace SW.Helpers
+﻿namespace SW.Helpers
 {
     public enum AccountUserProfile
     {

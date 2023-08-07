@@ -14,7 +14,6 @@ namespace SW.Services.Issue
         protected IssueService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-
         internal virtual async Task<HttpWebRequest> RequestStampJsonAsync(string json, string version, string operation)
         {
             await this.SetupRequestAsync();
@@ -32,7 +31,6 @@ namespace SW.Services.Issue
             }
             return request;
         }
-
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
         {
             await this.SetupRequestAsync();
@@ -41,7 +39,6 @@ namespace SW.Services.Issue
                 };
             return headers;
         }
-
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
         {
             await this.SetupRequestAsync();
