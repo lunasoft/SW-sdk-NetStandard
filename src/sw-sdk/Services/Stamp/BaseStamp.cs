@@ -39,7 +39,6 @@ namespace SW.Services.Stamp
                                 _operation,
                                 StampTypes.V1.ToString(),
                                 format), headers, content, proxy);
-
             }
             catch (Exception ex)
             {
@@ -60,7 +59,6 @@ namespace SW.Services.Stamp
             ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV1> response = new ConcurrentDictionary<string, StampResponseV1>();
-
             string format = isb64 ? "b64" : "";
             Parallel.ForEach(request, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, async i =>
             {
@@ -75,8 +73,6 @@ namespace SW.Services.Stamp
                                     _operation,
                                     StampTypes.V1.ToString(),
                                     format), headers, content, proxy));
-
-
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +122,6 @@ namespace SW.Services.Stamp
             ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV2> response = new ConcurrentDictionary<string, StampResponseV2>();
-
             string format = isb64 ? "b64" : "";
             Parallel.ForEach(request, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, async i =>
             {
@@ -141,8 +136,6 @@ namespace SW.Services.Stamp
                                     _operation,
                                     StampTypes.V2.ToString(),
                                     format), headers, content, proxy));
-
-
                 }
                 catch (Exception ex)
                 {
@@ -192,7 +185,6 @@ namespace SW.Services.Stamp
             ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV3> response = new ConcurrentDictionary<string, StampResponseV3>();
-
             string format = isb64 ? "b64" : "";
             Parallel.ForEach(request, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, async i =>
             {
@@ -256,7 +248,6 @@ namespace SW.Services.Stamp
             ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();
             ConcurrentBag<string> request = new ConcurrentBag<string>(xmls);
             ConcurrentDictionary<string, StampResponseV4> response = new ConcurrentDictionary<string, StampResponseV4>();
-
             string format = isb64 ? "b64" : "";
             Parallel.ForEach(request, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, async i =>
             {
@@ -271,8 +262,6 @@ namespace SW.Services.Stamp
                                     _operation,
                                     StampTypes.V4.ToString(),
                                     format), headers, content, proxy));
-
-
                 }
                 catch (Exception ex)
                 {

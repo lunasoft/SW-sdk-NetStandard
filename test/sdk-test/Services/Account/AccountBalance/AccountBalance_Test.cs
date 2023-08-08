@@ -2,7 +2,6 @@
 using System;
 using System.Threading.Tasks;
 using Test_SW.Helpers;
-using SW.Helpers;
 using Xunit;
 
 namespace sdk_test.Services.Account

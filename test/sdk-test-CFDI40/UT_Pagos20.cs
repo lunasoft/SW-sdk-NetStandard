@@ -18,7 +18,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en USD y monda del documento relacionado en MXN mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -28,7 +27,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en MXN y monda del documento relacionado en USD mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -38,7 +36,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en EUR y monda del documento relacionado en USD mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -57,7 +54,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con dos monedas de pago distintas y monda del documento relacionado en USD mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -76,7 +72,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con con Factoraje mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -107,7 +102,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en USD y monda del documento relacionado en MXN mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -117,7 +111,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en MXN y monda del documento relacionado en USD mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -127,7 +120,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en EUR y monda del documento relacionado en USD mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -146,7 +138,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con dos monedas de pago distintas y monda del documento relacionado en USD mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -165,7 +156,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con con Factoraje mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -196,7 +186,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en USD y monda del documento relacionado en MXN mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -206,7 +195,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en MXN y monda del documento relacionado en USD mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -216,7 +204,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Pagos20/CFDI40_Pago_DoctoRelacionadoEnDolar.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en EUR y monda del documento relacionado en USD mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -235,7 +222,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con dos monedas de pago distintas y monda del documento relacionado en USD mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -254,7 +240,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con con Factoraje mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -285,7 +270,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Pagos20/CFDI40_Pago.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en USD y monda del documento relacionado en MXN mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -295,7 +279,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Pagos20/CFDI40_Pago_Dolar.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con moneda de pago en EUR y monda del documento relacionado en USD mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -314,7 +297,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo pago con dos monedas de pago distintas y monda del documento relacionado en USD mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>

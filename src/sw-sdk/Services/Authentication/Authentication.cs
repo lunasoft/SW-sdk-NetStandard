@@ -26,14 +26,12 @@ namespace SW.Services.Authentication
             try
             {
                 new AuthenticationValidation(Url, User, Password, Token);
-
                 Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "user", this.User },
                     { "password", this.Password }
                 };
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url, headers, "security/authenticate", proxy);
-
             }
             catch (Exception e)
             {

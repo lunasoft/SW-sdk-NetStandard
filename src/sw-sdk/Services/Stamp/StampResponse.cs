@@ -18,7 +18,6 @@ namespace SW.Services.Stamp
         [DataMember]
         public DataCfdi Data { get; set; }
     }
-
     public class StampResponseV4 : Response
     {
         [DataMember]
@@ -29,19 +28,16 @@ namespace SW.Services.Stamp
         [DataMember]
         public string Tfd { get; set; }
     }
-
     public class DataCfdi
     {
         [DataMember]
         public string Cfdi { get; set; }
     }
-
     public class DataCfdiTfd : DataTfd
     {
         [DataMember]
         public string Cfdi { get; set; }
     }
-
     public class DataComplete : DataCfdi
     {
         [DataMember]

@@ -22,7 +22,6 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Status == "success"
                 && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_IssueXMLV2Async()
         {
@@ -33,7 +32,6 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Status == "success"
                 && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_IssueXMLV3Async()
         {
@@ -44,7 +42,6 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Status == "success"
                 && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_StampXMLV4byTokenAsync()
         {
@@ -63,7 +60,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.qrCode viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_IssueV4XMLV3Async()
         {
@@ -117,6 +113,5 @@ namespace Test_SW.Services.Issue
             xml = doc.OuterXml;
             return xml;
         }
-
     }
 }

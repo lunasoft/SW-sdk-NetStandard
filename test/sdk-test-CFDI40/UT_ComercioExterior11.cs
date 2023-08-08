@@ -18,7 +18,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/ComercioExterior11/CFDI40_ComercioExterior.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con complemento comercio exterior con diferentes monedas mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -49,7 +48,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/ComercioExterior11/CFDI40_ComercioExterior.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con complemento comercio exterior con diferentes monedas mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -80,7 +78,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/ComercioExterior11/CFDI40_ComercioExterior.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con complemento comercio exterior con diferentes monedas mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -120,7 +117,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con complemento comercio exterior con diferentes monedas mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>

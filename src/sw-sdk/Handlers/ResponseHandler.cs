@@ -63,7 +63,6 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse<T>(wex);
             }
         }
-
         internal virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
         {
             try
@@ -124,14 +123,11 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse<T>(wex);
             }
         }
-
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
         {
             try
             {
-
                 return XmlUtils.AddAddenda(XmlOriginal, cfdi, isb64);
-
             }
             catch (Exception)
             {

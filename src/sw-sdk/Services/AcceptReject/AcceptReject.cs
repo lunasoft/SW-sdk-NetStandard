@@ -8,7 +8,6 @@ namespace SW.Services.AcceptReject
 {
     public class AcceptReject : AcceptRejectService
     {
-
         private readonly ResponseHandler<AcceptRejectResponse> _handler;
         /// <summary>
         /// Crear una instancia de la clase AcceptReject.
@@ -101,7 +100,6 @@ namespace SW.Services.AcceptReject
                 return _handler.HandleException(e);
             }
         }
-
         /// <summary>
         /// Servicio de aceptación o rechazo por CSD de comprobantes pendientes de cancelación.
         /// </summary>

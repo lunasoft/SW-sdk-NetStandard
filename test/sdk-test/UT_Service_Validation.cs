@@ -30,7 +30,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
             Assert.Contains("Firma inválidad. Se esperaba", response.Message);
         }
-
         [Fact]
         public async Task UT_Service_Validation_404Async()
         {
@@ -39,7 +38,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
             Assert.Contains("404", response.Message);
         }
-
         [Fact]
         public async Task UT_Service_Validation_STAMPV4_BIG_XMLAsync()
         {

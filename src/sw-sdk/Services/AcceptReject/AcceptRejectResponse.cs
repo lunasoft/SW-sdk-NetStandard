@@ -11,7 +11,6 @@ namespace SW.Services.AcceptReject
         public Data Data { get; set; }
         [DataMember(Name = "codStatus")]
         public string CodStatus { get; set; }
-
     }
     public class Data
     {

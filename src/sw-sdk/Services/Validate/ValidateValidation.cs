@@ -12,7 +12,6 @@ namespace SW.Services.Validate
         internal ValidateValidation(string url, string user, string password, string token) : base(url, user, password, token)
         {
         }
-
         internal void ValidaXML(string xmlString)
         {
             this._xmlString = xmlString;
