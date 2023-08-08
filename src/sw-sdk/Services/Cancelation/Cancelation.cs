@@ -8,7 +8,6 @@ namespace SW.Services.Cancelation
 {
     public class Cancelation : CancelationService
     {
-
         private readonly ResponseHandler<CancelationResponse> _handler;
         /// <summary>
         /// Crear una instancia de la clase Cancelation.
@@ -35,7 +34,6 @@ namespace SW.Services.Cancelation
         {
             _handler = new ResponseHandler<CancelationResponse>();
         }
-
         internal override async Task<CancelationResponse> Cancelar(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             try

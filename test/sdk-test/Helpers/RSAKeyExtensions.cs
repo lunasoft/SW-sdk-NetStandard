@@ -8,11 +8,9 @@ namespace Test_SW.Helpers
     internal static class RSAKeyHelper
     {
         #region XML
-
         public static void FromXmlString(this RSA rsa, string xmlString)
         {
             RSAParameters parameters = new RSAParameters();
-
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlString);
 
@@ -37,14 +35,11 @@ namespace Test_SW.Helpers
             {
                 throw new Exception("Invalid XML RSA key.");
             }
-
             rsa.ImportParameters(parameters);
         }
-
         public static string ToXmlString(this RSA rsa, bool includePrivateParameters)
         {
             RSAParameters parameters = rsa.ExportParameters(includePrivateParameters);
-
             return string.Format("<RSAKeyValue><Modulus>{0}</Modulus><Exponent>{1}</Exponent><P>{2}</P><Q>{3}</Q><DP>{4}</DP><DQ>{5}</DQ><InverseQ>{6}</InverseQ><D>{7}</D></RSAKeyValue>",
                   parameters.Modulus != null ? Convert.ToBase64String(parameters.Modulus) : null,
                   parameters.Exponent != null ? Convert.ToBase64String(parameters.Exponent) : null,
@@ -55,7 +50,6 @@ namespace Test_SW.Helpers
                   parameters.InverseQ != null ? Convert.ToBase64String(parameters.InverseQ) : null,
                   parameters.D != null ? Convert.ToBase64String(parameters.D) : null);
         }
-
         #endregion
     }
 }

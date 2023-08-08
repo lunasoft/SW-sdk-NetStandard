@@ -9,15 +9,12 @@ namespace SW.Helpers
         internal ServicesException()
         {
         }
-
         internal ServicesException(string message) : base(message)
         {
         }
-
         internal ServicesException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
         protected ServicesException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

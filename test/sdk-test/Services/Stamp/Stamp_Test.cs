@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SW.Helpers;
 using SW.Services.Stamp;
 using Test_SW.Helpers;
 using Xunit;
@@ -117,7 +116,6 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(response.Status == "success"
                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
         }
-
         [Fact]
         public async Task Stamp_Test_StampXMLV4byTokenAsync()
         {
@@ -146,9 +144,6 @@ namespace Test_SW.Services.Stamp_Test
                 Console.WriteLine(response.Message);
                 Console.WriteLine(response.MessageDetail);
             }
-
-
-
             Assert.True(response.Data != null, "El resultado Data viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -292,7 +287,6 @@ namespace Test_SW.Services.Stamp_Test
             }
             if (listXmlResult != null)
                 resultExpect = listXmlResult.FindAll(w => w.Status == "success" || w.Message.Contains("72 horas")).Count == iterations;
-
             Assert.True((bool)resultExpect);
         }
         private string GetXml(BuildSettings build, string fileName = null)

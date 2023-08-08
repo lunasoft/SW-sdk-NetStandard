@@ -5,8 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using SW.Services.Pdf;
-using System;
 
 namespace SW.Services.Cancelation
 {
@@ -60,8 +58,6 @@ namespace SW.Services.Cancelation
             });
            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
-
-       
         }
         internal virtual StringContent RequestCancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {

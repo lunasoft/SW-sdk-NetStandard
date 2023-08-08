@@ -23,7 +23,6 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Status == "success"
                 && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
-
         [Fact]
         public async Task IssueJsonV2Async()
         {
@@ -34,7 +33,6 @@ namespace Test_SW.Services.Issue
             Assert.True(response.Status == "success"
                 && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
         }
-
         [Fact]
         public async Task IssueJsonV3Async()
         {
@@ -147,6 +145,5 @@ namespace Test_SW.Services.Issue
             json["Folio"] = Guid.NewGuid().ToString();
             return json.ToString();
         }
-
     }
 }

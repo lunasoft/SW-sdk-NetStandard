@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -24,7 +23,6 @@ namespace Test_SW.Helpers
             xml = SellarCFDIv40(pfx, password, xml);
             return xml;
         }
-
         public static string SellarCFDIv40(byte[] certificatePfx, string password, string xml)
         {
             xml = RemoverCaracteresInvalidosXml(xml);
@@ -57,9 +55,7 @@ namespace Test_SW.Helpers
                 xml = RemoverCaracteresInvalidosXml(Encoding.UTF8.GetString(ms.ToArray()));
             }
             return xml;
-
         }
-
         public static string CadenaOriginalCFDIv40(string strXml)
         {
             try
@@ -74,16 +70,13 @@ namespace Test_SW.Helpers
                 xslt_cadenaoriginal_3_3.Transform(xml, null, writer);
                 resultado = writer.ToString().Trim();
                 writer.Close();
-
                 return resultado;
             }
             catch (Exception ex)
             {
-
                 throw new Exception("El XML proporcionado no es válido.", ex);
             }
         }
-
         private static string GetSignature(string password, byte[] pfx, string strToSign, string algorithm = "SHA1")
         {
             var signData = string.Empty;
@@ -99,7 +92,6 @@ namespace Test_SW.Helpers
             signatureBytes = rsa.SignData(data, CryptoConfig.MapNameToOID(algorithm));
             return Convert.ToBase64String(signatureBytes);
         }
-
         private static string CertificateNumber(X509Certificate2 cert)
         {
             string hexadecimalString = cert.SerialNumber;
@@ -110,7 +102,6 @@ namespace Test_SW.Helpers
             }
             return sb.ToString();
         }
-
         public static string RemoverCaracteresInvalidosXml(string xmlInvoice)
         {
             xmlInvoice = xmlInvoice.Replace("\r\n", "");

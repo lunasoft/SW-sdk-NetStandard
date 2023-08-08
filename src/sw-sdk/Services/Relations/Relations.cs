@@ -100,7 +100,6 @@ namespace SW.Services.Relations
                 return _handler.HandleException(e);
             }
         }
-
         /// <summary>
         /// Servicio de consulta de comprobantes relacionados por CSD.
         /// </summary>

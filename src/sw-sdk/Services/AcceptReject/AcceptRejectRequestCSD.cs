@@ -35,6 +35,5 @@ namespace SW.Services.AcceptReject
             get { return _action; }
             set { _action = value; }
         }
-
     }
 }

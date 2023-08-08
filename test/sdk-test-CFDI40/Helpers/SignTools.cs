@@ -6,7 +6,6 @@ using sw_cadenaoriginal;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Reflection;
 
 namespace Test_SW.Helpers
 {
@@ -71,7 +70,6 @@ namespace Test_SW.Helpers
                 ms.Seek(0, SeekOrigin.Begin);
                 xml = RemoverCaracteresInvalidosXml(Encoding.UTF8.GetString(ms.ToArray()));
             }
-
             return xml;
         }
 

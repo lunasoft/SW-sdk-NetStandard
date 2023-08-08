@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExternalServices.ConsultaCFDIService {
-    using System.Runtime.Serialization;
-    using System;
-    
+namespace ExternalServices.ConsultaCFDIService {        
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
