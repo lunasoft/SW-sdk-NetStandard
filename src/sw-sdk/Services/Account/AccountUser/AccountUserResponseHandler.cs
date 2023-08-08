@@ -24,12 +24,11 @@ namespace SW.Services.Account.AccountUser
                     result = await DeleteResponseAsync(url, headers, path, proxy);
                     break;
             }
-            return new Response()
-            {
-                Status = result.Status,
-                Message = result.Status.Equals("success") ? result.Data : result.Message,
-                MessageDetail = result.MessageDetail
-            };
+            Response response = new Response();
+            response.SendStatus(result.Status);
+            response.SetMessage(result.Status.Equals("success") ? result.Data : result.Message);
+            response.SetMessageDetail(result.MessageDetail);
+            return response;
         }
     }
 }

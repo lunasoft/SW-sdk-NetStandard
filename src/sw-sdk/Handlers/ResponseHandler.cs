@@ -13,7 +13,7 @@ namespace SW.Handlers
     {
         private readonly ResponseHandlerExtended<T> _handler;
         public readonly string XmlOriginal;
-        internal ResponseHandler() 
+        internal ResponseHandler()
         {
             _handler = new ResponseHandlerExtended<T>();
         }
@@ -40,7 +40,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse(wex);
+                return _handler.GetExceptionResponse<T>(wex);
             }
         }
         internal virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -60,7 +60,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse(wex);
+                return _handler.GetExceptionResponse<T>(wex);
             }
         }
 
@@ -81,7 +81,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse(wex);
+                return _handler.GetExceptionResponse<T>(wex);
             }
         }
         internal async Task<T> DeleteResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -101,7 +101,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse(wex);
+                return _handler.GetExceptionResponse<T>(wex);
             }
         }
         internal async Task<T> PutResponseAsync(string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
@@ -121,10 +121,10 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse(wex);
+                return _handler.GetExceptionResponse<T>(wex);
             }
         }
-        
+
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
         {
             try
@@ -172,7 +172,7 @@ namespace SW.Handlers
         }
         internal T HandleException(Exception ex)
         {
-            return _handler.GetExceptionResponse(ex);
+            return _handler.GetExceptionResponse<T>(ex);
         }
     }
 }
