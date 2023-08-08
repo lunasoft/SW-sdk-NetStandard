@@ -20,14 +20,6 @@ namespace SW.Services.Stamp
             content.Add(fileContent, "xml", "xml");
             return content;
         }
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
         internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
         {
             await this.SetupRequestAsync();

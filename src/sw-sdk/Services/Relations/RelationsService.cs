@@ -20,14 +20,6 @@ namespace SW.Services.Relations
         internal abstract Task<RelationsResponse> RelationsRequestAsync(byte[] xmlCancelation);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string pfx, string rfc, string password, string uuid);
         internal abstract Task<RelationsResponse> RelationsRequestAsync(string rfc, string uuid);
-        internal async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
         internal StringContent RequestRelations(string cer, string key, string rfc, string password, string uuid)
         {
             var body = Newtonsoft.Json.JsonConvert.SerializeObject(new RelationsRequestCSD()

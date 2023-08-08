@@ -22,7 +22,8 @@ namespace SW.Services.Pdf
         {
             try
             {
-                var headers = await GetHeadersAsync();
+                await this.SetupRequestAsync();
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var content = GetStringContent(xml, b64Logo, templateId, observacionesAdicionales, isB64);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.UrlApi ?? this.Url, "/pdf/v1/api/GeneratePdf", headers, content, proxy);
@@ -36,7 +37,8 @@ namespace SW.Services.Pdf
         {
             try
             {
-                var headers = await GetHeadersAsync();
+                await this.SetupRequestAsync();
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var result = await _handler.GetPostResponseAsync(UrlApi ?? Url, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
                 result.Status = result.Status ?? "success";

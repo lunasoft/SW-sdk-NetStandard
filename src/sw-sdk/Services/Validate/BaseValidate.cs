@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using SW.Helpers;
 
 namespace SW.Services.Validate
 {
@@ -29,7 +30,8 @@ namespace SW.Services.Validate
             try
             {
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = await GetHeadersAsync();
+                await this.SetupRequestAsync();
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,

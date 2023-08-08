@@ -43,7 +43,8 @@ namespace SW.Services.Pendings
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Get;
-                var headers = await GetHeadersAsync();
+                await this.SetupRequestAsync();
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetResponseAsync(this.Url, headers, $"pendings/{rfc}", proxy);
             }

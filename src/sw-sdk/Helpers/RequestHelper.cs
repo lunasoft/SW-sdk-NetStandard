@@ -1,7 +1,10 @@
-﻿using System;
+﻿using SW.Handlers;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace SW.Helpers
 {
@@ -18,6 +21,13 @@ namespace SW.Helpers
                 WebProxy myProxy = new WebProxy(proxy, port);
                 request.Proxy = myProxy;
             }
+        }
+        internal static Dictionary<string, string> GetHeaders(String Token)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>() {
+                    { "Authorization", "bearer " + Token }
+                };
+            return headers;
         }
         internal static HttpClientHandler ProxySettings(string proxy, int proxyPort)
         {
