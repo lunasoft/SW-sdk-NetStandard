@@ -20,14 +20,6 @@ namespace SW.Services.Cancelation
         internal abstract Task<CancelationResponse> Cancelar(byte[] xmlCancelation);
         internal abstract Task<CancelationResponse> Cancelar(string rfc, string uuid, string motivo, string folioSustitucion);
         internal abstract Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
         internal virtual async Task<HttpWebRequest> RequestCancelarAsync(string rfc, string uuid, string motivo, string folioSustitucion)
         {
             await this.SetupRequestAsync();

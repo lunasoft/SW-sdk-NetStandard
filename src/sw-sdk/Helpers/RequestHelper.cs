@@ -22,11 +22,31 @@ namespace SW.Helpers
                 request.Proxy = myProxy;
             }
         }
-        internal static Dictionary<string, string> GetHeaders(String Token)
+        internal static Dictionary<string, string> GetHeaders(string Token)
         {
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + Token }
                 };
+            return headers;
+        }
+        internal static Dictionary<string, string> GetHeaders(string Token, string email, string customId, string[] extras)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>() {
+                    { "Authorization", "bearer " + Token }
+                };
+            if (email != null && Validation.ValidateEmailStamp(email))
+            {
+                headers.Add("email", email);
+            }
+            if (customId != null)
+            {
+                Validation.ValidateCustomId(customId);
+                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
+            }
+            if (extras != null)
+            {
+                headers.Add("extra", string.Join(",", extras));
+            }
             return headers;
         }
         internal static HttpClientHandler ProxySettings(string proxy, int proxyPort)

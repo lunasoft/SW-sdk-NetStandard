@@ -28,7 +28,8 @@ namespace SW.Services.Csd
                 {
                     throw new ServicesException("El certificado o llave privada vienen vacios");
                 }
-                var headers = await GetHeadersAsync();
+                await this.SetupRequestAsync();
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var content = await this.RequestCsdAsync(cer, key, password);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -47,7 +48,8 @@ namespace SW.Services.Csd
             {
                 throw new ServicesException("El numero de certificado viene vacio");
             }
-            var headers = await GetHeadersAsync();
+            await this.SetupRequestAsync();
+            var headers = Helpers.RequestHelper.GetHeaders(this.Token);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
             return await handler.DeleteResponseAsync(this.Url, headers, String.Format("certificates/{0}", noCertificado), proxy);
         }
@@ -55,7 +57,8 @@ namespace SW.Services.Csd
         {
             ResponseHandler<AllCsdResponse> handler = new ResponseHandler<AllCsdResponse>();
             new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-            var headers = await GetHeadersAsync();
+            await this.SetupRequestAsync();
+            var headers = Helpers.RequestHelper.GetHeaders(this.Token);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
             var path = rfc is null ? "certificates" : String.Format("certificates/rfc/{0}", rfc);
             return await handler.GetResponseAsync(this.Url, headers, path, proxy);
@@ -68,17 +71,10 @@ namespace SW.Services.Csd
             {
                 throw new ServicesException("El numero de certificado viene vacio");
             }
-            var headers = await GetHeadersAsync();
+            await this.SetupRequestAsync();
+            var headers = Helpers.RequestHelper.GetHeaders(this.Token);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
             return await handler.GetResponseAsync(this.Url, headers, String.Format("certificates/{0}", noCertificado), proxy);
-        }
-        private async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
         }
         private async Task<StringContent> RequestCsdAsync(string cer, string key, string password)
         {

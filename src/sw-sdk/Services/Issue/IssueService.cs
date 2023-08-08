@@ -31,34 +31,5 @@ namespace SW.Services.Issue
             }
             return request;
         }
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            if (email != null)
-            {
-                headers.Add("email", email);
-            }
-            if (customId != null)
-            {
-                Validation.ValidateCustomId(customId);
-                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
-            }
-            if (extras != null)
-            {
-                headers.Add("extra", string.Join(",", extras));
-            }
-            return headers;
-        }
     }
 }
