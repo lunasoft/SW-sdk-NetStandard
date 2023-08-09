@@ -34,9 +34,7 @@ namespace SW.Services.Storage
             try
             {
                 await this.SetupRequestAsync();
-                Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
+                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetStorageExtrasResponseAsync(this.UrlApi ?? this.Url, String.Format("datawarehouse/v1/live/{0}", uuid), headers, proxy);
             }

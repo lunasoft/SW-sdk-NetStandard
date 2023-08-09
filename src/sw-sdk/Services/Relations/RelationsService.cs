@@ -68,7 +68,7 @@ namespace SW.Services.Relations
             request.ContentType = "application/json";
             request.ContentLength = 0;
             request.Method = WebRequestMethods.Http.Post;
-            request.Headers.Add(HttpRequestHeader.Authorization.ToString(), "bearer " + this.Token);
+            request.Headers.Add(Helpers.RequestHelper.GetHeaders(this.Token).ToString());
             Helpers.RequestHelper.SetupProxy(this.Proxy, this.ProxyPort, ref request);
             return request;
         }
