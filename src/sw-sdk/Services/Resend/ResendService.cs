@@ -26,8 +26,7 @@ namespace SW.Services.Resend
             try
             {
                 Validation.ValidateEmail(email);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var request = new ResendRequest()
                 {
                     Uuid = uuid.ToString(),

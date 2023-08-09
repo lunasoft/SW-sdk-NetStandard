@@ -33,8 +33,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token,email, customId, extras);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this, email, customId, extras);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -65,8 +64,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token, email, customId, extras);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this, email, customId, extras);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -97,8 +95,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token, email, customId, extras);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this, email, customId, extras);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -129,8 +126,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token, email, customId, extras);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this, email, customId, extras);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,

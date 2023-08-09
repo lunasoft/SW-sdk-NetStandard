@@ -22,17 +22,19 @@ namespace SW.Helpers
                 request.Proxy = myProxy;
             }
         }
-        internal static Dictionary<string, string> GetHeaders(string Token)
+        internal static async Task<Dictionary<string, string>> GetHeadersAsync(Services.Services service)
         {
+            await service.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + Token }
+                    { "Authorization", "bearer " + service.Token }
                 };
             return headers;
         }
-        internal static Dictionary<string, string> GetHeaders(string Token, string email, string customId, string[] extras)
+        internal static async Task<Dictionary<string, string>> GetHeadersAsync(Services.Services service, string email, string customId, string[] extras)
         {
+            await service.SetupRequestAsync();
             Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + Token }
+                    { "Authorization", "bearer " + service.Token }
                 };
             if (email != null && Validation.ValidateEmailStamp(email))
             {

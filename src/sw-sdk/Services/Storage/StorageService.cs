@@ -18,8 +18,7 @@ namespace SW.Services.Storage
             StorageResponseHandler handler = new StorageResponseHandler();
             try
             {
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetStorageResponseAsync(this.UrlApi ?? this.Url, String.Format("datawarehouse/v1/live/{0}", uuid), headers, proxy);
             }
@@ -33,8 +32,7 @@ namespace SW.Services.Storage
             StorageExtraResponseHandler handler = new StorageExtraResponseHandler();
             try
             {
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetStorageExtrasResponseAsync(this.UrlApi ?? this.Url, String.Format("datawarehouse/v1/live/{0}", uuid), headers, proxy);
             }

@@ -30,8 +30,7 @@ namespace SW.Services.Validate
             try
             {
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,

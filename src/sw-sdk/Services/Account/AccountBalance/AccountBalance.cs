@@ -38,10 +38,9 @@ namespace SW.Services.Account.AccountBalance
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, String.Format("{0}/{1}", _path, idUser), proxy);
+                return await handler.GetResponseAsync(this.UrlApi ?? this.Url,await headers, String.Format("{0}/{1}", _path, idUser), proxy);
             }
             catch (Exception e)
             {
@@ -63,11 +62,10 @@ namespace SW.Services.Account.AccountBalance
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetStringContent(comment);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetPostResponseAsync(this.UrlApi ?? this.Url, String.Format("{0}/{1}/"+action.ToString().ToLower()+"/{2}", _path, idUser, stamps), headers, content, proxy);
+                return await handler.GetPostResponseAsync(this.UrlApi ?? this.Url, String.Format("{0}/{1}/"+action.ToString().ToLower()+"/{2}", _path, idUser, stamps), await headers, content, proxy);
             }
             catch (Exception ex)
             {

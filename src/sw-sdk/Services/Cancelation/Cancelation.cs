@@ -39,8 +39,7 @@ namespace SW.Services.Cancelation
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = this.RequestCancelar(cer, key, rfc, password, uuid, motivo, folioSustitucion);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,
@@ -61,8 +60,7 @@ namespace SW.Services.Cancelation
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Post;
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 return await _handler.GetPostResponseAsync(this.Url, headers, $"cfdi33/cancel/{rfc}/{uuid}/{motivo}/{folioSustitucion}", proxy);
             }
             catch (Exception e)
@@ -75,8 +73,7 @@ namespace SW.Services.Cancelation
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = await this.RequestCancelarFileAsync(xmlCancelation);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,
@@ -92,8 +89,7 @@ namespace SW.Services.Cancelation
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                await this.SetupRequestAsync();
-                var headers = Helpers.RequestHelper.GetHeaders(this.Token);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = this.RequestCancelar(pfx, rfc, password, uuid, motivo, folioSustitucion);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,

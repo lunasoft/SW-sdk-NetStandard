@@ -28,7 +28,7 @@ namespace SW.Services.Cancelation
             request.ContentType = "application/json";
             request.ContentLength = 0;
             request.Method = WebRequestMethods.Http.Post;
-            request.Headers.Add(HttpRequestHeader.Authorization.ToString(), "bearer " + this.Token);
+            request.Headers.Add(Helpers.RequestHelper.GetHeadersAsync(this).ToString());
             Helpers.RequestHelper.SetupProxy(this.Proxy, this.ProxyPort, ref request);
             return request;
         }
