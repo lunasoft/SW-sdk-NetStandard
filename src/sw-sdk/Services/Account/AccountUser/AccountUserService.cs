@@ -24,24 +24,24 @@ namespace SW.Services.Account.AccountUser
         internal async Task<Response> UserServiceAsync(AccountUserAction action, Guid? idUser = null, AccountUserRequest request = null)
         {
             var handler = new AccountUserResponseHandler();
-            var headers = Helpers.RequestHelper.GetHeadersAsync(this);
+            var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-            return await handler.SendRequestAsync(action, this.UrlApi ?? this.Url,await headers, String.Format("{0}/{1}", _path, idUser), 
+            return await handler.SendRequestAsync(action, this.UrlApi ?? this.Url, headers, String.Format("{0}/{1}", _path, idUser), 
                     request is null ? null : GetStringContent(request), proxy);
         }
         internal async Task<AccountUserResponse> GetUserServiceAsync(Guid? idUser = null)
         {
             var handler = new ResponseHandler<AccountUserResponse>();
-            var headers = Helpers.RequestHelper.GetHeadersAsync(this);
+            var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-            return await handler.GetResponseAsync(this.UrlApi ?? this.Url,await headers, idUser is null ? String.Format("{0}/{1}", _path, "info") : String.Format("{0}/{1}", _path, idUser), proxy);
+            return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, idUser is null ? String.Format("{0}/{1}", _path, "info") : String.Format("{0}/{1}", _path, idUser), proxy);
         }
         internal async Task<AccountUsersResponse> GetUsersServiceAsync()
         {
             var handler = new ResponseHandler<AccountUsersResponse>();
-            var headers = Helpers.RequestHelper.GetHeadersAsync(this);
+            var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-            return await handler.GetResponseAsync(this.UrlApi ?? this.Url,await headers, _path, proxy);
+            return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, _path, proxy);
         }
         private StringContent GetStringContent(AccountUserRequest request)
         {

@@ -20,7 +20,7 @@ namespace SW.Services.Issue
             var request = (HttpWebRequest)WebRequest.Create(this.Url + string.Format("v3/cfdi33/{0}/{1}", operation, version));
             request.ContentType = "application/jsontoxml";
             request.Method = WebRequestMethods.Http.Post;
-            request.Headers.Add(Helpers.RequestHelper.GetHeadersAsync(this).ToString());
+            request.Headers.Add(HttpRequestHeader.Authorization.ToString(), "bearer " + this.Token);
             Helpers.RequestHelper.SetupProxy(this.Proxy, this.ProxyPort, ref request);
             request.ContentLength = json.Length;
             using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
