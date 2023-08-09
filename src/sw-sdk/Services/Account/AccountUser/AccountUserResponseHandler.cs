@@ -25,7 +25,7 @@ namespace SW.Services.Account.AccountUser
                     break;
             }
             Response response = new Response();
-            response.SendStatus(result.Status);
+            response.SetStatus(result.Status);
             response.SetMessage(result.Status.Equals("success") ? result.Data : result.Message);
             response.SetMessageDetail(result.MessageDetail);
             return response;

@@ -40,7 +40,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse<T>(wex);
+                return _handler.GetExceptionResponse(wex);
             }
         }
         internal virtual async Task<T> GetPostResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -60,7 +60,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse<T>(wex);
+                return _handler.GetExceptionResponse(wex);
             }
         }
         internal virtual async Task<T> GetResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -80,7 +80,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse<T>(wex);
+                return _handler.GetExceptionResponse(wex);
             }
         }
         internal async Task<T> DeleteResponseAsync(string url, Dictionary<string, string> headers, string path, HttpClientHandler proxy)
@@ -100,7 +100,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse<T>(wex);
+                return _handler.GetExceptionResponse(wex);
             }
         }
         internal async Task<T> PutResponseAsync(string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
@@ -120,7 +120,7 @@ namespace SW.Handlers
             }
             catch (HttpRequestException wex)
             {
-                return _handler.GetExceptionResponse<T>(wex);
+                return _handler.GetExceptionResponse(wex);
             }
         }
         internal virtual string GetCfdiData(Response response, string cfdi, bool isb64)
@@ -168,7 +168,7 @@ namespace SW.Handlers
         }
         internal T HandleException(Exception ex)
         {
-            return _handler.GetExceptionResponse<T>(ex);
+            return _handler.GetExceptionResponse(ex);
         }
     }
 }

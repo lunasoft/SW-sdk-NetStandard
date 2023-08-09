@@ -9,48 +9,48 @@ using Newtonsoft.Json.Serialization;
 
 namespace SW.Handlers
 {
-    internal class ResponseHandlerExtended<TResponse> where TResponse : Response, new()
+    internal class ResponseHandlerExtended<T> where T : Response, new()
     {
-        internal virtual async Task<TResponse> TryGetResponseAsync(HttpResponseMessage response)
+        internal virtual async Task<T> TryGetResponseAsync(HttpResponseMessage response)
         {
             try
             {
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.BadRequest || response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject<TResponse>(await response.Content.ReadAsStringAsync(),
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync(),
                         new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 }
                 else
-                    return GetExceptionResponse<TResponse>(response);
+                    return GetExceptionResponse(response);
             }
             catch
             {
-                return GetExceptionResponse<TResponse>(response);
+                return GetExceptionResponse(response);
             }
         }
 
-        internal TResponse GetExceptionRespons<T>(HttpRequestException ex)
+        internal T GetExceptionResponse(HttpRequestException ex)
         {
-            TResponse response = new TResponse();
-            response.SendStatus("error");
+            var response = new T(); 
+            response.SetStatus("error");
             response.SetMessage(ex.Message);
             response.SetMessageDetail(ex.StackTrace);
             return response;
         }
 
-        internal TResponse GetExceptionResponse<T>(Exception ex)
+        internal T GetExceptionResponse(Exception ex)
         {
-            TResponse response = new TResponse();
-            response.SendStatus("error");
+            var response = new T();
+            response.SetStatus("error");
             response.SetMessage(ex.Message);
             response.SetMessageDetail(ResponseHelper.GetErrorDetail(ex));
             return response;
         }
 
-        internal TResponse GetExceptionResponse<T>(HttpResponseMessage ex)
+        internal T GetExceptionResponse(HttpResponseMessage ex)
         {
-            TResponse response = new TResponse();
-            response.SendStatus("error");
+            var response = new T();
+            response.SetStatus("error");
             response.SetMessage(((int)ex.StatusCode).ToString());
             response.SetMessageDetail(ex.ReasonPhrase);
             return response;

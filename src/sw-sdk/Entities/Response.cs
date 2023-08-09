@@ -22,7 +22,7 @@ namespace SW.Entities
         /// Establece el estado de la respuesta.
         /// </summary>
         /// <param name="value">Estado a establecer.</param>
-        internal void SendStatus(string value)
+        internal void SetStatus(string value)
         {
             Status = value;
         }
