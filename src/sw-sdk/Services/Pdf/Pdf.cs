@@ -41,7 +41,7 @@ namespace SW.Services.Pdf
                 var headers = Helpers.RequestHelper.GetHeaders(this.Token);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var result = await _handler.GetPostResponseAsync(UrlApi ?? Url, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
-                result.Status = result.Status ?? "success";
+                result.SetStatus(result.Status ?? "success");
                 return result;
             }
             catch (Exception ex)

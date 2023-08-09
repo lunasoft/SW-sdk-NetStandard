@@ -13,7 +13,7 @@ namespace SW.Handlers
     {
         private readonly ResponseHandlerExtended<T> _handler;
         public readonly string XmlOriginal;
-        internal ResponseHandler() 
+        internal ResponseHandler()
         {
             _handler = new ResponseHandlerExtended<T>();
         }

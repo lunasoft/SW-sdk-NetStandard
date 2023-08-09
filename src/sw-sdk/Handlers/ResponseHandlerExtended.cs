@@ -28,32 +28,32 @@ namespace SW.Handlers
                 return GetExceptionResponse(response);
             }
         }
+
         internal T GetExceptionResponse(HttpRequestException ex)
         {
-            return new T()
-            {
-                Message = ex.Message,
-                Status = "error",
-                MessageDetail = ex.StackTrace
-            };
+            var response = new T(); 
+            response.SetStatus("error");
+            response.SetMessage(ex.Message);
+            response.SetMessageDetail(ex.StackTrace);
+            return response;
         }
+
         internal T GetExceptionResponse(Exception ex)
         {
-            return new T()
-            {
-                Status = "error",
-                Message = ex.Message,
-                MessageDetail = ResponseHelper.GetErrorDetail(ex)
-            };
+            var response = new T();
+            response.SetStatus("error");
+            response.SetMessage(ex.Message);
+            response.SetMessageDetail(ResponseHelper.GetErrorDetail(ex));
+            return response;
         }
-        private T GetExceptionResponse(HttpResponseMessage response)
+
+        internal T GetExceptionResponse(HttpResponseMessage ex)
         {
-            return new T()
-            {
-                Message = ((int)response.StatusCode).ToString(),
-                Status = "error",
-                MessageDetail = response.ReasonPhrase
-            };
+            var response = new T();
+            response.SetStatus("error");
+            response.SetMessage(((int)ex.StatusCode).ToString());
+            response.SetMessageDetail(ex.ReasonPhrase);
+            return response;
         }
     }
 }
