@@ -2826,8 +2826,6 @@ Existen varias versiones de respuesta a este método, las cuales puede consultar
 <details>
   <summary>Timbrado CFDI (StampV4)</summary>
 
-
-
 **Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
@@ -2903,6 +2901,7 @@ namespace ExampleSDK
 </details>
 <details>
   <summary>Emisión Timbrado (IssueV4)</summary>
+
 
 
 
