@@ -1,7 +1,10 @@
-﻿using System;
+﻿using SW.Handlers;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace SW.Helpers
 {
@@ -18,6 +21,35 @@ namespace SW.Helpers
                 WebProxy myProxy = new WebProxy(proxy, port);
                 request.Proxy = myProxy;
             }
+        }
+        internal static async Task<Dictionary<string, string>> GetHeadersAsync(Services.Services service)
+        {
+            await service.SetupRequestAsync();
+            Dictionary<string, string> headers = new Dictionary<string, string>() {
+                    { "Authorization", "bearer " + service.Token }
+                };
+            return headers;
+        }
+        internal static async Task<Dictionary<string, string>> GetHeadersAsync(Services.Services service, string email, string customId, string[] extras)
+        {
+            await service.SetupRequestAsync();
+            Dictionary<string, string> headers = new Dictionary<string, string>() {
+                    { "Authorization", "bearer " + service.Token }
+                };
+            if (email != null && Validation.ValidateEmailStamp(email))
+            {
+                headers.Add("email", email);
+            }
+            if (customId != null)
+            {
+                Validation.ValidateCustomId(customId);
+                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
+            }
+            if (extras != null)
+            {
+                headers.Add("extra", string.Join(",", extras));
+            }
+            return headers;
         }
         internal static HttpClientHandler ProxySettings(string proxy, int proxyPort)
         {

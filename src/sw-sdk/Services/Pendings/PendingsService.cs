@@ -13,14 +13,6 @@ namespace SW.Services.Pendings
         {
         }
         internal abstract Task<PendingsResponse> PendingsRequestAsync(string rfc);
-        internal async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
         internal async Task<HttpWebRequest> RequestPendingsAsync(string rfc)
         {
             await this.SetupRequestAsync();

@@ -54,6 +54,18 @@ namespace SW.Helpers
                 throw new ServicesException("Token Mal Formado");
             }
         }
+        internal static bool ValidateEmailStamp(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         internal static void ValidateEmail(string[] email)
         {
             if (email != null && email.Count() > 0 && email.Count() <= 5)
