@@ -11,7 +11,6 @@ namespace SW.Services.Account.AccountBalance
         [DataMember]
         public string Data { get; set; }
     }
-
     /// <summary>
     /// Estructura de la respuesta que se obtiene del metodo Balance
     /// </summary>
@@ -20,27 +19,20 @@ namespace SW.Services.Account.AccountBalance
         [DataMember]
         public Data Data { get; set; }
     }
-
     public partial class Data
     {
         [DataMember]
         public string IdSaldoCliente { get; set; }
-
         [DataMember]
         public string IdClienteUsuario { get; set; }
-
         [DataMember]
         public int SaldoTimbres { get; set; }
-
         [DataMember]
         public int TimbresUtilizados { get; set; }
-
         [DataMember]
         public string FechaExpiracion { get; set; }
-
         [DataMember]
         public bool Unlimited { get; set; }
-
         [DataMember]
         public int TimbresAsignados { get; set; }
     }

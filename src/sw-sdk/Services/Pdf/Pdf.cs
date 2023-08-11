@@ -22,7 +22,7 @@ namespace SW.Services.Pdf
         {
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetStringContent(xml, b64Logo, templateId, observacionesAdicionales, isB64);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.UrlApi ?? this.Url, "/pdf/v1/api/GeneratePdf", headers, content, proxy);
@@ -36,10 +36,10 @@ namespace SW.Services.Pdf
         {
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 var result = await _handler.GetPostResponseAsync(UrlApi ?? Url, headers, String.Format("/pdf/v1/api/RegeneratePdf/{0}", uuid), proxy);
-                result.Status = result.Status ?? "success";
+                result.SetStatus(result.Status ?? "success");
                 return result;
             }
             catch (Exception ex)

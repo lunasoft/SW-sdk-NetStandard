@@ -1,5 +1,4 @@
-﻿using System;
-using Test_SW.Helpers;
+﻿using Test_SW.Helpers;
 using SW.Services.Pendings;
 using Xunit;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ namespace Test_SW.Services.Pendings
 {
     public class Pendings_Test
     {
-        
         [Fact]
         public async Task ValidateParametersAsync()
         {

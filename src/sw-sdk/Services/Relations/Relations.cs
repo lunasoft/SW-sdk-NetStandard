@@ -39,7 +39,7 @@ namespace SW.Services.Relations
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = this.RequestRelations(cer, key, rfc, password, uuid);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,
@@ -55,7 +55,7 @@ namespace SW.Services.Relations
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = this.RequestRelations(xmlCancelation);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,
@@ -71,7 +71,7 @@ namespace SW.Services.Relations
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = this.RequestRelations(pfx, rfc, password, uuid);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url,
@@ -91,7 +91,7 @@ namespace SW.Services.Relations
                 request.ContentType = "application/json";
                 request.ContentLength = 0;
                 request.Method = WebRequestMethods.Http.Post;
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await _handler.GetPostResponseAsync(this.Url, headers, $"relations/{rfc}/{uuid}", proxy);
             }
@@ -100,7 +100,6 @@ namespace SW.Services.Relations
                 return _handler.HandleException(e);
             }
         }
-
         /// <summary>
         /// Servicio de consulta de comprobantes relacionados por CSD.
         /// </summary>

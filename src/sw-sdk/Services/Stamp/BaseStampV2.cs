@@ -29,7 +29,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -37,7 +37,6 @@ namespace SW.Services.Stamp
                                 _operation,
                                 StampTypes.V1.ToString(),
                                 format), headers, content, proxy);
-
             }
             catch (Exception ex)
             {
@@ -57,7 +56,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -84,7 +83,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,
@@ -111,7 +110,7 @@ namespace SW.Services.Stamp
             {
                 string format = isb64 ? "b64" : "";
                 var xmlBytes = Encoding.UTF8.GetBytes(xml);
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetMultipartContent(xmlBytes);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.Url,

@@ -18,7 +18,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con incapacidades mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -28,7 +27,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_Incapacidades.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con horas extra mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -38,7 +36,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_HorasExtra.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina sin deducciones mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -57,7 +54,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina extraordinaria mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
         /// </summary>
@@ -67,7 +63,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina_Extraordinaria.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina separación indemnización mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -77,7 +72,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_SeparacionIndemnizacion.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -87,7 +81,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 1 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -118,7 +111,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con incapacidades mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -128,7 +120,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_Incapacidades.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con horas extra mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -138,7 +129,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_HorasExtra.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina sin deducciones mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -157,7 +147,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina extraordinaria mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
         /// </summary>
@@ -167,7 +156,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina_Extraordinaria.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina separación indemnización mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -177,7 +165,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_SeparacionIndemnizacion.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -187,7 +174,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 2 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -218,7 +204,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con incapacidades mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -228,7 +213,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_Incapacidades.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con horas extra mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -238,7 +222,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_HorasExtra.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina sin deducciones mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -257,7 +240,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina extraordinaria mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
         /// </summary>
@@ -267,7 +249,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina_Extraordinaria.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina separación indemnización mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -277,7 +258,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_SeparacionIndemnizacion.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -287,7 +267,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 4 de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -318,7 +297,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con incapacidades mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -328,7 +306,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_Incapacidades.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina con horas extra mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -338,7 +315,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_HorasExtra.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo nomina con complemento de nómina sin deducciones mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>
@@ -357,7 +333,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina extraordinaria mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 1
         /// </summary>
@@ -367,7 +342,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/Nomina12/CFDI40_Nomina_Extraordinaria.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina separación indemnización mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 2
         /// </summary>
@@ -377,7 +351,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampService.StampResponseV2("Resources/Nomina12/CFDI40_Nomina_SeparacionIndemnizacion.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 3
         /// </summary>
@@ -387,7 +360,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/Nomina12/CFDI40_Nomina_JubilacionPensionRetiro.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de CFDI versión 4.0 de tipo traslado con complemento de nómina jubilación pensión retiro mediante el servicio de timbrado versión 4 (Json) de la librería sw-sdk mediante usuario y contraseña con respuesta versión 4
         /// </summary>

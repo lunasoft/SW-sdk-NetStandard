@@ -41,7 +41,6 @@ namespace Test_SW.Services.Cancelation_Test
             var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid, "02");
             Assert.True(response.Data.Acuse != null && response.Status == "success");
         }
-
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByPFXAsync()
         {
@@ -50,7 +49,6 @@ namespace Test_SW.Services.Cancelation_Test
             var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.PfxPassword, uuid, "02");
             Assert.True(response != null && response.Status == "success");
         }
-
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByXMLAsync()
         {

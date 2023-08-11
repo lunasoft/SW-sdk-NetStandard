@@ -23,7 +23,6 @@ namespace Test_SW.Services.Issue
             response = (StampResponseV1)await issue.TimbrarV1Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
         }
-
         [Fact]
         public async Task Issue_Test_IssueV2XMLV2Async()
         {
@@ -36,7 +35,6 @@ namespace Test_SW.Services.Issue
             response = (StampResponseV2)await issue.TimbrarV2Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
         }
-
         [Fact]
         public async Task Issue_Test_IssueV2XMLV3Async()
         {
@@ -49,7 +47,6 @@ namespace Test_SW.Services.Issue
             response = (StampResponseV3)await issue.TimbrarV3Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
         }
-
         [Fact]
         public async Task Issue_Test_StampXMLV4byTokenAsync()
         {
@@ -70,7 +67,6 @@ namespace Test_SW.Services.Issue
             response = (StampResponseV4)await issue.TimbrarV4Async(xml);
             Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
         }
-
         [Fact]
         public async Task Issue_Test_StampV4XMLbyTokenAsync()
         {
@@ -89,7 +85,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_StampV4XMLbyUserAsync()
         {
@@ -108,7 +103,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_StampV4XMLEmailAsync()
         {
@@ -127,7 +121,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         [Fact]
         public async Task Issue_Test_StampV4XMLPDFAsync()
         {
@@ -146,7 +139,6 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         private string GetXml(BuildSettings build)
         {
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes("Resources/CFDI40/cfdi40.xml"));
@@ -158,6 +150,5 @@ namespace Test_SW.Services.Issue
             xml = doc.OuterXml;
             return xml;
         }
-
     }
 }

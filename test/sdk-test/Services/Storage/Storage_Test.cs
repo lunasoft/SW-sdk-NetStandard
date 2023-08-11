@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using SW.Helpers;
 using SW.Services.Storage;
 using Test_SW.Helpers;
 using Xunit;

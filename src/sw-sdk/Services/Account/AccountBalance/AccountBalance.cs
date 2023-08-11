@@ -38,7 +38,7 @@ namespace SW.Services.Account.AccountBalance
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, String.Format("{0}/{1}", _path, idUser), proxy);
             }
@@ -62,7 +62,7 @@ namespace SW.Services.Account.AccountBalance
             try
             {
                 new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var content = GetStringContent(comment);
                 var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
                 return await handler.GetPostResponseAsync(this.UrlApi ?? this.Url, String.Format("{0}/{1}/"+action.ToString().ToLower()+"/{2}", _path, idUser, stamps), headers, content, proxy);

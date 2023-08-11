@@ -1,5 +1,4 @@
-﻿
-namespace sw_sdk.Helpers
+﻿namespace sw_sdk.Helpers
 {
     /// <summary>
     /// Plantillas para la generación de PDF.

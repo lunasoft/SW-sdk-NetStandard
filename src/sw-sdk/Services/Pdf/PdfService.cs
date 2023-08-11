@@ -32,13 +32,5 @@ namespace SW.Services.Pdf
             Encoding.UTF8, "application/json");
             return content;
         }
-        internal async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "Bearer " + this.Token }
-                };
-            return headers;
-        }
     }
 }

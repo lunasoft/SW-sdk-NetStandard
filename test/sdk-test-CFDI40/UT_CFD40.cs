@@ -19,7 +19,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo parte mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante Token con respuesta versión 2
         /// </summary>
@@ -29,7 +28,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo ACuentaTerceros mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 3
         /// </summary>
@@ -39,7 +37,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -58,7 +55,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global extranjero mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante Token con respuesta versión 4
         /// </summary>
@@ -77,7 +73,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo egreso mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -96,7 +91,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo traslado mediante el servicio de timbrado versión 1 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -127,7 +121,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo parte mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante Token con respuesta versión 2
         /// </summary>
@@ -137,7 +130,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo ACuentaTerceros mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 3
         /// </summary>
@@ -147,7 +139,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -166,7 +157,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global extranjero mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante Token con respuesta versión 4
         /// </summary>
@@ -185,7 +175,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo egreso mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -204,7 +193,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo traslado mediante el servicio de timbrado versión 2 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -235,7 +223,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo parte mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante Token con respuesta versión 2
         /// </summary>
@@ -245,7 +232,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo ACuentaTerceros mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 3
         /// </summary>
@@ -255,7 +241,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -274,7 +259,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global extranjero mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante Token con respuesta versión 4
         /// </summary>
@@ -293,7 +277,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo egreso mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -312,7 +295,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo traslado mediante el servicio de timbrado versión 4 de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -343,7 +325,6 @@ namespace Test_SW
             var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CFDI40/CFDI40_Ingreso.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo parte mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante Token con respuesta versión 2
         /// </summary>
@@ -353,7 +334,6 @@ namespace Test_SW
             var response = (StampResponseV2)await stampServiceToken.StampResponseV2("Resources/CFDI40/CFDI40_Ingreso_KitParte.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso con nodo ACuentaTerceros mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 3
         /// </summary>
@@ -363,7 +343,6 @@ namespace Test_SW
             var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CFDI40/CFDI40_Ingreso_ACuentaTerceros.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -382,7 +361,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo ingreso global extranjero mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante Token con respuesta versión 4
         /// </summary>
@@ -401,7 +379,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo egreso mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>
@@ -420,7 +397,6 @@ namespace Test_SW
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
         }
-
         /// <summary>
         /// Timbrado de Cfdi versión 4.0 de tipo traslado mediante el servicio de timbrado versión 4 (Json) de la libreria sw-sdk mediante usuario y contrasena con respuesta versión 4
         /// </summary>

@@ -105,7 +105,7 @@ namespace Test_SW_sdk.Services.Csd
         public async Task Csd_Test_GetCsd_Success()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.Token);
-            var response = await csd.GetCsdAsync("30001000000400002434");
+            var response = await csd.GetCsdAsync("30001000000500003416");
             Assert.True(response.Status.Equals("success"));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
             Assert.True(string.IsNullOrEmpty(response.Message));
@@ -132,7 +132,7 @@ namespace Test_SW_sdk.Services.Csd
         public async Task Csd_Test_DeleteCsdAsync_Success()
         {
             CsdUtils csd = new CsdUtils(_build.Url, _build.User, _build.Password);
-            var response = await csd.DeleteCsdAsync("30001000000400002434");
+            var response = await csd.DeleteCsdAsync("30001000000500003416");
             Assert.True(response.Status == "success");
             Assert.NotNull(response.data);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));

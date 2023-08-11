@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>sw_sdk</RootNamespace>
-    <VersionPrefix>1.0.0.3</VersionPrefix>
+    <VersionPrefix>1.0.4.1</VersionPrefix>
     <AssemblyName>sw-sdk-netstandard</AssemblyName>
     <Title>SDK SW sapien®</Title>
     <Authors>SW sapien®</Authors>
@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
     <PackageIconUrl>https://sw.com.mx/images/logo.png</PackageIconUrl>
-    <PackageTags>cfdi;factura;electronica;sat;sdk;version;cfdi 3.3;libreria;csharp;SW;sw-sdk;smarterweb;sw sapien;facturacion;net core;net standard;</PackageTags>
+    <PackageTags>cfdi;factura;electronica;sat;sdk;version;cfdi 4.0;libreria;csharp;SW;sw-sdk;smarterweb;sw sapien;facturacion;net core;net standard;</PackageTags>
     <RepositoryUrl>https://github.com/lunasoft/SW-sdk-NetStandard</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <RepositoryBranch>Master</RepositoryBranch>

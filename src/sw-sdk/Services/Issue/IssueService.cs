@@ -14,7 +14,6 @@ namespace SW.Services.Issue
         protected IssueService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
-
         internal virtual async Task<HttpWebRequest> RequestStampJsonAsync(string json, string version, string operation)
         {
             await this.SetupRequestAsync();
@@ -31,37 +30,6 @@ namespace SW.Services.Issue
                 streamWriter.Close();
             }
             return request;
-        }
-
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
-
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync(string email, string customId, string[] extras)
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            if (email != null)
-            {
-                headers.Add("email", email);
-            }
-            if (customId != null)
-            {
-                Validation.ValidateCustomId(customId);
-                headers.Add("customId", customId.Length > 100 ? customId.HashTo256() : customId);
-            }
-            if (extras != null)
-            {
-                headers.Add("extra", string.Join(",", extras));
-            }
-            return headers;
         }
     }
 }

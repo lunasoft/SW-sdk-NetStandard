@@ -5,8 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using SW.Services.Pdf;
-using System;
 
 namespace SW.Services.Cancelation
 {
@@ -22,14 +20,6 @@ namespace SW.Services.Cancelation
         internal abstract Task<CancelationResponse> Cancelar(byte[] xmlCancelation);
         internal abstract Task<CancelationResponse> Cancelar(string rfc, string uuid, string motivo, string folioSustitucion);
         internal abstract Task<CancelationResponse> Cancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion);
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "bearer " + this.Token }
-                };
-            return headers;
-        }
         internal virtual async Task<HttpWebRequest> RequestCancelarAsync(string rfc, string uuid, string motivo, string folioSustitucion)
         {
             await this.SetupRequestAsync();
@@ -60,8 +50,6 @@ namespace SW.Services.Cancelation
             });
            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             return content;
-
-       
         }
         internal virtual StringContent RequestCancelar(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {

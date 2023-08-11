@@ -13,7 +13,6 @@ Librería NetStandard para el consumo de los servicios de SW sapien®.
 ---
 
 ### Compatibilidad
-- CFDI 3.3
 - CFDI 4.0
 - Net Framework 4.5 o superior.
 ---
@@ -30,22 +29,22 @@ Librería NetStandard para el consumo de los servicios de SW sapien®.
 
 ### Instalación
 
-Instalar la libreria a traves Package Manager Console nuget.org
+Instalar la librería a traves Package Manager Console nuget.org
 
 ```cs
     Install-Package SW-sdk-netstandard
 ```
 
-En caso de no utilizar Package Manager Console puedes descargar la libreria directamente a traves del siguiente [link](https://github.com/lunasoft/SW-sdk-NetStandard/releases) y agregarla como Referencia local a tu proyecto. Asegurate de utilizar la ultima version publicada.
+En caso de no utilizar Package Manager Console puedes descargar la librería directamente a través del siguiente [link](https://github.com/lunasoft/SW-sdk-NetStandard/releases) y agregarla como Referencia local a tu proyecto. Asegurate de utilizar la última versión publicada.
 
 ---
 ### Implementación
 
-La librería contara con los servicios principales como lo son Timbrado de CFDI, Cancelación, Consulta estatus CFDI, etc.
+La librería contará con los servicios principales como lo son Timbrado de CFDI, Cancelación, Consulta estatus CFDI, etc.
 
 ---
 ## Autenticaci&oacute;n ##
-El servicio de Autenticación es utilizado principalmente para obtener el **token** el cual sera utilizado para poder timbrar nuestro CFDI (xml) ya emitido (sellado), para poder utilizar este servicio es necesario que cuente con un **usuario** y **contraseña** para posteriormente obtenga el token, usted puede utilizar los que estan en este ejemplo para el ambiente de **Pruebas**.
+El servicio de Autenticación es utilizado principalmente para obtener el **token** el cual será utilizado para poder timbrar nuestro CFDI (xml) ya emitido (sellado), para poder utilizar este servicio es necesario que cuente con un **usuario** y **contraseña** para posteriormente obtenga el token, usted puede utilizar los que están en este ejemplo para el ambiente de **Pruebas**.
 
 **Ejemplo de consumo de la librería para obtener token**
  ```cs
@@ -88,12 +87,12 @@ Timbrado CFDI V1
 
 **TimbrarV1** Recibe el contenido de un **XML** ya emitido (sellado) en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Archivo en formato **String** ó **Base64**
 * Usuario y contraseña ó Token
 * Url Servicios SW
 
-**Ejemplo de consumo de la libreria para timbrar XML en formato string utilizando usuario y contraseña**
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando usuario y contraseña**
 ```cs
 using SW.Services.Stamp;
 using System.IO;
@@ -124,7 +123,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para timbrar XML en formato string utilizando token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
 ```cs
 using SW.Services.Stamp;
 using System.IO;
@@ -155,7 +154,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para timbrar XML en Base64 utilizando token**
+**Ejemplo de consumo de la librería para timbrar XML en Base64 utilizando token**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -192,14 +191,14 @@ namespace ExampleSDK
 Emisión Timbrado V1
 </summary>
 
-**Emisión Timbrado** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **XML** en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
+**Emisión Timbrado** Realiza el sellado y timbrado de un comprobante CFDI 4.0. Recibe el contenido de un **XML** en formato **String**  ó tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Archivo en formato **String** ó **Base64**
 * Usuario y contraseña ó Token
 * Url Servicios SW
 
-**Ejemplo de consumo de la libreria para la emisión Timbrado XML en formato string utilizando usuario y contraseña**
+**Ejemplo de consumo de la librería para la emisión Timbrado XML en formato string utilizando usuario y contraseña**
 ```cs
 using SW.Services.Issue;
 using SW.Services.Stamp;
@@ -231,7 +230,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para la emisión Timbrado XML en formato string utilizando token**
+**Ejemplo de consumo de la librería para la emisión Timbrado XML en formato string utilizando token**
 ```cs
 using SW.Services.Issue;
 using SW.Services.Stamp;
@@ -269,14 +268,14 @@ namespace ExampleSDK
 Emisión Timbrado JSON V1
 </summary>
 
-**Emisión Timbrado JSON** Realiza el sellado y timbrado de un comprobante CFDI 3.3 ó CFDI 4.0. Recibe el contenido de un **JSON** en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción
+**Emisión Timbrado JSON** Realiza el sellado y timbrado de un CFDI 4.0. Recibe el contenido de un **JSON** en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Archivo en formato **String**
 * Usuario y contraseña ó Token
 * Url Servicios SW
 
-**Ejemplo de consumo de la libreria para la emisión Timbrado JSON en formato string utilizando usuario y contraseña**
+**Ejemplo de consumo de la librería para la emisión Timbrado JSON en formato string utilizando usuario y contraseña**
 ```cs
 using SW.Services.Issue;
 using SW.Services.Stamp;
@@ -307,7 +306,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo de consumo de la libreria para la emisión Timbrado JSON en formato string utilizando token**
+**Ejemplo de consumo de la librería para la emisión Timbrado JSON en formato string utilizando token**
 ```cs
 using SW.Services.Issue;
 using SW.Services.Stamp;
@@ -353,16 +352,16 @@ Para mayor referencia de estas versiones de respuesta, favor de visitar el sigui
 
 ## Cancelación ##
 
-Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
+Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios métodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
 
 <details>
 <summary>
-Cancelacion por CSD
+Cancelación por CSD
 </summary>
 
 Como su nombre lo indica, este método realiza la cancelacion mediante los CSD.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Usuario y contraseña
 * Url Servicios SW
 * Certificado (.cer) en **Base64**
@@ -371,9 +370,9 @@ Este método recibe los siguientes parametros:
 * Password del archivo key
 * UUID
 * Motivo
-* Folio Sustitución (Si el motivo es 01)
+* Folio Sustitución (Si el motivo es 01: "Comprobante emitido con errores con relación")
 
-**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 02 sin relación a documento mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para cancelar con CSD con motivo de cancelación 02 "Comprobante emitido con errores sin relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -429,7 +428,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con CSD con motivo de cancelación 01 con relación a documento mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para cancelar con CSD con motivo de cancelación 01 "Comprobante emitido con errores con relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -489,12 +488,12 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Cancelacion por PFX
+Cancelación por PFX
 </summary>
 
 Como su nombre lo indica, este método realiza la cancelacion mediante el PFX.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Usuario y contraseña
 * Url Servicios SW
 * Archivo PFX en **Base64**
@@ -504,7 +503,7 @@ Este método recibe los siguientes parametros:
 * Motivo
 * Folio Sustitución
 
-**Ejemplo de consumo de la libreria para cancelar con PFX con motivo de cancelación 02 sin relación a documento mediante usuario y contraseña**
+**Ejemplo de consumo de la libreria para cancelar con PFX con motivo de cancelación 02 "Comprobante emitido con errores con relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -558,7 +557,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con PFX con motivo 01 con documento relacionado mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para cancelar con PFX con motivo 01 "Comprobante emitido con errores con relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -616,12 +615,12 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Cancelacion por XML
+Cancelación por XML
 </summary>
 
-Como su nombre lo indica, este método realiza la cancelacion mediante el XML sellado con los UUID a cancelar.
+Como su nombre lo indica, este método realiza la cancelación mediante el XML sellado con los UUID a cancelar.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Usuario y contraseña
 * Url Servicios SW
 * XML sellado con los UUID a cancelar.
@@ -668,7 +667,7 @@ Ejemplo de nodo Folio:
 </Folios>
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con XML mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para cancelar con XML mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -721,12 +720,12 @@ namespace ExampleSDK
 
 <details>
 <summary>
-Cancelacion por UUID
+Cancelación por UUID
 </summary>
 
 Como su nombre lo indica, este método realiza la cancelacion mediante el UUID a cancelar.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Usuario y contraseña
 * Url Servicios SW
 * RFC emisor
@@ -734,7 +733,7 @@ Este método recibe los siguientes parametros:
 * Motivo
 * Folio Sustitución
 
-**Ejemplo de consumo de la libreria para cancelar con UUID con motivo de cancelación 02 sin documento relacionado mediante usuario y contraseña**
+**Ejemplo de consumo de la libreria para cancelar con UUID con motivo de cancelación 02 "Comprobante emitido sin errores con relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -784,7 +783,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para cancelar con UUID con motivo de cancelación 01 con documento relacionado mediante usuario y contraseña**
+**Ejemplo de consumo de la libreria para cancelar con UUID con motivo de cancelación 01 "Comprobante emitido con errores con relación", mediante usuario y contraseña**
 ```cs
 using SW.Services.Cancelation;
 using System;
@@ -838,7 +837,7 @@ namespace ExampleSDK
 
 ## Usuarios
 
-Servicios para trabajar con usuarios, incluye metodos para crear, modificar, obtener y eliminar usuarios.
+Servicios para trabajar con usuarios, incluye métodos para crear, modificar, obtener y eliminar usuarios.
 
 ### Inicializar
 
@@ -936,7 +935,7 @@ Método mediante el cual puedes realizar la consulta de tu saldo para consumir l
 <details>
   <summary>Ejemplos</summary>
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parametros:
 * Usuario y contraseña o Token
 * Url Servicios SW
 * Id de usuario
@@ -988,7 +987,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para consultar el saldo mediante token**
+**Ejemplo de consumo de la librería para consultar el saldo mediante token**
 ```cs
 using SW.Services.Account;
 using System;
@@ -1043,14 +1042,14 @@ namespace ExampleSDK
 Validación XML
 </summary>
 
-Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
+Este servicio recibe un comprobante CFDI 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña o token
 * XML
 
-**Ejemplo de consumo de la libreria para validación de XML mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para validación de XML mediante usuario y contraseña**
 ```cs
 using SW.Services.Validate;
 using System;
@@ -1113,7 +1112,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para validación de XML mediante token**
+**Ejemplo de consumo de la librería para validación de XML mediante token**
 ```cs
 using SW.Services.Validate;
 using System;
@@ -1188,7 +1187,7 @@ Este servicio sirve para consultar el estatus de un CFDI antes y después de env
 
 :pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña o token
 * RFC Emisor
@@ -1197,7 +1196,7 @@ Este metodo recibe los siguientes parametros:
 * UUID del comprobante
 * Sello digital del emisor
 
-**Ejemplo de consumo de la libreria para la consulta del estatus SAT**
+**Ejemplo de consumo de la librería para la consulta del estatus SAT**
 ```cs
 using SW.Services.Status;
 using System;
@@ -1237,7 +1236,7 @@ Relacionados por CSD
 ## Relacionados por CSD ##
 Este método obtendra un listado de los UUID relacionados mediante CSD
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * Certificado en base64
@@ -1312,7 +1311,7 @@ Relacionados por PFX
 ## Relacionados por PFX ##
 Este método obtendra un listado de los UUID relacionados mediante PFX.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * UUID del comprobante
@@ -1385,7 +1384,7 @@ Relacionados por XML
 ## Relacionados por XML ##
 Este método obtendra un listado de los UUID relacionados mediante el XML.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * XML del comprobante
@@ -1484,7 +1483,7 @@ Relacionados por UUID
 ## Relacionados por UUID ##
 Este método obtendra un listado de los UUID relacionados mediante el UUID de la factura.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * UUID de la factura que ser requiere consultar relacionados
@@ -1552,7 +1551,7 @@ Este método obtendra una lista de los UUID que tenemos pendientes por aceptar o
 <details>
   <summary>Ejemplos</summary>
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * RFC Receptor
@@ -1598,7 +1597,7 @@ namespace ExampleSDK
 </details>
 
 ## Aceptar / Rechazar ##
-Servicio mediante el cual aceptaremos o rechazaremos los UUID.
+Servicio mediante el cual aceptaremos o rechazaremos los UUID solicitados para el proceso de cancelación.
 
 <details>
 <summary>
@@ -1607,7 +1606,7 @@ Aceptar / Rechazar por CSD
 
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante CSD.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * Certificado del receptor en Base64
@@ -1673,7 +1672,7 @@ Aceptar / Rechazar por PFX
 
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante PFX.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * Archivo Pfx en Base64
@@ -1681,7 +1680,7 @@ Este método recibe los siguientes parametros:
 * RFC del emisor
 * Arreglo de objetos donde se especifican los UUID y acción a realizar
 
-**Ejemplo de consumo de la librería para la aceptacion/rechazo de la solicitud por PFX mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para la aceptación/rechazo de la solicitud por PFX mediante usuario y contraseña**
 ```cs
 using SW.Services.AcceptReject;
 using System;
@@ -1737,10 +1736,10 @@ Aceptar / Rechazar por XML
 
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante XML.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
-* XML con datos requeridos para la aceptacion/rechazo de la cancelación
+* XML con datos requeridos para la aceptación/rechazo de la cancelación
 
 **Ejemplo de XML**
 ```xml
@@ -1778,7 +1777,7 @@ Este método recibe los siguientes parametros:
 </SolicitudAceptacionRechazo>
 ```
 
-**Ejemplo de consumo de la librería para la aceptacion/rechazo de la solicitud por XML mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para la aceptación/rechazo de la solicitud por XML mediante usuario y contraseña**
 ```cs
 using SW.Services.AcceptReject;
 using System;
@@ -1829,16 +1828,16 @@ Aceptar / Rechazar por UUID
 
 Método mediante el cual el receptor podrá manifestar la aceptación o rechazo de la solicitud de cancelación mediante UUID.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Usuario y contraseña ò token
 * RFC del receptor
 * UUID de la factura que se requiere aceptar/rechazar
-* Acción que se requiera realizar Aceptacion/Rechazo
+* Acción que se requiera realizar Aceptación/Rechazo
 
 :pushpin: ***NOTA:*** El usuario deberá tener sus certificados en el administrador de timbres para la utilización de este método.
 
-**Ejemplo de consumo de la librería para la aceptacion/rechazo de la solicitud por UUID mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para la aceptación/rechazo de la solicitud por UUID mediante usuario y contraseña**
 ```cs
 using SW.Services.AcceptReject;
 using System;
@@ -1892,7 +1891,7 @@ Recuperar por UUID
 
 Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Api SW
 * Url Servicios SW (Cuando se use usuario y contraseña)
 * Usuario y contraseña ò token
@@ -1966,16 +1965,16 @@ namespace ExampleSDK
 Generar PDF
 </summary>
 
-Este método genera y obtiene un pdf en base64 a partir de un documento XML timbrado y una plantilla. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
+Este método genera y obtiene un  PDF en base64 a partir de un documento XML timbrado y una plantilla. Puede ser consumido ingresando tu usuario y contraseña así como tambien ingresando solo el token. Este método recibe los siguientes parámetros:
 
 * Url servicios SW
-* Url Api
+* Url API
 * Logo Base64 (opcional)
-* Template id
+* Template ID
 * XML timbrado
 * Datos extra (opcional)
 
-**Ejemplo de consumo de la libreria para la generación de PDF mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para la generación de PDF mediante usuario y contraseña**
 ```cs
 using SW.Services.Pdf;
 using sw_sdk.Helpers;
@@ -2064,7 +2063,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para la generación de PDF mediante token**
+**Ejemplo de consumo de la librería para la generación de PDF mediante token**
 ```cs
 using SW.Services.Pdf;
 using sw_sdk.Helpers;
@@ -2153,14 +2152,14 @@ namespace ExampleSDK
 }
 ```
 
-:pushpin: ***NOTA:*** Existen varias plantillas de PDF para ambas versiones de CFDI segun el tipo de comprobante, las cuales son las siguientes:
+:pushpin: ***NOTA:*** Existen varias plantillas de PDF segun el tipo de comprobante que necesites, las cuales son las siguientes:
 
-|    Version 3.3     |    Version 4.0     |  Plantilla para el complemento  | 
-|--------------------|--------------------|---------------------------------|
-| :white_check_mark: | :white_check_mark: | Factura ingreso, egreso         | 
-| :white_check_mark: | :white_check_mark: | Nómina                          | 
-| :white_check_mark: | :white_check_mark: | Pagos                           | 
-| :white_check_mark: | :white_check_mark: | Carta porte                     |
+|    Versión 4.0     |  Plantilla para el complemento  | 
+|--------------------|---------------------------------|
+| :white_check_mark: | Factura ingreso, egreso         | 
+| :white_check_mark: | Nómina                          | 
+| :white_check_mark: | Pagos                           | 
+| :white_check_mark: | Carta porte                     |
 
 Para mayor referencia de estas plantillas de PDF, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/plantillas-pdf/).
 </details>
@@ -2176,7 +2175,7 @@ El servicio podrá generar o regenerar un PDF de un CFDI previamente timbrados y
 * Url Api
 * UUID
 
-**Ejemplo de consumo de la libreria para la regeneración de PDF mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para la regeneración de PDF mediante usuario y contraseña**
 ```cs
 using SW.Services.Pdf;
 using System;
@@ -2250,13 +2249,13 @@ Reenvio Email
 Este servicio realiza el reenvío de un xml y/o pdf existente mediante su UUID
 a través de correo electrónico.
 
-Este método recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW(cuando se añaden usuario y contraseña)
 * Url Api
 * UUID: Folico fiscal del comprobante timbrado
-* Email: Correo electrónico (máximo 5 correos separados por ” , ” )
+* Email: Correo electrónico (máximo 5 correos separados por ”,” )
 
-**Ejemplo de consumo de la libreria para el reenvio de email mediante usuario y contraseña**
+**Ejemplo de consumo de la librería para el reenvio de email mediante usuario y contraseña**
 ```cs
 using SW.Services.Resend;
 using System;
@@ -2311,7 +2310,7 @@ namespace ExampleSDK
     }
 ```
 
-**Ejemplo de consumo de la libreria para el reenvio de email mediante token**
+**Ejemplo de consumo de la librería para el reenvio de email mediante token**
 ```cs
 using SW.Services.Resend;
 using System;
@@ -2378,11 +2377,11 @@ Consultar Certificados
 
 Método para consultar todos los certificados cargados en la cuenta.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parametros:
 * Url Servicios SW(cuando se añaden usuario y contraseña)
 * Token
 
-**Ejemplo de consumo de la libreria para la consulta de certificados mediante token**
+**Ejemplo de consumo de la librería para la consulta de certificados mediante token**
 ```cs
 using SW.Services.Csd;
 using System;
@@ -2444,12 +2443,12 @@ Consultar Certificado Por NoCertificado
 
 Método para obtener un certificado cargado enviando como parámetro el número de certificado.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Token
 * Número de certificado a obtener
 
-**Ejemplo de consumo de la libreria para la consulta de certificados por Número de Certificado mediante token**
+**Ejemplo de consumo de la librería para la consulta de certificados por Número de Certificado mediante token**
 ```cs
 using SW.Services.Csd;
 using System;
@@ -2468,7 +2467,7 @@ namespace ExampleSDK
                 //A esta le pasamos la Url y token
                 //Automaticamente se procedera a la consulta
                 CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
-                var response = await csd.GetAllCsdAsync("30001000000400002434");
+                var response = await csd.GetAllCsdAsync("30001000000500003416");
                 //En caso exitoso se podran obtener los siguientes datos
                 List<CsdData> detail = response.data;
                 Console.Write("Status: " + response.Status);
@@ -2511,7 +2510,7 @@ Cargar Certificado
 
 Método para cargar un certificado en la cuenta.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Token
 * CSD en Base64
@@ -2564,7 +2563,7 @@ Eliminar Certificado
 
 Método para eliminar un certificado de la cuenta.
 
-Este metodo recibe los siguientes parametros:
+Este método recibe los siguientes parámetros:
 * Url Servicios SW
 * Token
 * Número de certificado a eliminar
@@ -2587,7 +2586,7 @@ namespace ExampleSDK
                 //A esta le pasamos la Url y token
                 //Automaticamente se procedera a la eliminacion
                 CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
-                var response = await csd.DeleteCsdAsync("30001000000400002442");
+                var response = await csd.DeleteCsdAsync("30001000000500003416");
                 //obtenemos la respuesta
                 Console.WriteLine(response.data);
             }
@@ -2605,7 +2604,7 @@ namespace ExampleSDK
 ## TimbradoV4 ##
 
 ### **Email** ###
-Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el xml timbrado.
+Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el XML timbrado.
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
 <details>
@@ -2613,7 +2612,7 @@ Existen varias versiones de respuesta a este método, las cuales puede consultar
 
 
 
-**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2645,7 +2644,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4(Email) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2683,7 +2682,7 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2715,7 +2714,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueV4(Email) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2753,7 +2752,7 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2785,7 +2784,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2827,9 +2826,7 @@ Existen varias versiones de respuesta a este método, las cuales puede consultar
 <details>
   <summary>Timbrado CFDI (StampV4)</summary>
 
-
-
-**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2865,7 +2862,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2907,7 +2904,8 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+
+**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2943,7 +2941,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueV4(CustomId) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -2985,7 +2983,7 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3021,7 +3019,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3060,17 +3058,17 @@ namespace ExampleSDK
 </details>
 
 ### **PDF** ###
-Este servicio recibe un comprobante CFDI para ser timbrado y que recibe un header conocido como extra mediante el cual se confirma la generación de un pdf del CFDI timbrado que será guardado en automático en el ADT.
+Este servicio recibe un comprobante CFDI para ser timbrado y que recibe un header conocido como extra mediante el cual se confirma la generación de un PDF del CFDI timbrado que será guardado en automático en el ADT.
 
 Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
-***NOTA:*** En caso de que no se cuente con una plantilla pdf customizada los pdf’s serán generados con las plantillas genéricas.
+***NOTA:*** En caso de que no se cuente con una plantilla PDF customizada los PDF’s serán generados con las plantillas genéricas.
 <details>
   <summary>Timbrado CFDI (StampV4)</summary>
 
 
 
-**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3106,7 +3104,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3148,7 +3146,7 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3184,7 +3182,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3226,7 +3224,7 @@ namespace ExampleSDK
 
 
 
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (PDF) XML en formato string mediante usuario y contraseña con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (PDF) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3262,7 +3260,7 @@ namespace ExampleSDK
     }
 }
 ```
-**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la version de respuesta 1**
+**Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) XML en formato string mediante token con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
 using System;
@@ -3303,4 +3301,4 @@ namespace ExampleSDK
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
-Si deseas contribuir a la libreria o tienes dudas envianos un correo a **soporte@sw.com.mx**.
+Si deseas contribuir a la librería o tienes dudas envianos un correo a **soporte@sw.com.mx**.

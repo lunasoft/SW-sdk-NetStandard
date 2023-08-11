@@ -2,7 +2,7 @@
     xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="" Certificado="">
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
-    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="G01" />
+    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="86991" RegimenFiscalReceptor="601" UsoCFDI="G01" />
     <cfdi:Conceptos>
         <cfdi:Concepto ClaveProdServ="50151500" Cantidad="50.00" ClaveUnidad="H87" Unidad="PEIZA" NoIdentificacion="000000000000600019" Descripcion="MANTECA VEGETAL PW20" ValorUnitario="24.60" Importe="1230.00" ObjetoImp="02">
             <cfdi:Impuestos>

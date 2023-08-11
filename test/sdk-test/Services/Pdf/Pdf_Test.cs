@@ -214,7 +214,6 @@ namespace sdk_test.Services.Pdf
             {
                 Assert.True(false);
             }
-
         }
         /// <summary>
         /// Genenerar PDF de Pagos 2.0

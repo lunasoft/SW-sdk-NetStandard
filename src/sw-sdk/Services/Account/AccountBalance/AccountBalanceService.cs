@@ -47,18 +47,6 @@ namespace SW.Services.Account.AccountBalance
         /// <returns>Retorna un objeto handler</returns>
         internal abstract Task<AccountBalanceResponse> StampsDistribution(Guid idUser, int stamps, ActionsAccountBalance action, string comment);
         /// <summary>
-        /// Metodo auxiliar para enviar los headers a la requests
-        /// </summary>
-        /// <returns>Un objeto Dictionary con los headers y sus valores</returns>
-        internal virtual async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "Bearer " + this.Token }
-                };
-            return headers;
-        }
-        /// <summary>
         /// Metodo que serializa el comentario a json y agrega los headers Content-Type, Content-Length
         /// </summary>
         /// <param name="comment">Comentario del movimiento en string </param>

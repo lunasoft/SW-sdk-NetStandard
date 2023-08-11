@@ -51,7 +51,6 @@ namespace SW.Services
         }
         protected Services()
         {
-
         }
         protected Services(string url, string token, string proxy, int proxyPort)
         {

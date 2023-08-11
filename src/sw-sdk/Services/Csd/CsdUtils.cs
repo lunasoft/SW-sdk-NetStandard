@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using SW.Handlers;
-using SW.Helpers;
+﻿using System.Threading.Tasks;
 
 namespace SW.Services.Csd
 {
@@ -19,7 +16,6 @@ namespace SW.Services.Csd
         public CsdUtils(string url, string user, string password, int proxyPort = 0, string proxy = null) 
             : base(url, user, password, proxy, proxyPort)
         {
-            
         }
         /// <summary>
         /// Crear una instancia de la clase CsdUtils.

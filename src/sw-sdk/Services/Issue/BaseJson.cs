@@ -33,7 +33,7 @@ namespace SW.Services.Issue
             ResponseHandler<StampResponseV1> handler = new ResponseHandler<StampResponseV1>();
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 StringContent content = new StringContent(json, Encoding.UTF8);
                 content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
@@ -42,7 +42,6 @@ namespace SW.Services.Issue
                                 _operation,
                                 StampTypes.V1.ToString(),
                                 ""), headers, content, proxy);
-
             }
             catch (Exception ex)
             {
@@ -59,7 +58,7 @@ namespace SW.Services.Issue
             ResponseHandler<StampResponseV2> handler = new ResponseHandler<StampResponseV2>();
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 StringContent content = new StringContent(json, Encoding.UTF8);
                 content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
@@ -84,7 +83,7 @@ namespace SW.Services.Issue
             ResponseHandler<StampResponseV3> handler = new ResponseHandler<StampResponseV3>();
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 StringContent content = new StringContent(json, Encoding.UTF8);
                 content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
@@ -109,7 +108,7 @@ namespace SW.Services.Issue
             ResponseHandler<StampResponseV4> handler = new ResponseHandler<StampResponseV4>();
             try
             {
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 StringContent content = new StringContent(json, Encoding.UTF8);
                 content.Headers.ContentType = new MediaTypeHeaderValue(_contentType);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);

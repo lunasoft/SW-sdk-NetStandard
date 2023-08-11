@@ -26,7 +26,7 @@ namespace SW.Services.Resend
             try
             {
                 Validation.ValidateEmail(email);
-                var headers = await GetHeadersAsync();
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
                 var request = new ResendRequest()
                 {
                     Uuid = uuid.ToString(),
@@ -47,14 +47,6 @@ namespace SW.Services.Resend
             {
                 return _handler.HandleException(ex);
             }
-        }
-        private async Task<Dictionary<string, string>> GetHeadersAsync()
-        {
-            await this.SetupRequestAsync();
-            Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "Authorization", "Bearer " + this.Token }
-                };
-            return headers;
         }
     }
 }
