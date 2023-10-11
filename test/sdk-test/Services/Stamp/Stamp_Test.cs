@@ -208,7 +208,7 @@ namespace Test_SW.Services.Stamp_Test
         public async Task Stamp_Test_TimbrarV1TooLongAsync()
         {
             var build = new BuildSettings();
-            StampV4XML stamp = new StampV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
             var xml = GetXml(build, "70000conceptos.xml");
             var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
             Assert.True(response.Status == "success"
@@ -311,7 +311,7 @@ namespace Test_SW.Services.Stamp_Test
             var resultExpect = "En este path sólo es posible timbrar facturas que tengan más de 10000 nodos" +
                 "cfdi:Concepto , favor de utiliza el timbrado normal";
             var build = new BuildSettings();
-            StampV4XML stamp = new StampV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
             Assert.True(response.Status == "error"

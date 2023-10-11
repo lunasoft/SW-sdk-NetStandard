@@ -78,7 +78,7 @@ namespace Test_SW.Services.Issue
         public async Task Issue_Test_TimbrarV1TooLongAsync()
         {
             var build = new BuildSettings();
-            SW.Services.Issue.IssueV4XML issue = new SW.Services.Issue.IssueV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build, "70000conceptos.xml");
             var response = (StampResponseV1)await issue.TimbrarV1TooLongAsync(xml);
             Assert.True(response.Status == "success"
@@ -120,7 +120,7 @@ namespace Test_SW.Services.Issue
         public async Task Issue_Test_TimbrarV1TooLongAsync_Error()
         {
             var build = new BuildSettings();
-            SW.Services.Issue.IssueV4XML issue = new SW.Services.Issue.IssueV4XML(build.Url, build.UrlApi, build.User, build.Password);
+            SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await issue.TimbrarV1TooLongAsync(xml);
             Assert.True(response.Status == "error"
