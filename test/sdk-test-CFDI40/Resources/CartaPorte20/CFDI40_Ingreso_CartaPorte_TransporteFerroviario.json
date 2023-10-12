@@ -84,6 +84,7 @@
           "TranspInternac": "Sí",
           "Version": "2.0",
           "EntradaSalidaMerc": "Entrada",
+          "ViaEntradaSalida": "04",
           "PaisOrigenDestino": "MEX",
           "Ubicaciones": [
             {
