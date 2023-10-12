@@ -25,7 +25,7 @@
         </cfdi:Traslados>
     </cfdi:Impuestos>
     <cfdi:Complemento>
-    <cartaporte20:CartaPorte TranspInternac="Sí" Version="2.0" EntradaSalidaMerc="Entrada" PaisOrigenDestino="MEX">
+    <cartaporte20:CartaPorte TranspInternac="Sí" Version="2.0" EntradaSalidaMerc="Entrada" ViaEntradaSalida="04" PaisOrigenDestino="MEX">
       <cartaporte20:Ubicaciones>
         <cartaporte20:Ubicacion  IDUbicacion="DE123457" FechaHoraSalidaLlegada="2021-11-09T14:29:52" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Loreto" NumEstacion="EA0417" RFCRemitenteDestinatario="URE180429TM6" TipoUbicacion="Destino" TipoEstacion="01">
           <cartaporte20:Domicilio Calle="calle" CodigoPostal="98057" Colonia="0002" Estado="ZAC" Localidad="03" Municipio="056" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>

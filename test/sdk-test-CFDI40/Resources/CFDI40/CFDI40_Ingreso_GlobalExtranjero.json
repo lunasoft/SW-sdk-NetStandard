@@ -201,11 +201,7 @@
       {
         "Base": 98.99,
         "Impuesto": "002",
-        "TipoFactor": "Exento",
-        "TasaOCuota": 0,
-        "Importe": 0,
-        "TasaOCuotaSpecified": true,
-        "ImporteSpecified": true
+        "TipoFactor": "Exento"
       }
     ],
     "TotalImpuestosTrasladados": 67.81,

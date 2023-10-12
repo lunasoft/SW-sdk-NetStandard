@@ -102,6 +102,16 @@ namespace Test_SW.Services.Stamp_Test
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
         [Fact]
+        public async Task Stamp_Test_TimbrarV1TooLongAsync()
+        {
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build, "70000conceptos.xml");
+            var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "success"
+                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+        }
+        [Fact]
         public async Task Stamp_Test_ValidateServerErrorAsync()
         {
             var build = new BuildSettings();
@@ -224,6 +234,29 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(response.Status == "error");
             Assert.True(response.Message == "El CustomId no es válido o viene vacío.");
             Assert.Contains("at SW.Helpers.Validation.ValidateCustomId(String customId)", response.MessageDetail);
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1TooLongAsync_Error()
+        {
+            var resultExpect = "En este path sólo es posible timbrar facturas que tengan entre 10000 y 120000 nodos cfdi:Concepto  por este path";
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build, "150000conceptos.xml");
+            var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "error"
+                && !string.IsNullOrEmpty(response.Message), resultExpect);
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1TooLongAsync_ErrorPath()
+        {
+            var resultExpect = "En este path sólo es posible timbrar facturas que tengan más de 10000 nodos" +
+                "cfdi:Concepto , favor de utiliza el timbrado normal";
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1TooLongAsync(xml);
+            Assert.True(response.Status == "error"
+                && !string.IsNullOrEmpty(response.Message), resultExpect);
         }
         private string GetXml(BuildSettings build, string fileName = null)
         {

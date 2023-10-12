@@ -133,7 +133,32 @@ namespace SW.Services.Stamp
                                 string.Format("v4/cfdi33/{0}/{1}/{2}",
                                 _operation,
                                 StampTypes.V4.ToString(),
-                                format), headers, content,proxy);
+                                format), headers, content, proxy);
+            }
+            catch (Exception ex)
+            {
+                return handler.HandleException(ex);
+            }
+        }
+        /// <summary>
+        /// Servicio de timbrado de un CFDI en formato XML que tengan entre 10000 y 120000 nodos cfdi:Concepto.
+        /// </summary>
+        /// <param name="xml">String del CFDI en formato XML.</param>
+        /// <returns><see cref="StampResponseV1"/></returns>
+        public virtual async Task<StampResponseV1> TimbrarV1TooLongAsync(string xml)
+        {
+            StampResponseHandlerV1 handler = new StampResponseHandlerV1();
+            try
+            {
+                var xmlBytes = Encoding.UTF8.GetBytes(xml);
+                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
+                var content = GetMultipartContent(xmlBytes, true);
+                var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+                return await handler.GetPostResponseAsync(this.Url,
+                                string.Format("cfdi/{0}/{1}/zip",
+                                _operation,
+                                StampTypes.V1.ToString(),
+                                false), headers, content, proxy);
             }
             catch (Exception ex)
             {

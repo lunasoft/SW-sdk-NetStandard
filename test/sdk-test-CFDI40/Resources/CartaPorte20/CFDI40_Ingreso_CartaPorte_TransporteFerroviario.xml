@@ -25,7 +25,7 @@
 		</cfdi:Traslados>
 	</cfdi:Impuestos>
 	<cfdi:Complemento>
-		<cartaporte20:CartaPorte TotalDistRec="50" TranspInternac="Sí" Version="2.0" EntradaSalidaMerc="Entrada" PaisOrigenDestino="MEX">
+		<cartaporte20:CartaPorte TotalDistRec="50" TranspInternac="Sí" Version="2.0" EntradaSalidaMerc="Entrada" ViaEntradaSalida="04" PaisOrigenDestino="MEX">
 			<cartaporte20:Ubicaciones>
 				<cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" IDUbicacion="OR123457" NombreEstacion="PARACUARO" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="N618.8" NumRegIdTrib="NumRegIdTrib" RFCRemitenteDestinatario="XAXX010101000" ResidenciaFiscal="USA" TipoEstacion="01" TipoUbicacion="Origen">
 					<cartaporte20:Domicilio Calle="calle" CodigoPostal="99056" Colonia="002" Estado="AL" Localidad="0002" Municipio="000005" NumeroExterior="211" Pais="USA" Referencia="casa blanca"/>
