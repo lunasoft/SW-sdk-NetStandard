@@ -2438,6 +2438,73 @@ namespace ExampleSDK
 
 <details>
 <summary>
+Consultar Certificado Por RFC
+</summary>
+
+Método para obtener un certificado cargado enviando como parámetro el RFC del contribuyente.
+
+Este método recibe los siguientes parámetros:
+* Url Servicios SW
+* Token
+* RFC del contribuyente
+
+**Ejemplo de consumo de la librería para la consulta de certificados por RFC mediante token**
+```cs
+using SW.Services.Csd;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo CsdUtils
+                //A esta le pasamos la Url y token
+                //Automaticamente se procedera a la consulta
+                CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                var response = await csd.GetAllCsdAsync("EKU9003173C9");
+                //En caso exitoso se podran obtener los siguientes datos
+                List<CsdData> detail = response.data;
+                Console.Write("Status: " + response.Status);
+                if(response.Status == "success")
+                {
+                    Console.Write("\ndetail: ");
+                    foreach (var i in detail)
+                    {
+                        Console.Write(i.issuer_rfc + "\n");
+                        Console.Write(i.certificate_number + "\n");
+                        Console.Write(i.csd_certificate + "\n");
+                        Console.Write(i.is_active + "\n");
+                        Console.Write(i.issuer_business_name + "\n");
+                        Console.Write(i.valid_from + "\n");
+                        Console.Write(i.valid_to + "\n");
+                        Console.Write(i.certificate_type + "\n");
+                    }
+                }
+                else
+                {
+                    //En caso de error se pueden consultar los siguientes campos
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary>
 Consultar Certificado Por NoCertificado
 </summary>
 
@@ -2467,7 +2534,7 @@ namespace ExampleSDK
                 //A esta le pasamos la Url y token
                 //Automaticamente se procedera a la consulta
                 CsdUtils csd = new CsdUtils("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
-                var response = await csd.GetAllCsdAsync("30001000000500003416");
+                var response = await csd.GetCsdAsync("30001000000500003416");
                 //En caso exitoso se podran obtener los siguientes datos
                 List<CsdData> detail = response.data;
                 Console.Write("Status: " + response.Status);
