@@ -11,36 +11,37 @@ namespace SW.Services.Taxpayer
 {
     public class Taxpayer : TaxpayerService
     {
-        private readonly ResponseHandler<TaxpayerResponse> _handler;
+        /// <summary>
+        /// Crear una instancia de la clase Taxpayer.
+        /// </summary>
+        /// <remarks>Incluye un método para realizar la consulta de un RFC en la Lista 69 B.</remarks>
+        /// <param name="url">URL Services que realiza la autenticación</param>
+        /// <param name="user">Correo del usuario.</param>
+        /// <param name="password">Contraseña del usuario</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Taxpayer(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
-            _handler = new ResponseHandler<TaxpayerResponse>();
         }
+        /// <summary>
+        /// Crear una instancia de la clase Taxpayer.
+        /// </summary>
+        /// <remarks>Incluye un método para realizar la consulta de un RFC en la Lista 69 B.</remarks>
+        /// <param name="url">URL Services</param>
+        /// <param name="token">Token de la cuenta del usuario</param>
+        /// <param name="proxyPort">Puerto proxy.</param>
+        /// <param name="proxy">Proxy.</param>
         public Taxpayer(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort) 
         {
-            _handler = new ResponseHandler<TaxpayerResponse>();
         }
-        internal override async Task<TaxpayerResponse> TaxpayerRequestAsync(string rfc) 
-        {
-            try
-            {
-                new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                HttpWebRequest request = await this.RequestTaxpayerAsync(rfc);
-                request.ContentType = "application/json";
-                request.ContentLength = 0;
-                request.Method = WebRequestMethods.Http.Get;
-                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
-                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await _handler.GetResponseAsync(this.Url, headers, $"taxpayers/{rfc}", proxy);
-            }
-            catch (Exception e)
-            {
-                return _handler.HandleException(e);
-            }
-        }
+        /// <summary>
+        /// Servicio para realizar la consulta de un RFC dentro de la Lista 69 B.
+        /// </summary>
+        /// <param name="rfc">RFC del contribuyente a consultar.</param>
+        /// <returns>Respuesta del contribuyente encapsulada en <see cref="TaxpayerResponse"/>.</returns>
         public async Task<TaxpayerResponse> GetTaxpayer (string rfc)
         {
-            return await TaxpayerRequestAsync(rfc);
+            return await TaxpayerServiceAsync(rfc);
         }
     }
 }
