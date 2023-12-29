@@ -21,7 +21,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Success()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, _build.Token);
-            var response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
             Assert.True(response.Status.Equals("success"));
             Assert.NotNull(response.Data);
             Assert.NotNull(response.Data.id);
@@ -40,7 +40,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Auth_Success()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, _build.User, _build.Password);
-            var response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
             Assert.True(response.Status.Equals("success"));
             Assert.NotNull(response.Data);
             Assert.NotNull(response.Data);
@@ -59,7 +59,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Error()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url,"token");
-            var response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
             Assert.True(response.Status.Equals("error"));
             Assert.True(response.Message.Equals("Token Mal Formado"));
         }
@@ -67,7 +67,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Auth_Error()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, "user", _build.Password);
-            var response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
             Assert.True(response.Status.Equals("error"));
             Assert.True(response.Message.Equals("El token debe contener 3 partes"));
         }
@@ -75,7 +75,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Rfc_Error()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, _build.Token);
-            var response = await taxpayer.GetTaxpayer("ZNS1101105T");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T");
             Assert.True(response.Status.Equals("error"));
             Assert.True(response.Message.Equals("Error en la consulta."));
             Assert.True(response.MessageDetail.Equals("CS1002 - RFC malformado."));
@@ -84,7 +84,7 @@ namespace Test_SW.Services.Taxpayer_Test
         public async Task Taxpayer_Rfc_NotFound_Error()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, _build.Token);
-            var response = await taxpayer.GetTaxpayer("EKU9003173C9");
+            TaxpayerResponse response = await taxpayer.GetTaxpayer("EKU9003173C9");
             Assert.True(response.Status.Equals("error"));
             Assert.True(response.Message.Equals("Error en la consulta."));
             Assert.True(response.MessageDetail.Equals("CS1002 - La consulta no arrojo resultados."));
