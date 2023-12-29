@@ -1159,9 +1159,7 @@ namespace ExampleSDK
 
 </details>
 
->.[!TIP]
-> La propiedad situacion_del_contribuyente obtenida en la respuesta puede tener los siguientes 4 estatus:
-
+:pushpin: ***NOTA:*** La propiedad situacion_del_contribuyente obtenida en la respuesta puede tener los siguientes 4 estatus:
 
 | Estatus |                         Descripción                             | 
 |---------|---------------------------------------------------------------|
