@@ -1047,9 +1047,9 @@ Ejemplos
 
 * Url Servicios SW
 * Usuario y contraseña o Token
-* Id de usuario
+* RFC a consultar
 
-**Ejemplo de consumo de la libreria para consultar del RFC en la lista 69-B mediante usuario y contraseña**
+**Ejemplo de consumo de la libreria para consultar el RFC en la lista 69-B mediante usuario y contraseña**
 ```cs
 using System;
 using System.Threading.Tasks;
@@ -1103,7 +1103,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la libreria para consultar del RFC en la lista 69-B mediante token**
+**Ejemplo de consumo de la libreria para consultar el RFC en la lista 69-B mediante token**
 ```cs
 using System;
 using System.Threading.Tasks;
@@ -1118,8 +1118,8 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo Taxpayer
-                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
-                //Automaticamente despues de obtenerlo se procedera a la consulta del RFC en la lista
+                //A esta le pasamos la Url y token
+                //Despues se procedera a la consulta del RFC en la lista
                 Taxpayer taxpayer = new Taxpayer("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
                 if (response.Status != "error")
@@ -1161,12 +1161,12 @@ namespace ExampleSDK
 
 :pushpin: ***NOTA:*** La propiedad situacion_del_contribuyente obtenida en la respuesta puede tener los siguientes 4 estatus:
 
-| Estatus |                         Descripción                             | 
-|---------|---------------------------------------------------------------|
-|  Definitivo     | Contribuyente que aportó evidencias insuficientes o en su caso las omitió, confirmando la inexistencia de las operaciones.                             | 
-| Presunto     | Contribuyente recién publicado, está pendiente de presentar evidencias para desvirtuarse.       | 
-| Desvirtuado     | Contribuyente que aportó evidencias suficientes para demostrar la existencia de las operaciones.                               | 
-| Sentencia Favorable     | Contribuyente que presentó un medio de defensa ante la presunción de operaciones inexistentes.                  |
+|       Estatus       |                         Descripción                             | 
+|---------------------|---------------------------------------------------------------|
+|      Definitivo     | Contribuyente que aportó evidencias insuficientes o en su caso las omitió, confirmando la inexistencia de las operaciones.                             | 
+|      Presunto       | Contribuyente recién publicado, está pendiente de presentar evidencias para desvirtuarse.       | 
+|      Desvirtuado    | Contribuyente que aportó evidencias suficientes para demostrar la existencia de las operaciones.                               | 
+| Sentencia Favorable | Contribuyente que presentó un medio de defensa ante la presunción de operaciones inexistentes.                  |
 
 
 ## Validación ##
