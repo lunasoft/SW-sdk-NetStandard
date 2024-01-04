@@ -1035,6 +1035,140 @@ namespace ExampleSDK
 ```
 </details>
 
+## Consulta de la lista 69-B ##
+
+Método mediante el cual puedes identificar EFOS, es decir, si un contribuyente esta en la lista 69-B. comprobantes.
+
+<details>
+<summary>
+Ejemplos
+</summary>
+<br>Este método recibe los siguientes parametros:
+
+* Url Servicios SW
+* Usuario y contraseña o Token
+* RFC a consultar
+
+**Ejemplo de consumo de la libreria para consultar el RFC en la lista 69-B mediante usuario y contraseña**
+```cs
+using System;
+using System.Threading.Tasks;
+using SW.Services.Taxpayer;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo Taxpayer
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a la consulta del RFC en la lista
+                Taxpayer taxpayer = new Taxpayer("http://services.test.sw.com.mx", "user", "password");
+                TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+                if (response.Status != "error")
+                {
+                     //Obtenemos los datos del cliente
+                    Console.WriteLine(response.Data.id);
+                    Console.WriteLine(response.Data.rfc);
+                    Console.WriteLine(response.Data.situacion_del_contribuyente);
+                    Console.WriteLine(response.Data.numero_y_fecha_oficio_global_presuncion);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_presuntos);
+                    Console.WriteLine(response.Data.publicacion_DOF_presuntos);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_desvirtuados);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_contribuyentes_que_desvirtuaron);
+                    Console.WriteLine(response.Data.publicacion_DOF_desvirtuados);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_definitivos);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_definitivos);
+                    Console.WriteLine(response.Data.publicacion_DOF_definitivos);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_sentencia_favorable);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_sentencia_favorable);
+                    Console.WriteLine(response.Data.publicacion_DOF_sentencia_favorable);
+                }
+                else
+                {
+                    //En caso de error, se pueden visualizar los campos message y/o messageDetail
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+**Ejemplo de consumo de la libreria para consultar el RFC en la lista 69-B mediante token**
+```cs
+using System;
+using System.Threading.Tasks;
+using SW.Services.Taxpayer;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo Taxpayer
+                //A esta le pasamos la Url y token
+                //Despues se procedera a la consulta del RFC en la lista
+                Taxpayer taxpayer = new Taxpayer("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T3");
+                if (response.Status != "error")
+                {
+                     //Obtenemos los datos del cliente
+                    Console.WriteLine(response.Data.id);
+                    Console.WriteLine(response.Data.rfc);
+                    Console.WriteLine(response.Data.situacion_del_contribuyente);
+                    Console.WriteLine(response.Data.numero_y_fecha_oficio_global_presuncion);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_presuntos);
+                    Console.WriteLine(response.Data.publicacion_DOF_presuntos);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_desvirtuados);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_contribuyentes_que_desvirtuaron);
+                    Console.WriteLine(response.Data.publicacion_DOF_desvirtuados);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_definitivos);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_definitivos);
+                    Console.WriteLine(response.Data.publicacion_DOF_definitivos);
+                    Console.WriteLine(response.Data.numero_fecha_oficio_global_sentencia_favorable);
+                    Console.WriteLine(response.Data.publicacion_pagina_SAT_sentencia_favorable);
+                    Console.WriteLine(response.Data.publicacion_DOF_sentencia_favorable);
+                }
+                else
+                {
+                    //En caso de error, se pueden visualizar los campos message y/o messageDetail
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+</details>
+
+:pushpin: ***NOTA:*** La propiedad situacion_del_contribuyente obtenida en la respuesta puede tener los siguientes 4 estatus:
+
+|       Estatus       |                         Descripción                             | 
+|---------------------|---------------------------------------------------------------|
+|      Definitivo     | Contribuyente que aportó evidencias insuficientes o en su caso las omitió, confirmando la inexistencia de las operaciones.                             | 
+|      Presunto       | Contribuyente recién publicado, está pendiente de presentar evidencias para desvirtuarse.       | 
+|      Desvirtuado    | Contribuyente que aportó evidencias suficientes para demostrar la existencia de las operaciones.                               | 
+| Sentencia Favorable | Contribuyente que presentó un medio de defensa ante la presunción de operaciones inexistentes.                  |
+
+
 ## Validación ##
 
 <details>
