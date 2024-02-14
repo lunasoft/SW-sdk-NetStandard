@@ -957,7 +957,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo BalanceAccount 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
                 //Automaticamente despues de obtenerlo se procedera a la consulta de saldo
-                AccountBalance balance = new AccountBalance("http://services.test.sw.com.mx", "user", "password");
+                AccountBalance balance = new AccountBalance("http://api.test.sw.com.mx" ,"http://services.test.sw.com.mx","user", "password");
                 Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
                 BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
                 if (response.Status != "error")
@@ -1004,7 +1004,7 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo BalanceAccount 
                 //A esta le pasamos la Url y el token
                 //Despues se procedera a la consulta de saldo
-                AccountBalance balance = new AccountBalance("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                AccountBalance balance = new AccountBalance("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
                 Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
                 BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
                 if (response.Status != "error")
@@ -3027,8 +3027,6 @@ Existen varias versiones de respuesta a este método, las cuales puede consultar
 <details>
   <summary>Timbrado CFDI (StampV4)</summary>
 
-
-
 **Ejemplo del consumo de la librería para el servicio StampV4(CustomId) XML en formato string mediante usuario y contraseña con la versión de respuesta 1**
 ```cs
 using SW.Services.Stamp;
@@ -3104,6 +3102,7 @@ namespace ExampleSDK
 </details>
 <details>
   <summary>Emisión Timbrado (IssueV4)</summary>
+
 
 
 
