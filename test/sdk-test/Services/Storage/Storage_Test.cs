@@ -3,6 +3,7 @@ using SW.Services.Storage;
 using Test_SW.Helpers;
 using Xunit;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.Storage_Test
 {
@@ -18,8 +19,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(response.Data.Records.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
@@ -31,8 +31,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, _build.Password);
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(response.Data.Records.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
@@ -44,8 +43,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(response.Data.Records.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
@@ -82,8 +80,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, _build.Password);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(response.Data.Records.Count > 0);
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlXml));
             Assert.True(!String.IsNullOrEmpty(response.Data.Records[0].UrlAckCfdi));
@@ -120,8 +117,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("El token debe contener 3 partes"));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -130,8 +126,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("AU4101 - El token proporcionado viene vacio."));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -140,8 +135,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, "token");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("El token debe contener 3 partes"));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -150,8 +144,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Url, _build.User, "password");
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("AU4101 - El token proporcionado viene vacio."));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -160,8 +153,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-7e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("No se encuentra registro del timbrado."));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -170,8 +162,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.UrlApi, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-7e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("No se encuentra registro del timbrado."));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -180,8 +171,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("404"));
             Assert.True(response.MessageDetail.Equals("Not Found"));
         }
@@ -190,8 +180,7 @@ namespace Test_SW.Services.Storage_Test
         {
             Storage storage = new(_build.Url, _build.Token);
             var response = await storage.GetXmlExtrasAsync(Guid.Parse("d52cc816-b833-49d2-8e41-1a540e36f38f"));
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("404"));
             Assert.True(response.MessageDetail.Equals("Not Found"));
         }

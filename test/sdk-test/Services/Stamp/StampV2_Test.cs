@@ -7,6 +7,7 @@ using Test_SW.Helpers;
 using Xunit;
 using System.Threading.Tasks;
 using System.Linq;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.Stamp_Test
 {
@@ -19,10 +20,11 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.Status == "success"
-                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Stamp_Test_StampV2XMLV2Async()
@@ -31,10 +33,11 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.Status == "success"
-               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Stamp_Test_StampV2XMLV2WithAddenda307Async()
@@ -43,10 +46,11 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.User, build.Password);
             var xml = GetXml(build, "cfdi40_addenda.xml");
             var response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.Status == "success"
-               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV2)await stamp.TimbrarV2Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
         [Fact]
@@ -56,10 +60,11 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
-            Assert.True(response.Status == "success"
-               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
             response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Stamp_Test_StampV2XMLV3WithAddenda307Async()
@@ -68,12 +73,12 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = GetXml(build, "cfdi40_addenda.xml");
             var response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
-            Assert.True(response.Status == "success"
-               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
 
             response = (StampResponseV3)await stamp.TimbrarV3Async(xml);
-            Assert.True(response.Status == "error"
-               && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
         [Fact]
@@ -83,7 +88,7 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -94,7 +99,8 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Stamp_Test_StampV2XMLV4WithAddenda307Async()
@@ -103,7 +109,7 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = GetXml(build, "cfdi40_addenda.xml");
             var response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -114,7 +120,8 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.fechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             response = (StampResponseV4)await stamp.TimbrarV4Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
         [Fact]
@@ -124,9 +131,8 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url + "/ot", build.Token);
             string xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.NotNull(response);
+            CustomAssert.ErrorResponse(response);
             Assert.Equal("404", response.Message);
-            Assert.Equal("error", response.Status);
             Assert.Equal("Not Found", response.MessageDetail);
         }
         [Fact]
@@ -136,8 +142,7 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token + ".");
             string xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.NotNull(response);
-            Assert.Equal("error", response.Status);
+            CustomAssert.ErrorResponse(response);
             Assert.Contains("El token debe contener 3 partes", response.Message);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -148,8 +153,7 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, "");
             string xml = GetXml(build);
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.NotNull(response);
-            Assert.Equal("error", response.Status);
+            CustomAssert.ErrorResponse(response);
             Assert.Contains("El token debe contener 3 partes", response.Message);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -159,8 +163,7 @@ namespace Test_SW.Services.Stamp_Test
             var build = new BuildSettings();
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var response = await stamp.TimbrarV1Async(String.Empty);
-            Assert.NotNull(response);
-            Assert.Equal("error", response.Status);
+            CustomAssert.ErrorResponse(response);
             Assert.Equal("Xml CFDI33 no proporcionado o viene vacio.", response.Message);
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
@@ -172,7 +175,7 @@ namespace Test_SW.Services.Stamp_Test
             var xml = GetXml(build, "cfdi40_specialchar.xml");
             xml = SignTools.SigXml(xml, Convert.FromBase64String(build.Pfx), build.PfxPassword);
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.True(response.Status == "success", "Result not expected. Error: " + response.Message);
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.False(string.IsNullOrEmpty(response.Data.Tfd), "Result not expected. Error: " + response.Message);
         }
         [Fact]
@@ -183,8 +186,7 @@ namespace Test_SW.Services.Stamp_Test
             StampV2 stamp = new StampV2(build.Url, build.Token);
             var xml = File.ReadAllText("Resources/CFDI40/cfdi40_ansi.xml");
             var response = await stamp.TimbrarV1Async(xml);
-            Assert.NotNull(response);
-            Assert.Equal("error", response.Status);
+            CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Contains(resultExpect), "Result not expected. Error: " + response.Message);
             Assert.Contains("Error al leer el documento XML. La estructura del documento no es un Xml valido", response.MessageDetail);
         }

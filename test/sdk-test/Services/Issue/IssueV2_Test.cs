@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml;
 using Xunit;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.Issue
 {
@@ -18,10 +19,11 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV2 issue = new SW.Services.Issue.IssueV2(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV1)await issue.TimbrarV1Async(xml);
-            Assert.True(response.Status == "success"
-                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.tfd viene vacio.");
             response = (StampResponseV1)await issue.TimbrarV1Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Issue_Test_IssueV2XMLV2Async()
@@ -30,10 +32,11 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV2 issue = new SW.Services.Issue.IssueV2(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            Assert.True(response.Status == "success"
-                && !string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.tfd viene vacio.");
             response = (StampResponseV2)await issue.TimbrarV2Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Issue_Test_IssueV2XMLV3Async()
@@ -42,10 +45,11 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV2 issue = new SW.Services.Issue.IssueV2(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV3)await issue.TimbrarV3Async(xml);
-            Assert.True(response.Status == "success"
-                && !string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.tfd viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.tfd viene vacio.");
             response = (StampResponseV3)await issue.TimbrarV3Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Issue_Test_StampXMLV4byTokenAsync()
@@ -54,7 +58,7 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV2 issue = new SW.Services.Issue.IssueV2(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml);
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -65,7 +69,8 @@ namespace Test_SW.Services.Issue
             Assert.True(!string.IsNullOrEmpty(response.Data.FechaTimbrado), "El resultado Data.FechaTimbrado viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             response = (StampResponseV4)await issue.TimbrarV4Async(xml);
-            Assert.True(response.Status == "error" && response.Message == "307. El comprobante contiene un timbre previo.");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
         }
         [Fact]
         public async Task Issue_Test_StampV4XMLbyTokenAsync()
@@ -74,7 +79,7 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml);
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -92,7 +97,7 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml);
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -110,7 +115,7 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.Token);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml, "email@domain.com");
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -128,7 +133,7 @@ namespace Test_SW.Services.Issue
             SW.Services.Issue.IssueV4 issue = new SW.Services.Issue.IssueV4(build.Url, build.User, build.Password);
             var xml = GetXml(build);
             var response = (StampResponseV4)await issue.TimbrarV4Async(xml, extras: new string[] { "pdf" });
-            Assert.True(response.Data != null, "El resultado Data viene vacio.");
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");

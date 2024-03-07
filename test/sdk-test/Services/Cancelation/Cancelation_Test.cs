@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using SW.Services.Cancelation;
+using Test_SW.Helper;
 using Test_SW.Helpers;
 using Xunit;
 
@@ -31,7 +32,8 @@ namespace Test_SW.Services.Cancelation_Test
                 Console.WriteLine(response.Message);
                 Console.WriteLine(response.MessageDetail);
             }
-            Assert.True(response.Data.Acuse != null && response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(response.Data.Acuse != null);
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByRfcUuidAsync()
@@ -39,7 +41,8 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByRfcUuidAsync(build.Rfc, uuid, "02");
-            Assert.True(response.Data.Acuse != null && response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(response.Data.Acuse != null);
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByPFXAsync()
@@ -47,7 +50,7 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByPFXAsync(build.Pfx, build.Rfc, build.PfxPassword, uuid, "02");
-            Assert.True(response != null && response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_CancelationByXMLAsync()
@@ -55,20 +58,18 @@ namespace Test_SW.Services.Cancelation_Test
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByXMLAsync(build.CancelacionXML);
-            Assert.True(response != null && response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact(Skip = "Intermitencia del SAT en cancelaciones.")]
         public async Task Cancelation_Test_ValidateParametersAsync()
         {
             var resultExpect = "Son necesarios el .Cer y el .Key en formato B64";
-            var resultExpectStatus = "error";
             var resultExpectMessage = "CACFDI33 - Problemas con los campos.";
             var build = new BuildSettings();
             Cancelation cancelation = new Cancelation(build.Url, build.User, build.Password);
             var response = await cancelation.CancelarByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, uuid, "02");
-            Assert.NotNull(response);
+            CustomAssert.ErrorResponse(response);
             Assert.Contains((string)resultExpect, response.MessageDetail);
-            Assert.Equal(response.Status, (string)resultExpectStatus);
             Assert.Equal(response.Status, (string)resultExpectMessage);
         }
     }
