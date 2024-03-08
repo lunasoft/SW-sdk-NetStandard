@@ -2,6 +2,7 @@
 using SW.Services.Relations;
 using Xunit;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.Relations_Test
 {
@@ -22,7 +23,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByRfcUuidAsync(build.Rfc, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsByCSDAsync()
@@ -30,7 +31,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByCSDAsync(build.Cer, build.Key, build.Rfc, build.CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsRejectByPfxAsync()
@@ -38,7 +39,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByPFXAsync(build.Pfx, build.Rfc, build.CerPassword, "31c885c8-6dcb-4d82-9cfd-01707c828c50");
-            Assert.True(response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact(Skip = "Constant changes of UUID")]
         public async Task RelationsByXmlAsync()
@@ -46,7 +47,7 @@ namespace Test_SW.Services.Relations_Test
             var build = new BuildSettings();
             Relations relations = new Relations(build.Url, build.User, build.Password);
             RelationsResponse response = await relations.RelationsByXMLAsync(build.RelationsXML);
-            Assert.True(response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
     }
 }

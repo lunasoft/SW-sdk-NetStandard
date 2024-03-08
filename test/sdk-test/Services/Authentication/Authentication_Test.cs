@@ -1,5 +1,6 @@
 ﻿using SW.Services.Authentication;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 using Test_SW.Helpers;
 using Xunit;
 
@@ -13,6 +14,7 @@ namespace Test_SW.Services.Authentication_Test
             var build = new BuildSettings();
             Authentication auth = new Authentication(build.Url, build.User, build.Password);
             var response = await auth.GetTokenAsync();
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Token));
             Assert.True(string.IsNullOrEmpty(response.Message));
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
@@ -22,11 +24,9 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Usuario";
-            var resultExpectStatus = "error";
             Authentication auth = new Authentication(build.Url, "", build.Password);
             var response = await auth.GetTokenAsync();
-            Assert.NotNull(response);
-            Assert.Equal(response.Status, (string)resultExpectStatus);
+            CustomAssert.ErrorResponse(response);
             Assert.Equal(response.Message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.MessageDetail);
         }
@@ -35,11 +35,9 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Contraseña";
-            var resultExpectStatus = "error";
             Authentication auth = new Authentication(build.Url, build.User, "");
             var response = await auth.GetTokenAsync();
-            Assert.NotNull(response);
-            Assert.Equal(response.Status, (string)resultExpectStatus);
+            CustomAssert.ErrorResponse(response);
             Assert.Equal(response.Message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.MessageDetail);
         }
@@ -48,11 +46,9 @@ namespace Test_SW.Services.Authentication_Test
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar URL";
-            var resultExpectStatus = "error";
             Authentication auth = new Authentication("", build.User, build.Password);
             var response = await auth.GetTokenAsync();
-            Assert.NotNull(response);
-            Assert.Equal(response.Status, (string)resultExpectStatus);
+            CustomAssert.ErrorResponse(response);
             Assert.Equal(response.Message, (string)resultExpect);
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.MessageDetail);
         }

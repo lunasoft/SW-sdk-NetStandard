@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Xunit;
 using SW.Services.Account.AccountUser;
 using System.Linq;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.AccountUser_Test
 {
@@ -47,8 +48,7 @@ namespace Test_SW.Services.AccountUser_Test
                 Unlimited = false,
                 Stamps = 1
             });
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
             Assert.True(!String.IsNullOrEmpty(response.MessageDetail));
         }
@@ -57,8 +57,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ObtenerUsuariosAsync();
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("success"));
+            CustomAssert.SuccessResponse(response, response.Data);
             Assert.NotNull(response.Data);
             Assert.True(response.Data.Count() > 0);
         }
@@ -67,8 +66,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, "");
             var response = await user.ObtenerUsuariosAsync();
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact]
@@ -76,17 +74,14 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ObtenerUsuarioAsync();
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact]
         public async Task AccountUser_Test_GetUser_Error()
         {
             AccountUser user = new AccountUser(_build.UrlApi, "");
             var response = await user.ObtenerUsuarioAsync();
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact]
@@ -94,17 +89,14 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ObtenerUsuarioAsync(_idUser);
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("success"));
-            Assert.NotNull(response.Data);
+            CustomAssert.SuccessResponse(response, response.Data);
         }
         [Fact]
         public async Task AccountUser_Test_GetUserByUuid_Error()
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ObtenerUsuarioAsync(Guid.NewGuid());
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact]
@@ -112,8 +104,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ModificarUsuarioAsync(Guid.Parse("4ee2d8af-a663-45c0-8128-7f0b7b153c7d"), "XAXX010101000", "Nombre Usuario");
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("success"));
+            CustomAssert.SuccessResponse(response, response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact]
@@ -121,8 +112,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.ModificarUsuarioAsync(_idUser, "XAXX010101000", "Nombre Usuario");
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact(Skip = "Se omite ya que afecta las demas UT, habilitar segun se requiera.")]
@@ -130,8 +120,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.EliminarUsuarioAsync(_idUser);
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("success"));
+            CustomAssert.SuccessResponse(response, response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
         [Fact]
@@ -139,8 +128,7 @@ namespace Test_SW.Services.AccountUser_Test
         {
             AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
             var response = await user.EliminarUsuarioAsync(Guid.NewGuid());
-            Assert.NotNull(response);
-            Assert.True(response.Status.Equals("error"));
+            CustomAssert.ErrorResponse(response);
             Assert.True(!String.IsNullOrEmpty(response.Message));
         }
     }
