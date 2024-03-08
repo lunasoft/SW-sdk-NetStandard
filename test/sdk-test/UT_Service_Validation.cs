@@ -5,6 +5,7 @@ using SW.Services.Stamp;
 using System.IO;
 using Xunit;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 
 namespace Test_SW
 {
@@ -20,7 +21,7 @@ namespace Test_SW
             Stamp stamp = new Stamp("http://fake123999459493494949.com", Build.User, Build.Password);
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
-            Assert.True(response.Status == "error");
+            CustomAssert.ErrorResponse(response);
         }
         [Fact]
         public async Task UT_Service_Validation_401Async()
@@ -28,6 +29,7 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url, Build.Token + "FakeToken");
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
+            CustomAssert.ErrorResponse(response);
             Assert.Contains("Firma inválidad. Se esperaba", response.Message);
         }
         [Fact]
@@ -36,6 +38,7 @@ namespace Test_SW
             Stamp stamp = new Stamp(Build.Url + "/fakeurl", Build.User, Build.Password);
             string xml = GetXml();
             var response = (StampResponseV1)await stamp.TimbrarV1Async(xml);
+            CustomAssert.ErrorResponse(response);
             Assert.Contains("404", response.Message);
         }
         [Fact]
@@ -48,6 +51,7 @@ namespace Test_SW
                 Assert.True(response.Message.Contains("72 horas"), "Error en el servicio: " + response.Message + " " + response.MessageDetail);
             else
             {
+                CustomAssert.SuccessResponse(response, response.Data);
                 Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
                 Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
                 Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");
@@ -69,6 +73,7 @@ namespace Test_SW
                 Assert.True(response.Message.Contains("72 horas"), "Error en el servicio: " + response.Message + " " + response.MessageDetail);
             else
             {
+                CustomAssert.SuccessResponse(response, response.Data);
                 Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
                 Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
                 Assert.True(!string.IsNullOrEmpty(response.Data.NoCertificadoSat), "El resultado Data.NoCertificadoSat viene vacio.");

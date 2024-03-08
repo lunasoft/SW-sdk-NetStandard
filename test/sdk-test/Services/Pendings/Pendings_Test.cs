@@ -2,6 +2,7 @@
 using SW.Services.Pendings;
 using Xunit;
 using System.Threading.Tasks;
+using Test_SW.Helper;
 
 namespace Test_SW.Services.Pendings
 {
@@ -22,7 +23,7 @@ namespace Test_SW.Services.Pendings
             var build = new BuildSettings();
             Pending pendientes = new Pending(build.Url, build.User, build.Password);
             PendingsResponse response = await pendientes.PendingsByRfcAsync(build.Rfc);
-            Assert.True(response.Status == "success");
+            CustomAssert.SuccessResponse(response, response.Data);
         }
     }
 }
