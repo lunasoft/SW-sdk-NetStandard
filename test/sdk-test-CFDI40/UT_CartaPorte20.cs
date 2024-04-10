@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 
 namespace Test_SW
 {
-    public class UT_CartaPorte20
+#pragma warning disable xUnit1000 // Test classes must be public
+    internal class UT_CartaPorte20
+#pragma warning restore xUnit1000 // Test classes must be public
     {
         Test_SW.Helpers.StampService stampService = new Test_SW.Helpers.StampService();
 
