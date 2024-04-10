@@ -69,7 +69,8 @@ steps:
     custom: 'pack'
     arguments: '-c Release'
   # Run if the trigger was master.
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/release/*'))
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/release/*')))
+
 
 - task: DotNetCoreCLI@2
   inputs:
