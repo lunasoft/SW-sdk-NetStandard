@@ -78,7 +78,7 @@ steps:
     custom: 'pack'
     arguments: '-c Release --version-suffix rc'
   # Run if the trigger was anything but master.
-  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/release/*'))
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
   inputs:
