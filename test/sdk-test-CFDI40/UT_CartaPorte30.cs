@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 
 namespace Test_SW
 {
-#pragma warning disable xUnit1000 // Test classes must be public
-    internal class UT_CartaPorte20
-#pragma warning restore xUnit1000 // Test classes must be public
+    public class UT_CartaPorte30
     {
         Test_SW.Helpers.StampService stampService = new Test_SW.Helpers.StampService();
 
@@ -17,7 +15,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_Autotransporte_StampV1_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V1");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -26,7 +24,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteFerroviario_StampV1_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V1");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -35,7 +33,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteAereo_StampV1_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V1");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -44,7 +42,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteMaritimo_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -62,7 +60,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_Autotransporte_StampV1_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V1");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -71,7 +69,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteFerroviario_StampV1_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V1");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -80,7 +78,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteAereo_StampV1_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V1");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V1");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -89,7 +87,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteMaritimo_StampV1_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V1");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V1");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -110,7 +108,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_Autotransporte_StampV2_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V2");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
 
@@ -120,7 +118,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteFerroviario_StampV2_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V2");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -129,7 +127,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteAereo_StampV2_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V2");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -138,7 +136,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteMaritimo_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -156,7 +154,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_Autotransporte_StampV2_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V2");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -165,7 +163,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteFerroviario_StampV2_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V2");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -174,7 +172,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteAereo_StampV2_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V2");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V2");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -183,7 +181,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteMaritimo_StampV2_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V2");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V2");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -204,7 +202,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_Autotransporte_StampV4_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_Autotransporte.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -213,7 +211,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteFerroviario_StampV4_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V4");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -222,7 +220,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteAereo_StampV4_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteAereo.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -231,7 +229,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteMaritimo_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteMaritimo.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -249,7 +247,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_Autotransporte_StampV4_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_Autotransporte.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -258,7 +256,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteFerroviario_StampV4_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V4");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteFerroviario.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -267,7 +265,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteAereo_StampV4_ResponseV3()
         {
-            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V4");
+            var response = (StampResponseV3)await stampService.StampResponseV3("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteAereo.xml", "V4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Cfdi), response.Message);
         }
         /// <summary>
@@ -276,7 +274,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_TransporteMaritimo_StampV4_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_TransporteMaritimo.xml", "V4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
@@ -297,7 +295,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_Autotransporte_StampV4Json_ResponseV1()
         {
-            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_Autotransporte.json", "IssueJsonV4");
+            var response = (StampResponseV1)await stampService.StampResponseV1("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_Autotransporte.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -306,7 +304,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Ingreso_CartaPorte_TransporteFerroviario_StampV4Json_ResponseV2()
         {
-            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte20/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.json", "IssueJsonV4");
+            var response = (StampResponseV2)await stampService.StampResponseV2("Resources/CartaPorte30/CFDI40_Ingreso_CartaPorte_TransporteFerroviario.json", "IssueJsonV4");
             Assert.True(response.Status == "success" && !string.IsNullOrEmpty(response.Data.Tfd), response.Message);
         }
         /// <summary>
@@ -315,7 +313,7 @@ namespace Test_SW
         [Fact]
         public async Task UT_Cfdi40_Traslado_CartaPorte_Autotransporte_StampV4Json_ResponseV4()
         {
-            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte20/CFDI40_Traslado_CartaPorte_Autotransporte.json", "IssueJsonV4");
+            var response = (StampResponseV4)await stampService.StampResponseV4("Resources/CartaPorte30/CFDI40_Traslado_CartaPorte_Autotransporte.json", "IssueJsonV4");
             Assert.True(response.Status == "success", response.Message);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Cfdi viene vacio.");
             Assert.True(!string.IsNullOrEmpty(response.Data.CadenaOriginalSat), "El resultado Data.CadenaOriginalSat viene vacio.");
