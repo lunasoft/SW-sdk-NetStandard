@@ -36,6 +36,11 @@
         /// <summary>
         /// Carta Porte 2.0 CFDI 4.0
         /// </summary>
-        billoflading40
+        billoflading40,
+        /// <summary>
+        /// Carta Porte 3.0 CFDI 4.0
+        /// </summary>
+        billoflading40cp30,
+
     }
 }
