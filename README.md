@@ -1310,16 +1310,21 @@ namespace ExampleSDK
 ```
 </details>
 
-
 ## Consulta Estatus ##
 
 <details>
 <summary>
 Consulta Estatus SAT
 </summary>
+
+
 Este servicio sirve para consultar el estatus de un CFDI antes y después de enviarlo a cancelar, con él sabremos sí puede ser cancelado de forma directa, o en caso de que se necesite consultar los CFDI relacionados para poder generar la cancelación.
 
-:pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT, para poder hacer uso de los servicios de pruebas, sera necesario instalar el certificado correspondiente de manera local como un certificaco raíz de confianza.
+
+:pushpin: ***NOTA:*** El servicio de consulta es de tipo SOAP y es proporcionado directamente por parte del SAT.
+
+Para hacer uso de los servicios `Consulta Estatus SAT en ambiente QA`, sera necesario instalar el certificado correspondiente de manera local, para más información contáctanos a **soporte@sw.com.mx**.
+
 
 Este método recibe los siguientes parámetros:
 * Url Servicios SW
