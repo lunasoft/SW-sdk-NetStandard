@@ -1,46 +1,43 @@
 {
   "Version": "4.0",
-  "Serie": "SW",
-  "Folio": "123456",
-  "Fecha": "2022-02-14T00:00:00",
-  "Sello": "",
-  "NoCertificado": "",
-  "Certificado": "",
+  "Serie": "Serie",
+  "Folio": "Folio1",
+  "Fecha": "2024-08-22T00:00:00",
   "CondicionesDePago": "CondicionesDePago",
-  "SubTotal": "400.00",
-  "Descuento": "0.00",
-  "Moneda": "AMD",
-  "TipoCambio": "1",
-  "Total": "399.16",
+  "SubTotal": "400",
+  "Moneda": "USD",
+  "TipoCambio": "17.199500",
+  "Total": "399.95",
   "TipoDeComprobante": "I",
   "Exportacion": "02",
-  "LugarExpedicion": "45610",
-  "FormaPago": "01",
-  "MetodoPago":  "PUE",
+  "MetodoPago": "PPD",
+  "FormaPago": "99",
+  "LugarExpedicion": "20000",
+  "NoCertificado": "30001000000500003416",
+  "Certificado": "",
   "Emisor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",
-    "RegimenFiscal": "603"
+    "RegimenFiscal": "601"
   },
   "Receptor": {
-    "Rfc": "EKU9003173C9",
-    "Nombre": "ESCUELA KEMPER URGATE",
-    "DomicilioFiscalReceptor": "42501",
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "86991",
     "RegimenFiscalReceptor": "601",
-    "UsoCFDI": "S01"
+    "UsoCFDI": "G01"
   },
   "Conceptos": [
     {
       "ClaveProdServ": "50211503",
-      "NoIdentificacion": "131494-1055",
-      "Cantidad": "2.0",
+      "Cantidad": "2",
       "ClaveUnidad": "H87",
       "Unidad": "Pieza",
       "Descripcion": "Cigarros",
       "ValorUnitario": "200.00",
       "Importe": "400.00",
-      "Descuento": "0.00",
       "ObjetoImp": "02",
+      "NoIdentificacion": "131494-1055",
       "Impuestos": {
         "Traslados": [
           {
@@ -54,27 +51,38 @@
         "Retenciones": [
           {
             "Base": "1",
-            "Importe": "1",
+            "Impuesto": "001",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.100000",
+            "Importe": "0.10"
+          },
+          {
+            "Base": "1",
             "Impuesto": "002",
-            "TasaOCuota": "0.040000",
-            "TipoFactor": "Tasa"
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.106666",
+            "Importe": "0.11"
           }
         ]
       }
     }
   ],
   "Impuestos": {
+    "TotalImpuestosRetenidos": "0.21",
     "TotalImpuestosTrasladados": "0.16",
-    "TotalImpuestosRetenidos": "1.00",
     "Retenciones": [
       {
-        "Importe": "1.00",
-        "Impuesto": "002"
+        "Impuesto": "001",
+        "Importe": "0.10"
+      },
+      {
+        "Impuesto": "002",
+        "Importe": "0.11"
       }
     ],
     "Traslados": [
       {
-        "Base": "1.00",
+        "Base": "1",
         "Importe": "0.16",
         "Impuesto": "002",
         "TasaOCuota": "0.160000",
@@ -85,45 +93,43 @@
   "Complemento": {
     "Any": [
       {
-        "CCE11:ComercioExterior": {
-          "Version": "1.1",
-          "TipoOperacion": "2",
-          "ClaveDePedimento": "A1",
+        "cce20:ComercioExterior": {
           "CertificadoOrigen": "0",
+          "ClaveDePedimento": "A1",
           "Incoterm": "FOB",
-          "Subdivision": "0",
-          "TipoCambioUSD": "15.6446",
-          "TotalUSD": "25.56",
+          "TipoCambioUSD": "18.9448",
+          "TotalUSD": "400.00",
+          "Version": "2.0",
           "Emisor": {
             "Domicilio": {
               "Calle": "CALLE DEL PAPEL",
+              "CodigoPostal": "76199",
               "Colonia": "0214",
+              "Estado": "QUE",
               "Localidad": "01",
               "Municipio": "014",
-              "Estado": "QUE",
-              "Pais": "MEX",
-              "CodigoPostal": "76199"
+              "Pais": "MEX"
             }
           },
           "Receptor": {
             "Domicilio": {
               "Calle": "CALLE DEL PAPEL",
+              "CodigoPostal": "76199",
               "Colonia": "0214",
+              "Estado": "QUE",
               "Localidad": "01",
               "Municipio": "014",
-              "Estado": "QUE",
-              "Pais": "MEX",
-              "CodigoPostal": "76199"
+              "Pais": "MEX"
             }
           },
           "Mercancias": [
             {
-              "NoIdentificacion": "131494-1055",
-              "ValorUnitarioAduana": "12.78",
               "CantidadAduana": "117.64",
               "FraccionArancelaria": "2402200100",
+              "NoIdentificacion": "131494-1055",
               "UnidadAduana": "01",
-              "ValorDolares": "25.56"
+              "ValorUnitarioAduana": "3.40",
+              "ValorDolares": "400.00"
             }
           ]
         }

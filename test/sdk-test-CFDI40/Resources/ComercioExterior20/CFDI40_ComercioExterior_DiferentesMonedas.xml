@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/ComercioExterior20 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior20/ComercioExterior20.xsd"
+	xmlns:cce20="http://www.sat.gob.mx/ComercioExterior20" Version="4.0" Serie="Serie" Folio="Folio1" Fecha="2024-08-21T01:00:00" FormaPago="99" CondicionesDePago="CondicionesDePago" SubTotal="400" Moneda="MXN" Total="399.95" TipoDeComprobante="I" Exportacion="02" MetodoPago="PPD" LugarExpedicion="20000"
+	xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="30001000000500003416" Certificado="" Sello="">
+	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="XEXX010101000" Nombre="U.S. &amp; SW" DomicilioFiscalReceptor="20000" ResidenciaFiscal="USA" NumRegIdTrib="123456789" RegimenFiscalReceptor="616" UsoCFDI="CP01" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="50211503" NoIdentificacion="131494-1055" Cantidad="2" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="200.00" Importe="400.00" ObjetoImp="02">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="0.16" />
+				</cfdi:Traslados>
+				<cfdi:Retenciones>
+					<cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0.10" />
+					<cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0.11" />
+				</cfdi:Retenciones>
+			</cfdi:Impuestos>
+		</cfdi:Concepto>
+	</cfdi:Conceptos>
+	<cfdi:Impuestos TotalImpuestosRetenidos="0.21" TotalImpuestosTrasladados="0.16">
+		<cfdi:Retenciones>
+			<cfdi:Retencion Impuesto="001" Importe="0.10" />
+			<cfdi:Retencion Impuesto="002" Importe="0.11" />
+		</cfdi:Retenciones>
+		<cfdi:Traslados>
+			<cfdi:Traslado Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="0.16" />
+		</cfdi:Traslados>
+	</cfdi:Impuestos>
+	<cfdi:Complemento>
+		<cce20:ComercioExterior Version="2.0" ClaveDePedimento="A1" CertificadoOrigen="0" Incoterm="FOB" TipoCambioUSD="18.9448" TotalUSD="23.47">
+			<cce20:Emisor>
+				<cce20:Domicilio Calle="CALLE DEL PAPEL" Colonia="0214" Localidad="01" Municipio="014" Estado="QUE" Pais="MEX" CodigoPostal="76199" />
+			</cce20:Emisor>
+			<cce20:Receptor NumRegIdTrib="123456789">
+				<cce20:Domicilio Calle="ST. A" Estado="TX" Pais="USA" CodigoPostal="00000" />
+			</cce20:Receptor>
+			<cce20:Mercancias>
+				<cce20:Mercancia NoIdentificacion="131494-1055" FraccionArancelaria="2402200100" CantidadAduana="2.00" UnidadAduana="01" ValorUnitarioAduana="11.74" ValorDolares="23.47" />
+			</cce20:Mercancias>
+		</cce20:ComercioExterior>
+	</cfdi:Complemento>
+</cfdi:Comprobante>
