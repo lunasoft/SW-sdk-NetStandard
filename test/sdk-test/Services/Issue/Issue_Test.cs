@@ -71,7 +71,7 @@ namespace Test_SW.Services.Issue
             CustomAssert.SuccessResponse(response, response.Data);
             Assert.True(!string.IsNullOrEmpty(response.Data.Cfdi), "El resultado Data.Tfd viene vacio.");
         }
-        [Fact(Skip = "Error en el servicio.")]
+        [Fact(Skip = "Error en el servicio")]
         public async Task Issue_Test_TimbrarV1TooLongAsync()
         {
             var build = new BuildSettings();
