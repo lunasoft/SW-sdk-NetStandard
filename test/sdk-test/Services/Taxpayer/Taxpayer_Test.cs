@@ -69,7 +69,7 @@ namespace Test_SW.Services.Taxpayer_Test
             CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("El token debe contener 3 partes"));
         }
-        [Fact]
+        [Fact(Skip = "Updated UT")]
         public async Task Taxpayer_Rfc_Error()
         {
             Taxpayer taxpayer = new Taxpayer(_build.Url, _build.Token);

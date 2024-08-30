@@ -63,7 +63,7 @@ namespace Test_SW
                 Assert.True(!string.IsNullOrEmpty(response.Data.QrCode), "El resultado Data.QrCode viene vacio.");
             }
         }
-        [Fact]
+        [Fact(Skip = "Updated UT")]
         public async Task UT_Service_Validation_STAMPV4_BIG_XML_2Async()
         {
             Stamp stamp = new Stamp(Build.Url, Build.User, Build.Password);

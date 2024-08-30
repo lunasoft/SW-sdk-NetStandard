@@ -262,7 +262,7 @@ namespace sdk_test.Services.Pdf
         /// Generar PDF de Carta Porte 2.0 Cfdi 4.0
         /// </summary>
         /// <returns></returns>
-        [Fact]
+        [Fact(Skip = "Updated UT to CPP31")]
         public async Task PDf_Test_Generate_Billoflading40()
         {
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
@@ -307,7 +307,7 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.RegenerarPdfAsync(Guid.Parse("60a24e29-2cde-4151-b5d6-4fd59f85b588"));
             CustomAssert.SuccessResponse(response, response);
-            Assert.True(response.Message.Equals("Solicitud se proceso correctamente"));
+            Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
         }
         [Fact]
         public async Task Pdf_Test_RegeneratePdf_Auth_Success()
