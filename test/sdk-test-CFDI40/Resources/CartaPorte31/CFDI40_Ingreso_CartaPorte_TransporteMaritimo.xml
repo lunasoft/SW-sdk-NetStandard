@@ -1,0 +1,40 @@
+<cfdi:Comprobante xmlns:cartaporte31="http://www.sat.gob.mx/CartaPorte31"
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte31 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte31.xsd" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2024-07-09T10:10:55" SubTotal="100.00" FormaPago="01" MetodoPago="PUE" Moneda="MXN" Total="100.0" TipoDeComprobante="I" Exportacion="01" LugarExpedicion="42501" NoCertificado="30001000000500003416" Certificado="MIIFsDCCA5igAwIBAgIUMzAwMDEwMDAwMDA1MDAwMDM0MTYwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWxpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMjMwNTE4MTE0MzUxWhcNMjcwNTE4MTE0MzUxWjCB1zEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gVkFEQTgwMDkyN0RKMzEeMBwGA1UEBRMVIC8gVkFEQTgwMDkyN0hTUlNSTDA1MRMwEQYDVQQLEwpTdWN1cnNhbCAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmecO6n2GS0zL025gbHGQVxznPDICoXzR2uUngz4DqxVUC/w9cE6FxSiXm2ap8Gcjg7wmcZfm85EBaxCx/0J2u5CqnhzIoGCdhBPuhWQnIh5TLgj/X6uNquwZkKChbNe9aeFirU/JbyN7Egia9oKH9KZUsodiM/pWAH00PCtoKJ9OBcSHMq8Rqa3KKoBcfkg1ZrgueffwRLws9yOcRWLb02sDOPzGIm/jEFicVYt2Hw1qdRE5xmTZ7AGG0UHs+unkGjpCVeJ+BEBn0JPLWVvDKHZAQMj6s5Bku35+d/MyATkpOPsGT/VTnsouxekDfikJD1f7A1ZpJbqDpkJnss3vQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAFaUgj5PqgvJigNMgtrdXZnbPfVBbukAbW4OGnUhNrA7SRAAfv2BSGk16PI0nBOr7qF2mItmBnjgEwk+DTv8Zr7w5qp7vleC6dIsZFNJoa6ZndrE/f7KO1CYruLXr5gwEkIyGfJ9NwyIagvHHMszzyHiSZIA850fWtbqtythpAliJ2jF35M5pNS+YTkRB+T6L/c6m00ymN3q9lT1rB03YywxrLreRSFZOSrbwWfg34EJbHfbFXpCSVYdJRfiVdvHnewN0r5fUlPtR9stQHyuqewzdkyb5jTTw02D2cUfL57vlPStBj7SEi3uOWvLrsiDnnCIxRMYJ2UA2ktDKHk+zWnsDmaeleSzonv2CHW42yXYPCvWi88oE1DJNYLNkIjua7MxAnkNZbScNw01A6zbLsZ3y8G6eEYnxSTRfwjd8EP4kdiHNJftm7Z4iRU7HOVh79/lRWB+gd171s3d/mI9kte3MRy6V8MMEMCAnMboGpaooYwgAmwclI2XZCczNWXfhaWe0ZS5PmytD/GDpXzkX0oEgY9K/uYo5V77NdZbGAjmyi8cE2B2ogvyaN2XfIInrZPgEffJ4AB7kFA2mwesdLOCh0BLD9itmCve3A1FGR4+stO2ANUoiI3w3Tv2yQSg4bjeDlJ08lXaaFCLW2peEXMXjQUk7fmpb5MNuOUTW6BE=" Sello="kFVTqJhHh1IcOCzyXrKOOKd4h2BNIlpAQJtFmpBH5GrYZP1xMIBzce2n3LnnwwcIDHZ12OfD6vphPi1veux7A3xev8T2MdpKVlFH87uhQpsqWAvGrEiFWoqT8KHr8EyngcmagiMnlp5nos5zWbw+ZcPBAVGuDWquNpaF5HgMWcg/7ynnwP9u88fmJNXy4dGbM3nIsYMouELXJ5fChl4uxmvphYdTNs9tKPj///7KHuydJH9gryFM2JyFejZXmy1gFYfIxryDxUGvD+zXJTHBrSy1/YVXVCp5PTPSmLGQX0CxWuD9sY/mPox1pZ2sofhedOIhfIEhL1y1lzMOtf7ECA==">
+	<cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+	<cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="42501" RegimenFiscalReceptor="601" UsoCFDI="S01"/>
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="78101800" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Transporte de carga por carretera" ValorUnitario="100.00" Importe="100.00" ObjetoImp="01"/>
+	</cfdi:Conceptos>
+	<cfdi:Complemento>
+		<cartaporte31:CartaPorte Version="3.1" IdCCP="CCCBCD94-870A-4332-A52A-A52AA52AA52A" TranspInternac="No">
+			<cartaporte31:Ubicaciones>
+				<cartaporte31:Ubicacion TipoUbicacion="Origen" IDUbicacion="OR101010" RFCRemitenteDestinatario="EKU9003173C9" NombreRemitenteDestinatario="NombreRemitenteDestinatario1" NumEstacion="PM001" NombreEstacion="Rosarito" NavegacionTrafico="Altura" FechaHoraSalidaLlegada="2023-08-01T00:00:00" TipoEstacion="01">
+					<cartaporte31:Domicilio Calle="Calle1" NumeroExterior="211" NumeroInterior="212" Colonia="1957" Localidad="13" Referencia="casa blanca" Municipio="011" Estado="CMX" Pais="MEX" CodigoPostal="13250"/>
+				</cartaporte31:Ubicacion>
+				<cartaporte31:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE202020" RFCRemitenteDestinatario="EKU9003173C9" NombreRemitenteDestinatario="NombreRemitenteDestinatario2" NumEstacion="PM001" NombreEstacion="Rosarito" NavegacionTrafico="Altura" FechaHoraSalidaLlegada="2023-08-01T00:00:01" TipoEstacion="03">
+					<cartaporte31:Domicilio Calle="Calle2" NumeroExterior="214" NumeroInterior="215" Colonia="0347" Localidad="23" Referencia="casa negra" Municipio="004" Estado="COA" Pais="MEX" CodigoPostal="25350"/>
+				</cartaporte31:Ubicacion>
+			</cartaporte31:Ubicaciones>
+			<cartaporte31:Mercancias PesoBrutoTotal="1.0" PesoNetoTotal="1" UnidadPeso="XBX" NumTotalMercancias="1">
+				<cartaporte31:Mercancia BienesTransp="11121900" Descripcion="Accesorios de equipo de telefonía" Cantidad="1.0" ClaveUnidad="XBX" ValorMercancia="100" Moneda="MXN" MaterialPeligroso="No" DenominacionGenericaProd="DenominacionGenericaProd1" DenominacionDistintivaProd="DenominacionDistintivaProd1" Fabricante="Fabricante1" FechaCaducidad="2028-01-01" LoteMedicamento="LoteMedic1" RegistroSanitarioFolioAutorizacion="RegistroSanita1" PesoEnKg="1">
+					<cartaporte31:CantidadTransporta Cantidad="1" IDOrigen="OR101010" IDDestino="DE202020"/>
+					<cartaporte31:DetalleMercancia UnidadPesoMerc="Tu" PesoBruto="1" PesoNeto="1" PesoTara="0.001" NumPiezas="1"/>
+				</cartaporte31:Mercancia>
+				<cartaporte31:TransporteMaritimo PermSCT="TPAF01" NumPermisoSCT="NumPermisoSCT1" NombreAseg="NombreAseg1" NumPolizaSeguro="NumPolizaSeguro1" TipoEmbarcacion="B01" Matricula="Matricula1" NumeroOMI="IMO1234567" AnioEmbarcacion="2003" NombreEmbarc="NombreEmbarc1" NacionalidadEmbarc="AFG" UnidadesDeArqBruto="0.001" TipoCarga="CGS" Eslora="0.01" Manga="0.01" Calado="0.01" Puntal="0.01" LineaNaviera="LineaNaviera1" NombreAgenteNaviero="NombreAgenteNaviero1" NumAutorizacionNaviero="ANC001/2022" NumViaje="NumViaje1" NumConocEmbarc="NumConocEmbarc1" PermisoTempNavegacion="PermisoTempNavegac1">
+					<cartaporte31:Contenedor TipoContenedor="CM011" IdCCPRelacionado="CCCBCD94-870A-4332-A52A-A52AA52AA52A" PlacaVMCCP="JNG7683" FechaCertificacionCCP="2024-06-20T11:11:00">
+						<cartaporte31:RemolquesCCP>
+							<cartaporte31:RemolqueCCP SubTipoRemCCP="CTR001" PlacaCCP="JNG7636"/>
+						</cartaporte31:RemolquesCCP>
+					</cartaporte31:Contenedor>
+				</cartaporte31:TransporteMaritimo>
+			</cartaporte31:Mercancias>
+			<cartaporte31:FiguraTransporte>
+				<cartaporte31:TiposFigura TipoFigura="02" RFCFigura="EKU9003173C9" NombreFigura="NombreFigura">
+					<cartaporte31:PartesTransporte ParteTransporte="PT02"/>
+					<cartaporte31:Domicilio Calle="calle" NumeroExterior="211" Colonia="0814" Localidad="01" Referencia="casa blanca" Municipio="010" Estado="ZAC" Pais="MEX" CodigoPostal="99080"/>
+				</cartaporte31:TiposFigura>
+			</cartaporte31:FiguraTransporte>
+		</cartaporte31:CartaPorte>
+	</cfdi:Complemento>
+</cfdi:Comprobante>
