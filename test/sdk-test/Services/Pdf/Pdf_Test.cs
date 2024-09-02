@@ -259,10 +259,10 @@ namespace sdk_test.Services.Pdf
             }
         }
         /// <summary>
-        /// Generar PDF de Carta Porte 2.0 Cfdi 4.0
+        /// Generar PDF de Carta Porte 3.1 Cfdi 4.0
         /// </summary>
         /// <returns></returns>
-        [Fact(Skip = "Updated UT to CPP31")]
+        [Fact]
         public async Task PDf_Test_Generate_Billoflading40()
         {
             SW.Services.Issue.Issue issue = new SW.Services.Issue.Issue(build.Url, build.User, build.Password);
@@ -271,7 +271,7 @@ namespace sdk_test.Services.Pdf
             if (response.Status == "success")
             {
                 SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, PdfTemplates.billoflading40cp30);
+                var responsePdf = await pdf.GenerarPdfAsync(response.Data.Cfdi, build.b64Logo, PdfTemplates.billoflading40cp31);
                 CustomAssert.SuccessResponse(responsePdf, responsePdf.Data);
             }
             else

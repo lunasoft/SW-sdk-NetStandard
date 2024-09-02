@@ -76,7 +76,7 @@ namespace Test_SW.Services.Taxpayer_Test
             TaxpayerResponse response = await taxpayer.GetTaxpayer("ZNS1101105T");
             CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("Error en la consulta."));
-            Assert.True(response.MessageDetail.Equals("CS1002 - RFC malformado."));
+            Assert.True(response.MessageDetail.Equals("CS1002 - RFC malformado: ZNS1101105T"));
         }
         [Fact]
         public async Task Taxpayer_Rfc_NotFound_Error()
