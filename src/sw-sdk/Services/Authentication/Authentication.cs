@@ -26,12 +26,9 @@ namespace SW.Services.Authentication
             try
             {
                 new AuthenticationValidation(Url, User, Password, Token);
-                Dictionary<string, string> headers = new Dictionary<string, string>() {
-                    { "user", this.User },
-                    { "password", this.Password }
-                };
+                var content = GetStringContent(this.User, this.Password);
                 var proxy = Helpers.RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await _handler.GetPostResponseAsync(this.Url, headers, "security/authenticate", proxy);
+                return await _handler.GetPostResponseAsync(this.Url, "v2/security/authenticate", content, proxy);
             }
             catch (Exception e)
             {
