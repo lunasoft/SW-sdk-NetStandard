@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using SW.Helpers;
+using SW.Entities;
+using sw_sdk.Services.Account.AccountBalance;
 
 namespace SW.Services.Account.AccountBalance
 {
@@ -35,9 +37,8 @@ namespace SW.Services.Account.AccountBalance
         /// <summary>
         /// Metodo que muestra el balance de timbres de un usuario
         /// </summary>
-        /// <param name="idUser">ID del usuario a consultar timbres</param>
         /// <returns>Regresa un objeto Response</returns>
-        internal abstract Task<BalanceResponse> GetBalanceID(Guid idUser);
+        internal abstract Task<BalanceResponse> GetBalance();
         /// <summary>
         /// Metodo para añadir y eliminar timbres a una cuenta hijo desde la cuenta dealer
         /// </summary>
@@ -45,16 +46,26 @@ namespace SW.Services.Account.AccountBalance
         /// <param name="stamps">Cantidad de timbres a agregar</param>
         /// <param name="comment">Comentario agregado al movimiento.</param>
         /// <returns>Retorna un objeto handler</returns>
-        internal abstract Task<AccountBalanceResponse> StampsDistribution(Guid idUser, int stamps, ActionsAccountBalance action, string comment);
+        internal async Task<AccountBalanceResponse> StampsDistribution(Guid idUser, int stamps, ActionsAccountBalance action, string comment)
+        {
+            var handler = new AccountBalanceResponseHandler();
+            var headers = await RequestHelper.GetHeadersAsync(this);
+            var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+            var path = String.Format("{0}/{1}/{2}", "management/v2/api/dealers/users", idUser, "stamps");
+            var content = GetStringContent(comment, stamps);
+            return await handler.SendRequestBalanceAsync(action, this.UrlApi ?? this.Url, headers, path, content, proxy);
+        }
         /// <summary>
         /// Metodo que serializa el comentario a json y agrega los headers Content-Type, Content-Length
         /// </summary>
         /// <param name="comment">Comentario del movimiento en string </param>
+        /// <param name="stamps">Número de tmbres a remover o agregar </param>
         /// <returns></returns>
-        internal virtual StringContent GetStringContent(string comment)
+        private StringContent GetStringContent(string comment, int stamps)
         {
             var request = new AccountBalanceRequest();
             request.Comment = comment;
+            request.Stamps = stamps;
             var content = new StringContent(JsonConvert.SerializeObject(
                 request, new JsonSerializerSettings
                 {
