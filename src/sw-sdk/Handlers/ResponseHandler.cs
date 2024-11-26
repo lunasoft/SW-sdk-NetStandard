@@ -151,6 +151,36 @@ namespace SW.Handlers
                 return _handler.GetExceptionResponse(wex);
             }
         }
+        internal async Task<T> DeleteResponseAsync(string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
+        {
+            try
+            {
+                // Configurar el protocolo TLS 1.2
+                System.Net.ServicePointManager.SecurityProtocol =
+                    SecurityProtocolType.Tls12 |
+                    SecurityProtocolType.Tls11 |
+                    SecurityProtocolType.Tls;
+
+                using (HttpClient client = new HttpClient(proxy))
+                {
+                    foreach (var header in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                    }
+                    client.BaseAddress = new Uri(url);
+                    var request = new HttpRequestMessage(HttpMethod.Delete, path)
+                    {
+                        Content = content 
+                    };
+                    var result = await client.SendAsync(request);
+                    return await _handler.TryGetResponseAsync(result);
+                }
+            }
+            catch (HttpRequestException wex)
+            {
+                return _handler.GetExceptionResponse(wex);
+            }
+        }
         internal async Task<T> PutResponseAsync(string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
         {
             try
