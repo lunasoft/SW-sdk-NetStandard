@@ -49,7 +49,7 @@ namespace Test_SW_sdk.Services.Csd
             var response = await csd.UploadCsdAsync(_build.Cer, _build.Key, "password");
             CustomAssert.ErrorResponse(response);
             Assert.True(response.Message.Equals("Certificados"));
-            Assert.True(response.MessageDetail.Equals("El certificado no pertenece a la llave privada."));
+            Assert.True(response.MessageDetail.Equals("No se pudo cargar la llave privada, asegúrese de que la contraseña sea válida."));
 
         }
         [Fact]

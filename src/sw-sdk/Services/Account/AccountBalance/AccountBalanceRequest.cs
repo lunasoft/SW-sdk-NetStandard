@@ -10,5 +10,7 @@ namespace SW.Services.Account.AccountBalance
     {
         [DataMember]
        public string Comment { get; set; }
+        [DataMember]
+        public int Stamps { get; set; }
     }
 }

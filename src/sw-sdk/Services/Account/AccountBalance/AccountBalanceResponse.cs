@@ -22,18 +22,44 @@ namespace SW.Services.Account.AccountBalance
     public partial class Data
     {
         [DataMember]
-        public string IdSaldoCliente { get; set; }
+        public string IdUserBalance { get; set; }
         [DataMember]
-        public string IdClienteUsuario { get; set; }
+        public string IdUser { get; set; }
         [DataMember]
-        public int SaldoTimbres { get; set; }
+        public int StampsBalance { get; set; }
         [DataMember]
-        public int TimbresUtilizados { get; set; }
+        public int StampsUsed { get; set; }
         [DataMember]
-        public string FechaExpiracion { get; set; }
+        public string ExpirationDate { get; set; }
         [DataMember]
         public bool Unlimited { get; set; }
         [DataMember]
-        public int TimbresAsignados { get; set; }
+        public int StampsAssigned { get; set; }
+        [DataMember]
+        public AccountLastTransaction LastTransaction { get; set; }
+    }
+    [DataContract]
+    public class AccountLastTransaction
+    {
+        [DataMember]
+        public int Folio { get; set; }
+        [DataMember]
+        public string IdUSer { get; set; }
+        [DataMember]
+        public string IdUserReceiver { get; set; }
+        [DataMember]
+        public string NameReceiver { get; set; }
+        [DataMember]
+        public int StampsIn { get; set; }
+        [DataMember]
+        public int? StampsOut { get; set; }
+        [DataMember]
+        public int StampsCurrent { get; set; }
+        [DataMember]
+        public string Comment { get; set; }
+        [DataMember]
+        public string Date { get; set; }
+        [DataMember]
+        public bool IsEmailSent { get; set; }
     }
 }
