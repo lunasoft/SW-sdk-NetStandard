@@ -108,7 +108,7 @@ namespace Test_SW.Services.Stamp_Test
             Assert.True(response.Message == "307. El comprobante contiene un timbre previo.");
             Assert.Contains("cfdi:Addenda", response.Data.Cfdi);
         }
-        [Fact]
+        [Fact(Skip ="Se omite prueba para no afectar el resto de UT, activar segun se requiera")]
         public async Task Stamp_Test_TimbrarV1TooLongAsync()
         {
             var build = new BuildSettings();

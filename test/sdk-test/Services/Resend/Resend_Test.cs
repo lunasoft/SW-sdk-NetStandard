@@ -13,7 +13,7 @@ namespace Test_SW.Services.Resend
         public Resend_Test()
         {
             _build = new BuildSettings();
-            _folio = Guid.Parse("60a24e29-2cde-4151-b5d6-4fd59f85b588");
+            _folio = Guid.Parse("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f");
         }
         [Fact]
         public async Task ResendEmail_Success()

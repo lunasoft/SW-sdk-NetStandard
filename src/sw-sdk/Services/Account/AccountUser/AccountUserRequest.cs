@@ -7,25 +7,20 @@ namespace SW.Services.Account.AccountUser
     public partial class AccountUserRequest
     {
         [DataMember]
-        public string Email { get; set; }
-        [DataMember]
-        public string Password { get; set; }
-        [DataMember]
         public string Name { get; set; }
         [DataMember]
-        public string Rfc { get; set; }
+        public string TaxId { get; set; }
         [DataMember]
-        public string Telefono { get; set; }
+        public string Email { get; set; }
         [DataMember]
         public int Stamps { get; set; }
         [DataMember]
-        public bool Unlimited { get; set; } = false;
+        public bool IsUnlimited { get; set; } = false;
         [DataMember]
-        public AccountUserProfile ProfileType { get; set; } 
-    }
-    public partial class AccountUserRequest
-    {
+        public string Password { get; set; }
         [DataMember]
-        internal int Profile { get; set; }
+        public string NotificationEmail { get; set; }
+        [DataMember]
+        public string Phone { get; set; }
     }
 }

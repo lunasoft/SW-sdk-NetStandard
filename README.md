@@ -835,22 +835,25 @@ namespace ExampleSDK
 ```
 </details>
 
-## Usuarios
+## Usuarios V2
 
 Servicios para trabajar con usuarios, incluye métodos para crear, modificar, obtener y eliminar usuarios.
+
+> [!IMPORTANT]
+> Los métodos han tenido algunos cambios y mejoras con respecto a la versión 1.
 
 ### Inicializar
 
 - Usuario y contraseña
 
 ```cs
- AccountUser user = new AccountUser(_build.UrlApi, _build.Url, _build.User, _build.Password);
+ AccountUser user = new AccountUser("https://api.test.sw.com.mx", "https://services.test.sw.com.mx","user", "password");
 ```
 
 - Token
 
 ```cs
- AccountUser user = new AccountUser(_build.UrlApi, _build.Token);
+ AccountUser user = new AccountUser("https://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
 ```
 
 <details>
@@ -858,41 +861,154 @@ Servicios para trabajar con usuarios, incluye métodos para crear, modificar, ob
 Crear Usuario
 </summary>
 
+<br>Método para crear un usuario.
+<br>Este método recibe los siguientes parametros:
+
+* Objeto con la información del usuario a crear
+
+***Información del cliente:*** 
+
+| Dato              | Descripción                                  |
+|-------------------|----------------------------------------------|
+| Name              | Nombre del usuario                           |
+| TaxId             | RFC del usuario                              |
+| Email             | correo del nuevo usuario                     |
+| Stamps            | Cantidad de timbres a asignar                |
+| IsUnlimited       | Especificar si tendra timbres ilimitados     |
+| Password          | Contraseña del usuario                       |
+| NotificationEmail | Correo a donde quiere recibir notificaciones |
+| Phone             | Número del telefono del usuario              |
+
 ```cs
  var response = await user.CrearUsuarioAsync(new AccountUserRequest()
 {
-    Email = $"hijo_{_build.User}",
-    Password = $"${_build.Password}",
-    ProfileType = SW.Helpers.AccountUserProfile.Hijo,
-    Rfc = "XAXX010101000",
-    Name = "Pruebas UT Hijo",
-    Unlimited = false,
-    Stamps = 1
+    Name = "Usuarionuevo",
+    TaxId = "XAXX010101000",
+    Email = "cuenta_nuevo_usuario@gmail.com",
+    Stamps = 1,
+    IsUnlimited = false,
+    Password = "nueva_contraseña!2",
+    NotificationEmail = "correo_notificaciones_usuario@gmail.com",
+    Phone = "0000000000"
 });
-```
 
+:pushpin: ***NOTA:*** La contraseña debe cumplir con las siguientes politicas:
+* La contraseña no debe ser igual que el nombre de usuario.
+* La contraseña debe incluir al menos una letra mayúscula.
+* La contraseña debe incluir al menos una letra minúscula
+* La contraseña debe incluir al menos un número.
+* La contraseña debe incluir al menos un símbolo (carácter especial).
+* La contraseña no debe incluir espacios en blanco.
+* La contraseña debe tener entre 10 y 20 caracteres.
+* La contraseña no debe incluir símbolos especiales fuera de lo común.
+* Los caracteres especiales aceptados son los siguientes: !@#$%^&*()_+=\[{\]};:<>|./?,-]
+```
 </details>
 
 <details>
 <summary>
-Obtener Usuario Por Token
+Obtener Usuario Por Id
 </summary>
 
-```cs
-var response = await user.ObtenerUsuarioAsync();
-```
+<br>Método para consultar información de usuario por ID
+<br>Este método recibe los siguientes parametros:
 
+* IdUser
+
+```cs
+Guid idUser = Guid.Parse("32501CF2-DC62-4370-B47D-25024C44E131");
+var response = await user.ObtenerUsuariosByIdAsync(idUser);
+List<AccountUsersResponse> user = response.Data;
+foreach (var item in user)
+{
+    Console.WriteLine(item.IdUser);
+    Console.WriteLine(item.IdDealer);
+    Console.WriteLine(item.TaxId);
+    Console.WriteLine(item.Name);
+    Console.WriteLine(item.Username);
+    Console.WriteLine(item.Profile);
+    Console.WriteLine(item.AccessToken);
+}
+```
 </details>
 
 <details>
 <summary>
-Obtener Usuario Por UUID
+Obtener Usuario Por RFC
 </summary>
 
-```cs
-var response = await user.ObtenerUsuarioAsync(_idUser);
-```
+<br>Método para consultar información de usuario por RFC
+<br>Este método recibe los siguientes parametros:
 
+* TaxId
+
+```cs
+var response = await user.ObtenerUsuariosByTaxIdAsync("AAAA000101010");
+List<AccountUsersResponse> user = response.Data;
+foreach (var item in user)
+{
+    Console.WriteLine(item.IdUser);
+    Console.WriteLine(item.IdDealer);
+    Console.WriteLine(item.TaxId);
+    Console.WriteLine(item.Name);
+    Console.WriteLine(item.Username);
+    Console.WriteLine(item.Profile);
+    Console.WriteLine(item.AccessToken);
+}
+```
+</details>
+
+<details>
+<summary>
+Obtener Usuario Por Email
+</summary>
+
+<br>Método para consultar información de usuario por Email
+<br>Este método recibe los siguientes parametros:
+
+* Email
+
+```cs
+var response = await user.ObtenerUsuariosByEmailAsync("cuenta_usuario@gmail.com");
+List<AccountUsersResponse> user = response.Data;
+foreach (var item in user)
+{
+    Console.WriteLine(item.IdUser);
+    Console.WriteLine(item.IdDealer);
+    Console.WriteLine(item.TaxId);
+    Console.WriteLine(item.Name);
+    Console.WriteLine(item.Username);
+    Console.WriteLine(item.Profile);
+    Console.WriteLine(item.AccessToken);
+}
+```
+</details>
+
+<details>
+<summary>
+Obtener usuarios que esten activos o desactivados
+</summary>
+
+<br>Método para consultar información de usuarios que esten activos o no.
+<br>Este método recibe los siguientes parametros:
+
+* isActive - Indica si el Usuario es activo o no (true o false)
+
+```cs
+var isActive = true;
+var response = await user.ObtenerUsuariosByIsActiveAsync(isActive);
+List<AccountUsersResponse> user = response.Data;
+foreach (var item in user)
+{
+    Console.WriteLine(item.IdUser);
+    Console.WriteLine(item.IdDealer);
+    Console.WriteLine(item.TaxId);
+    Console.WriteLine(item.Name);
+    Console.WriteLine(item.Username);
+    Console.WriteLine(item.Profile);
+    Console.WriteLine(item.AccessToken);
+}
+```
 </details>
 
 <details>
@@ -900,8 +1016,21 @@ var response = await user.ObtenerUsuarioAsync(_idUser);
 Obtener Usuarios
 </summary>
 
+<br>Método para consultar información de todas las cuentas hijas de una cuenta padre.
+
 ```cs
 var response = await user.ObtenerUsuariosAsync();
+List<AccountUsersResponse> user = response.Data;
+foreach (var item in user)
+{
+    Console.WriteLine(item.IdUser);
+    Console.WriteLine(item.IdDealer);
+    Console.WriteLine(item.TaxId);
+    Console.WriteLine(item.Name);
+    Console.WriteLine(item.Username);
+    Console.WriteLine(item.Profile);
+    Console.WriteLine(item.AccessToken);
+}
 ```
 
 </details>
@@ -911,9 +1040,29 @@ var response = await user.ObtenerUsuariosAsync();
 Editar Usuario
 </summary>
 
+<br>Método para la actualización de los datos de un usuario existente.
+<br>Este método recibe los siguientes parametros:
+
+* Datos nuevos del cliente
+
+> [!NOTE]  
+> Puedes asignarles “null” a las propiedades que no vayas a actualizar.
+
+***Información nueva del cliente:*** 
+
+| Dato              | Descripción                              |
+|-------------------|------------------------------------------|
+| idUser            | Id del usuario a actualizar              |
+| name              | Nuevo nombre del usuario                 |
+| taxId             | Nuevo RFC del usuario                    |
+| notificationEmail | Nuevo correo para recibir notificaciones |
+| isUnlimited       | Especificar si tendra timbres ilimitados |
+| phone             | Número del telefono del usuario          |
+
 
 ```cs
-var response = await user.ModificarUsuarioAsync(_idUser, "XAXX010101000", "Nombre Usuario");
+Guid idUser = Guid.Parse("5343376c-ca13-43a2-adbc-bad372095aa0");
+var response = await user.ModificarUsuarioAsync(idUser, "Nombre Usuario NETStandard", "AAAA000101010", null, "1234567890", false);
 ```
 
 </details>
@@ -923,24 +1072,33 @@ var response = await user.ModificarUsuarioAsync(_idUser, "XAXX010101000", "Nombr
 Eliminar Usuario
 </summary>
 
+<br>Método para la eliminación de un usuario existente.
+<br>Este método recibe los siguientes parametros:
+
+* Id del usuario
+
 ```cs
-var response = await user.EliminarUsuarioAsync(_idUser);
+Guid idUser = Guid.Parse("5343376c-ca13-43a2-adbc-bad372095aa0");
+var response = await user.EliminarUsuarioAsync(idUser);
 ```
 
 </details>
 
-## Consulta de Saldos ##
-Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
+## Consulta y Asignación de Timbres ##
+Métodos para realizar la consulta de saldo así como la asignación y eliminación de timbres a un usuario.
 
 <details>
-  <summary>Ejemplos</summary>
+  <summary>Consulta de timbres</summary>
 
-Este método recibe los siguientes parametros:
+<br>Este método recibe los siguientes parametros:
 * Usuario y contraseña o Token
 * Url Servicios SW
-* Id de usuario
+* Url Api
 
-**Ejemplo de consumo de la libreria para consultar el saldo mediante usuario y contraseña**
+> [!IMPORTANT]  
+> Los nombres de las variables en la respuesta han cambiado.
+
+**Ejemplo de consumo de la libreria para consultar el saldo**
 ```cs
 using SW.Services.Account;
 using System;
@@ -957,17 +1115,16 @@ namespace ExampleSDK
                 //Creamos una instancia de tipo BalanceAccount 
                 //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
                 //Automaticamente despues de obtenerlo se procedera a la consulta de saldo
-                AccountBalance balance = new AccountBalance("http://api.test.sw.com.mx" ,"http://services.test.sw.com.mx","user", "password");
-                Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
-                BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
+                AccountBalance balance = new AccountBalance("https://api.test.sw.com.mx" ,"https://services.test.sw.com.mx","user", "password");
+                BalanceResponse response = await balance.ConsultarSaldoAsync();
                 if (response.Status != "error")
                 {
                      //Para Obtener el saldo Timbres
-                    Console.WriteLine(response.Data.SaldoTimbres);
-
+                    Console.WriteLine(response.Data.StampsBalance);
                     //Para Obtenerlos timbres Utilizados
-                    Console.WriteLine(response.Data.TimbresUtilizados);
-
+                    Console.WriteLine(response.Data.StampsUsed);
+                    //Para Obtenerlos timbres Asignados
+                    Console.WriteLine(response.Data.StampsAssigned);
                     //Para Obtener si es Ilimitado (para cuentas hijo)
                     Console.WriteLine(response.Data.Unlimited);
                 }
@@ -986,8 +1143,24 @@ namespace ExampleSDK
     }
 }
 ```
+</details>
 
-**Ejemplo de consumo de la librería para consultar el saldo mediante token**
+<details>
+  <summary>Agregar timbres</summary>
+
+<br>Servicio para agregar timmbres a una cuenta hija o subcuenta.
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url Servicios SW
+* Url Api
+* Id del usuario
+* Número de timbres
+* Comentario
+
+> [!NOTE] 
+> El servicio regresa unicamente la cantidad de timbres despues del abono de timbres.
+
+**Ejemplo de consumo de la libreria para agregar timbres**
 ```cs
 using SW.Services.Account;
 using System;
@@ -1002,21 +1175,71 @@ namespace ExampleSDK
             try
             {
                 //Creamos una instancia de tipo BalanceAccount 
-                //A esta le pasamos la Url y el token
-                //Despues se procedera a la consulta de saldo
-                AccountBalance balance = new AccountBalance("http://api.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a agregar los timbres a la cuenta
+                AccountBalance balance = new AccountBalance("https://api.test.sw.com.mx" ,"https://services.test.sw.com.mx","user", "password");
                 Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
-                BalanceResponse response = await balance.ConsultarSaldoAsync(idUser);
+                AccountBalanceResponse response = await balance.AgregarTimbresAsync(idUser, 1, "Se agrega 1 timbre");
                 if (response.Status != "error")
                 {
-                     //Para Obtener el saldo Timbres
-                    Console.WriteLine(response.Data.SaldoTimbres);
+                    //Para Obtener el número de timbre despues del abono de timbres
+                    Console.WriteLine(response.Data);
+                }
+                else
+                {
+                    //En caso de error, se pueden visualizar los campos message y/o messageDetail
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+<details>
+  <summary>Eliminar timbres</summary>
 
-                    //Para Obtenerlos timbres Utilizados
-                    Console.WriteLine(response.Data.TimbresUtilizados);
+<br>Servicio para remover timmbres a una cuenta hija o subcuenta.
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url Servicios SW
+* Url Api
+* Id del usuario
+* Número de timbres
+* Comentario
 
-                    //Para Obtener si es Ilimitado (para cuentas hijo)
-                    Console.WriteLine(response.Data.Unlimited);
+> [!NOTE]
+> El servicio regresa unicamente la cantidad de timbres despues de remover los timbres.
+
+**Ejemplo de consumo de la libreria para remover timbres**
+```cs
+using SW.Services.Account;
+using System;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo BalanceAccount 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a remover los timbres de la cuenta
+                AccountBalance balance = new AccountBalance("https://api.test.sw.com.mx" ,"https://services.test.sw.com.mx","user", "password");
+                Guid idUser = Guid.Parse("f0f11ef6-e4c5-425b-8fc9-b17465bf6f53");
+                AccountBalanceResponse response = await balance.EliminarTimbresAsync(idUser, 1, "Se remueve 1 timbre");
+                if (response.Status != "error")
+                {
+                    //Para Obtener el número de timbre despues de remover timbres
+                    Console.WriteLine(response.Data);
                 }
                 else
                 {

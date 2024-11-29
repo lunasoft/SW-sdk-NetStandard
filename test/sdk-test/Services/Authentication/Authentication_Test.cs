@@ -9,7 +9,7 @@ namespace Test_SW.Services.Authentication_Test
     public class Authentication_Test
     {
         [Fact]
-        public async Task Authentication_Test_ValidateAuthenticationAsync()
+        public async Task Authentication_Test_ValidateAuthenticationAsyncV2()
         {
             var build = new BuildSettings();
             Authentication auth = new Authentication(build.Url, build.User, build.Password);
@@ -20,7 +20,7 @@ namespace Test_SW.Services.Authentication_Test
             Assert.True(string.IsNullOrEmpty(response.MessageDetail));
         }
         [Fact]
-        public async Task Authentication_Test_ValidateExistUserAsync()
+        public async Task Authentication_Test_ValidateExistUserAsyncV2()
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Usuario";
@@ -31,7 +31,7 @@ namespace Test_SW.Services.Authentication_Test
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.MessageDetail);
         }
         [Fact]
-        public async Task Authentication_Test_ValidateExistPasswordAsync()
+        public async Task Authentication_Test_ValidateExistPasswordAsyncV2()
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar Contraseña";
@@ -42,7 +42,7 @@ namespace Test_SW.Services.Authentication_Test
             Assert.Contains("at SW.Helpers.Validation.ValidateHeaderParameters() in", response.MessageDetail);
         }
         [Fact]
-        public async Task Authentication_Test_ValidateExistUrlAsync()
+        public async Task Authentication_Test_ValidateExistUrlAsyncV2()
         {
             var build = new BuildSettings();
             var resultExpect = "Falta Capturar URL";
