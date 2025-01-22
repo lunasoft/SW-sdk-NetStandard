@@ -36,8 +36,9 @@ namespace SW.Helpers
             Dictionary<string, string> headers = new Dictionary<string, string>() {
                     { "Authorization", "bearer " + service.Token }
                 };
-            if (email != null && Validation.ValidateEmailStamp(email))
+            if (email != null)
             {
+                Validation.ValidateEmailStamp(email);
                 headers.Add("email", email);
             }
             if (customId != null)

@@ -54,16 +54,27 @@ namespace SW.Helpers
                 throw new ServicesException("Token Mal Formado");
             }
         }
-        internal static bool ValidateEmailStamp(string email)
+        internal static void ValidateEmailStamp(string email)
         {
+            string[] emails = email.Split(',');
+            if (emails.Count() == 0 || emails.Count() > 5)
+            {
+                throw new ServicesException("El listado de correos contiene más de 5 correos o está vacío.");
+            }
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                emails.ToList().ForEach(e =>
+                {
+                    var addr = new System.Net.Mail.MailAddress(e);
+                    if (addr.Address != e)
+                    {
+                        throw new FormatException(); 
+                    }
+                });
             }
-            catch
+            catch (FormatException)
             {
-                return false;
+                throw new ServicesException("El formato de uno o más correos no es correcto.");
             }
         }
         internal static void ValidateEmail(string[] email)

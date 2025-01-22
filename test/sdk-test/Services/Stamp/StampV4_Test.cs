@@ -258,6 +258,51 @@ namespace Test_SW.Services.Stamp_Test
             CustomAssert.ErrorResponse(response);
             Assert.True(!string.IsNullOrEmpty(response.Message), resultExpect);
         }
+        //Email
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1Email_Succes()
+        {
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1MultiEmail_Succes()
+        {
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail1@some.com,someemail2@some.com");
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.True(!string.IsNullOrEmpty(response.Data.Tfd), "El resultado Data.Tfd viene vacio.");
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1MultiEmail_Error()
+        {
+            var resultExpect = "El formato de uno o más correos no es correcto.";
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, "someemail@some.com,someemailsome.co");
+            CustomAssert.ErrorResponse(response);
+            Assert.True(!string.IsNullOrEmpty(response.Message), resultExpect);
+        }
+        [Fact]
+        public async Task Stamp_Test_TimbrarV1MaxEmail_Error()
+        {
+            var resultExpect = "El listado de correos contiene más de 5 correos o está vacío.";
+            var build = new BuildSettings();
+            StampV4 stamp = new StampV4(build.Url, build.User, build.Password);
+            var xml = GetXml(build);
+            string emails = "someemail1@some.com,someemail2@some.com,someemail3@some.com,someemail4@some.com,someemail5@some.com,someemail6@some.com";
+            var response = (StampResponseV1)await stamp.TimbrarV1Async(xml, emails);
+            CustomAssert.ErrorResponse(response);
+            Assert.True(!string.IsNullOrEmpty(response.Message), resultExpect);
+        }
+
         private string GetXml(BuildSettings build, string fileName = null)
         {
             var xml = Encoding.UTF8.GetString(File.ReadAllBytes(String.Format("Resources/CFDI40/{0}", fileName ?? "cfdi40.xml")));
