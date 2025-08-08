@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Text.Unicode;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -11,72 +14,80 @@ namespace Test_SW.Helpers
     public static class SignTools
     {
         static Random randomNumber = new Random(1);
-        public static string SigXml(string xml, byte[] pfx, string password)
+        public static string SigXml(string xml, byte[] pfx, string password, bool isRetention=false)
         {
             xml = RemoverCaracteresInvalidosXml(xml);
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.LoadXml(xml);
-            doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
-            doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
+            if (isRetention)
+            {
+                doc.DocumentElement.SetAttribute("FechaExp", DateTime.Now.AddHours(-12).ToString("s"));
+            }
+            else
+            {
+                doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
+                doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
+                doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
+            }
+            // Guardar cambios
             xml = doc.OuterXml;
-            xml = SellarCFDIv40(pfx, password, xml);
-            return xml;
-        }
-        public static string SellarCFDIv40(byte[] certificatePfx, string password, string xml)
-        {
-            xml = RemoverCaracteresInvalidosXml(xml);
-            X509Certificate2 x509Certificate = new X509Certificate2(certificatePfx, password
-                 , X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
+            // Definir ruta XSLT según tipo
+            string xsltPath = isRetention
+                ? "Retention20/retencion20.xslt"
+                : "cadenaoriginal_4_0.xslt";
 
+            return SignGeneric(pfx, password, xml, xsltPath);
+        }
+        public static X509Certificate2 GetCertificateValues(XmlDocument doc, byte[] pfx, string password)
+        {
+            var x509Certificate = new X509Certificate2(
+            pfx, password,
+            X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
             //Set values Certificate
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(xml);
             doc.DocumentElement.SetAttribute("NoCertificado", CertificateNumber(x509Certificate));
             doc.DocumentElement.SetAttribute("Certificado", Convert.ToBase64String(x509Certificate.GetRawCertData()));
-            using (MemoryStream ms = new MemoryStream())
-            {
-                doc.Save(ms);
-                ms.Seek(0, SeekOrigin.Begin);
-                xml = RemoverCaracteresInvalidosXml(Encoding.UTF8.GetString(ms.ToArray()));
-            }
-            //Get original string
-            string originalString = CadenaOriginalCFDIv40(xml);
-            //Sign Document
-            var signResult = GetSignature(password, certificatePfx, originalString, "SHA256");
-            //Set Values Signature
-            doc = new XmlDocument();
-            doc.LoadXml(xml);
-            doc.DocumentElement.SetAttribute("Sello", signResult);
-            using (MemoryStream ms = new MemoryStream())
-            {
-                doc.Save(ms);
-                ms.Seek(0, SeekOrigin.Begin);
-                xml = RemoverCaracteresInvalidosXml(Encoding.UTF8.GetString(ms.ToArray()));
-            }
-            return xml;
+
+            return x509Certificate;
         }
-        public static string CadenaOriginalCFDIv40(string strXml)
+        public static string SignGeneric(byte[] certificatePfx, string password, string xml, string xsltPath) 
+        {
+            xml = RemoverCaracteresInvalidosXml(xml);
+            var doc = new XmlDocument();
+            doc.LoadXml(xml);
+            //Get Certificates Attributes
+            var cert = GetCertificateValues(doc, certificatePfx, password);
+            //Get Original String
+            string originalString = GetOriginalString(doc.OuterXml, xsltPath);
+            //Set sing
+            string sello = GetSignature(password, certificatePfx, originalString, "SHA256");
+            doc.DocumentElement.SetAttribute("Sello", sello);
+
+            return RemoverCaracteresInvalidosXml(doc.OuterXml);
+        }
+        public static string GetOriginalString(string strXml, string xsltPath)
         {
             try
             {
-                var xslt_cadenaoriginal_3_3 = new XslCompiledTransform();
-                XsltSettings settings = new XsltSettings(true, true);
-                XmlUrlResolver resolver = new XmlUrlResolver();
-                xslt_cadenaoriginal_3_3.Load("Resources/XSLT/cadenaoriginal_4_0.xslt", settings, resolver);
-                string resultado = null;
-                StringWriter writer = new StringWriter();
-                XmlReader xml = XmlReader.Create(new StringReader(strXml));
-                xslt_cadenaoriginal_3_3.Transform(xml, null, writer);
-                resultado = writer.ToString().Trim();
-                writer.Close();
-                return resultado;
+                var xslt = new XslCompiledTransform();
+                var settings = new XsltSettings(true, true);
+                var resolver = new XmlUrlResolver();
+                xslt.Load($"Resources/XSLT/{xsltPath}", settings, resolver);
+                using var stringWriter = new StringWriter();
+                using var xmlReader = XmlReader.Create(new StringReader(strXml));
+                xslt.Transform(xmlReader, null, stringWriter);
+
+                return stringWriter.ToString()
+                    .Replace("\r", "")
+                    .Replace("\n", "")
+                    .Replace("\t", "")
+                    .Trim();
             }
             catch (Exception ex)
             {
                 throw new Exception("El XML proporcionado no es válido.", ex);
             }
         }
+
         private static string GetSignature(string password, byte[] pfx, string strToSign, string algorithm = "SHA1")
         {
             var signData = string.Empty;
@@ -107,9 +118,13 @@ namespace Test_SW.Helpers
             xmlInvoice = xmlInvoice.Replace("\r\n", "");
             xmlInvoice = xmlInvoice.Replace("\r", "");
             xmlInvoice = xmlInvoice.Replace("\n", "");
+            xmlInvoice = xmlInvoice.Replace(@"<?xml version=""1.0"" encoding=""utf-16""?>", @"<?xml version=""1.0"" encoding=""utf-8""?>").Trim();
             xmlInvoice = xmlInvoice.Replace("﻿", "");
             xmlInvoice = xmlInvoice.Replace(@"
 ", "");
+            xmlInvoice = Regex.Replace(xmlInvoice, @"\s+", " ");
+            xmlInvoice = xmlInvoice.Replace("> ", ">");
+            xmlInvoice = xmlInvoice.Replace(" />", "/>");
             return xmlInvoice;
         }
     }
