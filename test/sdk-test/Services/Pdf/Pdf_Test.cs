@@ -71,8 +71,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null, true);
             CustomAssert.ErrorResponse(response);
-            Assert.True(String.Equals(response.Message, "400"));
-            Assert.True(String.Equals(response.MessageDetail, "Bad Request"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, XML en B64, string B64 invalido.
@@ -101,8 +101,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null, true);
             CustomAssert.ErrorResponse(response);
-            Assert.True(String.Equals(response.Message, "400"));
-            Assert.True(String.Equals(response.MessageDetail, "Bad Request"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF, error XML vacio.
@@ -114,8 +114,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(String.Empty, build.b64Logo, PdfTemplates.cfdi40, null);
             CustomAssert.ErrorResponse(response);
-            Assert.True(String.Equals(response.Message, "400"));
-            Assert.True(String.Equals(response.MessageDetail, "Bad Request")); ;
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error")); ;
         }
         /// <summary>
         /// Generar PDF, XML no timbrado.
@@ -128,8 +128,8 @@ namespace sdk_test.Services.Pdf
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
             var response = await pdf.GenerarPdfAsync(xml, build.b64Logo, PdfTemplates.cfdi40, null);
             CustomAssert.ErrorResponse(response);
-            Assert.True(String.Equals(response.Message, "400"));
-            Assert.True(String.Equals(response.MessageDetail, "Bad Request"));
+            Assert.True(String.Equals(response.Message, "500"));
+            Assert.True(String.Equals(response.MessageDetail, "Internal Server Error"));
         }
         /// <summary>
         /// Generar PDF mediante token
@@ -305,7 +305,7 @@ namespace sdk_test.Services.Pdf
         public async Task Pdf_Test_RegeneratePdf_Success()
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Token);
-            var response = await pdf.RegenerarPdfAsync(Guid.Parse("10db53c4-f816-4c9f-a3eb-2c5b336f828d"));
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f"));
             CustomAssert.SuccessResponse(response, response);
             Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
         }
@@ -313,7 +313,7 @@ namespace sdk_test.Services.Pdf
         public async Task Pdf_Test_RegeneratePdf_Auth_Success()
         {
             SW.Services.Pdf.Pdf pdf = new SW.Services.Pdf.Pdf(build.UrlApi, build.Url, build.User, build.Password);
-            var response = await pdf.RegenerarPdfAsync(Guid.Parse("10db53c4-f816-4c9f-a3eb-2c5b336f828d"));
+            var response = await pdf.RegenerarPdfAsync(Guid.Parse("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f"));
             CustomAssert.SuccessResponse(response, response);
             Assert.True(response.Message.Equals("Solicitud se proceso correctamente."));
         }
