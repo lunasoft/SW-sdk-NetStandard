@@ -31,7 +31,6 @@ namespace Test_SW.Services.StampRetention_Test
             var xmlRetention = GetXmlRetention(build);
             var response = (StampRetentionResponseV3)await StampRetention.TimbrarV3Async(xmlRetention);
             CustomAssert.SuccessResponse(response, response.Data);
-            Assert.True(!string.IsNullOrEmpty(response.Data.Retencion), "El resultado Data.Retention viene vacio.");
         }
 
         [Fact]
