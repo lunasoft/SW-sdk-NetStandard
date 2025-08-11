@@ -3727,6 +3727,88 @@ namespace ExampleSDK
 ```
 </details>
 
+## Timbrado Retenciones ##
+
+
+<details>
+<summary>
+Timbrado Retenciones V3
+</summary>
+
+**TimbrarV3** Recibe el contenido de un **XML** ya emitido (sellado) en formato **String**, posteriormente si la factura y el token son correctos devuelve el CFDI timbrado, en caso contrario lanza una excepción.
+
+Este método recibe los siguientes parámetros:
+* Archivo en formato **String** ó **Base64**
+* Usuario y contraseña ó Token
+* Url Servicios SW
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando usuario y contraseña**
+```cs
+using SW.Services.StampRetention;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo Stamp 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a timbrar el xml
+                StampRetention StampRetention = new StampRetention("http://services.test.sw.com.mx", "user", "password");
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes("file.xml"));
+                var response = (StampRetentionResponseV3)await StampRetention.TimbrarV3Async(xml);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
+```cs
+using SW.Services.StampRetention;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo Stamp 
+                //A esta le pasamos la Url y el token
+                //Despues se procedera a timbrar el xml
+                StampRetention StampRetention = new StampRetention("http://services.test.sw.com.mx", "T2lYQ0t4L0R....ReplaceForRealToken");
+                var xml = Encoding.UTF8.GetString(File.ReadAllBytes("file.xml"));
+                var response = (StampRetentionResponseV3)await StampRetention.TimbrarV3Async(xml);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V3     | Devuelve el CFDI timbrado                                     | 
+
 
 Para mayor referencia de un listado completo de los servicios favor de visitar el siguiente [link](http://developers.sw.com.mx/).
 
