@@ -31,5 +31,22 @@
     <None Remove="Resources\CFDI40\cfdi40_specialchar.xml" />
     <None Remove="Resources\CFDI40\payment20.xml" />
     <None Remove="Resources\CFDI40\payroll40.xml" />
+    <None Remove="Resources\XSLTRETENTION\arrendamientoenfideicomiso.xslt" />
+    <None Remove="Resources\XSLTRETENTION\dividendos.xslt" />
+    <None Remove="Resources\XSLTRETENTION\enajenaciondeacciones.xslt" />
+    <None Remove="Resources\XSLTRETENTION\fideicomisonoempresarial.xslt" />
+    <None Remove="Resources\XSLTRETENTION\intereses.xslt" />
+    <None Remove="Resources\XSLTRETENTION\intereseshipotecarios.xslt" />
+    <None Remove="Resources\XSLTRETENTION\operacionesconderivados.xslt" />
+    <None Remove="Resources\XSLTRETENTION\pagosaextranjeros.xslt" />
+    <None Remove="Resources\XSLTRETENTION\planesderetiro11.xslt" />
+    <None Remove="Resources\XSLTRETENTION\premios.xslt" />
+    <None Remove="Resources\XSLTRETENTION\retencion20.xslt" />
+    <None Remove="Resources\XSLTRETENTION\sectorfinanciero.xslt" />
+    <None Remove="Resources\XSLTRETENTION\ServiciosPlataformasTecnologicas10.xslt" />
+    <None Remove="Resources\XSLTRETENTION\utilerias.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\RETENTION20\" />
   </ItemGroup>
 </Project>
