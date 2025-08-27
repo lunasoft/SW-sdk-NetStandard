@@ -22,6 +22,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\CancelacionRetencionesXML.xml" />
     <None Remove="Resources\CFDI40\150000conceptos.xml" />
     <None Remove="Resources\CFDI40\70000conceptos.xml" />
     <None Remove="Resources\CFDI40\billoflading40.xml" />
