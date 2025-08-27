@@ -3922,7 +3922,7 @@ namespace ExampleSDK
 }
 ```
 
-**Ejemplo de consumo de la librería para cancelar con XML mediante token**
+**Ejemplo de consumo de la librería para cancelar con XML mediante token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
 ```cs
 using SW.Services.CancelationRetention;
 using System;
