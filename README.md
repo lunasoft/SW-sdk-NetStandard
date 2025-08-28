@@ -3870,8 +3870,6 @@ Ejemplo de nodo Folio:
 </Folios>
 ```
 
-[¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
-
 **Ejemplo de consumo de la librería para cancelar con XML mediante usuario y contraseña**
 ```cs
 using SW.Services.CancelationRetention;
