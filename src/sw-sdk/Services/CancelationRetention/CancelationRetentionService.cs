@@ -15,13 +15,13 @@ namespace SW.Services.CancelationRetention
         protected CancelationRetentionService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         { 
         }
-        internal abstract Task<CancelationResponse> CancelarRetention(byte[] xmlCancelation);
-        internal abstract Task<CancelationResponse> CancelarRetention(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion);
-        internal abstract Task<CancelationResponse> CancelarRetention(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion);
+        internal abstract Task<CancelationRetResponse> CancelarRetention(byte[] xmlCancelation);
+        internal abstract Task<CancelationRetResponse> CancelarRetention(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion);
+        internal abstract Task<CancelationRetResponse> CancelarRetention(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion);
 
         internal virtual StringContent RequestCancelarRetention(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
-            var body = JsonConvert.SerializeObject(new CancelationRequestCSD()
+            var body = JsonConvert.SerializeObject(new CancelationRetRequestCSD()
             {
                 Foliosustitucion = folioSustitucion,
                 Motivo = motivo,
@@ -40,7 +40,7 @@ namespace SW.Services.CancelationRetention
         }
         internal virtual StringContent RequestCancelarRetention(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
-            var body = JsonConvert.SerializeObject(new CancelationRequestPFX()
+            var body = JsonConvert.SerializeObject(new CancelationRetRequestPFX()
             {
                 Foliosustitucion = folioSustitucion,
                 Motivo = motivo,

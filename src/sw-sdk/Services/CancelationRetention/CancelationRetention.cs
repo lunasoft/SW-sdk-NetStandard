@@ -10,7 +10,7 @@ namespace SW.Services.CancelationRetention
 {
     public class CancelationRetention : CancelationRetentionService
     {
-        private readonly ResponseHandler<CancelationResponse> _handler;
+        private readonly ResponseHandler<CancelationRetResponse> _handler;
 
         /// <summary>
         /// Crear una instancia de la clase CancelationRetention.
@@ -23,7 +23,7 @@ namespace SW.Services.CancelationRetention
         /// <param name="proxy">Proxy.</param>
         public CancelationRetention(string url, string user, string password, int proxyPort = 0, string proxy = null) : base(url, user, password, proxy, proxyPort)
         {
-            _handler = new ResponseHandler<CancelationResponse>();
+            _handler = new ResponseHandler<CancelationRetResponse>();
         }
         /// <summary>
         /// Crear una instancia de la clase CancelationRetention.
@@ -35,10 +35,10 @@ namespace SW.Services.CancelationRetention
         /// <param name="proxy">Proxy.</param>
         public CancelationRetention(string url, string token, int proxyPort = 0, string proxy = null) : base(url, token, proxy, proxyPort)
         {
-            _handler = new ResponseHandler<CancelationResponse>();
+            _handler = new ResponseHandler<CancelationRetResponse>();
         }
 
-        internal override async Task<CancelationResponse> CancelarRetention(byte[] xmlCancelation)
+        internal override async Task<CancelationRetResponse> CancelarRetention(byte[] xmlCancelation)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace SW.Services.CancelationRetention
                 return _handler.HandleException(e);
             }
         }
-        internal override async Task<CancelationResponse> CancelarRetention(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
+        internal override async Task<CancelationRetResponse> CancelarRetention(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace SW.Services.CancelationRetention
                 return _handler.HandleException(e);
             }
         }
-        internal override async Task<CancelationResponse> CancelarRetention(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
+        internal override async Task<CancelationRetResponse> CancelarRetention(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace SW.Services.CancelationRetention
         /// </summary>
         /// <param name="xmlCancelation">XML de cancelación de retenciones.</param>
         /// <returns><see cref="CancelationResponse"/></returns>
-        public Task<CancelationResponse> CancelarUnoAsync(byte[] xmlCancelation)
+        public Task<CancelationRetResponse> CancelarUnoAsync(byte[] xmlCancelation)
         {
             return CancelarRetention(xmlCancelation);
         }
@@ -108,7 +108,7 @@ namespace SW.Services.CancelationRetention
         /// <param name="motivo">Motivo de cancelación.</param>
         /// <param name="folioSustitucion">Folio fiscal del comprobante que sustituye.</param>
         /// <returns><see cref="CancelationResponse"/></returns>
-        public Task<CancelationResponse> CancelarUnoCsdAsync(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
+        public Task<CancelationRetResponse> CancelarUnoCsdAsync(string cer, string key, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
             return CancelarRetention(cer, key, rfc, password, uuid, motivo, folioSustitucion);
         }
@@ -123,7 +123,7 @@ namespace SW.Services.CancelationRetention
         /// <param name="motivo">Motivo de cancelación.</param>
         /// <param name="folioSustitucion">Folio fiscal del comprobante que sustituye.</param>
         /// <returns><see cref="CancelationResponse"/></returns>
-        public Task<CancelationResponse> CancelarUnoPfxAsync(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
+        public Task<CancelationRetResponse> CancelarUnoPfxAsync(string pfx, string rfc, string password, string uuid, string motivo, string folioSustitucion = null)
         {
             return CancelarRetention(pfx, rfc, password, uuid, motivo, folioSustitucion);
         }
