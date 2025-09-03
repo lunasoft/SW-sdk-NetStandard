@@ -14,27 +14,18 @@ namespace Test_SW.Helpers
     public static class SignTools
     {
         static Random randomNumber = new Random(1);
-        public static string SigXml(string xml, byte[] pfx, string password, bool isRetention=false)
+        public static string SigXml(string xml, byte[] pfx, string password)
         {
             xml = RemoverCaracteresInvalidosXml(xml);
             var doc = new XmlDocument();
             doc.LoadXml(xml);
-            if (isRetention)
-            {
-                doc.DocumentElement.SetAttribute("FechaExp", DateTime.Now.AddHours(-12).ToString("s"));
-            }
-            else
-            {
-                doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
-                doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
-                doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
-            }
+            doc.DocumentElement.SetAttribute("Serie", "SW-Sdk-NetStandard");
+            doc.DocumentElement.SetAttribute("Fecha", DateTime.Now.AddHours(-12).ToString("s"));
+            doc.DocumentElement.SetAttribute("Folio", Guid.NewGuid().ToString());
             // Guardar cambios
             xml = doc.OuterXml;
             // Definir ruta XSLT según tipo
-            string xsltPath = isRetention
-                ? "Retention20/retencion20.xslt"
-                : "cadenaoriginal_4_0.xslt";
+            string xsltPath = "cadenaoriginal_4_0.xslt";
 
             return SignGeneric(pfx, password, xml, xsltPath);
         }
