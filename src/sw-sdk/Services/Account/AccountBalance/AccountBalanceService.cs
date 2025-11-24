@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SW.Helpers;
 using SW.Entities;
 using sw_sdk.Services.Account.AccountBalance;
+using SW.Handlers;
 
 namespace SW.Services.Account.AccountBalance
 {
@@ -34,11 +35,22 @@ namespace SW.Services.Account.AccountBalance
         protected AccountBalanceService(string url, string token, string proxy, int proxyPort) : base(url, token, proxy, proxyPort)
         {
         }
+
         /// <summary>
-        /// Metodo que muestra el balance de timbres de un usuario
+        /// Metodo que prmite consulta el saldo de un usuario y filtrando por ID
+        /// <param name="idUser">ID del usuario al que se le consultaran los timbres</param>
         /// </summary>
         /// <returns>Regresa un objeto Response</returns>
-        internal abstract Task<BalanceResponse> GetBalance();
+        internal async Task<BalanceResponse> GetBalance(Guid? idUser = null)
+        {
+            ResponseHandler<BalanceResponse> handler = new ResponseHandler<BalanceResponse>();
+            var headers = await RequestHelper.GetHeadersAsync(this);
+            string path = (idUser.HasValue && idUser.Value != Guid.Empty)
+                ? $"management/v2/api/dealers/balance/users/{idUser}"
+                : "management/v2/api/users/balance";
+            var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
+            return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers, path, proxy);
+        }
         /// <summary>
         /// Metodo para añadir y eliminar timbres a una cuenta hijo desde la cuenta dealer
         /// </summary>
@@ -48,7 +60,7 @@ namespace SW.Services.Account.AccountBalance
         /// <returns>Retorna un objeto handler</returns>
         internal async Task<AccountBalanceResponse> StampsDistribution(Guid idUser, int stamps, ActionsAccountBalance action, string comment)
         {
-            var handler = new AccountBalanceResponseHandler();
+            var handler = new BalanceResponseHandler();
             var headers = await RequestHelper.GetHeadersAsync(this);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
             var path = String.Format("{0}/{1}/{2}", "management/v2/api/dealers/users", idUser, "stamps");
