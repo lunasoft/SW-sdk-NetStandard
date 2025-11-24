@@ -60,7 +60,7 @@ namespace SW.Services.Account.AccountBalance
         /// <returns>Retorna un objeto handler</returns>
         internal async Task<AccountBalanceResponse> StampsDistribution(Guid idUser, int stamps, ActionsAccountBalance action, string comment)
         {
-            var handler = new BalanceResponseHandler();
+            var handler = new AccountBalanceResponseHandler();
             var headers = await RequestHelper.GetHeadersAsync(this);
             var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
             var path = String.Format("{0}/{1}/{2}", "management/v2/api/dealers/users", idUser, "stamps");

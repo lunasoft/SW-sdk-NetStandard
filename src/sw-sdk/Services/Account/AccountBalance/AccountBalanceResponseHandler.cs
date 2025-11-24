@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace sw_sdk.Services.Account.AccountBalance
 {
-    internal class BalanceResponseHandler : ResponseHandler<AccountBalanceResponse>
+    internal class AccountBalanceResponseHandler : ResponseHandler<AccountBalanceResponse>
     {
         internal async Task<AccountBalanceResponse> SendRequestBalanceAsync(ActionsAccountBalance action, string url, Dictionary<string, string> headers, string path, HttpContent content, HttpClientHandler proxy)
         {
