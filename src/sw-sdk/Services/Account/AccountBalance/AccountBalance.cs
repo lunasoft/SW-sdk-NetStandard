@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using SW.Handlers;
 using sw_sdk.Services.Account.AccountBalance;
 using SW.Entities;
+using System.Runtime.CompilerServices;
 
 namespace SW.Services.Account.AccountBalance
 {
@@ -42,6 +43,15 @@ namespace SW.Services.Account.AccountBalance
             return await GetBalance();
         }
         /// <summary>
+        /// Metodo que obtiene el balance de timbres de subcuenta por su Id.
+        /// <param name="idUser">ID del usuario al que se le consultaran los timbres.</param>
+        /// </summary>
+        /// <returns><see cref="BalanceResponse"/></returns>
+        public async Task<BalanceResponse> ConsultarSaldoByIdAsync(Guid idUser)
+        {
+            return await GetBalance(idUser);
+        }
+        /// <summary>
         /// Metodo para añadir timbres a una cuenta hijo desde la cuenta dealer.
         /// </summary>
         /// <param name="idUser">ID del usuario al que se le asignaran los timbres.</param>
@@ -62,22 +72,6 @@ namespace SW.Services.Account.AccountBalance
         public async Task<AccountBalanceResponse> EliminarTimbresAsync(Guid idUser, int stamps, string comment)
         {
             return await StampsDistribution(idUser, stamps, ActionsAccountBalance.Remove, comment);
-        }
-
-        internal async override Task<BalanceResponse> GetBalance()
-        {
-            ResponseHandler<BalanceResponse> handler = new ResponseHandler<BalanceResponse>();
-            try
-            {
-                new Validation(Url, User, Password, Token).ValidateHeaderParameters();
-                var headers = await Helpers.RequestHelper.GetHeadersAsync(this);
-                var proxy = RequestHelper.ProxySettings(this.Proxy, this.ProxyPort);
-                return await handler.GetResponseAsync(this.UrlApi ?? this.Url, headers,"management/v2/api/users/balance", proxy);
-            }
-            catch (Exception e)
-            {
-                return handler.HandleException(e);
-            }
         }
     }
 }
