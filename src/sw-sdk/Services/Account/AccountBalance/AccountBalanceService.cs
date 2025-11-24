@@ -37,7 +37,7 @@ namespace SW.Services.Account.AccountBalance
         }
 
         /// <summary>
-        /// Metodo que prmite consulta el saldo de un usuario y filtrando por ID
+        /// Metodo que prmite consultar el saldo de un usuario y filtrando por ID
         /// <param name="idUser">ID del usuario al que se le consultaran los timbres</param>
         /// </summary>
         /// <returns>Regresa un objeto Response</returns>
