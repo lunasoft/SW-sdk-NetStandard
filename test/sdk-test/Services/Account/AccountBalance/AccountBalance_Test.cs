@@ -9,6 +9,7 @@ namespace sdk_test.Services.Account
 {
     public class AccountBalance_Test
     {
+        //Consulta Saldo
         [Fact]
         public async Task ConsultaDeSaldoAsync_Auth_SuccessV2()
         {
@@ -54,6 +55,71 @@ namespace sdk_test.Services.Account
             Assert.NotNull(response.Message);
             Assert.Null(response.MessageDetail);
         }
+
+        //Consulta Saldo por ID
+        [Fact]
+        public async Task ConsultaDeSaldoByIdAsync_Auth_SuccessV2()
+        {
+            var build = new BuildSettings();
+            AccountBalance balance = new AccountBalance(build.UrlApi, build.Url, build.User, build.Password, 0, null);
+            Guid idUser = Guid.Parse("fafb2ac2-62ca-49f8-91de-14cea73b01eb");
+            BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.NotNull(response.Data);
+            Assert.NotNull(response.Data.LastTransaction);
+            Assert.Null(response.Message);
+            Assert.Null(response.MessageDetail);
+        }
+        [Fact]
+        public async Task ConsultaDeSaldoByIdAsync_Token_SuccessV2()
+        {
+            var build = new BuildSettings();
+            AccountBalance balance = new AccountBalance(build.UrlApi, build.Token);
+            Guid idUser = Guid.Parse("A1DFC01F-459A-4A05-BF68-1F04D1EF8860");
+            BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
+            CustomAssert.SuccessResponse(response, response.Data);
+            Assert.Null(response.Message);
+            Assert.Null(response.MessageDetail);
+        }
+        [Fact]
+        public async Task ConsultaDeSaldoByIdAsync_Auth_ErrorV2()
+        {
+            var build = new BuildSettings();
+            AccountBalance balance = new AccountBalance(build.UrlApi, build.Url, build.User, "passerror", 0, null);
+            Guid idUser = Guid.Parse("A1DFC01F-459A-4A05-BF68-1F04D1EF8860");
+            BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
+            CustomAssert.ErrorResponse(response);
+            Assert.Null(response.Data);
+            Assert.NotNull(response.Message);
+            Assert.Null(response.MessageDetail);
+
+        }
+        [Fact]
+        public async Task ConsultaDeSaldoByIdAsync_Token_ErrorV2()
+        {
+            var build = new BuildSettings();
+            AccountBalance balance = new AccountBalance(build.UrlApi, "0.0.0", 0, null);
+            Guid idUser = Guid.Parse("A1DFC01F-459A-4A05-BF68-1F04D1EF8860");
+            BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
+            CustomAssert.ErrorResponse(response);
+            Assert.Null(response.Data);
+            Assert.NotNull(response.Message);
+            Assert.Null(response.MessageDetail);
+        }
+        [Fact]
+        public async Task ConsultaDeSaldoByIdAsync_Token_ErrorIdV2()
+        {
+            var build = new BuildSettings();
+            AccountBalance balance = new AccountBalance(build.UrlApi, build.Token);
+            Guid idUser = Guid.Parse("A1DFC01F-459A-4A05-BF68-1F04D1EF8861");
+            BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
+            CustomAssert.ErrorResponse(response);
+            Assert.Null(response.Data);
+            Assert.NotNull(response.Message);
+            Assert.NotNull(response.MessageDetail);
+        }
+
+        //Agregar Timbres
         [Fact(Skip = "Se omite para no tener tema con los timbres en la cuenta de pruebas")]
         public async Task AsignarTimbresAsync_Auth_SuccessV2()
         {
@@ -87,6 +153,8 @@ namespace sdk_test.Services.Account
             Assert.True(response.Message.Equals("El usuario no fue encontrado."));
             Assert.NotNull(response.Message);
         }
+
+        //Eliminar Timbres
         [Fact(Skip = "Se omite para no tener tema con los timbres en la cuenta de pruebas")]
         public async Task EliminarTimbresAsync_Auth_SuccessV2()
         {
