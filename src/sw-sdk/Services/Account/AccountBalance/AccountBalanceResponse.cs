@@ -50,7 +50,7 @@ namespace SW.Services.Account.AccountBalance
         [DataMember]
         public string NameReceiver { get; set; }
         [DataMember]
-        public int StampsIn { get; set; }
+        public int? StampsIn { get; set; }
         [DataMember]
         public int? StampsOut { get; set; }
         [DataMember]

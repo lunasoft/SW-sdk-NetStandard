@@ -1090,6 +1090,7 @@ Métodos para realizar la consulta de saldo así como la asignación y eliminaci
 <details>
   <summary>Consulta de timbres</summary>
 
+<br>Revisa el detalle de los timbres disponibles de la cuenta asociada al token solicitado o usuario y contraseña.
 <br>Este método recibe los siguientes parametros:
 * Usuario y contraseña o Token
 * Url Servicios SW
@@ -1117,6 +1118,66 @@ namespace ExampleSDK
                 //Automaticamente despues de obtenerlo se procedera a la consulta de saldo
                 AccountBalance balance = new AccountBalance("https://api.test.sw.com.mx" ,"https://services.test.sw.com.mx","user", "password");
                 BalanceResponse response = await balance.ConsultarSaldoAsync();
+                if (response.Status != "error")
+                {
+                     //Para Obtener el saldo Timbres
+                    Console.WriteLine(response.Data.StampsBalance);
+                    //Para Obtenerlos timbres Utilizados
+                    Console.WriteLine(response.Data.StampsUsed);
+                    //Para Obtenerlos timbres Asignados
+                    Console.WriteLine(response.Data.StampsAssigned);
+                    //Para Obtener si es Ilimitado (para cuentas hijo)
+                    Console.WriteLine(response.Data.Unlimited);
+                }
+                else
+                {
+                    //En caso de error, se pueden visualizar los campos message y/o messageDetail
+                    Console.WriteLine(response.Message);
+                    Console.WriteLine(response.MessageDetail);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Consulta de timbres por ID</summary>
+
+<br>Servicio que permite revisar el detalle de los timbres disponibles en una subcuenta filtrando por ID.
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token de la cuenta principal
+* Url Servicios SW
+* Url Api
+
+> [!IMPORTANT]  
+> Los nombres de las variables en la respuesta han cambiado.
+
+**Ejemplo de consumo de la libreria para consultar el saldo**
+```cs
+using SW.Services.Account;
+using System;
+using System.Threading.Tasks;
+
+namespace ExampleSDK
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            try
+            {
+                //Creamos una instancia de tipo BalanceAccount 
+                //A esta le pasamos la Url, Usuario y Contraseña para obtener el token
+                //Automaticamente despues de obtenerlo se procedera a la consulta de saldo agregando el Id
+                Guid idUser = Guid.Parse("fafb2ac2-62ca-49f8-91de-14cea73b01eb");
+                AccountBalance balance = new AccountBalance("https://api.test.sw.com.mx" ,"https://services.test.sw.com.mx","user", "password");
+                BalanceResponse response = await balance.ConsultarSaldoByIdAsync(idUser);
                 if (response.Status != "error")
                 {
                      //Para Obtener el saldo Timbres
